@@ -1,5 +1,6 @@
 # Instructions for creating an AWS cluster:
 
+```
 # install pcluster (or activate if in virtual env)
 python3 -m pip install --upgrade pip
 pip3 install --user --upgrade virtualenv
@@ -7,8 +8,6 @@ virtualenv ~/apc-ve
 source ~/apc-ve/bin/activate
 pip install --upgrade aws-parallelcluster
 
-
-```
 # configure AWS and the parallel cluster:
 aws configure
 pcluster configure
