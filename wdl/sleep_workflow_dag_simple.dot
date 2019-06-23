@@ -1,0 +1,12 @@
+digraph sleepwf {
+  compound=true;
+  "call sleep1" -> "call sleep2" 
+  
+subgraph cluster_0 {
+  "call sleep1"
+  "call sleep2"
+  "scatter (range(ntasks))" [shape=plaintext]
+}
+      
+}
+
