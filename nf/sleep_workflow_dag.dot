@@ -1,0 +1,26 @@
+digraph "sleep_workflow_dag" {
+p0 [shape=point,label="",fixedsize=true,width=0.1,xlabel="Channel.from"];
+p3 [label="sleep1"];
+p0 -> p3 [label="ntasks1"];
+
+p1 [shape=point,label="",fixedsize=true,width=0.1];
+p3 [label="sleep1"];
+p1 -> p3 [label="duration"];
+
+p2 [shape=point,label="",fixedsize=true,width=0.1];
+p3 [label="sleep1"];
+p2 -> p3 [label="forks"];
+
+p3 [label="sleep1"];
+p6 [label="sleep2"];
+p3 -> p6 [label="ntasks2"];
+
+p4 [shape=point,label="",fixedsize=true,width=0.1];
+p6 [label="sleep2"];
+p4 -> p6 [label="duration"];
+
+p5 [shape=point,label="",fixedsize=true,width=0.1];
+p6 [label="sleep2"];
+p5 -> p6 [label="forks"];
+
+}

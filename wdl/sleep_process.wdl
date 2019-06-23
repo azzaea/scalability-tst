@@ -10,12 +10,11 @@ task sleepTask {
 	}
 }
 
-workflow sleep1 {
-	input {
-		Int ntasks
-	}
+workflow sleepwf {
+    Float duration
+	Int ntasks
 	scatter (n in range(ntasks)) {
-		call sleepTask {input: i=n}
+		call sleepTask as sleep1 {input: i=n, duration=duration}
 	}
 }
 
