@@ -1,10 +1,7 @@
-version 1.0
-
 task sleepTask {
-	input {
-		Float duration 
-		Int i
-	}
+	Float duration 
+	Int i
+	
 	command {
 		sleep ${duration}
 	}
