@@ -8,14 +8,14 @@
 #### the same directory
 ##############################################################################################
 
-nextflow="~/software/nextflow/19.04.1"
+nextflow="/home/ubuntu/software/nextflow"
 
 for sleepDuration in 0 500 1000; do
 	log1="logs-nf/weakScaling_processes-1_sleep-${sleepDuration}.txt"
 	log2="logs-nf/weakScaling_processes-2_sleep-${sleepDuration}.txt"
 	echo "cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,exitStatus" | tee -a ${log1} ${log2}
 
-	for line in {1..17}; do
+	for line in {1..19}; do
 		cores=`cat cores.txt | sed -n ${line}p`  #goes to the forks param
 		tasks=`cat ntasks.txt | sed -n ${line}p`
 		echo -n "${cores},${tasks}," | tee -a ${log1} ${log2}

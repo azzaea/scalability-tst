@@ -8,7 +8,7 @@ set -x
 #### The script read value for cores from a file: cores.txt in the same directory
 ##############################################################################################
 
-nextflow="~/software/nextflow"
+nextflow="/home/ubuntu/software/nextflow"
 progress="logs-nf/progress_strongScaling.txt"
 echo "Starting Strong Scalability Analysis" >> ${progress}
 echo "##############################################################################################" >> ${progress} 
