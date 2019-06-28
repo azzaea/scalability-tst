@@ -1,0 +1,96 @@
+(Namespace:
+  imports=[],
+  body=[
+    (Task:
+      name=<string:1:6 identifier "c2xlZXBUYXNr">,
+      declarations=[
+        (Declaration:
+          type=<string:2:2 type "RmxvYXQ=">,
+          name=<string:2:8 identifier "ZHVyYXRpb24=">,
+          expression=None
+        ),
+        (Declaration:
+          type=<string:3:2 type "SW50">,
+          name=<string:3:6 identifier "aQ==">,
+          expression=None
+        )
+      ],
+      sections=[
+        (RawCommand:
+          parts=[
+            <string:5:11 cmd_part "CgkJc2xlZXAg">,
+            (CommandParameter:
+              attributes=[],
+              expr=<string:6:11 identifier "ZHVyYXRpb24=">
+            ),
+            <string:6:20 cmd_part "Cgk=">
+          ]
+        ),
+        (Outputs:
+          attributes=[
+            (Output:
+              type=<string:9:3 type "SW50">,
+              name=<string:9:7 identifier "dGFza0lE">,
+              expression=<string:9:16 identifier "aQ==">
+            )
+          ]
+        ),
+        (Runtime:
+          map=[
+            (RuntimeAttribute:
+              key=<string:12:3 identifier "Y3B1">,
+              value=<string:12:9 integer "MQ==">
+            )
+          ]
+        )
+      ]
+    ),
+    (Workflow:
+      name=<string:16:10 identifier "c2xlZXB3Zg==">,
+      body=[
+        (Declaration:
+          type=<string:17:5 type "RmxvYXQ=">,
+          name=<string:17:11 identifier "ZHVyYXRpb24=">,
+          expression=None
+        ),
+        (Declaration:
+          type=<string:18:2 type "SW50">,
+          name=<string:18:6 identifier "bnRhc2tz">,
+          expression=None
+        ),
+        (Scatter:
+          item=<string:19:11 identifier "bg==">,
+          collection=(FunctionCall:
+            name=<string:19:16 identifier "cmFuZ2U=">,
+            params=[
+              <string:19:22 identifier "bnRhc2tz">
+            ]
+          ),
+          body=[
+            (Call:
+              task=<string:20:8 fqn "c2xlZXBUYXNr">,
+              alias=<string:20:21 identifier "c2xlZXAx">,
+              body=(CallBody:
+                declarations=[],
+                io=[
+                  (Inputs:
+                    map=[
+                      (IOMapping:
+                        key=<string:20:36 identifier "aQ==">,
+                        value=<string:20:38 identifier "bg==">
+                      ),
+                      (IOMapping:
+                        key=<string:20:41 identifier "ZHVyYXRpb24=">,
+                        value=<string:20:50 identifier "ZHVyYXRpb24=">
+                      )
+                    ]
+                  )
+                ]
+              )
+            )
+          ]
+        )
+      ]
+    )
+  ]
+)

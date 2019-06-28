@@ -1,0 +1,66 @@
+OrderedDict([
+	('sleepTask', OrderedDict([
+		('inputs', [
+			(
+				'duration',
+				'Float',
+				None
+			),
+			(
+				'i',
+				'Int',
+				None
+			)
+		]),
+		('raw_commandline', [
+			"r'''\n\t\tsleep '''",
+			'duration',
+			"r'''\n\t'''"
+		]),
+		('outputs', [
+			(
+				'taskID',
+				'Int',
+				"'i'"
+			)
+		]),
+		('runtime', OrderedDict([
+			('cpu', '1')
+		]))
+	]))
+])
+
+
+
+
+
+OrderedDict([
+	('sleepwf', OrderedDict([
+		('wf_declarations', OrderedDict([
+			('duration', OrderedDict([
+				('name', 'duration'),
+				('type', 'Float'),
+				('value', u'"80"')
+			])),
+			('ntasks', OrderedDict([
+				('name', 'ntasks'),
+				('type', 'Int'),
+				('value', 2)
+			]))
+		])),
+		('scatter0', {
+			'body': OrderedDict([
+				('call0', {
+					'alias': 'sleep1',
+					'task': 'sleepTask',
+					'io': OrderedDict([
+						('i', 'n'),
+						('duration', 'duration')
+					])
+				})
+			]),
+			'item': 'n',
+			'collection': '(range(ntasks))'
+		})
+	]))
+])

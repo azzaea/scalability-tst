@@ -8,6 +8,9 @@ task sleepTask {
 	output {
 		Int taskID = i 
 	}
+	runtime {
+		cpu:  1
+	}
 }
 
 workflow sleepwf {

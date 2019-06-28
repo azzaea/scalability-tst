@@ -1,8 +1,0 @@
-cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,exitStatus
-1,2,44.38,3.32,35.33,135%,0,15394,21159,0
-2,2,45.19,3.16,35.29,136%,0,15474,21362,0
-4,2,47.60,3.29,35.26,144%,0,15621,22269,0
-cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,exitStatus
-1,2,45.32,2.96,35.45,136%,0,10452,21011,0
-2,2,43.46,3.26,34.80,134%,0,8761,22413,0
-4,2,43.76,3.05,39.94,117%,0,9769,23885,0
