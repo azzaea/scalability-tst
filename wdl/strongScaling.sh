@@ -6,7 +6,7 @@
 #### The script read value for cores from a file: cores.txt in the same directory
 ##############################################################################################
 
-crom="~/software/wdl/cromwell-42.jar"
+crom="/home/ubuntu/software/cromwell-42.jar"
 jsonsDir="logs-wdl/jsons"
 mkdir -p ${jsonsDir}
 
@@ -19,7 +19,7 @@ for sleepDuration in 0 500 1000; do
     jsoninput="${jsonsDir}/${sleepDuration}/sleep_process_workflow.${sleepDuration}"
     sed "s/SleepDuration/${sleepDuration}/" sleep_process_workflow.json.tmpl > ${jsoninput}
 
-	for line in {1..17}; do
+	for line in {1..19}; do
 		cores=`cat cores.txt | sed -n ${line}p`  #goes to the forks param
 		tasks=65536
 		echo -n "${cores},${tasks}," | tee -a ${log1} ${log2}

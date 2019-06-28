@@ -8,7 +8,7 @@ set -x
 #### The script read value for cores from a file: cores.txt in the same directory
 ##############################################################################################
 
-nextflow="~/nextflow"
+nextflow="/home/ubuntu/software/nextflow"
 progress="logs-nf/progress_strongScaling.txt"
 echo "Starting Strong Scalability Analysis" >> ${progress}
 echo "##############################################################################################" >> ${progress} 
@@ -21,7 +21,7 @@ for sleepDuration in 0 500 1000; do
 	log2="logs-nf/strongScaling_processes-2_sleep-${sleepDuration}.txt"
 	echo "cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,exitStatus" | tee -a ${log1} ${log2}
 
-	for line in {1..17}; do
+	for line in {1..19}; do
 		cores=`cat cores.txt | sed -n ${line}p`  #goes to the forks param
 		tasks=65536
 		echo -n "${cores},${tasks}," | tee -a ${log1} ${log2}
