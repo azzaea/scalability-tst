@@ -20,7 +20,8 @@ process sleep1 {
     	val n into ntasks2
 
     """
-    sleep $duration 
+    #sleep $duration 
+    # echo $SLURM_NODEID
     """
 }
 
