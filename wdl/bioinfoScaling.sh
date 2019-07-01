@@ -39,15 +39,12 @@ echo "##########################################################################
 
 		##### processes: 1
 		/usr/bin/time --format "%U,%S,%e,%P,%K,%c,%w,%x" --append --output ${log1} \
-		        java -Dconfig.file=${jsonsDir}/cromwell.config.${cores} -jar ${crom} run host_process.wdl -i ${jsoninput}.${tasks}.json > log
-			grep "hostwf.logfile" log | sed '2d' | cut -d: -f2| xargs cat | sort -u > hosts/host1_tasks${tasks}.txt
-			rm log
+		        java -Dconfig.file=${jsonsDir}/cromwell.config.${cores} -jar ${crom} run host_process.wdl -i ${jsoninput}.${tasks}.json > hosts/host1_tasks${tasks}.txt
+			
 
 		#### Processes: 2
 		/usr/bin/time --format "%U,%S,%e,%P,%K,%c,%w,%x" --append --output ${log2} \
-		        java -Dconfig.file=${jsonsDir}/cromwell.config.${cores} -jar ${crom} run host_workflow.wdl -i ${jsoninput}.${tasks}.json >log
-			grep "hostwf.logfile" log | sed '2d' | cut -d: -f2| xargs cat > hosts/host2_tasks${tasks}.txt
-			rm log
+		        java -Dconfig.file=${jsonsDir}/cromwell.config.${cores} -jar ${crom} run host_workflow.wdl -i ${jsoninput}.${tasks}.json > hosts/host2_tasks${tasks}.txt
 
 		echo -e "Done processing * ${tasks} * tasks, on * ${cores} * cores" >> ${progress}	
 	done

@@ -1,1 +1,114 @@
-compute-7-1
+[2019-06-30 23:22:43,59] [info] Running with database db.url = jdbc:hsqldb:mem:49dd37a1-e36b-4d44-82f4-8f7ce97c7442;shutdown=false;hsqldb.tx=mvcc
+[2019-06-30 23:22:51,09] [info] Running migration RenameWorkflowOptionsInMetadata with a read batch size of 100000 and a write batch size of 100000
+[2019-06-30 23:22:51,10] [info] [RenameWorkflowOptionsInMetadata] 100%
+[2019-06-30 23:22:51,18] [info] Running with database db.url = jdbc:hsqldb:mem:20221614-9bef-4c21-abc1-e7bc2d9ea1ee;shutdown=false;hsqldb.tx=mvcc
+[2019-06-30 23:22:51,56] [info] Slf4jLogger started
+[2019-06-30 23:22:51,91] [info] Workflow heartbeat configuration:
+{
+  "cromwellId" : "cromid-1d63da7",
+  "heartbeatInterval" : "2 minutes",
+  "ttl" : "10 minutes",
+  "writeBatchSize" : 10000,
+  "writeThreshold" : 10000
+}
+[2019-06-30 23:22:51,97] [info] Metadata summary refreshing every 2 seconds.
+[2019-06-30 23:22:51,97] [[38;5;220mwarn[0m] 'docker.hash-lookup.gcr-api-queries-per-100-seconds' is being deprecated, use 'docker.hash-lookup.gcr.throttle' instead (see reference.conf)
+[2019-06-30 23:22:51,98] [info] KvWriteActor configured to flush with batch size 200 and process rate 5 seconds.
+[2019-06-30 23:22:51,98] [info] CallCacheWriteActor configured to flush with batch size 100 and process rate 3 seconds.
+[2019-06-30 23:22:51,98] [info] WriteMetadataActor configured to flush with batch size 200 and process rate 5 seconds.
+[2019-06-30 23:22:52,04] [info] JobExecutionTokenDispenser - Distribution rate: 5 per 1 seconds.
+[2019-06-30 23:22:52,30] [info] SingleWorkflowRunnerActor: Version 39
+[2019-06-30 23:22:52,30] [info] SingleWorkflowRunnerActor: Submitting workflow
+[2019-06-30 23:22:52,35] [info] Unspecified type (Unspecified version) workflow bba29811-af04-43ba-9037-6e20f593ebe8 submitted
+[2019-06-30 23:22:52,37] [info] SingleWorkflowRunnerActor: Workflow submitted [38;5;2mbba29811-af04-43ba-9037-6e20f593ebe8[0m
+[2019-06-30 23:22:52,37] [info] 1 new workflows fetched by cromid-1d63da7: bba29811-af04-43ba-9037-6e20f593ebe8
+[2019-06-30 23:22:52,37] [info] WorkflowManagerActor Starting workflow [38;5;2mbba29811-af04-43ba-9037-6e20f593ebe8[0m
+[2019-06-30 23:22:52,38] [info] WorkflowManagerActor Successfully started WorkflowActor-bba29811-af04-43ba-9037-6e20f593ebe8
+[2019-06-30 23:22:52,38] [info] Retrieved 1 workflows from the WorkflowStoreActor
+[2019-06-30 23:22:52,38] [info] WorkflowStoreHeartbeatWriteActor configured to flush with batch size 10000 and process rate 2 minutes.
+[2019-06-30 23:22:52,46] [info] MaterializeWorkflowDescriptorActor [[38;5;2mbba29811[0m]: Parsing workflow as WDL draft-2
+[2019-06-30 23:22:53,04] [info] MaterializeWorkflowDescriptorActor [[38;5;2mbba29811[0m]: Call-to-Backend assignments: hostwf.host1 -> slurm, hostwf.host2 -> slurm, hostwf.catHostsTask -> slurm
+[2019-06-30 23:22:57,06] [info] Not triggering log of token queue status. Effective log interval = None
+[2019-06-30 23:22:57,56] [info] WorkflowExecutionActor-bba29811-af04-43ba-9037-6e20f593ebe8 [[38;5;2mbba29811[0m]: Starting hostwf.host1 (2 shards)
+[2019-06-30 23:22:58,08] [info] Assigned new job execution tokens to the following groups: bba29811: 2
+[2019-06-30 23:22:58,27] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host1:1:1]: [38;5;5mhostname[0m
+[2019-06-30 23:22:58,27] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host1:0:1]: [38;5;5mhostname[0m
+[2019-06-30 23:22:58,36] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host1:0:1]: executing: sbatch -J cromwell_bba29811_host1 -D /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-host1/shard-0 -o /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-host1/shard-0/execution/stdout -e /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-host1/shard-0/execution/stderr -p normal -c 1 --wrap "/bin/bash /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-host1/shard-0/execution/script"
+[2019-06-30 23:22:58,36] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host1:1:1]: executing: sbatch -J cromwell_bba29811_host1 -D /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-host1/shard-1 -o /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-host1/shard-1/execution/stdout -e /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-host1/shard-1/execution/stderr -p normal -c 1 --wrap "/bin/bash /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-host1/shard-1/execution/script"
+[2019-06-30 23:23:02,03] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host1:0:1]: job id: 3501002
+[2019-06-30 23:23:02,03] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host1:1:1]: job id: 3501003
+[2019-06-30 23:23:02,03] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host1:1:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-06-30 23:23:02,03] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host1:0:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-06-30 23:23:02,04] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host1:0:1]: Status change from - to Running
+[2019-06-30 23:23:02,04] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host1:1:1]: Status change from - to Running
+[2019-06-30 23:23:18,23] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host1:1:1]: Status change from Running to Done
+[2019-06-30 23:23:19,03] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host1:0:1]: Status change from Running to Done
+[2019-06-30 23:23:20,02] [info] WorkflowExecutionActor-bba29811-af04-43ba-9037-6e20f593ebe8 [[38;5;2mbba29811[0m]: Starting hostwf.host2
+[2019-06-30 23:23:20,06] [info] Assigned new job execution tokens to the following groups: bba29811: 1
+[2019-06-30 23:23:20,08] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host2:1:1]: [38;5;5mhostname[0m
+[2019-06-30 23:23:20,10] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host2:1:1]: executing: sbatch -J cromwell_bba29811_host2 -D /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-host2/shard-1 -o /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-host2/shard-1/execution/stdout -e /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-host2/shard-1/execution/stderr -p normal -c 1 --wrap "/bin/bash /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-host2/shard-1/execution/script"
+[2019-06-30 23:23:21,05] [info] WorkflowExecutionActor-bba29811-af04-43ba-9037-6e20f593ebe8 [[38;5;2mbba29811[0m]: Starting hostwf.host2
+[2019-06-30 23:23:21,06] [info] Assigned new job execution tokens to the following groups: bba29811: 1
+[2019-06-30 23:23:21,07] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host2:0:1]: [38;5;5mhostname[0m
+[2019-06-30 23:23:21,09] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host2:0:1]: executing: sbatch -J cromwell_bba29811_host2 -D /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-host2/shard-0 -o /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-host2/shard-0/execution/stdout -e /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-host2/shard-0/execution/stderr -p normal -c 1 --wrap "/bin/bash /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-host2/shard-0/execution/script"
+[2019-06-30 23:23:22,01] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host2:0:1]: job id: 3501007
+[2019-06-30 23:23:22,01] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host2:1:1]: job id: 3501004
+[2019-06-30 23:23:22,01] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host2:0:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-06-30 23:23:22,01] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host2:0:1]: Status change from - to Running
+[2019-06-30 23:23:22,01] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host2:1:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-06-30 23:23:22,01] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host2:1:1]: Status change from - to Running
+[2019-06-30 23:23:47,95] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host2:0:1]: Status change from Running to Done
+[2019-06-30 23:23:49,40] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.host2:1:1]: Status change from Running to Done
+[2019-06-30 23:23:51,65] [info] WorkflowExecutionActor-bba29811-af04-43ba-9037-6e20f593ebe8 [[38;5;2mbba29811[0m]: Starting hostwf.catHostsTask
+[2019-06-30 23:23:52,06] [info] Assigned new job execution tokens to the following groups: bba29811: 1
+[2019-06-30 23:23:52,08] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.catHostsTask:NA:1]: [38;5;5m		echo -e "compute-7-1
+compute-7-1\ncompute-7-1
+compute-7-1"| sort -u[0m
+[2019-06-30 23:23:52,09] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.catHostsTask:NA:1]: executing: sbatch -J cromwell_bba29811_catHostsTask -D /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-catHostsTask -o /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-catHostsTask/execution/stdout -e /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-catHostsTask/execution/stderr -p normal -c 1 --wrap "/bin/bash /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-catHostsTask/execution/script"
+[2019-06-30 23:23:57,00] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.catHostsTask:NA:1]: job id: 3501010
+[2019-06-30 23:23:57,00] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.catHostsTask:NA:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-06-30 23:23:57,00] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.catHostsTask:NA:1]: Status change from - to Running
+[2019-06-30 23:24:18,51] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2mbba29811[0mhostwf.catHostsTask:NA:1]: Status change from Running to Done
+[2019-06-30 23:24:20,23] [info] WorkflowExecutionActor-bba29811-af04-43ba-9037-6e20f593ebe8 [[38;5;2mbba29811[0m]: Workflow hostwf complete. Final Outputs:
+{
+  "hostwf.logfile": "/igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-catHostsTask/execution/stdout"
+}
+[2019-06-30 23:24:20,28] [info] WorkflowManagerActor WorkflowActor-bba29811-af04-43ba-9037-6e20f593ebe8 is in a terminal state: WorkflowSucceededState
+[2019-06-30 23:24:39,45] [info] SingleWorkflowRunnerActor workflow finished with status 'Succeeded'.
+{
+  "outputs": {
+    "hostwf.logfile": "/igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/bba29811-af04-43ba-9037-6e20f593ebe8/call-catHostsTask/execution/stdout"
+  },
+  "id": "bba29811-af04-43ba-9037-6e20f593ebe8"
+}
+[2019-06-30 23:24:42,08] [info] Workflow polling stopped
+[2019-06-30 23:24:42,10] [info] Shutting down WorkflowStoreActor - Timeout = 5 seconds
+[2019-06-30 23:24:42,10] [info] 0 workflows released by cromid-1d63da7
+[2019-06-30 23:24:42,10] [info] Shutting down WorkflowLogCopyRouter - Timeout = 5 seconds
+[2019-06-30 23:24:42,11] [info] Shutting down JobExecutionTokenDispenser - Timeout = 5 seconds
+[2019-06-30 23:24:42,11] [info] JobExecutionTokenDispenser stopped
+[2019-06-30 23:24:42,11] [info] Aborting all running workflows.
+[2019-06-30 23:24:42,11] [info] WorkflowStoreActor stopped
+[2019-06-30 23:24:42,12] [info] WorkflowLogCopyRouter stopped
+[2019-06-30 23:24:42,12] [info] Shutting down WorkflowManagerActor - Timeout = 3600 seconds
+[2019-06-30 23:24:42,12] [info] WorkflowManagerActor All workflows finished
+[2019-06-30 23:24:42,12] [info] WorkflowManagerActor stopped
+[2019-06-30 23:24:42,36] [info] Connection pools shut down
+[2019-06-30 23:24:42,37] [info] Shutting down SubWorkflowStoreActor - Timeout = 1800 seconds
+[2019-06-30 23:24:42,37] [info] Shutting down JobStoreActor - Timeout = 1800 seconds
+[2019-06-30 23:24:42,37] [info] Shutting down CallCacheWriteActor - Timeout = 1800 seconds
+[2019-06-30 23:24:42,37] [info] SubWorkflowStoreActor stopped
+[2019-06-30 23:24:42,37] [info] Shutting down ServiceRegistryActor - Timeout = 1800 seconds
+[2019-06-30 23:24:42,37] [info] Shutting down DockerHashActor - Timeout = 1800 seconds
+[2019-06-30 23:24:42,37] [info] Shutting down IoProxy - Timeout = 1800 seconds
+[2019-06-30 23:24:42,37] [info] JobStoreActor stopped
+[2019-06-30 23:24:42,37] [info] CallCacheWriteActor Shutting down: 0 queued messages to process
+[2019-06-30 23:24:42,37] [info] KvWriteActor Shutting down: 0 queued messages to process
+[2019-06-30 23:24:42,37] [info] WriteMetadataActor Shutting down: 0 queued messages to process
+[2019-06-30 23:24:42,37] [info] IoProxy stopped
+[2019-06-30 23:24:42,37] [info] CallCacheWriteActor stopped
+[2019-06-30 23:24:42,37] [info] ServiceRegistryActor stopped
+[2019-06-30 23:24:42,37] [info] DockerHashActor stopped
+[2019-06-30 23:24:42,38] [info] Database closed
+[2019-06-30 23:24:42,38] [info] Stream materializer shut down
+[2019-06-30 23:24:42,38] [info] WDL HTTP import resolver closed
