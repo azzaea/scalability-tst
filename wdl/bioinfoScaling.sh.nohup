@@ -1,4 +1,3 @@
-nohup: ignoring input
 + crom=/home/a-m/azzaea/software/wdl/cromwell-39.jar
 + jsonsDir=logs-wdl/jsons
 + mkdir -p logs-wdl/jsons
@@ -15,6 +14,7 @@ mkdir: cannot create directory ‘logs-wdl/jsons/’: File exists
 + jsoninput=logs-wdl/jsons//host_process_workflow.
 + sed s/SleepDuration// host_process_workflow.json.tmpl
 + mkdir hosts
+mkdir: cannot create directory ‘hosts’: File exists
 + for line in '{1..10}'
 ++ cat cores.txt
 ++ sed -n 1p
@@ -27,18 +27,7 @@ mkdir: cannot create directory ‘logs-wdl/jsons/’: File exists
 + sed -i s/LOG1/host1_tasks1.txt/ logs-wdl/jsons/cromwell.config.1
 + sed -i s/LOG2/host2_tasks1.txt/ logs-wdl/jsons/cromwell.config.1
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.1 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..1.json
-+ sed 2d
-+ grep hostwf.logfile log
-+ xargs cat
-+ cut -d: -f2
-+ sort -u
-+ rm log
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.1 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..1.json
-+ sed 2d
-+ grep hostwf.logfile log
-+ xargs cat
-+ cut -d: -f2
-+ rm log
 + echo -e 'Done processing * 1 * tasks, on * 1 * cores'
 + for line in '{1..10}'
 ++ cat cores.txt
@@ -52,18 +41,7 @@ mkdir: cannot create directory ‘logs-wdl/jsons/’: File exists
 + sed -i s/LOG1/host1_tasks2.txt/ logs-wdl/jsons/cromwell.config.2
 + sed -i s/LOG2/host2_tasks2.txt/ logs-wdl/jsons/cromwell.config.2
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.2 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..2.json
-+ sed 2d
-+ grep hostwf.logfile log
-+ xargs cat
-+ cut -d: -f2
-+ sort -u
-+ rm log
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.2 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..2.json
-+ sed 2d
-+ grep hostwf.logfile log
-+ xargs cat
-+ cut -d: -f2
-+ rm log
 + echo -e 'Done processing * 2 * tasks, on * 2 * cores'
 + for line in '{1..10}'
 ++ cat cores.txt
@@ -77,18 +55,7 @@ mkdir: cannot create directory ‘logs-wdl/jsons/’: File exists
 + sed -i s/LOG1/host1_tasks4.txt/ logs-wdl/jsons/cromwell.config.4
 + sed -i s/LOG2/host2_tasks4.txt/ logs-wdl/jsons/cromwell.config.4
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.4 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..4.json
-+ sed 2d
-+ grep hostwf.logfile log
-+ xargs cat
-+ cut -d: -f2
-+ sort -u
-+ rm log
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.4 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..4.json
-+ sed 2d
-+ grep hostwf.logfile log
-+ xargs cat
-+ cut -d: -f2
-+ rm log
 + echo -e 'Done processing * 4 * tasks, on * 4 * cores'
 + for line in '{1..10}'
 ++ cat cores.txt
@@ -102,18 +69,7 @@ mkdir: cannot create directory ‘logs-wdl/jsons/’: File exists
 + sed -i s/LOG1/host1_tasks8.txt/ logs-wdl/jsons/cromwell.config.8
 + sed -i s/LOG2/host2_tasks8.txt/ logs-wdl/jsons/cromwell.config.8
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.8 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..8.json
-+ sed 2d
-+ grep hostwf.logfile log
-+ sort -u
-+ cut -d: -f2
-+ xargs cat
-+ rm log
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.8 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..8.json
-+ sed 2d
-+ grep hostwf.logfile log
-+ xargs cat
-+ cut -d: -f2
-+ rm log
 + echo -e 'Done processing * 8 * tasks, on * 8 * cores'
 + for line in '{1..10}'
 ++ cat cores.txt
@@ -127,22 +83,11 @@ mkdir: cannot create directory ‘logs-wdl/jsons/’: File exists
 + sed -i s/LOG1/host1_tasks16.txt/ logs-wdl/jsons/cromwell.config.16
 + sed -i s/LOG2/host2_tasks16.txt/ logs-wdl/jsons/cromwell.config.16
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.16 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..16.json
-+ sed 2d
-+ grep hostwf.logfile log
-+ xargs cat
-+ cut -d: -f2
-+ sort -u
-+ rm log
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.16 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..16.json
-+ sed 2d
-+ grep hostwf.logfile log
-+ xargs cat
-+ cut -d: -f2
-+ rm log
 + echo -e 'Done processing * 16 * tasks, on * 16 * cores'
 + for line in '{1..10}'
-++ sed -n 6p
 ++ cat cores.txt
+++ sed -n 6p
 + cores=24
 + tasks=24
 + echo -n 24,24,
@@ -152,18 +97,7 @@ mkdir: cannot create directory ‘logs-wdl/jsons/’: File exists
 + sed -i s/LOG1/host1_tasks24.txt/ logs-wdl/jsons/cromwell.config.24
 + sed -i s/LOG2/host2_tasks24.txt/ logs-wdl/jsons/cromwell.config.24
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.24 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..24.json
-+ sed 2d
-+ grep hostwf.logfile log
-+ xargs cat
-+ cut -d: -f2
-+ sort -u
-+ rm log
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.24 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..24.json
-+ grep hostwf.logfile log
-+ sed 2d
-+ cut -d: -f2
-+ xargs cat
-+ rm log
 + echo -e 'Done processing * 24 * tasks, on * 24 * cores'
 + for line in '{1..10}'
 ++ cat cores.txt
@@ -177,22 +111,11 @@ mkdir: cannot create directory ‘logs-wdl/jsons/’: File exists
 + sed -i s/LOG1/host1_tasks48.txt/ logs-wdl/jsons/cromwell.config.48
 + sed -i s/LOG2/host2_tasks48.txt/ logs-wdl/jsons/cromwell.config.48
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.48 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..48.json
-+ sed 2d
-+ grep hostwf.logfile log
-+ cut -d: -f2
-+ xargs cat
-+ sort -u
-+ rm log
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.48 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..48.json
-+ sed 2d
-+ grep hostwf.logfile log
-+ xargs cat
-+ cut -d: -f2
-+ rm log
 + echo -e 'Done processing * 48 * tasks, on * 48 * cores'
 + for line in '{1..10}'
-++ sed -n 8p
 ++ cat cores.txt
+++ sed -n 8p
 + cores=96
 + tasks=96
 + echo -n 96,96,
@@ -202,18 +125,7 @@ mkdir: cannot create directory ‘logs-wdl/jsons/’: File exists
 + sed -i s/LOG1/host1_tasks96.txt/ logs-wdl/jsons/cromwell.config.96
 + sed -i s/LOG2/host2_tasks96.txt/ logs-wdl/jsons/cromwell.config.96
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.96 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..96.json
-+ sed 2d
-+ grep hostwf.logfile log
-+ xargs cat
-+ cut -d: -f2
-+ sort -u
-+ rm log
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.96 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..96.json
-+ grep hostwf.logfile log
-+ sed 2d
-+ cut -d: -f2
-+ xargs cat
-+ rm log
 + echo -e 'Done processing * 96 * tasks, on * 96 * cores'
 + for line in '{1..10}'
 ++ cat cores.txt
@@ -227,18 +139,7 @@ mkdir: cannot create directory ‘logs-wdl/jsons/’: File exists
 + sed -i s/LOG1/host1_tasks192.txt/ logs-wdl/jsons/cromwell.config.192
 + sed -i s/LOG2/host2_tasks192.txt/ logs-wdl/jsons/cromwell.config.192
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.192 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..192.json
-+ grep hostwf.logfile log
-+ cut -d: -f2
-+ sed 2d
-+ xargs cat
-+ sort -u
-+ rm log
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.192 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..192.json
-+ sed 2d
-+ grep hostwf.logfile log
-+ xargs cat
-+ cut -d: -f2
-+ rm log
 + echo -e 'Done processing * 192 * tasks, on * 192 * cores'
 + for line in '{1..10}'
 ++ cat cores.txt
@@ -252,19 +153,8 @@ mkdir: cannot create directory ‘logs-wdl/jsons/’: File exists
 + sed -i s/LOG1/host1_tasks384.txt/ logs-wdl/jsons/cromwell.config.384
 + sed -i s/LOG2/host2_tasks384.txt/ logs-wdl/jsons/cromwell.config.384
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.384 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..384.json
-+ grep hostwf.logfile log
-+ cut -d: -f2
-+ sed 2d
-+ xargs cat
-+ sort -u
-+ rm log
 + /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.384 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..384.json
-+ sed 2d
-+ grep hostwf.logfile log
-+ cut -d: -f2
-+ xargs cat
-+ rm log
 + echo -e 'Done processing * 384 * tasks, on * 384 * cores'
 + echo '##############################################################################################'
-+ echo 'Bio-Scalability analysis completed for WDL!'
 + mail -s 'WfMS- Bio-Scalability' azzaea@gmail.com
++ echo 'Bio-Scalability analysis completed for WDL!'
