@@ -3,3 +3,4 @@ nf/.nextflow.log*
 nf/.nextflow
 wdl/cromwell-executions
 wdl/cromwell-workflow-logs
+.Rproj.user
