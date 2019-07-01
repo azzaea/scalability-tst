@@ -1,6 +1,5 @@
-echo true
-params.duration = 10 // Default value
-duration = params.duration
+params.log = 'log.txt' // Default value
+logfile = params.log
 
 params.ntasks = 1   // Default value
 ntasks1 = Channel.from(1..params.ntasks)
@@ -8,23 +7,26 @@ ntasks1 = Channel.from(1..params.ntasks)
 params.forks = 1    // Default value
 forks = params.forks
 
-process sleep1 {
-    // tag "sleep_1-fork_$forks-ntask_$n"
+process host1 {
     maxForks forks //max process instances executed in parallel. 1 means serial execution; default is number of cores-1
 
     input:
         val n from ntasks1
-        val duration
 	val forks
 
     output:
     	val n into ntasks2
+	stdout result1
 
     """ 
-     sleep $duration 
+    hostname 
 
     """
 }
 
 
+result1
+     .unique()
+     .collectFile(name: "$logfile", storeDir: "$workflow.launchDir/hosts")
+     .subscribe {println "Hostname: ${it.text}" }
 

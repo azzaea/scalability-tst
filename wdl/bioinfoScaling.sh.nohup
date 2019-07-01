@@ -1,0 +1,270 @@
+nohup: ignoring input
++ crom=/home/a-m/azzaea/software/wdl/cromwell-39.jar
++ jsonsDir=logs-wdl/jsons
++ mkdir -p logs-wdl/jsons
++ progress=logs-wdl/progress_bioinfoScaling.txt
++ echo 'Starting BioInfo Scalability Analysis'
++ echo '##############################################################################################'
++ log1=logs-wdl/bioinfoScaling_processes-1_host.txt
++ log2=logs-wdl/bioinfoScaling_processes-2_host.txt
++ echo cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,exitStatus
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,exitStatus
++ mkdir logs-wdl/jsons/
+mkdir: cannot create directory ‘logs-wdl/jsons/’: File exists
++ jsoninput=logs-wdl/jsons//host_process_workflow.
++ sed s/SleepDuration// host_process_workflow.json.tmpl
++ mkdir hosts
++ for line in '{1..10}'
+++ cat cores.txt
+++ sed -n 1p
++ cores=1
++ tasks=1
++ echo -n 1,1,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+1,1,+ sed s/NTASKS/1/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/1/ cromwell.config
++ sed -i s/LOG1/host1_tasks1.txt/ logs-wdl/jsons/cromwell.config.1
++ sed -i s/LOG2/host2_tasks1.txt/ logs-wdl/jsons/cromwell.config.1
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.1 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..1.json
++ sed 2d
++ grep hostwf.logfile log
++ xargs cat
++ cut -d: -f2
++ sort -u
++ rm log
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.1 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..1.json
++ sed 2d
++ grep hostwf.logfile log
++ xargs cat
++ cut -d: -f2
++ rm log
++ echo -e 'Done processing * 1 * tasks, on * 1 * cores'
++ for line in '{1..10}'
+++ cat cores.txt
+++ sed -n 2p
++ cores=2
++ tasks=2
++ echo -n 2,2,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+2,2,+ sed s/NTASKS/2/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/2/ cromwell.config
++ sed -i s/LOG1/host1_tasks2.txt/ logs-wdl/jsons/cromwell.config.2
++ sed -i s/LOG2/host2_tasks2.txt/ logs-wdl/jsons/cromwell.config.2
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.2 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..2.json
++ sed 2d
++ grep hostwf.logfile log
++ xargs cat
++ cut -d: -f2
++ sort -u
++ rm log
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.2 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..2.json
++ sed 2d
++ grep hostwf.logfile log
++ xargs cat
++ cut -d: -f2
++ rm log
++ echo -e 'Done processing * 2 * tasks, on * 2 * cores'
++ for line in '{1..10}'
+++ cat cores.txt
+++ sed -n 3p
++ cores=4
++ tasks=4
++ echo -n 4,4,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+4,4,+ sed s/NTASKS/4/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/4/ cromwell.config
++ sed -i s/LOG1/host1_tasks4.txt/ logs-wdl/jsons/cromwell.config.4
++ sed -i s/LOG2/host2_tasks4.txt/ logs-wdl/jsons/cromwell.config.4
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.4 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..4.json
++ sed 2d
++ grep hostwf.logfile log
++ xargs cat
++ cut -d: -f2
++ sort -u
++ rm log
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.4 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..4.json
++ sed 2d
++ grep hostwf.logfile log
++ xargs cat
++ cut -d: -f2
++ rm log
++ echo -e 'Done processing * 4 * tasks, on * 4 * cores'
++ for line in '{1..10}'
+++ cat cores.txt
+++ sed -n 4p
++ cores=8
++ tasks=8
++ echo -n 8,8,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+8,8,+ sed s/NTASKS/8/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/8/ cromwell.config
++ sed -i s/LOG1/host1_tasks8.txt/ logs-wdl/jsons/cromwell.config.8
++ sed -i s/LOG2/host2_tasks8.txt/ logs-wdl/jsons/cromwell.config.8
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.8 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..8.json
++ sed 2d
++ grep hostwf.logfile log
++ sort -u
++ cut -d: -f2
++ xargs cat
++ rm log
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.8 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..8.json
++ sed 2d
++ grep hostwf.logfile log
++ xargs cat
++ cut -d: -f2
++ rm log
++ echo -e 'Done processing * 8 * tasks, on * 8 * cores'
++ for line in '{1..10}'
+++ cat cores.txt
+++ sed -n 5p
++ cores=16
++ tasks=16
++ echo -n 16,16,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+16,16,+ sed s/NTASKS/16/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/16/ cromwell.config
++ sed -i s/LOG1/host1_tasks16.txt/ logs-wdl/jsons/cromwell.config.16
++ sed -i s/LOG2/host2_tasks16.txt/ logs-wdl/jsons/cromwell.config.16
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.16 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..16.json
++ sed 2d
++ grep hostwf.logfile log
++ xargs cat
++ cut -d: -f2
++ sort -u
++ rm log
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.16 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..16.json
++ sed 2d
++ grep hostwf.logfile log
++ xargs cat
++ cut -d: -f2
++ rm log
++ echo -e 'Done processing * 16 * tasks, on * 16 * cores'
++ for line in '{1..10}'
+++ sed -n 6p
+++ cat cores.txt
++ cores=24
++ tasks=24
++ echo -n 24,24,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+24,24,+ sed s/NTASKS/24/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/24/ cromwell.config
++ sed -i s/LOG1/host1_tasks24.txt/ logs-wdl/jsons/cromwell.config.24
++ sed -i s/LOG2/host2_tasks24.txt/ logs-wdl/jsons/cromwell.config.24
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.24 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..24.json
++ sed 2d
++ grep hostwf.logfile log
++ xargs cat
++ cut -d: -f2
++ sort -u
++ rm log
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.24 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..24.json
++ grep hostwf.logfile log
++ sed 2d
++ cut -d: -f2
++ xargs cat
++ rm log
++ echo -e 'Done processing * 24 * tasks, on * 24 * cores'
++ for line in '{1..10}'
+++ cat cores.txt
+++ sed -n 7p
++ cores=48
++ tasks=48
++ echo -n 48,48,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+48,48,+ sed s/NTASKS/48/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/48/ cromwell.config
++ sed -i s/LOG1/host1_tasks48.txt/ logs-wdl/jsons/cromwell.config.48
++ sed -i s/LOG2/host2_tasks48.txt/ logs-wdl/jsons/cromwell.config.48
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.48 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..48.json
++ sed 2d
++ grep hostwf.logfile log
++ cut -d: -f2
++ xargs cat
++ sort -u
++ rm log
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.48 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..48.json
++ sed 2d
++ grep hostwf.logfile log
++ xargs cat
++ cut -d: -f2
++ rm log
++ echo -e 'Done processing * 48 * tasks, on * 48 * cores'
++ for line in '{1..10}'
+++ sed -n 8p
+++ cat cores.txt
++ cores=96
++ tasks=96
++ echo -n 96,96,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+96,96,+ sed s/NTASKS/96/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/96/ cromwell.config
++ sed -i s/LOG1/host1_tasks96.txt/ logs-wdl/jsons/cromwell.config.96
++ sed -i s/LOG2/host2_tasks96.txt/ logs-wdl/jsons/cromwell.config.96
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.96 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..96.json
++ sed 2d
++ grep hostwf.logfile log
++ xargs cat
++ cut -d: -f2
++ sort -u
++ rm log
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.96 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..96.json
++ grep hostwf.logfile log
++ sed 2d
++ cut -d: -f2
++ xargs cat
++ rm log
++ echo -e 'Done processing * 96 * tasks, on * 96 * cores'
++ for line in '{1..10}'
+++ cat cores.txt
+++ sed -n 9p
++ cores=192
++ tasks=192
++ echo -n 192,192,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+192,192,+ sed s/NTASKS/192/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/192/ cromwell.config
++ sed -i s/LOG1/host1_tasks192.txt/ logs-wdl/jsons/cromwell.config.192
++ sed -i s/LOG2/host2_tasks192.txt/ logs-wdl/jsons/cromwell.config.192
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.192 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..192.json
++ grep hostwf.logfile log
++ cut -d: -f2
++ sed 2d
++ xargs cat
++ sort -u
++ rm log
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.192 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..192.json
++ sed 2d
++ grep hostwf.logfile log
++ xargs cat
++ cut -d: -f2
++ rm log
++ echo -e 'Done processing * 192 * tasks, on * 192 * cores'
++ for line in '{1..10}'
+++ cat cores.txt
+++ sed -n 10p
++ cores=384
++ tasks=384
++ echo -n 384,384,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+384,384,+ sed s/NTASKS/384/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/384/ cromwell.config
++ sed -i s/LOG1/host1_tasks384.txt/ logs-wdl/jsons/cromwell.config.384
++ sed -i s/LOG2/host2_tasks384.txt/ logs-wdl/jsons/cromwell.config.384
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.384 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..384.json
++ grep hostwf.logfile log
++ cut -d: -f2
++ sed 2d
++ xargs cat
++ sort -u
++ rm log
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.384 -jar /home/a-m/azzaea/software/wdl/cromwell-39.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..384.json
++ sed 2d
++ grep hostwf.logfile log
++ cut -d: -f2
++ xargs cat
++ rm log
++ echo -e 'Done processing * 384 * tasks, on * 384 * cores'
++ echo '##############################################################################################'
++ echo 'Bio-Scalability analysis completed for WDL!'
++ mail -s 'WfMS- Bio-Scalability' azzaea@gmail.com
