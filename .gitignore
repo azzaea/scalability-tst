@@ -1,0 +1,5 @@
+nf/work
+nf/.nextflow.log*
+nf/.nextflow
+wdl/cromwell-executions
+wdl/cromwell-workflow-logs
