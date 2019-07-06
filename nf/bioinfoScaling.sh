@@ -1,6 +1,6 @@
 #!/bin/bash
 
-module load Java # For working on biocluster- change for AWS
+#module load Java # For working on biocluster- change for AWS
 
 set -x
 
@@ -12,7 +12,7 @@ set -x
 #### The script read value for cores from a file: cores.txt in the same directory
 ##############################################################################################
 
-nextflow="/home/a-m/azzaea/software/nextflow/19.04.1"
+nextflow="/home/ubuntu/software/nextflow"
 progress="logs-nf/progress_bioinfoScaling.txt"
 echo "Starting BioInfo Scalability Analysis" >> ${progress}
 echo "##############################################################################################" >> ${progress} 
