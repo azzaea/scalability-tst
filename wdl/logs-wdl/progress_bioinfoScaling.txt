@@ -1,2 +1,13 @@
 Starting BioInfo Scalability Analysis
 ##############################################################################################
+Done processing * 1 * tasks, on * 1 * cores
+Done processing * 2 * tasks, on * 2 * cores
+Done processing * 4 * tasks, on * 4 * cores
+Done processing * 8 * tasks, on * 8 * cores
+Done processing * 16 * tasks, on * 16 * cores
+Done processing * 24 * tasks, on * 24 * cores
+Done processing * 48 * tasks, on * 48 * cores
+Done processing * 96 * tasks, on * 96 * cores
+Done processing * 192 * tasks, on * 192 * cores
+Done processing * 384 * tasks, on * 384 * cores
+##############################################################################################
