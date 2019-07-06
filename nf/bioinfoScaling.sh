@@ -23,7 +23,7 @@ echo "##########################################################################
 
 	log1="logs-nf/bioinfoScaling_processes-1_host.txt"
 	log2="logs-nf/bioinfoScaling_processes-2_host.txt"
-	echo "cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,exitStatus" | tee -a ${log1} ${log2}
+	echo "cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,faults,inputs,outputs,socketsIn,socketsOut,exitStatus" | tee -a ${log1} ${log2}
 
 	mkdir hosts
 
@@ -33,11 +33,11 @@ echo "##########################################################################
 		echo -n "${cores},${tasks}," | tee -a ${log1} ${log2}
 
 		##### processes: 1
-		/usr/bin/time --format "%U,%S,%e,%P,%K,%c,%w,%x" --append --output ${log1} \
+		/usr/bin/time --format "%U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x" --append --output ${log1} \
 			${nextflow} run host_process.nf -profile cluster --ntasks=${tasks} --forks=${cores} --log=hosts/host1_tasks${tasks}.txt
 
 		#### Processes: 2
-		/usr/bin/time --format "%U,%S,%e,%P,%K,%c,%w,%x" --append --output ${log2} \
+		/usr/bin/time --format "%U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x" --append --output ${log2} \
 			${nextflow} run host_workflow.nf -profile cluster --ntasks=${tasks} --forks=${cores} --log=hosts/host2_tasks${tasks}.txt
 		echo -e "Done processing * ${tasks} * tasks, on * ${cores} * cores" >> ${progress}	
 	done

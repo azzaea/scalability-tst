@@ -21,7 +21,7 @@ echo "##########################################################################
 #for sleepDuration in 0 500 1000; do
 	log1="logs-wdl/bioinfoScaling_processes-1_host.txt"
 	log2="logs-wdl/bioinfoScaling_processes-2_host.txt"
-	echo "cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,exitStatus" | tee -a ${log1} ${log2}
+	echo "cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,faults,inputs,outputs,socketsIn,socketsOut,exitStatus" | tee -a ${log1} ${log2}
 	mkdir ${jsonsDir}/${sleepDuration}
 	jsoninput="${jsonsDir}/${sleepDuration}/host_process_workflow.${sleepDuration}"
 	sed "s/SleepDuration/${sleepDuration}/" host_process_workflow.json.tmpl > ${jsoninput}
@@ -39,12 +39,12 @@ echo "##########################################################################
 		sed -i "s/LOG2/host2_tasks${tasks}.txt/" ${jsonsDir}/cromwell.config.${cores}
 
 		##### processes: 1
-		/usr/bin/time --format "%U,%S,%e,%P,%K,%c,%w,%x" --append --output ${log1} \
+		/usr/bin/time --format "%U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x" --append --output ${log1} \
 		        java -Dconfig.file=${jsonsDir}/cromwell.config.${cores} -jar ${crom} run host_process.wdl -i ${jsoninput}.${tasks}.json > hosts/host1_tasks${tasks}.txt
 			
 
 		#### Processes: 2
-		/usr/bin/time --format "%U,%S,%e,%P,%K,%c,%w,%x" --append --output ${log2} \
+		/usr/bin/time --format "%U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x" --append --output ${log2} \
 		        java -Dconfig.file=${jsonsDir}/cromwell.config.${cores} -jar ${crom} run host_workflow.wdl -i ${jsoninput}.${tasks}.json > hosts/host2_tasks${tasks}.txt
 
 		echo -e "Done processing * ${tasks} * tasks, on * ${cores} * cores" >> ${progress}	
