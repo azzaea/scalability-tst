@@ -27,7 +27,7 @@ echo "##########################################################################
 
 	mkdir hosts
 
-	for line in {1..10}; do
+	for line in {1..14}; do
 		cores=`cat cores.txt | sed -n ${line}p`  #goes to the forks param
 		tasks=${cores}
 		echo -n "${cores},${tasks}," | tee -a ${log1} ${log2}
