@@ -44,4 +44,6 @@ echo "##########################################################################
 	echo "##############################################################################################" >> ${progress}
 #done
 
+./summarize_hosts_nodes.sh > summarize_hosts_nodes.txt
+
 echo "Bio-Scalability analysis completed for Nextflow!" | mail -s "WfMS- Bio-Scalability" "azzaea@gmail.com"

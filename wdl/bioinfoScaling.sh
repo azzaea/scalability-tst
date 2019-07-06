@@ -52,6 +52,7 @@ echo "##########################################################################
 	echo "##############################################################################################" >> ${progress}
 #done
 
+./summarize_hosts_nodes.sh > summarize_hosts_nodes.txt
 
 echo "Bio-Scalability analysis completed for WDL!" | mail -s "WfMS- Bio-Scalability" "azzaea@gmail.com"
 
