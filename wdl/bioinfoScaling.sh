@@ -1,5 +1,6 @@
 #!/bin/bash
 
+module load Java # For working on biocluster- change for AWS
 set -x
 
 ##############################################################################################
@@ -10,7 +11,7 @@ set -x
 #### The script read value for cores from a file: cores.txt in the same directory
 ##############################################################################################
 
-crom="/home/a-m/azzaea/software/wdl/cromwell-39.jar"
+crom="/home/a-m/azzaea/software/wdl/cromwell-43.jar"
 jsonsDir="logs-wdl/jsons"
 mkdir -p ${jsonsDir}
 

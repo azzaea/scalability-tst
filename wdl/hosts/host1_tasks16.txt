@@ -1,88 +1,199 @@
-[2019-06-30 23:21:38,45] [info] Running with database db.url = jdbc:hsqldb:mem:99c3af16-1b11-4968-829b-bda8f40809ea;shutdown=false;hsqldb.tx=mvcc
-[2019-06-30 23:21:46,01] [info] Running migration RenameWorkflowOptionsInMetadata with a read batch size of 100000 and a write batch size of 100000
-[2019-06-30 23:21:46,03] [info] [RenameWorkflowOptionsInMetadata] 100%
-[2019-06-30 23:21:46,11] [info] Running with database db.url = jdbc:hsqldb:mem:21eb1014-583c-418f-84fb-e2ea29b87014;shutdown=false;hsqldb.tx=mvcc
-[2019-06-30 23:21:46,50] [info] Slf4jLogger started
-[2019-06-30 23:21:46,86] [info] Workflow heartbeat configuration:
+[2019-07-06 05:09:26,00] [info] Running with database db.url = jdbc:hsqldb:mem:a1f79440-23ad-49a1-af3b-c19ca15fc9fb;shutdown=false;hsqldb.tx=mvcc
+[2019-07-06 05:09:35,13] [info] Running migration RenameWorkflowOptionsInMetadata with a read batch size of 100000 and a write batch size of 100000
+[2019-07-06 05:09:35,15] [info] [RenameWorkflowOptionsInMetadata] 100%
+[2019-07-06 05:09:35,30] [info] Running with database db.url = jdbc:hsqldb:mem:2fb87276-3827-44e4-a9bc-f102b93c2ba0;shutdown=false;hsqldb.tx=mvcc
+[2019-07-06 05:09:36,00] [info] Slf4jLogger started
+[2019-07-06 05:09:36,45] [info] Workflow heartbeat configuration:
 {
-  "cromwellId" : "cromid-d30f75b",
+  "cromwellId" : "cromid-6fc1042",
   "heartbeatInterval" : "2 minutes",
   "ttl" : "10 minutes",
+  "failureShutdownDuration" : "5 minutes",
   "writeBatchSize" : 10000,
   "writeThreshold" : 10000
 }
-[2019-06-30 23:21:46,91] [info] Metadata summary refreshing every 2 seconds.
-[2019-06-30 23:21:46,92] [[38;5;220mwarn[0m] 'docker.hash-lookup.gcr-api-queries-per-100-seconds' is being deprecated, use 'docker.hash-lookup.gcr.throttle' instead (see reference.conf)
-[2019-06-30 23:21:46,93] [info] WriteMetadataActor configured to flush with batch size 200 and process rate 5 seconds.
-[2019-06-30 23:21:46,93] [info] CallCacheWriteActor configured to flush with batch size 100 and process rate 3 seconds.
-[2019-06-30 23:21:46,93] [info] KvWriteActor configured to flush with batch size 200 and process rate 5 seconds.
-[2019-06-30 23:21:46,98] [info] JobExecutionTokenDispenser - Distribution rate: 5 per 1 seconds.
-[2019-06-30 23:21:47,21] [info] SingleWorkflowRunnerActor: Version 39
-[2019-06-30 23:21:47,22] [info] SingleWorkflowRunnerActor: Submitting workflow
-[2019-06-30 23:21:47,27] [info] Unspecified type (Unspecified version) workflow 274c49a9-dc89-4bcd-ae75-f025125f1869 submitted
-[2019-06-30 23:21:47,28] [info] SingleWorkflowRunnerActor: Workflow submitted [38;5;2m274c49a9-dc89-4bcd-ae75-f025125f1869[0m
-[2019-06-30 23:21:47,28] [info] 1 new workflows fetched by cromid-d30f75b: 274c49a9-dc89-4bcd-ae75-f025125f1869
-[2019-06-30 23:21:47,28] [info] WorkflowManagerActor Starting workflow [38;5;2m274c49a9-dc89-4bcd-ae75-f025125f1869[0m
-[2019-06-30 23:21:47,29] [info] WorkflowManagerActor Successfully started WorkflowActor-274c49a9-dc89-4bcd-ae75-f025125f1869
-[2019-06-30 23:21:47,29] [info] Retrieved 1 workflows from the WorkflowStoreActor
-[2019-06-30 23:21:47,30] [info] WorkflowStoreHeartbeatWriteActor configured to flush with batch size 10000 and process rate 2 minutes.
-[2019-06-30 23:21:47,37] [info] MaterializeWorkflowDescriptorActor [[38;5;2m274c49a9[0m]: Parsing workflow as WDL draft-2
-[2019-06-30 23:21:47,94] [info] MaterializeWorkflowDescriptorActor [[38;5;2m274c49a9[0m]: Call-to-Backend assignments: hostwf.host1 -> slurm
-[2019-06-30 23:21:52,00] [info] Not triggering log of token queue status. Effective log interval = None
-[2019-06-30 23:21:52,44] [info] WorkflowExecutionActor-274c49a9-dc89-4bcd-ae75-f025125f1869 [[38;5;2m274c49a9[0m]: Starting hostwf.host1 (2 shards)
-[2019-06-30 23:21:53,02] [info] Assigned new job execution tokens to the following groups: 274c49a9: 2
-[2019-06-30 23:21:53,26] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m274c49a9[0mhostwf.host1:0:1]: [38;5;5mhostname[0m
-[2019-06-30 23:21:53,26] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m274c49a9[0mhostwf.host1:1:1]: [38;5;5mhostname[0m
-[2019-06-30 23:21:53,35] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m274c49a9[0mhostwf.host1:0:1]: executing: sbatch -J cromwell_274c49a9_host1 -D /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/274c49a9-dc89-4bcd-ae75-f025125f1869/call-host1/shard-0 -o /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/274c49a9-dc89-4bcd-ae75-f025125f1869/call-host1/shard-0/execution/stdout -e /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/274c49a9-dc89-4bcd-ae75-f025125f1869/call-host1/shard-0/execution/stderr -p normal -c 1 --wrap "/bin/bash /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/274c49a9-dc89-4bcd-ae75-f025125f1869/call-host1/shard-0/execution/script"
-[2019-06-30 23:21:53,35] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m274c49a9[0mhostwf.host1:1:1]: executing: sbatch -J cromwell_274c49a9_host1 -D /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/274c49a9-dc89-4bcd-ae75-f025125f1869/call-host1/shard-1 -o /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/274c49a9-dc89-4bcd-ae75-f025125f1869/call-host1/shard-1/execution/stdout -e /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/274c49a9-dc89-4bcd-ae75-f025125f1869/call-host1/shard-1/execution/stderr -p normal -c 1 --wrap "/bin/bash /igbgroup/a-m/azzaea/scalability-tst/wdl/cromwell-executions/hostwf/274c49a9-dc89-4bcd-ae75-f025125f1869/call-host1/shard-1/execution/script"
-[2019-06-30 23:21:57,01] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m274c49a9[0mhostwf.host1:0:1]: job id: 3501000
-[2019-06-30 23:21:57,01] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m274c49a9[0mhostwf.host1:1:1]: job id: 3501001
-[2019-06-30 23:21:57,01] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m274c49a9[0mhostwf.host1:1:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
-[2019-06-30 23:21:57,01] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m274c49a9[0mhostwf.host1:0:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
-[2019-06-30 23:21:57,01] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m274c49a9[0mhostwf.host1:1:1]: Status change from - to Running
-[2019-06-30 23:21:57,01] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m274c49a9[0mhostwf.host1:0:1]: Status change from - to Running
-[2019-06-30 23:22:19,20] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m274c49a9[0mhostwf.host1:1:1]: Status change from Running to Done
-[2019-06-30 23:22:20,73] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m274c49a9[0mhostwf.host1:0:1]: Status change from Running to Done
-[2019-06-30 23:22:23,09] [info] WorkflowExecutionActor-274c49a9-dc89-4bcd-ae75-f025125f1869 [[38;5;2m274c49a9[0m]: Workflow hostwf complete. Final Outputs:
+[2019-07-06 05:09:36,72] [[38;5;220mwarn[0m] 'docker.hash-lookup.gcr-api-queries-per-100-seconds' is being deprecated, use 'docker.hash-lookup.gcr.throttle' instead (see reference.conf)
+[2019-07-06 05:09:36,74] [info] KvWriteActor configured to flush with batch size 200 and process rate 5 seconds.
+[2019-07-06 05:09:36,84] [info] CallCacheWriteActor configured to flush with batch size 100 and process rate 3 seconds.
+[2019-07-06 05:09:36,84] [info] WriteMetadataActor configured to flush with batch size 200 and process rate 5 seconds.
+[2019-07-06 05:09:36,84] [info] Metadata summary refreshing every 1 second.
+[2019-07-06 05:09:36,88] [info] JobExecutionTokenDispenser - Distribution rate: 16 per 1 seconds.
+[2019-07-06 05:09:37,10] [info] SingleWorkflowRunnerActor: Version 43
+[2019-07-06 05:09:37,11] [info] SingleWorkflowRunnerActor: Submitting workflow
+[2019-07-06 05:09:37,27] [info] Unspecified type (Unspecified version) workflow 2d076cf6-093f-4802-9529-200f6b84dc1c submitted
+[2019-07-06 05:09:37,32] [info] SingleWorkflowRunnerActor: Workflow submitted [38;5;2m2d076cf6-093f-4802-9529-200f6b84dc1c[0m
+[2019-07-06 05:09:37,34] [info] 1 new workflows fetched by cromid-6fc1042: 2d076cf6-093f-4802-9529-200f6b84dc1c
+[2019-07-06 05:09:37,36] [info] WorkflowManagerActor Starting workflow [38;5;2m2d076cf6-093f-4802-9529-200f6b84dc1c[0m
+[2019-07-06 05:09:37,37] [info] WorkflowManagerActor Successfully started WorkflowActor-2d076cf6-093f-4802-9529-200f6b84dc1c
+[2019-07-06 05:09:37,37] [info] Retrieved 1 workflows from the WorkflowStoreActor
+[2019-07-06 05:09:37,43] [info] WorkflowStoreHeartbeatWriteActor configured to flush with batch size 10000 and process rate 2 minutes.
+[2019-07-06 05:09:37,62] [info] MaterializeWorkflowDescriptorActor [[38;5;2m2d076cf6[0m]: Parsing workflow as WDL draft-2
+[2019-07-06 05:09:39,42] [info] MaterializeWorkflowDescriptorActor [[38;5;2m2d076cf6[0m]: Call-to-Backend assignments: hostwf.catHostsTask -> slurm, hostwf.host1 -> slurm
+[2019-07-06 05:09:41,91] [info] Not triggering log of token queue status. Effective log interval = None
+[2019-07-06 05:09:43,90] [info] WorkflowExecutionActor-2d076cf6-093f-4802-9529-200f6b84dc1c [[38;5;2m2d076cf6[0m]: Starting hostwf.host1 (16 shards)
+[2019-07-06 05:09:44,90] [info] Assigned new job execution tokens to the following groups: 2d076cf6: 16
+[2019-07-06 05:09:45,36] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:6:1]: [38;5;5mhostname[0m
+[2019-07-06 05:09:45,36] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:10:1]: [38;5;5mhostname[0m
+[2019-07-06 05:09:45,38] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:15:1]: [38;5;5mhostname[0m
+[2019-07-06 05:09:45,42] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:4:1]: [38;5;5mhostname[0m
+[2019-07-06 05:09:45,47] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:6:1]: executing: sbatch -J cromwell_2d076cf6_host1 -D /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-6 -o /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-6/execution/stdout -e /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-6/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-6/execution/script"
+[2019-07-06 05:09:45,47] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:15:1]: executing: sbatch -J cromwell_2d076cf6_host1 -D /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-15 -o /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-15/execution/stdout -e /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-15/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-15/execution/script"
+[2019-07-06 05:09:45,47] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:10:1]: executing: sbatch -J cromwell_2d076cf6_host1 -D /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-10 -o /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-10/execution/stdout -e /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-10/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-10/execution/script"
+[2019-07-06 05:09:45,47] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:4:1]: executing: sbatch -J cromwell_2d076cf6_host1 -D /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-4 -o /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-4/execution/stdout -e /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-4/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-4/execution/script"
+[2019-07-06 05:09:45,50] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:0:1]: [38;5;5mhostname[0m
+[2019-07-06 05:09:45,55] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:0:1]: executing: sbatch -J cromwell_2d076cf6_host1 -D /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-0 -o /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-0/execution/stdout -e /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-0/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-0/execution/script"
+[2019-07-06 05:09:45,58] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:12:1]: [38;5;5mhostname[0m
+[2019-07-06 05:09:45,59] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:12:1]: executing: sbatch -J cromwell_2d076cf6_host1 -D /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-12 -o /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-12/execution/stdout -e /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-12/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-12/execution/script"
+[2019-07-06 05:09:45,60] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:11:1]: [38;5;5mhostname[0m
+[2019-07-06 05:09:45,61] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:11:1]: executing: sbatch -J cromwell_2d076cf6_host1 -D /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-11 -o /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-11/execution/stdout -e /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-11/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-11/execution/script"
+[2019-07-06 05:09:45,63] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:9:1]: [38;5;5mhostname[0m
+[2019-07-06 05:09:45,71] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:9:1]: executing: sbatch -J cromwell_2d076cf6_host1 -D /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-9 -o /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-9/execution/stdout -e /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-9/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-9/execution/script"
+[2019-07-06 05:09:45,75] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:1:1]: [38;5;5mhostname[0m
+[2019-07-06 05:09:45,78] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:1:1]: executing: sbatch -J cromwell_2d076cf6_host1 -D /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-1 -o /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-1/execution/stdout -e /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-1/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-1/execution/script"
+[2019-07-06 05:09:45,79] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:5:1]: [38;5;5mhostname[0m
+[2019-07-06 05:09:45,81] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:5:1]: executing: sbatch -J cromwell_2d076cf6_host1 -D /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-5 -o /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-5/execution/stdout -e /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-5/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-5/execution/script"
+[2019-07-06 05:09:45,86] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:3:1]: [38;5;5mhostname[0m
+[2019-07-06 05:09:45,89] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:3:1]: executing: sbatch -J cromwell_2d076cf6_host1 -D /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-3 -o /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-3/execution/stdout -e /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-3/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-3/execution/script"
+[2019-07-06 05:09:45,94] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:2:1]: [38;5;5mhostname[0m
+[2019-07-06 05:09:45,97] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:2:1]: executing: sbatch -J cromwell_2d076cf6_host1 -D /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-2 -o /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-2/execution/stdout -e /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-2/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-2/execution/script"
+[2019-07-06 05:09:45,99] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:8:1]: [38;5;5mhostname[0m
+[2019-07-06 05:09:46,51] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:14:1]: [38;5;5mhostname[0m
+[2019-07-06 05:09:46,51] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:13:1]: [38;5;5mhostname[0m
+[2019-07-06 05:09:46,51] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:7:1]: [38;5;5mhostname[0m
+[2019-07-06 05:09:46,51] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:13:1]: executing: sbatch -J cromwell_2d076cf6_host1 -D /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-13 -o /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-13/execution/stdout -e /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-13/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-13/execution/script"
+[2019-07-06 05:09:46,51] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:7:1]: executing: sbatch -J cromwell_2d076cf6_host1 -D /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-7 -o /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-7/execution/stdout -e /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-7/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-7/execution/script"
+[2019-07-06 05:09:46,51] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:14:1]: executing: sbatch -J cromwell_2d076cf6_host1 -D /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-14 -o /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-14/execution/stdout -e /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-14/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-14/execution/script"
+[2019-07-06 05:09:46,51] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:8:1]: executing: sbatch -J cromwell_2d076cf6_host1 -D /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-8 -o /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-8/execution/stdout -e /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-8/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-host1/shard-8/execution/script"
+[2019-07-06 05:09:46,89] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:15:1]: job id: 3540143
+[2019-07-06 05:09:46,90] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:15:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-07-06 05:09:46,90] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:15:1]: Status change from - to Running
+[2019-07-06 05:09:46,90] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:6:1]: job id: 3540140
+[2019-07-06 05:09:46,90] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:4:1]: job id: 3540141
+[2019-07-06 05:09:46,90] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:10:1]: job id: 3540142
+[2019-07-06 05:09:46,90] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:0:1]: job id: 3540144
+[2019-07-06 05:09:46,90] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:12:1]: job id: 3540145
+[2019-07-06 05:09:46,90] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:11:1]: job id: 3540146
+[2019-07-06 05:09:46,90] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:9:1]: job id: 3540147
+[2019-07-06 05:09:46,90] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:1:1]: job id: 3540148
+[2019-07-06 05:09:46,90] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:5:1]: job id: 3540149
+[2019-07-06 05:09:46,90] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:3:1]: job id: 3540150
+[2019-07-06 05:09:46,90] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:2:1]: job id: 3540151
+[2019-07-06 05:09:46,90] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:7:1]: job id: 3540152
+[2019-07-06 05:09:46,90] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:8:1]: job id: 3540153
+[2019-07-06 05:09:46,91] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:13:1]: job id: 3540154
+[2019-07-06 05:09:46,91] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:14:1]: job id: 3540155
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:6:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:6:1]: Status change from - to Running
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:4:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:10:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:12:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:0:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:11:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:9:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:9:1]: Status change from - to Running
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:1:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:5:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:1:1]: Status change from - to Running
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:3:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:4:1]: Status change from - to Running
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:2:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:7:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:10:1]: Status change from - to Running
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:2:1]: Status change from - to Running
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:12:1]: Status change from - to Running
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:7:1]: Status change from - to Running
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:0:1]: Status change from - to Running
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:5:1]: Status change from - to Running
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:11:1]: Status change from - to Running
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:3:1]: Status change from - to Running
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:8:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-07-06 05:09:46,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:8:1]: Status change from - to Running
+[2019-07-06 05:09:46,93] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:13:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-07-06 05:09:46,93] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:13:1]: Status change from - to Running
+[2019-07-06 05:09:46,93] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:14:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-07-06 05:09:46,93] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:14:1]: Status change from - to Running
+[2019-07-06 05:09:47,60] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:11:1]: Status change from Running to Done
+[2019-07-06 05:09:47,64] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:12:1]: Status change from Running to Done
+[2019-07-06 05:09:47,64] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:13:1]: Status change from Running to Done
+[2019-07-06 05:09:47,77] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:15:1]: Status change from Running to Done
+[2019-07-06 05:09:47,82] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:0:1]: Status change from Running to Done
+[2019-07-06 05:09:47,83] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:14:1]: Status change from Running to Done
+[2019-07-06 05:09:47,93] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:6:1]: Status change from Running to Done
+[2019-07-06 05:09:47,95] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:3:1]: Status change from Running to Done
+[2019-07-06 05:09:48,03] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:9:1]: Status change from Running to Done
+[2019-07-06 05:09:48,11] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:5:1]: Status change from Running to Done
+[2019-07-06 05:09:48,19] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:10:1]: Status change from Running to Done
+[2019-07-06 05:09:48,30] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:1:1]: Status change from Running to Done
+[2019-07-06 05:09:48,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:7:1]: Status change from Running to Done
+[2019-07-06 05:09:48,35] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:8:1]: Status change from Running to Done
+[2019-07-06 05:09:48,40] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:2:1]: Status change from Running to Done
+[2019-07-06 05:09:48,53] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.host1:4:1]: Status change from Running to Done
+[2019-07-06 05:09:51,31] [info] WorkflowExecutionActor-2d076cf6-093f-4802-9529-200f6b84dc1c [[38;5;2m2d076cf6[0m]: Starting hostwf.catHostsTask
+[2019-07-06 05:09:51,89] [info] Assigned new job execution tokens to the following groups: 2d076cf6: 1
+[2019-07-06 05:09:51,91] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.catHostsTask:NA:1]: [38;5;5m		echo -e "compute-7-2
+compute-7-2
+compute-7-2
+compute-7-2
+compute-7-2
+compute-7-2
+compute-7-2
+compute-7-2
+compute-7-2
+compute-7-2
+compute-7-2
+compute-7-2
+compute-7-2
+compute-7-2
+compute-7-2
+compute-7-2"| sort -u[0m
+[2019-07-06 05:09:51,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.catHostsTask:NA:1]: executing: sbatch -J cromwell_2d076cf6_catHostsTask -D /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-catHostsTask -o /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-catHostsTask/execution/stdout -e /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-catHostsTask/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-catHostsTask/execution/script"
+[2019-07-06 05:09:56,78] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.catHostsTask:NA:1]: job id: 3540156
+[2019-07-06 05:09:56,79] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.catHostsTask:NA:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2019-07-06 05:09:56,79] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.catHostsTask:NA:1]: Status change from - to Running
+[2019-07-06 05:09:57,77] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m2d076cf6[0mhostwf.catHostsTask:NA:1]: Status change from Running to Done
+[2019-07-06 05:09:59,48] [info] WorkflowExecutionActor-2d076cf6-093f-4802-9529-200f6b84dc1c [[38;5;2m2d076cf6[0m]: Workflow hostwf complete. Final Outputs:
 {
-  "hostwf.logfile": "/tmp/5809526293794569882/write_lines_3641bc1a31b60fff741d83fc472dffa4.tmp"
+  "hostwf.logfile": "/home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-catHostsTask/execution/stdout"
 }
-[2019-06-30 23:22:23,14] [info] WorkflowManagerActor WorkflowActor-274c49a9-dc89-4bcd-ae75-f025125f1869 is in a terminal state: WorkflowSucceededState
-[2019-06-30 23:22:40,76] [info] SingleWorkflowRunnerActor workflow finished with status 'Succeeded'.
+[2019-07-06 05:09:59,53] [info] WorkflowManagerActor WorkflowActor-2d076cf6-093f-4802-9529-200f6b84dc1c is in a terminal state: WorkflowSucceededState
+[2019-07-06 05:10:04,14] [info] SingleWorkflowRunnerActor workflow finished with status 'Succeeded'.
 {
   "outputs": {
-    "hostwf.logfile": "/tmp/5809526293794569882/write_lines_3641bc1a31b60fff741d83fc472dffa4.tmp"
+    "hostwf.logfile": "/home/a-m/azzaea/wdl/cromwell-executions/hostwf/2d076cf6-093f-4802-9529-200f6b84dc1c/call-catHostsTask/execution/stdout"
   },
-  "id": "274c49a9-dc89-4bcd-ae75-f025125f1869"
+  "id": "2d076cf6-093f-4802-9529-200f6b84dc1c"
 }
-[2019-06-30 23:22:42,03] [info] Workflow polling stopped
-[2019-06-30 23:22:42,05] [info] Shutting down WorkflowStoreActor - Timeout = 5 seconds
-[2019-06-30 23:22:42,05] [info] 0 workflows released by cromid-d30f75b
-[2019-06-30 23:22:42,05] [info] Shutting down WorkflowLogCopyRouter - Timeout = 5 seconds
-[2019-06-30 23:22:42,06] [info] Shutting down JobExecutionTokenDispenser - Timeout = 5 seconds
-[2019-06-30 23:22:42,06] [info] JobExecutionTokenDispenser stopped
-[2019-06-30 23:22:42,06] [info] Aborting all running workflows.
-[2019-06-30 23:22:42,06] [info] WorkflowStoreActor stopped
-[2019-06-30 23:22:42,07] [info] WorkflowLogCopyRouter stopped
-[2019-06-30 23:22:42,07] [info] Shutting down WorkflowManagerActor - Timeout = 3600 seconds
-[2019-06-30 23:22:42,07] [info] WorkflowManagerActor All workflows finished
-[2019-06-30 23:22:42,07] [info] WorkflowManagerActor stopped
-[2019-06-30 23:22:42,32] [info] Connection pools shut down
-[2019-06-30 23:22:42,32] [info] Shutting down SubWorkflowStoreActor - Timeout = 1800 seconds
-[2019-06-30 23:22:42,32] [info] Shutting down JobStoreActor - Timeout = 1800 seconds
-[2019-06-30 23:22:42,32] [info] Shutting down CallCacheWriteActor - Timeout = 1800 seconds
-[2019-06-30 23:22:42,32] [info] Shutting down ServiceRegistryActor - Timeout = 1800 seconds
-[2019-06-30 23:22:42,32] [info] Shutting down DockerHashActor - Timeout = 1800 seconds
-[2019-06-30 23:22:42,32] [info] Shutting down IoProxy - Timeout = 1800 seconds
-[2019-06-30 23:22:42,32] [info] SubWorkflowStoreActor stopped
-[2019-06-30 23:22:42,32] [info] CallCacheWriteActor Shutting down: 0 queued messages to process
-[2019-06-30 23:22:42,32] [info] KvWriteActor Shutting down: 0 queued messages to process
-[2019-06-30 23:22:42,32] [info] WriteMetadataActor Shutting down: 0 queued messages to process
-[2019-06-30 23:22:42,32] [info] JobStoreActor stopped
-[2019-06-30 23:22:42,32] [info] CallCacheWriteActor stopped
-[2019-06-30 23:22:42,32] [info] IoProxy stopped
-[2019-06-30 23:22:42,32] [info] ServiceRegistryActor stopped
-[2019-06-30 23:22:42,33] [info] DockerHashActor stopped
-[2019-06-30 23:22:42,33] [info] Database closed
-[2019-06-30 23:22:42,33] [info] Stream materializer shut down
-[2019-06-30 23:22:42,33] [info] WDL HTTP import resolver closed
+[2019-07-06 05:10:06,92] [info] Workflow polling stopped
+[2019-07-06 05:10:06,94] [info] Shutting down WorkflowStoreActor - Timeout = 5 seconds
+[2019-07-06 05:10:06,95] [info] Aborting all running workflows.
+[2019-07-06 05:10:06,95] [info] Shutting down WorkflowLogCopyRouter - Timeout = 5 seconds
+[2019-07-06 05:10:06,95] [info] Shutting down JobExecutionTokenDispenser - Timeout = 5 seconds
+[2019-07-06 05:10:06,95] [info] WorkflowLogCopyRouter stopped
+[2019-07-06 05:10:06,95] [info] JobExecutionTokenDispenser stopped
+[2019-07-06 05:10:06,96] [info] WorkflowStoreActor stopped
+[2019-07-06 05:10:06,96] [info] 0 workflows released by cromid-6fc1042
+[2019-07-06 05:10:06,96] [info] Shutting down WorkflowManagerActor - Timeout = 3600 seconds
+[2019-07-06 05:10:06,96] [info] WorkflowManagerActor All workflows finished
+[2019-07-06 05:10:06,96] [info] WorkflowManagerActor stopped
+[2019-07-06 05:10:07,28] [info] Connection pools shut down
+[2019-07-06 05:10:07,28] [info] Shutting down SubWorkflowStoreActor - Timeout = 1800 seconds
+[2019-07-06 05:10:07,29] [info] Shutting down JobStoreActor - Timeout = 1800 seconds
+[2019-07-06 05:10:07,29] [info] Shutting down CallCacheWriteActor - Timeout = 1800 seconds
+[2019-07-06 05:10:07,29] [info] CallCacheWriteActor Shutting down: 0 queued messages to process
+[2019-07-06 05:10:07,29] [info] Shutting down ServiceRegistryActor - Timeout = 1800 seconds
+[2019-07-06 05:10:07,29] [info] Shutting down DockerHashActor - Timeout = 1800 seconds
+[2019-07-06 05:10:07,30] [info] Shutting down IoProxy - Timeout = 1800 seconds
+[2019-07-06 05:10:07,30] [info] SubWorkflowStoreActor stopped
+[2019-07-06 05:10:07,30] [info] JobStoreActor stopped
+[2019-07-06 05:10:07,30] [info] CallCacheWriteActor stopped
+[2019-07-06 05:10:07,30] [info] IoProxy stopped
+[2019-07-06 05:10:07,30] [info] WriteMetadataActor Shutting down: 0 queued messages to process
+[2019-07-06 05:10:07,31] [info] KvWriteActor Shutting down: 0 queued messages to process
+[2019-07-06 05:10:07,31] [info] ServiceRegistryActor stopped
+[2019-07-06 05:10:07,32] [info] DockerHashActor stopped
+[2019-07-06 05:10:07,37] [info] Shutting down connection pool: curAllocated=0 idleQueues.size=0 waitQueue.size=0 maxWaitQueueLimit=256 closed=false
+[2019-07-06 05:10:07,37] [info] Shutting down connection pool: curAllocated=0 idleQueues.size=0 waitQueue.size=0 maxWaitQueueLimit=256 closed=false
+[2019-07-06 05:10:07,37] [info] Shutting down connection pool: curAllocated=0 idleQueues.size=0 waitQueue.size=0 maxWaitQueueLimit=256 closed=false
+[2019-07-06 05:10:07,40] [info] Database closed
+[2019-07-06 05:10:07,40] [info] Stream materializer shut down
+[2019-07-06 05:10:07,40] [info] WDL HTTP import resolver closed

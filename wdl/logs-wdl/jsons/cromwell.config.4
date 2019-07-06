@@ -2,7 +2,7 @@ include required(classpath("application"))
 
 system { # limiting the rate of job submission because SLURM scheduler can get overloaded when hit with scattering jobs all at once
   job-rate-control {
-    jobs = 5  # 4
+    jobs = 4
 #    per = 1 second
   }
 }
