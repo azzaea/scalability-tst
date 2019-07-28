@@ -15,7 +15,11 @@ set -x
 nextflow="/home/ubuntu/software/nextflow"
 progress="logs-nf/progress_bioinfoScaling.txt"
 echo "Starting BioInfo Scalability Analysis" >> ${progress}
-echo "##############################################################################################" >> ${progress} 
+echo "##############################################################################################" >> ${progress}
+nextflow -v >> ${progress}
+echo "##############################################################################################" >> ${progress}
+
+ifstat -t -T -n -w > logs-nf/network-report.txt
 
 #for sleepDuration in 0 500 1000; do
 	mkdir logs-nf

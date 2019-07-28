@@ -18,6 +18,10 @@ mkdir -p ${jsonsDir}
 progress="logs-wdl/progress_bioinfoScaling.txt"
 echo "Starting BioInfo Scalability Analysis" >> ${progress}
 echo "##############################################################################################" >> ${progress} 
+java -jar ${crom} --version >> ${progress}
+echo "##############################################################################################" >> ${progress} 
+
+ifstat -t -T -n -w > logs-wdl/network-report.txt
 #for sleepDuration in 0 500 1000; do
 	log1="logs-wdl/bioinfoScaling_processes-1_host.txt"
 	log2="logs-wdl/bioinfoScaling_processes-2_host.txt"
