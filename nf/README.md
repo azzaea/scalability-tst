@@ -28,3 +28,8 @@ cd scalability-tst/nf
 nextflow=~/nextflow
 ${nextflow} run sleep_workflow.nf -profile cluster --ntasks=10 --forks=4 --duration=20 
 ```
+
+# To produce the DAG:
+`nextflow run host_workflow.nf -profile standard --ntasks=3 --forks=5 --log=dag.log.host.txt -with-dag dag_hosts_workflow.html`
+
+Notice that the html output is interactive, whereas I have the same file in png format as part of this directory
