@@ -1,0 +1,15 @@
+digraph hostwf {
+  compound=true;
+  "call host1" -> "call catHostsTask" 
+  "call host2" -> "call catHostsTask" 
+  "call host1" -> "call host2" 
+  "call catHostsTask"
+  
+subgraph cluster_0 {
+  "call host1"
+  "call host2"
+  "scatter (range(ntasks))" [shape=plaintext]
+}
+      
+}
+

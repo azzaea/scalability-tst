@@ -33,4 +33,13 @@ $ crom=~/software/wdl/cromwell-42.jar
 ```
 Now, run the strong and weak scalability scripts to your amusement!
 
+# View the dag:
 
+```
+java -jar $wom womgraph host_workflow.wdl > dag_wdl_hosts_workflow_detailed.dot # Detailed dag
+
+java -jar $wom graph host_workflow.wdl > dag_wdl_hosts_workflow_detailed.dot # Simple dag
+dot -Tpng dag_wdl_hosts_workflow_detailed.dot -o dag_wdl_hosts_workflow_detailed.png
+```
+
+Instead, I could easily have used [Pipeline Builder](http://pb.opensource.epam.com/)
