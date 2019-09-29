@@ -16,26 +16,23 @@ task hostTask {
 
 task catHostsTask {
 	Array[String] result1
-    String logfile
-
 	command {
-		echo "${sep=';' result1}"| tr ";" "\n" | sort -u > ${logfile}
+		echo -e "${sep='\n' result1}"| sort -u
 	}
 	output {
-		File result = "${logfile}"
+		String result = stdout()
 	}
 }
 
 workflow hostwf {
-    String logfile
 	Int ntasks
-
 	scatter (n in range(ntasks)) {
 		call hostTask as host1 {input: i=n}
 	}
-	call catHostsTask {input: result1 = host1.result, logfile = logfile }
+	call catHostsTask {input: result1 = host1.result }
 	output {
-		File log = catHostsTask.result
+		File logfile = catHostsTask.result
+
 	}
 }
 

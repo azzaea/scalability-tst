@@ -1,4 +1,5 @@
 #!/bin/bash
+
 cd hosts
 echo "nodes processes tasks"
 for file in `ls -1v`

@@ -1,5 +1,25 @@
 To do anything in wdl:
 
+## Sep 29 update
+I have updated the host_process and host_workflow wdl scripts so they can produce an output file in the `hosts` directory (by invoking the workflow.options as follows:
+```
+java -jar $crom run host_workflow.wdl -i host_process_workflow.json -o workflow.options.json
+```
+
+I should next update the corresponding bash scripts for scalability, and also for summarizing the results (this will be the same as the nextflow script, but will take it later)
+
+This new code works with cromwell. Toil process the `host_process.wdl` script, but generates an error with the `host_workflow.wdl` version (apparanetly, a limitation in the scatter: where for some reason, a cascade between processes is not expected. Below is an example invocation:
+
+```
+toil-wdl-runner host_workflow.wdl host_process_workflow.json # does not work- scatter problem
+toil-wdl-runner host_process.wdl host_process_workflow.json
+```
+
+
+
+
+##
+
 I'm running the analysis in WDL-2 so that I can use both cromwell and toil and compare them
 
 ```
@@ -32,6 +52,7 @@ $ wget https://github.com/broadinstitute/cromwell/releases/download/42/cromwell-
 $ crom=~/software/wdl/cromwell-42.jar
 ```
 Now, run the strong and weak scalability scripts to your amusement!
+
 
 # View the dag:
 
