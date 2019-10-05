@@ -12,11 +12,12 @@ set -x
 ##############################################################################################
 
 #crom="/home/ubuntu/software/cromwell-43.jar"
-crom="/usr/src/wdl/cromwell-42.jar"
-jsonsDir="logs-wdl/jsons"
+#crom="/usr/src/wdl/cromwell-42.jar"
+crom="/home/a-m/azzaea/software/wdl/cromwell-43.jar"
+jsonsDir="results/logs-wdl/jsons"
 mkdir -p ${jsonsDir}
 
-progress="logs-wdl/progress_bioinfoScaling.txt"
+progress="results/logs-wdl/progress_bioinfoScaling.txt"
 echo "Starting BioInfo Scalability Analysis" >> ${progress}
 echo "##############################################################################################" >> ${progress} 
 java -jar ${crom} --version >> ${progress}
@@ -24,8 +25,8 @@ echo "##########################################################################
 
 ifstat -t -T -n -w > logs-wdl/network-report.txt
 #for sleepDuration in 0 500 1000; do
-	log1="logs-wdl/bioinfoScaling_processes-1_host.txt"
-	log2="logs-wdl/bioinfoScaling_processes-2_host.txt"
+	log1="results/logs-wdl/bioinfoScaling_processes-1_host.txt"
+	log2="results/logs-wdl/bioinfoScaling_processes-2_host.txt"
 	echo "cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,faults,inputs,outputs,socketsIn,socketsOut,exitStatus" | tee -a ${log1} ${log2}
 	mkdir ${jsonsDir}/${sleepDuration}
 	jsoninput="${jsonsDir}/${sleepDuration}/host_process_workflow.${sleepDuration}"
@@ -38,8 +39,8 @@ ifstat -t -T -n -w > logs-wdl/network-report.txt
 		echo -n "${cores},${tasks}," | tee -a ${log1} ${log2}
 		
 		sed "s/NTASKS/${tasks}/" ${jsoninput} > ${jsoninput}.${tasks}.json
-		sed -i "s/LOG1/host1_tasks${tasks}.txt/" ${jsoninput}.${tasks}.json 
-		sed -i "s/LOG2/host2_tasks${tasks}.txt/" ${jsoninput}.${tasks}.json
+		sed -i "s/LOG1/hosts\/host1_tasks${tasks}.txt/" ${jsoninput}.${tasks}.json 
+		sed -i "s/LOG2/hosts\/host2_tasks${tasks}.txt/" ${jsoninput}.${tasks}.json
 		sed "s/CORES/${cores}/" backend.conf > ${jsonsDir}/backend.conf.${cores}
 
 		##### processes: 1
@@ -61,7 +62,7 @@ cd hosts
 echo "nodes processes tasks"
 for file in `ls -1v`
 do
-   echo `wc -l $file`| sed 's/_/ /g' >> summarize_hosts_nodes.txt 
+   echo `wc -l $file`| sed 's/_/ /g' >> results/summarize_hosts_nodes.txt 
 done
 
 echo "Bio-Scalability analysis completed for WDL!" | mail -s "WfMS- Bio-Scalability" "azzaea@gmail.com"

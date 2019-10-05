@@ -1,4 +1,4 @@
 {
-    "final_workflow_outputs_dir": "hosts",
+    "final_workflow_outputs_dir": "results",
     "use_relative_output_paths": true
 }
