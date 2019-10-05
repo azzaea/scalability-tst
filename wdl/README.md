@@ -3,7 +3,7 @@ To do anything in wdl:
 ## Sep 29 update
 I have updated the host_process and host_workflow wdl scripts so they can produce an output file in the `hosts` directory (by invoking the workflow.options as follows:
 ```
-java -jar $crom run host_workflow.wdl -i host_process_workflow.json -o workflow.options.json
+java -jar -Dconfig.file=backend.conf $crom run host_workflow.wdl -i host_process_workflow.json -o workflow.options.json
 ```
 
 I should next update the corresponding bash scripts for scalability, and also for summarizing the results (this will be the same as the nextflow script, but will take it later)
@@ -11,8 +11,21 @@ I should next update the corresponding bash scripts for scalability, and also fo
 This new code works with cromwell. Toil process the `host_process.wdl` script, but generates an error with the `host_workflow.wdl` version (apparanetly, a limitation in the scatter: where for some reason, a cascade between processes is not expected. Below is an example invocation:
 
 ```
-toil-wdl-runner host_workflow.wdl host_process_workflow.json # does not work- scatter problem
-toil-wdl-runner host_process.wdl host_process_workflow.json
+# You may need to clone your own repo and build first!!
+git clone https://github.com/azzaea/toil.git
+cd toil
+python setup.py build
+export PYTHONPATH=/home/a-m/azzaea/toil/lib/python2.7/site-packages/
+python setup.py install --prefix=/home/a-m/azzaea/toil
+
+# Now, all is ready. To submit to slurm:
+
+export TOIL_SLURM_ARGS="-p noraml"
+
+toil-wdl-runner host_process.wdl host_process_workflow.json --batchSystem Slurm myjobstore
+
+toil-wdl-runner host_workflow.wdl host_process_workflow.json --batchSystem Slurm myjobstore # does not work- scatter problem
+
 ```
 
 
