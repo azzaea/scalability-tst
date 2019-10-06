@@ -17,7 +17,7 @@ task hostTask {
 task catHostsTask {
 	Array[String] result1
 	Array[String] result2
-    String logfile
+	String logfile
 
 	command {
 		#echo "${sep=';' result1}"| tr ";" "\n" | sort -u > ${logfile}
@@ -37,7 +37,7 @@ workflow hostwf {
 		call hostTask as host2 {input: i=host1.taskID}
 	}
 
-	call catHostsTask {input: result1 = host1.result, result2 = host2.result, logfile = logfile }
+	call catHostsTask {input: result1 = host1.result, result2 = host2.result, logfile = logfile2 }
 
 	output {
 		File log = catHostsTask.result
