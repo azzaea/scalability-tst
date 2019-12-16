@@ -12,11 +12,11 @@ process host1 {
 
     input:
         val n from ntasks1
-	val forks
+	    val forks
 
     output:
     	val n into ntasks2
-	stdout result1
+        stdout result1
 
     """ 
     hostname 
@@ -29,7 +29,7 @@ process host2 {
 
     input:
         val n from ntasks2
-	val forks
+        val forks
 
     output:
     	stdout result2
