@@ -7,7 +7,7 @@ requirements:
   ScatterFeatureRequirement: {}
 
 inputs:
-  iter: int[] 
+  iter: int 
 
 outputs:  
   result:
@@ -15,11 +15,16 @@ outputs:
     outputSource: catsortStep/hosts
 
 steps:
+  rangeStep:
+    run: host.serialize.tool.cwl
+    in:
+      ntimes: iter
+    out: [range]
   hostStep1:
     run: host.hostname.tool.cwl 
     scatter: iteration 
     in:
-      iteration: iter
+      iteration: rangeStep/range
     out: [result]
   catsortStep:
     run: host.sort.tool.cwl
