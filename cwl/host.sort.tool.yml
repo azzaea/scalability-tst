@@ -1,0 +1,7 @@
+names:
+    - {class: File, path: Hello.java}
+    - {class: File, path: Hello.java}
+names2:
+    - {class: File, path: host.cat.tool.yml}
+    - {class: File, path: echo.yml}
+
