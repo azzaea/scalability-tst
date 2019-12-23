@@ -1,0 +1,6 @@
+{
+  "hostwf.ntasks": "2048",
+  "hostwf.logfile1": "host1_tasks2048.txt",
+  "hostwf.logfile2": "host2_tasks2048.txt"
+}
+

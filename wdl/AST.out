@@ -2,13 +2,8 @@
   imports=[],
   body=[
     (Task:
-      name=<string:1:6 identifier "c2xlZXBUYXNr">,
+      name=<string:2:6 identifier "aG9zdFRhc2s=">,
       declarations=[
-        (Declaration:
-          type=<string:2:2 type "RmxvYXQ=">,
-          name=<string:2:8 identifier "ZHVyYXRpb24=">,
-          expression=None
-        ),
         (Declaration:
           type=<string:3:2 type "SW50">,
           name=<string:3:6 identifier "aQ==">,
@@ -18,12 +13,7 @@
       sections=[
         (RawCommand:
           parts=[
-            <string:5:11 cmd_part "CgkJc2xlZXAg">,
-            (CommandParameter:
-              attributes=[],
-              expr=<string:6:11 identifier "ZHVyYXRpb24=">
-            ),
-            <string:6:20 cmd_part "Cgk=">
+            <string:5:11 cmd_part "CgkJaG9zdG5hbWUJCgk=">
           ]
         ),
         (Outputs:
@@ -32,60 +22,156 @@
               type=<string:9:3 type "SW50">,
               name=<string:9:7 identifier "dGFza0lE">,
               expression=<string:9:16 identifier "aQ==">
+            ),
+            (Output:
+              type=<string:10:3 type "U3RyaW5n">,
+              name=<string:10:10 identifier "cmVzdWx0">,
+              expression=(FunctionCall:
+                name=<string:10:19 identifier "cmVhZF9zdHJpbmc=">,
+                params=[
+                  (FunctionCall:
+                    name=<string:10:31 identifier "c3Rkb3V0">,
+                    params=[]
+                  )
+                ]
+              )
             )
           ]
         ),
         (Runtime:
           map=[
             (RuntimeAttribute:
-              key=<string:12:3 identifier "Y3B1">,
-              value=<string:12:9 integer "MQ==">
+              key=<string:13:3 identifier "Y3B1">,
+              value=<string:13:9 integer "MQ==">
+            )
+          ]
+        )
+      ]
+    ),
+    (Task:
+      name=<string:17:6 identifier "Y2F0SG9zdHNUYXNr">,
+      declarations=[
+        (Declaration:
+          type=(Type:
+            name=<string:18:2 type "QXJyYXk=">,
+            subtype=[
+              <string:18:8 type "U3RyaW5n">
+            ]
+          ),
+          name=<string:18:16 identifier "cmVzdWx0MQ==">,
+          expression=None
+        ),
+        (Declaration:
+          type=<string:19:2 type "U3RyaW5n">,
+          name=<string:19:9 identifier "bG9nZmlsZQ==">,
+          expression=None
+        )
+      ],
+      sections=[
+        (RawCommand:
+          parts=[
+            <string:21:11 cmd_part "CgkJZWNobyAi">,
+            (CommandParameter:
+              attributes=[
+                (CommandParameterAttr:
+                  key=<string:22:11 identifier "c2Vw">,
+                  value=<string:22:15 string "Ow==">
+                )
+              ],
+              expr=<string:22:19 identifier "cmVzdWx0MQ==">
+            ),
+            <string:22:27 cmd_part "InwgdHIgIjsiICJcbiIgfCBzb3J0IC11ID4g">,
+            (CommandParameter:
+              attributes=[],
+              expr=<string:22:56 identifier "bG9nZmlsZQ==">
+            ),
+            <string:22:64 cmd_part "Cgk=">
+          ]
+        ),
+        (Outputs:
+          attributes=[
+            (Output:
+              type=<string:25:3 type "RmlsZQ==">,
+              name=<string:25:8 identifier "cmVzdWx0">,
+              expression=<string:25:17 string "JHtsb2dmaWxlfQ==">
             )
           ]
         )
       ]
     ),
     (Workflow:
-      name=<string:16:10 identifier "c2xlZXB3Zg==">,
+      name=<string:29:10 identifier "aG9zdHdm">,
       body=[
         (Declaration:
-          type=<string:17:5 type "RmxvYXQ=">,
-          name=<string:17:11 identifier "ZHVyYXRpb24=">,
+          type=<string:30:2 type "U3RyaW5n">,
+          name=<string:30:9 identifier "bG9nZmlsZTE=">,
           expression=None
         ),
         (Declaration:
-          type=<string:18:2 type "SW50">,
-          name=<string:18:6 identifier "bnRhc2tz">,
+          type=<string:31:2 type "SW50">,
+          name=<string:31:6 identifier "bnRhc2tz">,
           expression=None
         ),
         (Scatter:
-          item=<string:19:11 identifier "bg==">,
+          item=<string:33:11 identifier "bg==">,
           collection=(FunctionCall:
-            name=<string:19:16 identifier "cmFuZ2U=">,
+            name=<string:33:16 identifier "cmFuZ2U=">,
             params=[
-              <string:19:22 identifier "bnRhc2tz">
+              <string:33:22 identifier "bnRhc2tz">
             ]
           ),
           body=[
             (Call:
-              task=<string:20:8 fqn "c2xlZXBUYXNr">,
-              alias=<string:20:21 identifier "c2xlZXAx">,
+              task=<string:34:8 fqn "aG9zdFRhc2s=">,
+              alias=<string:34:20 identifier "aG9zdDE=">,
               body=(CallBody:
                 declarations=[],
                 io=[
                   (Inputs:
                     map=[
                       (IOMapping:
-                        key=<string:20:36 identifier "aQ==">,
-                        value=<string:20:38 identifier "bg==">
-                      ),
-                      (IOMapping:
-                        key=<string:20:41 identifier "ZHVyYXRpb24=">,
-                        value=<string:20:50 identifier "ZHVyYXRpb24=">
+                        key=<string:34:34 identifier "aQ==">,
+                        value=<string:34:36 identifier "bg==">
                       )
                     ]
                   )
                 ]
+              )
+            )
+          ]
+        ),
+        (Call:
+          task=<string:36:7 fqn "Y2F0SG9zdHNUYXNr">,
+          alias=None,
+          body=(CallBody:
+            declarations=[],
+            io=[
+              (Inputs:
+                map=[
+                  (IOMapping:
+                    key=<string:36:28 identifier "cmVzdWx0MQ==">,
+                    value=(MemberAccess:
+                      lhs=<string:36:38 identifier "aG9zdDE=">,
+                      rhs=<string:36:44 identifier "cmVzdWx0">
+                    )
+                  ),
+                  (IOMapping:
+                    key=<string:36:52 identifier "bG9nZmlsZQ==">,
+                    value=<string:36:62 identifier "bG9nZmlsZTE=">
+                  )
+                ]
+              )
+            ]
+          )
+        ),
+        (WorkflowOutputs:
+          outputs=[
+            (WorkflowOutputDeclaration:
+              type=<string:38:3 type "RmlsZQ==">,
+              name=<string:38:8 identifier "bG9n">,
+              expression=(MemberAccess:
+                lhs=<string:38:14 identifier "Y2F0SG9zdHNUYXNr">,
+                rhs=<string:38:27 identifier "cmVzdWx0">
               )
             )
           ]

@@ -27,7 +27,7 @@ task catHostsTask {
 }
 
 workflow hostwf {
-    String logfile1
+	String logfile1
 	Int ntasks
 
 	scatter (n in range(ntasks)) {

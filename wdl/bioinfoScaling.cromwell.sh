@@ -1,6 +1,9 @@
 #!/bin/bash
 
-#module load Java # For working on biocluster- change for AWS
+module load Java # For working on biocluster- change for AWS
+echo "Analysis done on: "
+date
+
 set -x
 
 ##############################################################################################
@@ -8,33 +11,31 @@ set -x
 #### Part I: Allocate 1 node, and benchmark time for tasks=1:#cores in this node
 #### Part II: Increase the number of nodes in the cluster gradually (i.e. increase the number of
 #### tasks by the number of cores in a node, and benchmark. 
-#### The script read value for cores from a file: cores.txt in the same directory
+#### This script reads values for cores from a file: cores.txt in the same directory
 ##############################################################################################
 
 #crom="/home/ubuntu/software/cromwell-43.jar"
 #crom="/usr/src/wdl/cromwell-42.jar"
 crom="/home/a-m/azzaea/software/wdl/cromwell-43.jar"
-module load Java
-resultsdir="results.cromwell"
-jsonsDir="${resultsdir}/logs-wdl/jsons"
-mkdir -p ${jsonsDir}
+resultsDir="results.cromwell"
+jsonsDir="${resultsDir}/logs-wdl/jsons"
+hostsDir=" ${resultsDir}/hosts"
+mkdir -p ${resultsDir} ${jsonsDir} ${hostsDir}
 
-progress="${resultsdir}/logs-wdl/progress_bioinfoScaling.txt"
+progress="${resultsDir}/logs-wdl/progress_bioinfoScaling.txt"
 echo "Starting BioInfo Scalability Analysis" >> ${progress}
 echo "##############################################################################################" >> ${progress} 
 java -jar ${crom} --version >> ${progress}
 echo "##############################################################################################" >> ${progress} 
 
-ifstat -t -T -n -w > logs-wdl/network-report.txt
+ifstat -t -T -n -w > ${resultsDir}/logs-wdl/network-report.txt
 
-log1="${resultsdir}/logs-wdl/bioinfoScaling_processes-1_host.txt"
-log2="${resultsdir}/logs-wdl/bioinfoScaling_processes-2_host.txt"
+log1="${resultsDir}/logs-wdl/bioinfoScaling_processes-1_host.txt"
+log2="${resultsDir}/logs-wdl/bioinfoScaling_processes-2_host.txt"
 echo "cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,faults,inputs,outputs,socketsIn,socketsOut,exitStatus" | tee -a ${log1} ${log2}
-mkdir ${jsonsDir}
 jsoninput="${jsonsDir}/host_process_workflow"
 cat host_process_workflow.json.tmpl > ${jsoninput}
 
-mkdir ${resultsdir}/hosts
 for line in {1..15}; do
 	cores=`cat cores.txt | sed -n ${line}p`  #goes to the forks param
 	tasks=${cores}
@@ -59,7 +60,7 @@ echo "##########################################################################
 
 
 ## Aggregating nodes distribution results
-cd ${resultsdir}/hosts
+cd ${hostsDir}
 echo "nodes processes tasks"
 for file in `ls -1v`
 do

@@ -1,5 +1,46 @@
 To do anything in wdl:
 
+
+```
+$ # export needed slurm options
+$ export TOIL_SLURM_ARGS="-p noraml"
+$
+$ ## Manual invocation:
+$ # 1. Generate a compiled python script:
+$ toil-wdl-runner --dev_mode 3 <wdl script> <json inputs file>
+$
+$ # 2. Run that script to slurm:
+$ python toilwdl_compiled.py --batchSystem Slurm <job store>
+$
+$ ## Alternatively, if invoking the toil parser (and doing it all at once):
+$ toil-wdl-runner <wdl script> <json inputs file> --batchSystem Slurm <job store>
+```
+
+
+## Oct 26 update
+I'm still working on the toil part. For the future, to have toil running in your cluster, install it as follows:
+
+```
+# from my own toil repo:
+git clone https://github.com/azzaea/toil.git
+cd toil
+srun --pty /bin/bash
+
+# the installation (needs to be on other than the biocluster login node
+module load Python/2.7.13-IGB-gcc-4.9.4
+python setup.py build
+export PYTHONPATH=/home/a-m/azzaea/toil/lib/python2.7/site-packages/
+python setup.py install --prefix=/home/a-m/azzaea/toil
+
+# To actually run a wdl via toil:
+export TOIL_SLURM_ARGS="-p normal"
+cd /home/a-m/azzaea/tsts-toil
+toil-wdl-runner host_process.wdl host_process_workflow.json --batchSystem Slurm --out_dir outputDirectory myjobstore 
+toil-wdl-runner  host_process.wdl host_process_workflow.json --batchSystem Slurm --out_dir out mystore 
+
+```
+
+
 ## Sep 29 update
 I have updated the host_process and host_workflow wdl scripts so they can produce an output file in the `hosts` directory (by invoking the workflow.options as follows:
 ```
@@ -20,9 +61,9 @@ python setup.py install --prefix=/home/a-m/azzaea/toil
 
 # Now, all is ready. To submit to slurm:
 
-export TOIL_SLURM_ARGS="-p noraml"
+export TOIL_SLURM_ARGS="-p normal"
 
-toil-wdl-runner host_process.wdl host_process_workflow.json --batchSystem Slurm myjobstore
+toil-wdl-runner host_process.wdl host_process_workflow.json --batchSystem Slurm --out_dir outputDirectory myjobstore 
 
 toil-wdl-runner host_workflow.wdl host_process_workflow.json --batchSystem Slurm myjobstore # does not work- scatter problem
 

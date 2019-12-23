@@ -1,11 +1,6 @@
 OrderedDict([
-	('sleepTask', OrderedDict([
+	('hostTask', OrderedDict([
 		('inputs', [
-			(
-				'duration',
-				'Float',
-				None
-			),
 			(
 				'i',
 				'Int',
@@ -13,20 +8,51 @@ OrderedDict([
 			)
 		]),
 		('raw_commandline', [
-			"r'''\n\t\tsleep '''",
-			'duration',
-			"r'''\n\t'''"
+			"r'''\n\t\thostname\t\n\t'''"
 		]),
 		('outputs', [
 			(
 				'taskID',
 				'Int',
 				"'i'"
+			),
+			(
+				'result',
+				'String',
+				'(read_string((stdout)))'
 			)
 		]),
 		('runtime', OrderedDict([
 			('cpu', '1')
 		]))
+	])),
+	('catHostsTask', OrderedDict([
+		('inputs', [
+			(
+				'result1',
+				'String',
+				None
+			),
+			(
+				'logfile',
+				'String',
+				None
+			)
+		]),
+		('raw_commandline', [
+			'r\'\'\'\n\t\techo "\'\'\'',
+			"';'.join(str(x) for x in result1)",
+			'r\'\'\'"| tr ";" "\\n" | sort -u > \'\'\'',
+			'logfile',
+			"r'''\n\t'''"
+		]),
+		('outputs', [
+			(
+				'result',
+				'File',
+				'str(logfile)'
+			)
+		])
 	]))
 ])
 
@@ -35,32 +61,39 @@ OrderedDict([
 
 
 OrderedDict([
-	('sleepwf', OrderedDict([
+	('hostwf', OrderedDict([
 		('wf_declarations', OrderedDict([
-			('duration', OrderedDict([
-				('name', 'duration'),
-				('type', 'Float'),
-				('value', u'"80"')
+			('logfile1', OrderedDict([
+				('name', 'logfile1'),
+				('type', 'String'),
+				('value', u'"log1.txt"')
 			])),
 			('ntasks', OrderedDict([
 				('name', 'ntasks'),
 				('type', 'Int'),
-				('value', 2)
+				('value', u'"2"')
 			]))
 		])),
 		('scatter0', {
 			'body': OrderedDict([
 				('call0', {
-					'alias': 'sleep1',
-					'task': 'sleepTask',
+					'alias': 'host1',
+					'task': 'hostTask',
 					'io': OrderedDict([
-						('i', 'n'),
-						('duration', 'duration')
+						('i', 'n')
 					])
 				})
 			]),
 			'item': 'n',
 			'collection': '(range(ntasks))'
+		}),
+		('call1', {
+			'alias': 'catHostsTask',
+			'task': 'catHostsTask',
+			'io': OrderedDict([
+				('result1', '(host1_result)'),
+				('logfile', 'logfile1')
+			])
 		})
 	]))
 ])
