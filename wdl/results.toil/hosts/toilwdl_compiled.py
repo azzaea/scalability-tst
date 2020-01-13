@@ -68,7 +68,6 @@ class hostTaskCls(Job):
             # TODO: handle this better
             command0 = r'''
         		hostname	
-        		sleep 30
         	'''
         except:
             command0 = ''
@@ -165,10 +164,10 @@ class catHostsTaskCls(Job):
 
 
 class scatter0Cls(Job):
-    def __init__(self, logfile=None, ntasks=None, *args, **kwargs):
+    def __init__(self, logfile1=None, ntasks=None, *args, **kwargs):
         Job.__init__(self)
 
-        self.id_logfile = logfile
+        self.id_logfile1 = logfile1
         self.id_ntasks = ntasks
     
     def run(self, fileStore):
@@ -181,7 +180,7 @@ class scatter0Cls(Job):
             if e.errno != errno.EEXIST:
                 raise
     
-        logfile = self.id_logfile
+        logfile1 = self.id_logfile1
         ntasks = self.id_ntasks
 
         host1_taskID = []
@@ -201,16 +200,16 @@ if __name__=="__main__":
     with Toil(options) as fileStore:
 
         # WF Declarations
-        logfile = "log.txt"
-        ntasks = 3
+        logfile1 = "host1_tasks1.txt"
+        ntasks = 1
 
         job0 = Job.wrapJobFn(initialize_jobs)
         job0 = job0.encapsulate()
-        scatter0 = job0.addChild(scatter0Cls(logfile=logfile, ntasks=ntasks))
+        scatter0 = job0.addChild(scatter0Cls(logfile1=logfile1, ntasks=ntasks))
         host1_taskID = scatter0.rv("host1_taskID")
         host1_result = scatter0.rv("host1_result")
         job0 = job0.encapsulate()
-        catHostsTask = job0.addChild(catHostsTaskCls(result1=(host1_result), logfile=logfile))
+        catHostsTask = job0.addChild(catHostsTaskCls(result1=(host1_result), logfile=logfile1))
         catHostsTask_result = catHostsTask.rv("result")
 
         fileStore.start(job0)

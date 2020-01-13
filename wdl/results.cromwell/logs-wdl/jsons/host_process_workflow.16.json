@@ -1,5 +1,5 @@
 {
-  "hostwf.ntasks": "16",
+  "hostwf.ntasks": 16,
   "hostwf.logfile1": "host1_tasks16.txt",
   "hostwf.logfile2": "host2_tasks16.txt"
 }

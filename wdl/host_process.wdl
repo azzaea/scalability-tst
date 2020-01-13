@@ -1,9 +1,10 @@
-
 task hostTask {
 	Int i
 	
 	command {
 		hostname	
+		sleep 0
+
 	}
 	output {
 		Int taskID = i 
@@ -13,7 +14,7 @@ task hostTask {
 		cpu:  1
 	}
 }
-
+	
 task catHostsTask {
 	Array[String] result1
 	String logfile
@@ -38,4 +39,5 @@ workflow hostwf {
 		File log = catHostsTask.result
 	}
 }
+
 

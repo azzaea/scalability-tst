@@ -36,7 +36,7 @@ echo "cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,volu
 jsoninput="${jsonsDir}/host_process_workflow"
 cat host_process_workflow.json.tmpl > ${jsoninput}
 
-for line in {1..15}; do
+for line in {1..10}; do
 	cores=`cat cores.txt | sed -n ${line}p`  #goes to the forks param
 	tasks=${cores}
 	echo -n "${cores},${tasks}," | tee -a ${log1} ${log2}
@@ -61,7 +61,7 @@ echo "##########################################################################
 
 ## Aggregating nodes distribution results
 cd ${hostsDir}
-echo "nodes processes tasks"
+echo "nodes processes tasks" > ../summarize_hosts_nodes.txt
 for file in `ls -1v`
 do
    echo `wc -l $file`| sed 's/_/ /g' >> ../summarize_hosts_nodes.txt 

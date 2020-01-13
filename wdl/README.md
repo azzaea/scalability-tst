@@ -1,3 +1,8 @@
+Jn 2020
+
+I only need to aggregate toil tests for scalability now!
+
+
 To do anything in wdl:
 
 

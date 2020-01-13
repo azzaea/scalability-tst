@@ -1,5 +1,5 @@
 {
-  "hostwf.ntasks": "256",
+  "hostwf.ntasks": 256,
   "hostwf.logfile1": "host1_tasks256.txt",
   "hostwf.logfile2": "host2_tasks256.txt"
 }

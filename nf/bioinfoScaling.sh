@@ -1,7 +1,8 @@
 #!/bin/bash
 
 #module load Java # For working on biocluster- change for AWS
-
+echo "Analysis done on: "
+date 
 set -x
 
 ##############################################################################################
@@ -12,42 +13,50 @@ set -x
 #### The script read value for cores from a file: cores.txt in the same directory
 ##############################################################################################
 
-nextflow="/home/ubuntu/software/nextflow"
-progress="logs-nf/progress_bioinfoScaling.txt"
+#nextflow="/home/ubuntu/software/nextflow"
+nextflow="/home/a-m/azzaea/software/nextflow/19.04.1" #biocluster path
+resultsDir="results.nf"
+logsDir="${resultsDir}/logs-nf" #######
+hostsDir="${resultsDir}/hosts"
+mkdir -p ${resultsDir} ${logsDir} ${hostsDir}
+
+progress="${logsDir}/progress_bioinfoScaling.txt"
 echo "Starting BioInfo Scalability Analysis" >> ${progress}
 echo "##############################################################################################" >> ${progress}
-nextflow -v >> ${progress}
+${nextflow} -v >> ${progress}
 echo "##############################################################################################" >> ${progress}
 
-ifstat -t -T -n -w > logs-nf/network-report.txt
+ifstat -t -T -n -w > ${logsDir}/network-report.txt
 
-#for sleepDuration in 0 500 1000; do
-	mkdir logs-nf
-	progress="logs-nf/progress_bioinfoScaling.txt"
+log1="${logsDir}/bioinfoScaling_processes-1_host.txt"
+log2="${logsDir}/bioinfoScaling_processes-2_host.txt"
+echo "cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,faults,inputs,outputs,socketsIn,socketsOut,exitStatus" | tee -a ${log1} ${log2}
 
-	log1="logs-nf/bioinfoScaling_processes-1_host.txt"
-	log2="logs-nf/bioinfoScaling_processes-2_host.txt"
-	echo "cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,faults,inputs,outputs,socketsIn,socketsOut,exitStatus" | tee -a ${log1} ${log2}
+for line in {1..10}; do
+	cores=`cat cores.txt | sed -n ${line}p`  #goes to the forks param
+	tasks=${cores}
+	echo -n "${cores},${tasks}," | tee -a ${log1} ${log2}
 
-	mkdir hosts
+	##### processes: 1
+	/usr/bin/time --format "%U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x" --append --output ${log1} \
+		${nextflow} run host_process.nf -profile cluster --ntasks=${tasks} --forks=${cores} --log=${hostsDir}/host1_tasks${tasks}.txt
 
-	for line in {1..14}; do
-		cores=`cat cores.txt | sed -n ${line}p`  #goes to the forks param
-		tasks=${cores}
-		echo -n "${cores},${tasks}," | tee -a ${log1} ${log2}
+	#### Processes: 2
+	/usr/bin/time --format "%U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x" --append --output ${log2} \
+		${nextflow} run host_workflow.nf -profile cluster --ntasks=${tasks} --forks=${cores} --log=${hostsDir}/host2_tasks${tasks}.txt
 
-		##### processes: 1
-		/usr/bin/time --format "%U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x" --append --output ${log1} \
-			${nextflow} run host_process.nf -profile cluster --ntasks=${tasks} --forks=${cores} --log=hosts/host1_tasks${tasks}.txt
+	echo -e "Done processing * ${tasks} * tasks, on * ${cores} * cores" >> ${progress}	
+done
+echo "##############################################################################################" >> ${progress}
 
-		#### Processes: 2
-		/usr/bin/time --format "%U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x" --append --output ${log2} \
-			${nextflow} run host_workflow.nf -profile cluster --ntasks=${tasks} --forks=${cores} --log=hosts/host2_tasks${tasks}.txt
-		echo -e "Done processing * ${tasks} * tasks, on * ${cores} * cores" >> ${progress}	
-	done
-	echo "##############################################################################################" >> ${progress}
-#done
 
-./summarize_hosts_nodes.sh > summarize_hosts_nodes.txt
+cd ${hostsDir}
+echo "nodes processes tasks" > ../summarize_hosts_nodes.txt
+for file in `ls -1v`; do
+    echo `wc -l $file`| sed 's/_/ /g' >> ../summarize_hosts_nodes.txt
+done
 
 echo "Bio-Scalability analysis completed for Nextflow!" | mail -s "WfMS- Bio-Scalability" "azzaea@gmail.com"
+
+
+
