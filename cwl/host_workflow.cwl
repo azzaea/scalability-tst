@@ -39,6 +39,6 @@ steps:
       names1:
         source: [hostStep1/result, hostStep2/result] #If supported,
         linkMerge: merge_flattened #great. Else, remove those lines
-      #names1: hostStep1/result    #& the requirement, and uncomment
-      #names2: hostStep2/result    #these- optional vs merged inputs)
-out: [hosts]
+        #names1: hostStep1/result  #& the requirement, and uncomment
+        #names2: hostStep2/result  #these- optional vs merged inputs)
+    out: [hosts]
