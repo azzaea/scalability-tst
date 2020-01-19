@@ -1,15 +1,20 @@
 digraph hostwf {
+  #rankdir=LR;
   compound=true;
-  "call host1" -> "call catHostsTask" 
-  "call host2" -> "call catHostsTask" 
-  "call host1" -> "call host2" 
-  "call catHostsTask"
-  
-subgraph cluster_0 {
-  "call host1"
-  "call host2"
-  "scatter (range(ntasks))" [shape=plaintext]
-}
-      
-}
 
+  # Links
+  CALL_host1 -> CALL_catHostsTask
+  CALL_host2 -> CALL_catHostsTask
+  SCATTER_0_VARIABLE_n -> CALL_host1
+  CALL_host1 -> CALL_host2
+
+  # Nodes
+  CALL_catHostsTask [label="call catHostsTask"]
+  subgraph cluster_0 {
+    style="filled,solid";
+    fillcolor=white;
+    CALL_host1 [label="call host1"]
+    CALL_host2 [label="call host2"]
+    SCATTER_0_VARIABLE_n [shape="hexagon" label="scatter over Int as n"]
+  }
+}
