@@ -1,0 +1,375 @@
+nohup: ignoring input
++ crom=/home/ubuntu/software/cromwell-43.jar
++ jsonsDir=logs-wdl/jsons
++ mkdir -p logs-wdl/jsons
++ progress=logs-wdl/progress_bioinfoScaling.txt
++ echo 'Starting BioInfo Scalability Analysis'
++ echo '##############################################################################################'
++ log1=logs-wdl/bioinfoScaling_processes-1_host.txt
++ log2=logs-wdl/bioinfoScaling_processes-2_host.txt
++ echo cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,faults,inputs,outputs,socketsIn,socketsOut,exitStatus
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,faults,inputs,outputs,socketsIn,socketsOut,exitStatus
++ mkdir logs-wdl/jsons/
+mkdir: cannot create directory ‘logs-wdl/jsons/’: File exists
++ jsoninput=logs-wdl/jsons//host_process_workflow.
++ sed s/SleepDuration// host_process_workflow.json.tmpl
++ mkdir hosts
+mkdir: cannot create directory ‘hosts’: File exists
++ for line in '{1..14}'
+++ cat cores.txt
+++ sed -n 1p
++ cores=1
++ tasks=1
++ echo -n 1,1,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+1,1,+ sed s/NTASKS/1/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/1/ cromwell.config
++ sed -i s/LOG1/host1_tasks1.txt/ logs-wdl/jsons/cromwell.config.1
++ sed -i s/LOG2/host2_tasks1.txt/ logs-wdl/jsons/cromwell.config.1
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.1 -jar /home/ubuntu/software/cromwell-43.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..1.json
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.1 -jar /home/ubuntu/software/cromwell-43.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..1.json
++ echo -e 'Done processing * 1 * tasks, on * 1 * cores'
++ for line in '{1..14}'
+++ cat cores.txt
+++ sed -n 2p
++ cores=4
++ tasks=4
++ echo -n 4,4,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+4,4,+ sed s/NTASKS/4/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/4/ cromwell.config
++ sed -i s/LOG1/host1_tasks4.txt/ logs-wdl/jsons/cromwell.config.4
++ sed -i s/LOG2/host2_tasks4.txt/ logs-wdl/jsons/cromwell.config.4
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.4 -jar /home/ubuntu/software/cromwell-43.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..4.json
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.4 -jar /home/ubuntu/software/cromwell-43.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..4.json
++ echo -e 'Done processing * 4 * tasks, on * 4 * cores'
++ for line in '{1..14}'
+++ cat cores.txt
+++ sed -n 3p
++ cores=8
++ tasks=8
++ echo -n 8,8,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+8,8,+ sed s/NTASKS/8/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/8/ cromwell.config
++ sed -i s/LOG1/host1_tasks8.txt/ logs-wdl/jsons/cromwell.config.8
++ sed -i s/LOG2/host2_tasks8.txt/ logs-wdl/jsons/cromwell.config.8
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.8 -jar /home/ubuntu/software/cromwell-43.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..8.json
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.8 -jar /home/ubuntu/software/cromwell-43.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..8.json
++ echo -e 'Done processing * 8 * tasks, on * 8 * cores'
++ for line in '{1..14}'
+++ cat cores.txt
+++ sed -n 4p
++ cores=16
++ tasks=16
++ echo -n 16,16,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+16,16,+ sed s/NTASKS/16/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/16/ cromwell.config
++ sed -i s/LOG1/host1_tasks16.txt/ logs-wdl/jsons/cromwell.config.16
++ sed -i s/LOG2/host2_tasks16.txt/ logs-wdl/jsons/cromwell.config.16
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.16 -jar /home/ubuntu/software/cromwell-43.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..16.json
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.16 -jar /home/ubuntu/software/cromwell-43.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..16.json
++ echo -e 'Done processing * 16 * tasks, on * 16 * cores'
++ for line in '{1..14}'
+++ cat cores.txt
+++ sed -n 5p
++ cores=32
++ tasks=32
++ echo -n 32,32,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+32,32,+ sed s/NTASKS/32/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/32/ cromwell.config
++ sed -i s/LOG1/host1_tasks32.txt/ logs-wdl/jsons/cromwell.config.32
++ sed -i s/LOG2/host2_tasks32.txt/ logs-wdl/jsons/cromwell.config.32
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.32 -jar /home/ubuntu/software/cromwell-43.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..32.json
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.32 -jar /home/ubuntu/software/cromwell-43.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..32.json
++ echo -e 'Done processing * 32 * tasks, on * 32 * cores'
++ for line in '{1..14}'
+++ cat cores.txt
+++ sed -n 6p
++ cores=64
++ tasks=64
++ echo -n 64,64,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+64,64,+ sed s/NTASKS/64/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/64/ cromwell.config
++ sed -i s/LOG1/host1_tasks64.txt/ logs-wdl/jsons/cromwell.config.64
++ sed -i s/LOG2/host2_tasks64.txt/ logs-wdl/jsons/cromwell.config.64
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.64 -jar /home/ubuntu/software/cromwell-43.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..64.json
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.64 -jar /home/ubuntu/software/cromwell-43.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..64.json
++ echo -e 'Done processing * 64 * tasks, on * 64 * cores'
++ for line in '{1..14}'
+++ cat cores.txt
+++ sed -n 7p
++ cores=128
++ tasks=128
++ echo -n 128,128,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+128,128,+ sed s/NTASKS/128/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/128/ cromwell.config
++ sed -i s/LOG1/host1_tasks128.txt/ logs-wdl/jsons/cromwell.config.128
++ sed -i s/LOG2/host2_tasks128.txt/ logs-wdl/jsons/cromwell.config.128
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.128 -jar /home/ubuntu/software/cromwell-43.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..128.json
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.128 -jar /home/ubuntu/software/cromwell-43.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..128.json
++ echo -e 'Done processing * 128 * tasks, on * 128 * cores'
++ for line in '{1..14}'
+++ cat cores.txt
+++ sed -n 8p
++ cores=256
++ tasks=256
++ echo -n 256,256,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+256,256,+ sed s/NTASKS/256/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/256/ cromwell.config
++ sed -i s/LOG1/host1_tasks256.txt/ logs-wdl/jsons/cromwell.config.256
++ sed -i s/LOG2/host2_tasks256.txt/ logs-wdl/jsons/cromwell.config.256
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.256 -jar /home/ubuntu/software/cromwell-43.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..256.json
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.256 -jar /home/ubuntu/software/cromwell-43.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..256.json
++ echo -e 'Done processing * 256 * tasks, on * 256 * cores'
++ for line in '{1..14}'
+++ cat cores.txt
+++ sed -n 9p
++ cores=512
++ tasks=512
++ echo -n 512,512,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+512,512,+ sed s/NTASKS/512/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/512/ cromwell.config
++ sed -i s/LOG1/host1_tasks512.txt/ logs-wdl/jsons/cromwell.config.512
++ sed -i s/LOG2/host2_tasks512.txt/ logs-wdl/jsons/cromwell.config.512
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.512 -jar /home/ubuntu/software/cromwell-43.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..512.json
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.512 -jar /home/ubuntu/software/cromwell-43.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..512.json
++ echo -e 'Done processing * 512 * tasks, on * 512 * cores'
++ for line in '{1..14}'
+++ cat cores.txt
+++ sed -n 10p
++ cores=1024
++ tasks=1024
++ echo -n 1024,1024,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+1024,1024,+ sed s/NTASKS/1024/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/1024/ cromwell.config
++ sed -i s/LOG1/host1_tasks1024.txt/ logs-wdl/jsons/cromwell.config.1024
++ sed -i s/LOG2/host2_tasks1024.txt/ logs-wdl/jsons/cromwell.config.1024
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.1024 -jar /home/ubuntu/software/cromwell-43.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..1024.json
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.1024 -jar /home/ubuntu/software/cromwell-43.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..1024.json
++ echo -e 'Done processing * 1024 * tasks, on * 1024 * cores'
++ for line in '{1..14}'
+++ cat cores.txt
+++ sed -n 11p
++ cores=2048
++ tasks=2048
++ echo -n 2048,2048,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+2048,2048,+ sed s/NTASKS/2048/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/2048/ cromwell.config
++ sed -i s/LOG1/host1_tasks2048.txt/ logs-wdl/jsons/cromwell.config.2048
++ sed -i s/LOG2/host2_tasks2048.txt/ logs-wdl/jsons/cromwell.config.2048
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.2048 -jar /home/ubuntu/software/cromwell-43.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..2048.json
+Workflow 058a023e-7dd3-4183-9071-f75f45b21b79 transitioned to state Failed
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.2048 -jar /home/ubuntu/software/cromwell-43.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..2048.json
+Workflow fc38a23c-e29a-48eb-ac0a-a4b6e28ba145 transitioned to state Failed
++ echo -e 'Done processing * 2048 * tasks, on * 2048 * cores'
++ for line in '{1..14}'
+++ cat cores.txt
+++ sed -n 12p
++ cores=4096
++ tasks=4096
++ echo -n 4096,4096,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+4096,4096,+ sed s/NTASKS/4096/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/4096/ cromwell.config
++ sed -i s/LOG1/host1_tasks4096.txt/ logs-wdl/jsons/cromwell.config.4096
++ sed -i s/LOG2/host2_tasks4096.txt/ logs-wdl/jsons/cromwell.config.4096
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.4096 -jar /home/ubuntu/software/cromwell-43.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..4096.json
+Workflow c9ffb69f-d63a-4b84-a951-bbd949a1ae79 transitioned to state Failed
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-2_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.4096 -jar /home/ubuntu/software/cromwell-43.jar run host_workflow.wdl -i logs-wdl/jsons//host_process_workflow..4096.json
+Uncaught error from thread [cromwell-system-akka.dispatchers.io-dispatcher-55]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+	at java.io.BufferedReader.<init>(BufferedReader.java:105)
+	at java.io.BufferedReader.<init>(BufferedReader.java:116)
+	at cromwell.core.path.EvenBetterPathMethods.$anonfun$withReader$1(EvenBetterPathMethods.scala:111)
+	at cromwell.core.path.EvenBetterPathMethods$$Lambda$3289/242798195.apply(Unknown Source)
+	at cromwell.util.TryWithResource$.$anonfun$tryWithResource$1(TryWithResource.scala:14)
+	at cromwell.util.TryWithResource$$$Lambda$3292/7807288.apply(Unknown Source)
+	at scala.util.Try$.apply(Try.scala:209)
+	at cromwell.util.TryWithResource$.tryWithResource(TryWithResource.scala:10)
+	at cromwell.core.path.EvenBetterPathMethods.withReader(EvenBetterPathMethods.scala:111)
+	at cromwell.core.path.EvenBetterPathMethods.withReader$(EvenBetterPathMethods.scala:108)
+	at cromwell.core.path.DefaultPath.withReader(DefaultPathBuilder.scala:55)
+	at cromwell.core.path.EvenBetterPathMethods.limitFileContent(EvenBetterPathMethods.scala:120)
+	at cromwell.core.path.EvenBetterPathMethods.limitFileContent$(EvenBetterPathMethods.scala:120)
+	at cromwell.core.path.DefaultPath.limitFileContent(DefaultPathBuilder.scala:55)
+	at cromwell.engine.io.nio.NioFlow.$anonfun$readAsString$1(NioFlow.scala:100)
+	at cromwell.engine.io.nio.NioFlow$$Lambda$3275/1947528918.apply(Unknown Source)
+	at cats.effect.internals.IORunLoop$.cats$effect$internals$IORunLoop$$loop(IORunLoop.scala:87)
+	at cats.effect.internals.IORunLoop$RestartCallback.signal(IORunLoop.scala:351)
+	at cats.effect.internals.IORunLoop$RestartCallback.apply(IORunLoop.scala:372)
+	at cats.effect.internals.IORunLoop$RestartCallback.apply(IORunLoop.scala:312)
+	at cats.effect.internals.IOShift$Tick.run(IOShift.scala:36)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:40)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:44)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Uncaught error from thread [cromwell-system-akka.dispatchers.engine-dispatcher-36]: call site initialization exception, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.BootstrapMethodError: call site initialization exception
+	at java.lang.invoke.CallSite.makeSite(CallSite.java:341)
+	at java.lang.invoke.MethodHandleNatives.linkCallSiteImpl(MethodHandleNatives.java:307)
+	at java.lang.invoke.MethodHandleNatives.linkCallSite(MethodHandleNatives.java:297)
+	at akka.actor.ActorCell.invokeAll$1(ActorCell.scala:533)
+	at akka.actor.ActorCell.systemInvoke(ActorCell.scala:545)
+	at akka.dispatch.Mailbox.processAllSystemMessages(Mailbox.scala:283)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:224)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:235)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.backend-dispatcher-179]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.backend-dispatcher-87]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.backend-dispatcher-196]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.actor.default-dispatcher-124]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.backend-dispatcher-209]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.engine-dispatcher-47]: GC overhead limit exceededUncaught error from thread [cromwell-system-akka.actor.default-dispatcher-27]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.backend-dispatcher-203]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.engine-dispatcher-44]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.io-dispatcher-116Uncaught error from thread [cromwell-system-akka.dispatchers.io-dispatcher-12]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.io-dispatcher-22]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-systemUncaught error from thread [cromwell-system-akka.dispatchers.service-dispatcher-80]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+cromwell-systemUncaught error from thread [cromwell-system-akka.dispatchers.io-dispatcher-16]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled forUncaught error from thread [cromwell-system-akka.dispatchers.api-dispatcher-235]: Uncaught error from thread [cromwell-system-scheduler-1]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+GC overhead limit exceeded ActorSystem[cromwell-system]
+Uncaught error from thread [Uncaught error from thread [cromwell-system-akka.dispatchers.engine-dispatcher-38]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+Uncaught error from thread [cromwell-system-akka.dispatchers.io-dispatcher-56]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.engine-dispatcher-42]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+cromwell-system-akka.dispatchers.engine-dispatcher-34]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.io-dispatcher-120]: Java heap space: failed reallocation of scalar replaced objects, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: Java heap space: failed reallocation of scalar replaced objects
+Uncaught error from thread [cromwell-system-akka.dispatchers.io-dispatcher-14]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[Uncaught error from thread [cromwell-system-akka.dispatchers.backend-dispatcher-93]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.io-dispatcher-51]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.engine-dispatcher-28]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.backend-dispatcher-211]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.backend-dispatcher-170]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.io-dispatcher-20]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.actor.default-dispatcher-158]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.actor.default-dispatcher-26]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.io-dispatcher-53]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.backend-dispatcher-151]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Exception in thread "db-7" java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.backend-dispatcher-183]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-systemUncaught error from thread [cromwell-system-akka.dispatchers.backend-dispatcher-102]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+Uncaught error from thread []
+Uncaught error from thread [cromwell-system-akka.dispatchers.backend-dispatcher-233]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-scheduler-234]: Uncaught error from thread [cromwell-system-akka.dispatchers.engine-dispatcher-31]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled forjava.lang.OutOfMemoryError: GC overhead limit exceeded
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.actor.default-dispatcher-168]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+ ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.backend-dispatcher-194]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Exception in thread "cromwell-system-shutdown-hook-1" java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [+ echo -e 'Done processing * 4096 * tasks, on * 4096 * cores'
++ for line in '{1..14}'
+++ cat cores.txt
+++ sed -n 13p
++ cores=8192
++ tasks=8192
++ echo -n 8192,8192,
++ tee -a logs-wdl/bioinfoScaling_processes-1_host.txt logs-wdl/bioinfoScaling_processes-2_host.txt
+8192,8192,+ sed s/NTASKS/8192/ logs-wdl/jsons//host_process_workflow.
++ sed s/CORES/8192/ cromwell.config
++ sed -i s/LOG1/host1_tasks8192.txt/ logs-wdl/jsons/cromwell.config.8192
++ sed -i s/LOG2/host2_tasks8192.txt/ logs-wdl/jsons/cromwell.config.8192
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output logs-wdl/bioinfoScaling_processes-1_host.txt java -Dconfig.file=logs-wdl/jsons/cromwell.config.8192 -jar /home/ubuntu/software/cromwell-43.jar run host_process.wdl -i logs-wdl/jsons//host_process_workflow..8192.json
+Uncaught error from thread [cromwell-system-akka.dispatchers.backend-dispatcher-224]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.service-dispatcher-61]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.actor.default-dispatcher-67]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.backend-dispatcher-175]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.engine-dispatcher-4]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.backend-dispatcher-94]: GC overhead limit exceeded, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.OutOfMemoryError: GC overhead limit exceeded
+Uncaught error from thread [cromwell-system-akka.dispatchers.engine-dispatcher-35]: call site initialization exception, shutting down JVM since 'akka.jvm-exit-on-fatal-error' is enabled for ActorSystem[cromwell-system]
+java.lang.BootstrapMethodError: call site initialization exception
+	at java.lang.invoke.CallSite.makeSite(CallSite.java:341)
+	at java.lang.invoke.MethodHandleNatives.linkCallSiteImpl(MethodHandleNatives.java:307)
+	at java.lang.invoke.MethodHandleNatives.linkCallSite(MethodHandleNatives.java:297)
+	at akka.actor.dungeon.DeathWatch.unwatchWatchedActors(DeathWatch.scala:165)
+	at akka.actor.dungeon.DeathWatch.unwatchWatchedActors$(DeathWatch.scala:162)
+	at akka.actor.ActorCell.unwatchWatchedActors(ActorCell.scala:431)
+	at akka.actor.dungeon.FaultHandling.terminate(FaultHandling.scala:147)
+	at akka.actor.dungeon.FaultHandling.terminate$(FaultHandling.scala:142)
+	at akka.actor.ActorCell.terminate(ActorCell.scala:431)
+	at akka.actor.ActorCell.invokeAll$1(ActorCell.scala:529)
+	at akka.actor.ActorCell.systemInvoke(ActorCell.scala:545)
+	at akka.dispatch.Mailbox.processAllSystemMessages(Mailbox.scala:283)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:224)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:235)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.lang.InternalError: BMH.reinvoke=Lambda(a0:L/SpeciesData<L>,a1:L,a2:L,a3:L,a4:L,a5:L,a6:L,a7:L,a8:L,a9:L)=>{
+    t10:L=MethodHandleImpl.array(a4:L,a5:L,a6:L,a7:L,a8:L,a9:L);
+    t11:L=Species_L.argL0(a0:L);
+    t12:L=MethodHandle.invokeBasic(t11:L,a1:L,a2:L,a3:L,t10:L);t12:L}
+	at java.lang.invoke.MethodHandleStatics.newInternalError(MethodHandleStatics.java:127)
+	at java.lang.invoke.LambdaForm.compileToBytecode(LambdaForm.java:660)
+	at java.lang.invoke.LambdaForm.prepare(LambdaForm.java:635)
+	at java.lang.invoke.MethodHandle.<init>(MethodHandle.java:461)
+	at java.lang.invoke.BoundMethodHandle.<init>(BoundMethodHandle.java:58)
+	at java.lang.invoke.BoundMethodHandle$Species_L.<init>(BoundMethodHandle.java:211)
+	at java.lang.invoke.BoundMethodHandle$Species_L.copyWith(BoundMethodHandle.java:228)
+	at java.lang.invoke.MethodHandle.asCollector(MethodHandle.java:1002)
+	at java.lang.invoke.MethodHandleImpl$AsVarargsCollector.asTypeUncached(MethodHandleImpl.java:502)
+	at java.lang.invoke.MethodHandle.asType(MethodHandle.java:761)
+	at java.lang.invoke.Invokers.checkGenericType(Invokers.java:321)
+	at java.lang.invoke.CallSite.makeSite(CallSite.java:314)
+	... 17 more
+Caused by: java.lang.OutOfMemoryError: GC overhead limit exceeded

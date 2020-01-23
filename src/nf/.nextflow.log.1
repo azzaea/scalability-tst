@@ -1,0 +1,49 @@
+Jan-19 11:32:16.279 [main] DEBUG nextflow.cli.Launcher - $> nextflow run host_workflow.nf --ntasks=1 --forks=1 --log=log.txt -with-dag dag_nf_hosts_workflow.html
+Jan-19 11:32:16.626 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 19.10.0
+Jan-19 11:32:16.678 [main] INFO  nextflow.cli.CmdRun - Launching `host_workflow.nf` [special_kalman] - revision: d2d074e278
+Jan-19 11:32:16.734 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/azza/github_repos/varCall/scalability-tst/nf/nextflow.config
+Jan-19 11:32:16.735 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/azza/github_repos/varCall/scalability-tst/nf/nextflow.config
+Jan-19 11:32:16.822 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jan-19 11:32:18.298 [main] DEBUG nextflow.extension.OperatorEx - Dataflow extension methods: branch,buffer,chain,choice,collate,collect,collectFile,combine,concat,count,countBy,countFasta,countFastq,countLines,countText,cross,distinct,filter,first,flatMap,flatten,fork,groupBy,groupTuple,ifEmpty,into,join,last,map,max,mean,merge,min,mix,phase,print,println,randomSample,reduce,separate,set,splitCsv,splitFasta,splitFastq,splitText,spread,subscribe,sum,take,tap,toDouble,toFloat,toInteger,toList,toLong,toSortedList,transpose,unique,until,view
+Jan-19 11:32:18.314 [main] DEBUG nextflow.Session - Session uuid: 9ae1b118-b4c1-4443-893a-cc8b47b3e1fc
+Jan-19 11:32:18.315 [main] DEBUG nextflow.Session - Run name: special_kalman
+Jan-19 11:32:18.316 [main] DEBUG nextflow.Session - Executor pool size: 4
+Jan-19 11:32:18.343 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 19.10.0 build 5170
+  Created: 21-10-2019 15:07 UTC (17:07 CEST)
+  System: Linux 4.15.0-74-generic
+  Runtime: Groovy 2.5.8 on Java HotSpot(TM) 64-Bit Server VM 1.8.0_191-b12
+  Encoding: UTF-8 (UTF-8)
+  Process: 8734@azza-Satellite-P845 [127.0.1.1]
+  CPUs: 4 - Mem: 5.7 GB (269.5 MB) - Swap: 1.9 GB (1.9 GB)
+Jan-19 11:32:18.608 [main] DEBUG nextflow.Session - Work-dir: /home/azza/github_repos/varCall/scalability-tst/nf/work [ext2/ext3]
+Jan-19 11:32:18.612 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/azza/github_repos/varCall/scalability-tst/nf/bin
+Jan-19 11:32:18.662 [main] DEBUG nextflow.Session - Observer factory: TowerFactory
+Jan-19 11:32:18.671 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jan-19 11:32:19.183 [main] DEBUG nextflow.Session - Session start invoked
+Jan-19 11:32:19.638 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jan-19 11:32:20.109 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Jan-19 11:32:20.109 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jan-19 11:32:20.123 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Jan-19 11:32:20.138 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=4; memory=5.7 GB; capacity=4; pollInterval=100ms; dumpInterval=5m
+Jan-19 11:32:20.292 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > host1 -- maxForks: 1
+Jan-19 11:32:20.375 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+Jan-19 11:32:20.376 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jan-19 11:32:20.381 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > host2 -- maxForks: 1
+Jan-19 11:32:20.639 [main] DEBUG nextflow.script.BaseScript - No entry workflow defined
+Jan-19 11:32:20.643 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Jan-19 11:32:20.643 [main] DEBUG nextflow.Session - Session await
+Jan-19 11:32:20.860 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jan-19 11:32:20.874 [Task submitter] INFO  nextflow.Session - [b5/839cc7] Submitted process > host1 (1)
+Jan-19 11:32:21.014 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: host1 (1); status: COMPLETED; exit: 0; error: -; workDir: /home/azza/github_repos/varCall/scalability-tst/nf/work/b5/839cc7bf1af8b81076a283dd89d0d7]
+Jan-19 11:32:21.082 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jan-19 11:32:21.113 [Task submitter] INFO  nextflow.Session - [87/d805ac] Submitted process > host2 (1)
+Jan-19 11:32:21.226 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: host2 (1); status: COMPLETED; exit: 0; error: -; workDir: /home/azza/github_repos/varCall/scalability-tst/nf/work/87/d805acad89e98e3fff09b64b988303]
+Jan-19 11:32:21.234 [main] DEBUG nextflow.Session - Session await > all process finished
+Jan-19 11:32:21.238 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jan-19 11:32:21.454 [Actor Thread 6] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 1; slices: 1; internal sort time: 0.003 s; external sort time: 0.041 s; total time: 0.044 s
+Jan-19 11:32:21.491 [Actor Thread 6] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /tmp/d5ff31308d0c807fdcd17ac2f0b2dcc3.collect-file
+Jan-19 11:32:21.550 [Actor Thread 6] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /tmp/nxf-8890571888737792571
+Jan-19 11:32:21.564 [main] DEBUG nextflow.trace.StatsObserver - Workflow completed > WorkflowStats[succeedCount=2; failedCount=0; ignoredCount=0; cachedCount=0; succeedDuration=42ms; failedDuration=0ms; cachedDuration=0ms]
+Jan-19 11:32:21.960 [main] DEBUG nextflow.CacheDB - Closing CacheDB done
+Jan-19 11:32:21.987 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
