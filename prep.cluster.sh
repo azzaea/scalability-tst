@@ -1,6 +1,6 @@
 #!bin/bash
 
-# ssh by the displayed credentials 
+# ssh to AWS cluster head node by the displayed credentials 
 
 # Clone the scalability repo
 git clone https://github.com/azzaea/scalability-tst.git

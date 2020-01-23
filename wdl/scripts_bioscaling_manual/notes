@@ -1,4 +1,0 @@
-I only changed the wdl scripts to automatically store outputs in the `hosts` folder directly, and therefore, do not need a copy of all logs 
-
-I haven't integrated the new wdls into the bash scripts yet, but should 
-
