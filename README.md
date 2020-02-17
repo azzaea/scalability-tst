@@ -47,8 +47,7 @@ The figures shown here are from running those scalability tests on [biocluster](
 
 Please find the corresponding raw data in the folder [results.biocluster](results.biocluster). Similarly, the data for Figure [xxx]() of the manuscript corresponding to tests done on AWS is available in [results.aws](results.aws). The analysis code to produce these figures is in [src/analysis](src/analysis)
 
-![](./src/analysis/Execution_time.png =100x)
-<img src="/src/analysis/Execution_time.png" width =100>
+<img src="/src/analysis/Execution_time.png" width =300>
 
 ![](src/analysis/Execution_nodes.png| width=100)
 
