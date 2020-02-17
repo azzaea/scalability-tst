@@ -41,13 +41,27 @@ The figures shown here are from running those scalability tests on [biocluster](
 Please find the corresponding raw data in the folder [results.biocluster](results.biocluster). Similarly, the data for Figure [xxx]() of the manuscript corresponding to tests done on AWS is available in [results.aws](results.aws). The analysis code to produce these figures is in [src/analysis](src/analysis)
 
 
-<img src="/src/analysis/Execution_time.png" width =450 title="Execution time">
+<p align="center">
+  <img src="/src/analysis/Execution_time.png" width =450>
+</p>
+<p align="center">Execution time</p>
+    
+<p align="center">
+    <img src="src/analysis/Execution_nodes.png" width=450 >
+</p>
+<p align="center">Used nodes</p>
 
-<img src="src/analysis/Execution_nodes.png" width=450 title="Aqcuired nodes">
+<p align="center">
+    <img src="src/analysis/CPU_utilization.png" width=450 >
+</p>
+<p align="center">CPU utilization</p>
 
-<img src="src/analysis/CPU_utilization.png" width=450 title="CPU utilization">
+<p align="center">
+    <img src="src/analysis/InvoluntaryContextSwitch.png" width=450>
+</p>
+<p align="center">Involuntary Context Switches</p>
 
-<img src="src/analysis/InvoluntaryContextSwitch.png" width=450 title="Involuntary Context Switches">
-
-<img src="src/analysis/VoluntaryContextSwitch.png" width=450 title="Voluntary Context Sswitches">
-
+<p align="center">
+    <img src="src/analysis/VoluntaryContextSwitch.png" width=450>
+</p>
+<p align="center">Voluntary Context Sswitches</p>
