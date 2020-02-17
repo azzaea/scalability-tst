@@ -1,115 +1,43 @@
 # wfms-scalability
 
-This repo contains the source code, raw results and figures of accompanying our manuscript "Requirements-driven design considerations for workflow management systems used in production genomics research and the clinic". Key files in this repo are organized as follows:
+This repo contains the source code, raw results and figures accompanying our manuscript "Requirements-driven design considerations for workflow management systems used in production genomics research and the clinic". Key files in this repo are organized as follows:
 
+```
 .
 ├── cluster.setup.md # Instruction for setting up an AWS slurm cluster 
 ├── pcluster.config  # Cluster configurations 
 ├── prep.cluster.sh  # Preparing AWS cluster for testing 
-
 ├── results.<biocluster/AWS> # Scalability testing results on Biocluster/AWS. Files are organized per Engine+language as:
-│   └── <cromwell.wdl/cromwell.cwl/nf>
-│       ├── hosts
-│       │   ├── host1_tasks1024.txt
-│       │   └── host2_tasks96.txt
+│   └── <cromwell.wdl/cromwell.cwl/nf> 
+│       ├── hosts 
+│       │   ├── host1_tasks<1024>.txt # hostnames of running the 1 step workflow of <1024> tasks
+│       │   └── host2_tasks<96>.txt   # hostnames of running the 2 step workflow of <96>   tasks
 │       ├── logs-wdl
-│       │   ├── bioinfoScaling_processes-1_host.txt
-│       │   ├── bioinfoScaling_processes-2_host.txt
-│       │   ├── jsons
+│       │   ├── bioinfoScaling_processes-1_host.txt # Timing and resources of the 1 step workflow
+│       │   ├── bioinfoScaling_processes-2_host.txt # Timing and resources of the 2 step workflow
+│       │   ├── <jsons/yml> # configuration files for cromwell
 │       │   │   ├── cromwell.config.1
 │       │   │   ├── host_process_workflow.
 │       │   │   └── host_process_workflow..8.json
-│       │   └── progress_bioinfoScaling.txt
-│       └── summarize_hosts_nodes.txt
+│       │   └── progress_bioinfoScaling.txt # log of ran processes
+│       └── summarize_hosts_nodes.txt # Number of nodes and tasks for the 1 and 2 steps workflow runs
 └── src
     ├── analysis # R codes for plotting
-    ├── cwl
-    │   ├── backend.conf
-    │   ├── bioinfoScaling.cromwell.sh
-    │   ├── bioinfoScaling.cromwell.sh.log
-    │   ├── bioinfoScaling.toil.sh
-    │   ├── cores.txt
-    │   ├── dag_cwl_rabix_hosts_workflow.png
-    │   ├── host.hostname.tool.cwl
-    │   ├── host.hostname.tool.yml
-    │   ├── host_process.cwl
-    │   ├── host_process_workflow.yml.tmpl
-    │   ├── host.serialize.tool.cwl
-    │   ├── host.serialize.tool.yml
-    │   ├── host.sort.tool.cwl
-    │   ├── host.sort.tool.yml
-    │   ├── host.sort.workflow.cwl
-    │   ├── host_workflow.cwl
-    │   ├── host.workflow.yml
-    │   ├── README.md
-    │   └── workflow.options.json
-    ├── nf
-    │   ├── bioinfoScaling.sh
-    │   ├── bioinfoScaling.sh.log
-    │   ├── cores.txt
-    │   ├── cs_scaling_archive
-    │   │   ├── sleep_process.nf
-    │   │   ├── sleep_workflow.nf
-    │   │   ├── strongScaling.sh
-    │   │   └── weakScaling.sh
-    │   ├── dag_nf_hosts_workflow.dot
-    │   ├── dag_nf_hosts_workflow.html
-    │   ├── dag_nf_hosts_workflow.png
-    │   ├── host_process.nf
-    │   ├── host_workflow.nf
-    │   ├── nextflow.config
-    │   ├── ntasks.txt
-    │   ├── pcluster.config
-    │   ├── README.md
-    │   └── tst-nf.sh.nohup
-    └── wdl
-        ├── AST.out
-        ├── backend.conf
-        ├── bioinfoScaling.cromwell.sh
-        ├── bioinfoScaling.toil.sh
-        ├── bioinfoScaling.toil.sh.nohup
-        ├── cores.txt
-        ├── cs_scaling_archive
-        │   ├── sleep_process.wdl
-        │   ├── sleep_process_workflow.json
-        │   ├── sleep_process_workflow.json.tmpl
-        │   ├── sleep_workflow.wdl
-        │   ├── strongScaling.sh
-        │   └── weakScaling.sh
-        ├── dag_wdl_hosts_workflow_detailed.dot
-        ├── dag_wdl_hosts_workflow_detailed.png
-        ├── dag_wdl_hosts_workflow.dot
-        ├── dag_wdl_womtool_hosts_workflow.png
-        ├── host_process.wdl
-        ├── host_process_workflow.json.tmpl
-        ├── host_workflow.wdl
-        ├── mappings.out
-        ├── ntasks.txt
-        ├── README.md
-        ├── results.toil
-        │   ├── hosts
-        │   │   ├── toilwdl_compiled.py
-        │   │   └── toilwdl_compiled.pyc
-        │   └── logs-wdl
-        │       ├── bioinfoScaling_processes-1_host.txt
-        │       ├── jsons
-        │       │   ├── host_process_workflow
-        │       │   └── host_process_workflow.1.json
-        │       └── progress_bioinfoScaling.txt
-        ├── scripts_bioscaling_manual
-        │   ├── bioinfoScaling.sh
-        │   ├── bioinfoScaling.sh.nohup
-        │   ├── host_process.wdl
-        │   ├── notes
-        │   └── summarize_hosts_nodes.sh
-        ├── workflow.options.json
-        └── working_wdls_toils
-            ├── host_process.toil.version.wdl
-            ├── host_process_workflow.toil.version.json
-            ├── log.txt
-            ├── toilwdl_compiled.py
-            └── toilwdl_compiled.pyc
-
+    └── <cwl/nf/wdl>
+       ├── bioinfoScaling.cromwell.sh # Main script for launching tests <via cromwell/toil/..>
+       ├── bioinfoScaling.toil.sh
+       ├── cores.txt   # File of cores/tasks to test
+       ├── dag_<cwl_rabix_hosts_workflow>.png  # DAG showing the 2 step workflow
+       ├── host.<hostname>.tool.cwl   # cwl CommandLineTools files
+       ├── host.<hostname>.tool.yml   # inputs for testing cwl tools 
+       ├── host_process.<cwl/nf/wdl>         # 1 step workflow code
+       ├── host_workflow.<cwl/nf/wdl>        # 2 step workflow code
+       ├── host_process_workflow.<yml>.tmpl  #yml/json inputs template 
+       ├── workflow.options.json      # cromwell options file
+       ├── backend.conf               # cromwell backend file
+       ├── nextflow.config            # nextflow options file 
+       └── cs_scaling_archive         # scripts testing a different scalability definitio
+```        
 
 ## Set up
 
@@ -117,15 +45,15 @@ This repo contains the source code, raw results and figures of accompanying our 
 
 The figures shown here are from running those scalability tests on [biocluster](https://biocluster2.igb.illinois.edu/), the HPC cluster of the Carl R. Woese Institute for Genomic Biology at the University of Illinois at Urbana-Champaign.
 
-Please find the corresponding raw data in the folder [results.biocluster](). Similarly, the data for Figure [xxx]() of the manuscript corresponding to tests done on AWS is available in [results.aws](). The analysis code to produce these figures is in [src/analysis]()
+Please find the corresponding raw data in the folder [results.biocluster](results.biocluster). Similarly, the data for Figure [xxx]() of the manuscript corresponding to tests done on AWS is available in [results.aws](results.aws). The analysis code to produce these figures is in [src/analysis](src/analysis)
 
-![](analysis/Execution_time.png)
+![](src/analysis/Execution_time.png | width=100)
 
-![](analysis/Execution_nodes.png)
+![](src/analysis/Execution_nodes.png| width=100)
 
-![](analysis/CPU_utilization.png)
+![](src/analysis/CPU_utilization.png| width=100)
 
-![](analysis/InvoluntaryContextSwitch.png)
+![](src/analysis/InvoluntaryContextSwitch.png| width=100)
 
-![](analysis/VoluntaryContextSwitch.png)
+![](src/analysis/VoluntaryContextSwitch.png| width=100)
 
