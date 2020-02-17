@@ -47,13 +47,13 @@ The figures shown here are from running those scalability tests on [biocluster](
 
 Please find the corresponding raw data in the folder [results.biocluster](results.biocluster). Similarly, the data for Figure [xxx]() of the manuscript corresponding to tests done on AWS is available in [results.aws](results.aws). The analysis code to produce these figures is in [src/analysis](src/analysis)
 
-<img src="/src/analysis/Execution_time.png" width =300>
+<img src="/src/analysis/Execution_time.png" width =450>
 
-![](src/analysis/Execution_nodes.png| width=100)
+<img src="src/analysis/Execution_nodes.png" width=450>
 
-![](src/analysis/CPU_utilization.png| width=100)
+<img src="src/analysis/CPU_utilization.png" width=450>
 
-![](src/analysis/InvoluntaryContextSwitch.png| width=100)
+<img src="src/analysis/InvoluntaryContextSwitch.png" width=450>
 
-![](src/analysis/VoluntaryContextSwitch.png| width=100)
+<img src="src/analysis/VoluntaryContextSwitch.png" width=450>
 
