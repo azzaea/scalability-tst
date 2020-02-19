@@ -1,32 +1,40 @@
 The files in this directory are the scripts and configs needed for testing the scalability of running [WDL]() code via 2 runners:
 1. _Cromwell_: The de facto runner
-2. Toil: has alpha support
+2. _Toil:_ has alpha support
 
 As such, the code is written in WDL draft-2
 We used a 1- and 2- process workflow scattered across n tasks, where n is increased gradually; at a rate of 1 process/cpu.
 
-<img src="dag_wdl_womtool_hosts_workflow.png" width =450>
-*Fig.* The 2-process workflow DAG (via `Cromwell`)
+<p align="center">
+  <img src="dag_wdl_womtool_hosts_workflow.png" width =200>
+</p>
 
-<img src="dag_wdl_hosts_workflow_detailed.png" width =450>
-*Fig.* A detailed view of the 2-process workflow DAG (via `Cromwell`- see below)
+**Fig.** The 2-process workflow DAG (via `Cromwell`)
 
 
-# Visualizing the dag:
+<p align="center">
+    <img src="dag_wdl_hosts_workflow_detailed.png" width=750 >
+</p>
+
+
+**Fig.** A detailed view of the 2-process workflow DAG (via `Cromwell`- see below)
+
+
+## Visualizing the dag:
 
 The DAG of WDL scripts can be visualized vi either the [Pipeline Builder](http://pb.opensource.epam.com/) app page, or via `Cromwell` as below- assuming (Graphviz library is installed)
 
 ```
-java -jar $wom womgraph host_workflow.wdl > dag_wdl_hosts_workflow_detailed.dot # Detailed dag
-
-java -jar $wom graph host_workflow.wdl > dag_wdl_hosts_workflow_detailed.dot # Simple dag
-
-dot -Tpng dag_wdl_hosts_workflow_detailed.dot -o dag_wdl_hosts_workflow_detailed.png # Converting to png format
+$ java -jar $wom womgraph host_workflow.wdl > dag_wdl_hosts_workflow_detailed.dot # Detailed dag
+$
+$ java -jar $wom graph host_workflow.wdl > dag_wdl_hosts_workflow_detailed.dot # Simple dag
+$
+$ dot -Tpng dag_wdl_hosts_workflow_detailed.dot -o dag_wdl_hosts_workflow_detailed.png # Converting to png format
 ```
 
-# Running WDL code:
+## Running WDL code:
 
-## Cromwell
+### Cromwell
 
 The main commands to run via cromwell are below:
 
@@ -38,7 +46,7 @@ $ java -jar -Dconfig.file=backend.conf $crom run host_workflow.wdl -i host_proce
 
 
 
-## Toil
+### Toil
 
 While Toil has alpha support for running WDL code, and it has been tested on the workflows in this repo on a stand alone PC; its support for running on clusters is limited. A partial bug fix is [here](https://github.com/azzaea/toil.git), and in case one wishes to try, the below command are helpful:
 
