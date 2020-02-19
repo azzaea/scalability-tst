@@ -1,6 +1,6 @@
 The files in this directory are the scripts and configs needed for testing the scalability of running [WDL]() code via 2 runners:
-1. _Cromwell_: The de facto runner
-2. _Toil:_ has alpha support
+1. _Cromwell_: The de facto runner (`bioinfoScaling.cromwell.sh`)
+2. _Toil:_ has alpha support (only partial code, not fully validated: `bioinfoScaling.toil.sh`)
 
 As such, the code is written in WDL draft-2
 We used a 1- and 2- process workflow scattered across n tasks, where n is increased gradually; at a rate of 1 process/cpu.
