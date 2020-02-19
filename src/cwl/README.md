@@ -15,7 +15,7 @@ We used a 1- and 2- process workflow scattered across n tasks, where n is increa
 
 ## Visualizing the dag:
 
-The DAG of WDL scripts can be visualized vi either the [CWLViewer](https://view.commonwl.org/) app page, or via `rabix` directly 
+The DAG of CWL scripts can be visualized vi either the [CWLViewer](https://view.commonwl.org/) app page, or via `rabix` directly 
 
 ## Running CWL code:
 
