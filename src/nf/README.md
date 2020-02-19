@@ -4,7 +4,7 @@ The files in this directory are the scripts and configs needed for testing the s
 We used a 1- and 2- process workflow scattered across n tasks, where n is increased gradually; at a rate of 1 process/cpu.
 
 <p align="center">
-  <img src="dag_nf_hosts_workflow.png" width =450>
+  <img src="dag_nf_hosts_workflow.png" width =250>
 </p>
 
 **Fig.** The 2-process workflow DAG (via `nextflow` )
