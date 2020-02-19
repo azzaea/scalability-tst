@@ -6,8 +6,11 @@ The files in this directory are the scripts and configs needed for testing the s
 As such, the code is written in CWL v1.0
 We used a 1- and 2- process workflow scattered across n tasks, where n is increased gradually; at a rate of 1 process/cpu.
 
-<img src="dag_cwl_rabix_hosts_workflow.png" width =450>
-*Fig.* The 2-process workflow DAG (via `rabix` GUI)
+<p align="center">
+  <img src="dag_cwl_rabix_hosts_workflow.png" width =450>
+</p>
+
+**Fig.** The 2-process workflow DAG (via `rabix` GUI)
 
 
 ## Visualizing the dag:
@@ -39,7 +42,7 @@ toil-cwl-runner host_process.cwl host.workflow.yml #--batchSystem Slurm --out_di
 
 ## Acknowledgement
 
-I like to acknowledge [Kaushik Ghose] from the cWL community for help implementing the scatter trick via [discourse](https://cwl.discourse.group/t/scatter-workflow-step-n-times/71/4)
+I like to acknowledge [Kaushik Ghose](https://github.com/kaushik-work) from the cWL community for help implementing the scatter trick via [discourse](https://cwl.discourse.group/t/scatter-workflow-step-n-times/71/4)
 
 # Feb 2020
 I only need to aggregate toil tests for scalability now!
