@@ -1,0 +1,15 @@
+Starting BioInfo Scalability Analysis
+##############################################################################################
+cromwell 47
+##############################################################################################
+Done processing * 1 * tasks, on * 1 * cores
+Done processing * 2 * tasks, on * 2 * cores
+Done processing * 4 * tasks, on * 4 * cores
+Done processing * 8 * tasks, on * 8 * cores
+Done processing * 16 * tasks, on * 16 * cores
+Done processing * 32 * tasks, on * 32 * cores
+Done processing * 64 * tasks, on * 64 * cores
+Done processing * 128 * tasks, on * 128 * cores
+Done processing * 256 * tasks, on * 256 * cores
+Done processing * 512 * tasks, on * 512 * cores
+##############################################################################################
