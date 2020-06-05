@@ -8,6 +8,7 @@ requirements:
 
 inputs:
   iter: int 
+  logfile1: string
 
 outputs:  
   result:
@@ -30,6 +31,7 @@ steps:
     run: host.sort.tool.cwl
     in:
       names1: hostStep1/result
+      logfile: logfile1
     out: [hosts]
 
 

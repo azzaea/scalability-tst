@@ -8,7 +8,7 @@ OrderedDict([
 			)
 		]),
 		('raw_commandline', [
-			"r'''\n\t\thostname\t\n\t'''"
+			"r'''\n\t\thostname\t\n\t\tsleep 0\n\n\t'''"
 		]),
 		('outputs', [
 			(
@@ -66,30 +66,30 @@ OrderedDict([
 			('logfile1', OrderedDict([
 				('name', 'logfile1'),
 				('type', 'String'),
-				('value', u'"log1.txt"')
+				('value', '"log.txt"')
 			])),
 			('ntasks', OrderedDict([
 				('name', 'ntasks'),
 				('type', 'Int'),
-				('value', u'"2"')
+				('value', 2)
 			]))
 		])),
 		('scatter0', {
+			'item': 'n',
+			'collection': '(range(ntasks))',
 			'body': OrderedDict([
 				('call0', {
-					'alias': 'host1',
 					'task': 'hostTask',
+					'alias': 'host1',
 					'io': OrderedDict([
 						('i', 'n')
 					])
 				})
-			]),
-			'item': 'n',
-			'collection': '(range(ntasks))'
+			])
 		}),
 		('call1', {
-			'alias': 'catHostsTask',
 			'task': 'catHostsTask',
+			'alias': 'catHostsTask',
 			'io': OrderedDict([
 				('result1', '(host1_result)'),
 				('logfile', 'logfile1')

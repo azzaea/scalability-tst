@@ -1,8 +1,0 @@
-2020-01-19 11:27:59	5.1s	romantic_brattain	OK	d2d074e27864cf29b7996cb56c78e15d	d20ec606-efef-4569-b51c-6f11a3f58c05	nextflow run host_workflow.nf --ntasks=1 --forks=1 --log=log.txt
-2020-01-19 11:29:02	3.6s	trusting_franklin	OK	d2d074e27864cf29b7996cb56c78e15d	a8cfdffd-1701-40b3-a251-32e6e1bb3760	nextflow run host_workflow.nf --ntasks=1 --forks=1 --log=log.txt -with-dag
-2020-01-19 11:29:40	4.4s	awesome_lovelace	OK	d2d074e27864cf29b7996cb56c78e15d	ec3f72d8-61d7-490a-bde0-0b522cb49967	nextflow run host_workflow.nf --ntasks=1 --forks=1 --log=log.txt -with-dag dag.png
-2020-01-19 11:31:33	4.2s	zen_gilbert	OK	d2d074e27864cf29b7996cb56c78e15d	7d0cf63b-2c23-4aa8-8ae7-22aa2d6f2d2d	nextflow run host_workflow.nf --ntasks=1 --forks=1 --log=log.txt -with-dag dag_nf_hosts_workflow.png
-2020-01-19 11:31:51	4.4s	astonishing_ekeblad	OK	d2d074e27864cf29b7996cb56c78e15d	4c5d19a7-4554-4358-80f7-b3af422cc1c9	nextflow run host_workflow.nf --ntasks=1 --forks=1 --log=log.txt -with-dag dag_nf_hosts_workflow.svg
-2020-01-19 11:32:07	4.1s	naughty_jennings	OK	d2d074e27864cf29b7996cb56c78e15d	bba6d33d-39b8-4f65-b17d-6f44a2ec8535	nextflow run host_workflow.nf --ntasks=1 --forks=1 --log=log.txt -with-dag dag_nf_hosts_workflow.pdf
-2020-01-19 11:32:18	4s	special_kalman	OK	d2d074e27864cf29b7996cb56c78e15d	9ae1b118-b4c1-4443-893a-cc8b47b3e1fc	nextflow run host_workflow.nf --ntasks=1 --forks=1 --log=log.txt -with-dag dag_nf_hosts_workflow.html
-2020-01-19 11:32:30	4.6s	mighty_ramanujan	OK	d2d074e27864cf29b7996cb56c78e15d	ccbc5a62-f1b6-4585-8cc7-8b189b7b24db	nextflow run host_workflow.nf --ntasks=1 --forks=1 --log=log.txt -with-dag dag_nf_hosts_workflow.dot

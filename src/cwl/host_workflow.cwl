@@ -9,6 +9,7 @@ requirements:
 
 inputs:
   iter: int 
+  logfile2: string
 
 outputs:  
   result:
@@ -41,4 +42,5 @@ steps:
         linkMerge: merge_flattened #great. Else, remove those lines
         #names1: hostStep1/result  #& the requirement, and uncomment
         #names2: hostStep2/result  #these- optional vs merged inputs)
+      logfile: logfile2
     out: [hosts]

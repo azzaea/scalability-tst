@@ -13,9 +13,12 @@ inputs:
     type: File[]?
     inputBinding:
       prefix:
+  logfile:
+     type: string
 
 outputs:
   hosts:
     type: stdout
-stdout: logfile.txt
+
+stdout: $(inputs.logfile) 
 
