@@ -37,6 +37,10 @@ $ rm backend.conf.2 # the file not really needed anymore
 ### Toil
 
 ```
+$ resultsDir="results.toil.cwl"
+$ hostsDir="${resultsDir}/hosts"
+$ mkdir -p ${resultsDir} ${hostsDir}
+
 $ module load Python/2.7.13-IGB-gcc-4.9.4
 $ export TOIL_SLURM_ARGS="-p normal"
 $ mkdir work # create working directory. Wouldn't work if not already existing
@@ -52,7 +56,14 @@ host_process.cwl host_process_workflow.yml
 
 - we try to run all workflows with the same options- eg, all with specified results directory. With toil it appears we also need to spcify where to keep tmp files (others did it automatically)
 
-- For this workflow, toil also needed node.js engine to be accessible. On biocluster, I run into conflicts when loading `nodejs` and `Python`, hence I have not been able to run this `host*` workflows there yet.
+- Important: For this workflow, toil also needed node.js engine to be accessible. On biocluster, I run into conflicts when loading `nodejs` and `Python`, hence I have not been able to run this `host*` workflows there yet. In other words, the requirements of cwl need to be supported. For example, a `CommandLineTool` with:
+
+```
+requirements:
+  InlineJavascriptRequirement: {}
+```
+
+  when invoked with toil gives an error: `cwltool requires Node.js engine to evaluate and validate Javascript expressions, but couldn't find it.  Tried nodejs, node, docker run node:slim`.  With cromwell, this error did not come up
 
 - Relevant options to request resources are below. I think we only need to control the first in this list. Check via the `toil stats` command
 
