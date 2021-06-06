@@ -39,9 +39,13 @@ $ dot -Tpng dag_wdl_hosts_workflow_detailed.dot -o dag_wdl_hosts_workflow_detail
 The main commands to run via cromwell are below:
 
 ```
-$ java -jar -Dconfig.file=backend.conf $crom run host_process.wdl -i host_process_workflow.json -o workflow.options.json
+$ sed "s/CORES/2/" backend.conf > backend.conf.2 # This sets the rate of new jobs/sec. Remember to check for your backend specifics (eg queue)
 $
-$ java -jar -Dconfig.file=backend.conf $crom run host_workflow.wdl -i host_process_workflow.json -o workflow.options.json
+$ java -jar -Dconfig.file=backend.conf.2 $crom run host_process.wdl -i host_process_workflow.json -o workflow.options.json
+$
+$ java -jar -Dconfig.file=backend.conf.2 $crom run host_workflow.wdl -i host_process_workflow.json -o workflow.options.json
+$
+$ rm backend.conf.2 # the file is not really needed anymore and can be deleted!
 ```
 
 
