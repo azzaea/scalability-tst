@@ -28,5 +28,5 @@ $ nextflow run host_workflow.nf -profile cluster --ntasks=<tasks> --forks=<forks
 $ 
 ```
 
-
+Notice that I still need to remove the `maxForks` directive from these scripts and replace it with `queueSize` as appropriate
 
