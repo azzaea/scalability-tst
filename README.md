@@ -1,14 +1,14 @@
 # To do
 - Re-do the tree architecture of the folders (change both the readme and individual scripts)
-wdl.cromwell -- hosts (script updated and tests running) 
+wdl.cromwell -- hosts (script updated and tests finished) 
 	     -- logs
-wdl.toil -- hosts 
+wdl.toil -- hosts  
 	 -- logs
 cwl.cromwell -- hosts (script updated and tests finished)
 	     -- logs
 cwl.toil  -- hosts (script updated and tests finished)
           -- logs
-nf.nf  -- hosts (working to remove maxForks and put executor.queueSize )
+nf.nf  -- hosts (script updated and tests running )
        -- logs
 
 # wfms-scalability

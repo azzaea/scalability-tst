@@ -20,8 +20,9 @@ set -x
 nextflow="/home/a-m/azzaea/software/nextflow/21.04.1.5556" #biocluster path
 resultsDir="nf.nf"
 logsDir="${resultsDir}/logs"
+confsDir="${logsDir}/confs"
 hostsDir="${resultsDir}/hosts"
-mkdir -p ${resultsDir} ${logsDir} ${hostsDir}
+mkdir -p ${resultsDir} ${logsDir} ${confsDir} ${hostsDir}
 
 progress="${logsDir}/progress_bioinfoScaling.txt"
 echo "Starting BioInfo Scalability Analysis" >> ${progress}
@@ -35,19 +36,20 @@ log1="${logsDir}/bioinfoScaling_processes-1_host.txt"
 log2="${logsDir}/bioinfoScaling_processes-2_host.txt"
 echo "cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,faults,inputs,outputs,socketsIn,socketsOut,exitStatus" | tee -a ${log1} ${log2}
 
-
 for line in {1..10}; do # Enough until 512 tasks in biocluster
 	cores=`cat cores.txt | sed -n ${line}p`  #goes to the forks param
 	tasks=${cores}
 	echo -n "${cores},${tasks}," | tee -a ${log1} ${log2}
 
+	sed "s/CORES/${cores}/" nextflow.config.tmpl > ${confsDir}/nextflow.config.${cores} 
+
 	##### processes: 1
 	/usr/bin/time --format "%U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x" --append --output ${log1} \
-		${nextflow} run host_process.nf -profile cluster -c nextflow.config.${cores} --ntasks=${tasks} --forks=${cores} --log=${hostsDir}/host1_tasks${tasks}.txt
+		${nextflow} run host_process.nf -c ${confsDir}/nextflow.config.${cores} -profile cluster --ntasks=${tasks} --log=${hostsDir}/host1_tasks${tasks}.txt
 
 	#### Processes: 2
 	/usr/bin/time --format "%U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x" --append --output ${log2} \
-		${nextflow} run host_workflow.nf -profile cluster --ntasks=${tasks} --forks=${cores} --log=${hostsDir}/host2_tasks${tasks}.txt
+		${nextflow} run host_workflow.nf -c ${confsDir}/nextflow.config.${cores} -profile cluster --ntasks=${tasks} --log=${hostsDir}/host2_tasks${tasks}.txt
 
 	echo -e "Done processing * ${tasks} * tasks, on * ${cores} * cores" >> ${progress}	
 done
