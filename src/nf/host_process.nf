@@ -28,6 +28,6 @@ process host1 {
 
 result1
      .unique()
-     .collectFile(name: "$logfile", storeDir: "$workflow.launchDir/results.nf/hosts")
+     .collectFile(name: "$logfile", storeDir: "$workflow.launchDir/nf.nf/hosts")
      .subscribe {println "Hostname: ${it.text}" }
 

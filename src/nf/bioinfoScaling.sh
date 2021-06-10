@@ -1,6 +1,8 @@
 #!/bin/bash
+#SBATCH --mail-user azzaea@gmail.com
+#SBATCH --mail-type BEGIN,END,FAIL
 
-#module load Java # For working on biocluster- change for AWS
+module load Java/15.0.1 # For working on biocluster- change for AWS
 echo "Analysis done on: "
 date 
 
@@ -40,7 +42,7 @@ for line in {1..10}; do # Enough until 512 tasks in biocluster
 
 	##### processes: 1
 	/usr/bin/time --format "%U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x" --append --output ${log1} \
-		${nextflow} run host_process.nf -profile cluster --ntasks=${tasks} --forks=${cores} --log=${hostsDir}/host1_tasks${tasks}.txt
+		${nextflow} run host_process.nf -profile cluster -c nextflow.config.${cores} --ntasks=${tasks} --forks=${cores} --log=${hostsDir}/host1_tasks${tasks}.txt
 
 	#### Processes: 2
 	/usr/bin/time --format "%U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x" --append --output ${log2} \

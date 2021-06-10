@@ -45,6 +45,6 @@ process host2 {
 result1
      .mix(result2)
      .unique()
-     .collectFile(name: "$logfile", storeDir: "$workflow.launchDir/results.nf/hosts")
+     .collectFile(name: "$logfile", storeDir: "$workflow.launchDir/nf.nf/hosts")
      .subscribe {println "Hostname: ${it.text}" }
 
