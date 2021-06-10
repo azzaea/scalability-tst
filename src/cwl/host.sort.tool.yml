@@ -1,4 +1,7 @@
 names1:
-    - {class: File, path: Hello.java}
-    - {class: File, path: Hello.java}
+    - {class: File, path: tstfile.txt}
+    - {class: File, path: tstfile.txt}
+names2:
+    - {class: File, path: host.hostname.tool.yml}
+    
 logfile: log.txt

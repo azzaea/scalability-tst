@@ -41,7 +41,8 @@ $ resultsDir="results.toil.cwl"
 $ hostsDir="${resultsDir}/hosts"
 $ mkdir -p ${resultsDir} ${hostsDir}
 
-$ module load Python/2.7.13-IGB-gcc-4.9.4
+$ module load toil
+$ module load nodejs 
 $ export TOIL_SLURM_ARGS="-p normal"
 $ mkdir work # create working directory. Wouldn't work if not already existing
 $ toil-cwl-runner --jobStore myStore \

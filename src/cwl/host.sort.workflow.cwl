@@ -7,7 +7,7 @@ requirements:
 inputs:
   names1: File[]
   names2: File[]
-
+  logfile: string
 outputs:
   result:
     type: File
@@ -21,4 +21,5 @@ steps:
       names1: 
         source: [names1, names2]
         linkMerge: merge_flattened
+      logfile: logfile 
     out: [hosts]

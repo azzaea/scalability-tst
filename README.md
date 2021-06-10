@@ -1,3 +1,16 @@
+# To do
+- Re-do the tree architecture of the folders (change both the readme and individual scripts)
+wdl.cromwell -- hosts 
+	     -- logs
+wdl.toil -- hosts
+	 -- logs
+cwl.cromwell -- hosts (script updated but not tested)
+	     -- logs
+cwl.toil  -- hosts (script updated, and is running)
+          -- logs
+nf  -- hosts	     
+    -- logs
+
 # wfms-scalability
 
 This repo contains the source code, raw results and figures accompanying our manuscript "Requirements-driven design considerations for workflow management systems used in production genomics research and the clinic". Key files in this repo are organized as follows:
