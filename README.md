@@ -1,8 +1,8 @@
 # To do
 - Re-do the tree architecture of the folders (change both the readme and individual scripts)
-wdl.cromwell -- hosts 
+wdl.cromwell -- hosts (script update but not run) 
 	     -- logs
-wdl.toil -- hosts
+wdl.toil -- hosts 
 	 -- logs
 cwl.cromwell -- hosts (script updated and tests running)
 	     -- logs
