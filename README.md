@@ -1,15 +1,7 @@
-# To do
-- Re-do the tree architecture of the folders (change both the readme and individual scripts)
-wdl.cromwell -- hosts (script updated and tests finished) 
-	     -- logs
-wdl.toil -- hosts  
-	 -- logs
-cwl.cromwell -- hosts (script updated and tests finished)
-	     -- logs
-cwl.toil  -- hosts (script updated and tests finished)
-          -- logs
-nf.nf  -- hosts (script updated and tests running )
-       -- logs
+# Status: 
+
+* tests on biocluster have finished, and new figs generated in the `results/biocluster2021/figs` directory
+* Clean up remains: of the tree architecture of the contents of this repo
 
 # wfms-scalability
 
