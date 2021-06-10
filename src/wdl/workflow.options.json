@@ -1,4 +1,4 @@
 {
-    "final_workflow_outputs_dir": "results.cromwell/hosts",
+    "final_workflow_outputs_dir": "wdl.cromwell/hosts",
     "use_relative_output_paths": true 
 }

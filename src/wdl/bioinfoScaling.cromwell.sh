@@ -1,6 +1,6 @@
 #!/bin/bash
 
-module load Java # For working on biocluster- change for AWS
+module load Java/15.0.1 # For working on biocluster- change for AWS
 echo "Analysis done on: "
 date
 
@@ -16,19 +16,19 @@ set -x
 
 #crom="/home/ubuntu/software/cromwell-43.jar"
 #crom="/usr/src/wdl/cromwell-42.jar"
-crom="/home/a-m/azzaea/software/wdl/cromwell-43.jar"
-resultsDir="results.cromwell"
-jsonsDir="${resultsDir}/logs-wdl/jsons"
+crom="/home/a-m/azzaea/software/wdl/cromwell-63.jar"
+resultsDir="wdl.cromwell"
+jsonsDir="${resultsDir}/logs/jsons"
 hostsDir=" ${resultsDir}/hosts"
 mkdir -p ${resultsDir} ${jsonsDir} ${hostsDir}
 
-progress="${resultsDir}/logs-wdl/progress_bioinfoScaling.txt"
+progress="${resultsDir}/logs/progress_bioinfoScaling.txt"
 echo "Starting BioInfo Scalability Analysis" >> ${progress}
 echo "##############################################################################################" >> ${progress} 
 java -jar ${crom} --version >> ${progress}
 echo "##############################################################################################" >> ${progress} 
 
-ifstat -t -T -n -w > ${resultsDir}/logs-wdl/network-report.txt
+ifstat -t -T -n -w > ${resultsDir}/logs/network-report.txt
 
 log1="${resultsDir}/logs-wdl/bioinfoScaling_processes-1_host.txt"
 log2="${resultsDir}/logs-wdl/bioinfoScaling_processes-2_host.txt"
@@ -36,8 +36,8 @@ echo "cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,volu
 jsoninput="${jsonsDir}/host_process_workflow"
 cat host_process_workflow.json.tmpl > ${jsoninput}
 
-for line in {1..10}; do
-	cores=`cat cores.txt | sed -n ${line}p`  #goes to the forks param
+for line in {1..10}; do # Enough until 512 tasks in biocluster
+	cores=`cat cores.txt | sed -n ${line}p` 
 	tasks=${cores}
 	echo -n "${cores},${tasks}," | tee -a ${log1} ${log2}
 		

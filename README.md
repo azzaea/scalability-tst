@@ -4,11 +4,11 @@ wdl.cromwell -- hosts
 	     -- logs
 wdl.toil -- hosts
 	 -- logs
-cwl.cromwell -- hosts (script updated but not tested)
+cwl.cromwell -- hosts (script updated and tests running)
 	     -- logs
-cwl.toil  -- hosts (script updated, and is running)
+cwl.toil  -- hosts (script updated and tests finished)
           -- logs
-nf  -- hosts	     
+nf  -- hosts (still need to remove maxForks and put executor.queueSize )
     -- logs
 
 # wfms-scalability
