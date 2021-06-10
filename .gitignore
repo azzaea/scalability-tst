@@ -1,6 +1,8 @@
-nf/work
-nf/.nextflow.log*
-nf/.nextflow
-wdl/cromwell-executions
-wdl/cromwell-workflow-logs
+src/nf/work
+src/nf/.nextflow.log*
+src/nf/.nextflow
+src/wdl/cromwell-executions
+src/wdl/cromwell-workflow-logs
+src/cwl/cromwell-executions
+src/cwl/toil-executions
 .Rproj.user
