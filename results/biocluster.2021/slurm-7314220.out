@@ -1,0 +1,4005 @@
+Analysis done on: 
+Thu Jun 10 10:27:52 CDT 2021
++ nextflow=/home/a-m/azzaea/software/nextflow/21.04.1.5556
++ resultsDir=nf.nf
++ logsDir=nf.nf/logs
++ confsDir=nf.nf/logs/confs
++ hostsDir=nf.nf/hosts
++ mkdir -p nf.nf nf.nf/logs nf.nf/logs/confs nf.nf/hosts
++ progress=nf.nf/logs/progress_bioinfoScaling.txt
++ echo 'Starting BioInfo Scalability Analysis'
++ echo '##############################################################################################'
++ /home/a-m/azzaea/software/nextflow/21.04.1.5556 -v
++ echo '##############################################################################################'
++ ifstat -t -T -n -w
+ifstat: invalid time constant divisor
++ log1=nf.nf/logs/bioinfoScaling_processes-1_host.txt
++ log2=nf.nf/logs/bioinfoScaling_processes-2_host.txt
++ tee -a nf.nf/logs/bioinfoScaling_processes-1_host.txt nf.nf/logs/bioinfoScaling_processes-2_host.txt
++ echo cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,faults,inputs,outputs,socketsIn,socketsOut,exitStatus
+cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,faults,inputs,outputs,socketsIn,socketsOut,exitStatus
++ for line in '{1..10}'
+++ sed -n 1p
+++ cat cores.txt
++ cores=1
++ tasks=1
++ tee -a nf.nf/logs/bioinfoScaling_processes-1_host.txt nf.nf/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 1,1,
+1,1,+ sed s/CORES/1/ nextflow.config.tmpl
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-1_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_process.nf -c nf.nf/logs/confs/nextflow.config.1 -profile cluster --ntasks=1 --log=nf.nf/hosts/host1_tasks1.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_process.nf` [reverent_borg] - revision: b2ae3954f9
+[-        ] process > host1 -
+
+executor >  slurm (1)
+[9c/2b0436] process > host1 (1) [  0%] 0 of 1
+
+executor >  slurm (1)
+[9c/2b0436] process > host1 (1) [100%] 1 of 1 ✔
+
+executor >  slurm (1)
+[9c/2b0436] process > host1 (1) [100%] 1 of 1 ✔
+Hostname: compute-7-3
+
+
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-2_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_workflow.nf -c nf.nf/logs/confs/nextflow.config.1 -profile cluster --ntasks=1 --log=nf.nf/hosts/host2_tasks1.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_workflow.nf` [modest_kimura] - revision: 84abddf17c
+[-        ] process > host1 -
+[-        ] process > host2 -
+
+executor >  slurm (1)
+[27/02ea6b] process > host1 (1) [  0%] 0 of 1
+[-        ] process > host2     -
+
+executor >  slurm (1)
+[27/02ea6b] process > host1 (1) [100%] 1 of 1 ✔
+[-        ] process > host2     [  0%] 0 of 1
+
+executor >  slurm (2)
+[27/02ea6b] process > host1 (1) [100%] 1 of 1 ✔
+[82/451408] process > host2 (1) [  0%] 0 of 1
+
+executor >  slurm (2)
+[27/02ea6b] process > host1 (1) [100%] 1 of 1 ✔
+[82/451408] process > host2 (1) [100%] 1 of 1 ✔
+Hostname: compute-7-3
+
+
++ echo -e 'Done processing * 1 * tasks, on * 1 * cores'
++ for line in '{1..10}'
+++ sed -n 2p
+++ cat cores.txt
++ cores=4
++ tasks=4
++ tee -a nf.nf/logs/bioinfoScaling_processes-1_host.txt nf.nf/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 4,4,
+4,4,+ sed s/CORES/4/ nextflow.config.tmpl
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-1_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_process.nf -c nf.nf/logs/confs/nextflow.config.4 -profile cluster --ntasks=4 --log=nf.nf/hosts/host1_tasks4.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_process.nf` [friendly_gilbert] - revision: b2ae3954f9
+[-        ] process > host1 -
+
+executor >  slurm (4)
+[42/abb6d3] process > host1 (3) [  0%] 0 of 4
+
+executor >  slurm (4)
+[42/abb6d3] process > host1 (3) [100%] 4 of 4 ✔
+
+executor >  slurm (4)
+[42/abb6d3] process > host1 (3) [100%] 4 of 4 ✔
+Hostname: compute-7-3
+
+
+executor >  slurm (4)
+[42/abb6d3] process > host1 (3) [100%] 4 of 4 ✔
+Hostname: compute-7-3
+
+
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-2_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_workflow.nf -c nf.nf/logs/confs/nextflow.config.4 -profile cluster --ntasks=4 --log=nf.nf/hosts/host2_tasks4.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_workflow.nf` [elated_sax] - revision: 84abddf17c
+[-        ] process > host1 -
+
+executor >  slurm (3)
+[b3/568a97] process > host1 (3) [  0%] 0 of 4
+[-        ] process > host2     -
+
+executor >  slurm (4)
+[21/96f9a9] process > host1 (1) [  0%] 0 of 4
+[-        ] process > host2     -
+
+executor >  slurm (4)
+[b3/568a97] process > host1 (3) [ 75%] 3 of 4
+[-        ] process > host2     [  0%] 0 of 2
+
+executor >  slurm (8)
+[21/96f9a9] process > host1 (1) [100%] 4 of 4 ✔
+[a1/e668ad] process > host2 (4) [  0%] 0 of 4
+
+executor >  slurm (8)
+[21/96f9a9] process > host1 (1) [100%] 4 of 4 ✔
+[a0/5d9400] process > host2 (1) [ 25%] 1 of 4
+
+executor >  slurm (8)
+[21/96f9a9] process > host1 (1) [100%] 4 of 4 ✔
+[a1/e668ad] process > host2 (4) [100%] 4 of 4 ✔
+Hostname: compute-7-3
+
+
++ echo -e 'Done processing * 4 * tasks, on * 4 * cores'
++ for line in '{1..10}'
+++ sed -n 3p
+++ cat cores.txt
++ cores=8
++ tasks=8
++ tee -a nf.nf/logs/bioinfoScaling_processes-1_host.txt nf.nf/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 8,8,
+8,8,+ sed s/CORES/8/ nextflow.config.tmpl
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-1_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_process.nf -c nf.nf/logs/confs/nextflow.config.8 -profile cluster --ntasks=8 --log=nf.nf/hosts/host1_tasks8.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_process.nf` [disturbed_lalande] - revision: b2ae3954f9
+[-        ] process > host1 -
+
+executor >  slurm (4)
+[b9/eb3ff4] process > host1 (3) [  0%] 0 of 8
+
+executor >  slurm (8)
+[cc/9d7ea0] process > host1 (8) [  0%] 0 of 8
+
+executor >  slurm (8)
+[cc/9d7ea0] process > host1 (8) [  0%] 0 of 8
+
+executor >  slurm (8)
+[cc/9d7ea0] process > host1 (8) [100%] 8 of 8 ✔
+
+executor >  slurm (8)
+[cc/9d7ea0] process > host1 (8) [100%] 8 of 8 ✔
+Hostname: compute-7-3
+
+
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-2_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_workflow.nf -c nf.nf/logs/confs/nextflow.config.8 -profile cluster --ntasks=8 --log=nf.nf/hosts/host2_tasks8.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_workflow.nf` [jovial_chandrasekhar] - revision: 84abddf17c
+[-        ] process > host1 -
+[-        ] process > host2 -
+
+executor >  slurm (3)
+[fe/94dacf] process > host1 (3) [  0%] 0 of 8
+[-        ] process > host2     -
+
+executor >  slurm (8)
+[0f/9d9484] process > host1 (8) [  0%] 0 of 8
+[-        ] process > host2     -
+
+executor >  slurm (8)
+[4a/144552] process > host1 (1) [ 50%] 4 of 8
+[-        ] process > host2     [  0%] 0 of 5
+
+executor >  slurm (12)
+[0f/9d9484] process > host1 (8) [100%] 8 of 8 ✔
+[24/40b270] process > host2 (4) [  0%] 0 of 8
+
+executor >  slurm (16)
+[0f/9d9484] process > host1 (8) [100%] 8 of 8 ✔
+[89/57551f] process > host2 (8) [  0%] 0 of 8
+
+executor >  slurm (16)
+[0f/9d9484] process > host1 (8) [100%] 8 of 8 ✔
+[2e/ac349b] process > host2 (1) [ 13%] 1 of 8
+
+executor >  slurm (16)
+[0f/9d9484] process > host1 (8) [100%] 8 of 8 ✔
+[89/57551f] process > host2 (8) [100%] 8 of 8 ✔
+Hostname: compute-7-4
+compute-7-3
+
+
++ echo -e 'Done processing * 8 * tasks, on * 8 * cores'
++ for line in '{1..10}'
+++ sed -n 4p
+++ cat cores.txt
++ cores=16
++ tasks=16
++ tee -a nf.nf/logs/bioinfoScaling_processes-1_host.txt nf.nf/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 16,16,
+16,16,+ sed s/CORES/16/ nextflow.config.tmpl
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-1_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_process.nf -c nf.nf/logs/confs/nextflow.config.16 -profile cluster --ntasks=16 --log=nf.nf/hosts/host1_tasks16.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_process.nf` [admiring_booth] - revision: b2ae3954f9
+[-        ] process > host1 -
+
+executor >  slurm (3)
+[f3/b49da3] process > host1 (4) [  0%] 0 of 16
+
+executor >  slurm (9)
+[29/159d9a] process > host1 (10) [  0%] 0 of 16
+
+executor >  slurm (14)
+[71/1fe625] process > host1 (8)  [  0%] 0 of 16
+
+executor >  slurm (16)
+[5d/4101c1] process > host1 (16) [  0%] 0 of 16
+
+executor >  slurm (16)
+[5d/4101c1] process > host1 (16) [  0%] 0 of 16
+
+executor >  slurm (16)
+[13/3565a0] process > host1 (13) [ 75%] 12 of 16
+
+executor >  slurm (16)
+[5d/4101c1] process > host1 (16) [100%] 16 of 16 ✔
+Hostname: compute-7-4
+compute-7-3
+
+
+executor >  slurm (16)
+[5d/4101c1] process > host1 (16) [100%] 16 of 16 ✔
+Hostname: compute-7-4
+compute-7-3
+
+
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-2_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_workflow.nf -c nf.nf/logs/confs/nextflow.config.16 -profile cluster --ntasks=16 --log=nf.nf/hosts/host2_tasks16.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_workflow.nf` [distraught_visvesvaraya] - revision: 84abddf17c
+[-        ] process > host1 -
+[-        ] process > host2 -
+
+executor >  slurm (3)
+[8d/d85271] process > host1 (5) [  0%] 0 of 16
+[-        ] process > host2     -
+
+executor >  slurm (7)
+[3d/916365] process > host1 (8) [  0%] 0 of 16
+[-        ] process > host2     -
+
+executor >  slurm (12)
+[14/919463] process > host1 (13) [  0%] 0 of 16
+[-        ] process > host2      -
+
+executor >  slurm (16)
+[05/748eab] process > host1 (16) [  0%] 0 of 16
+[-        ] process > host2      -
+
+executor >  slurm (16)
+[05/748eab] process > host1 (16) [  0%] 0 of 16
+[-        ] process > host2      -
+
+executor >  slurm (17)
+[3d/916365] process > host1 (8)  [ 44%] 7 of 16
+[d3/4e65a1] process > host2 (1)  [  0%] 0 of 6
+
+executor >  slurm (20)
+[05/748eab] process > host1 (16) [100%] 16 of 16 ✔
+[53/678e6a] process > host2 (4)  [  0%] 0 of 16
+
+executor >  slurm (25)
+[05/748eab] process > host1 (16) [100%] 16 of 16 ✔
+[ba/d49d47] process > host2 (9)  [  0%] 0 of 16
+
+executor >  slurm (30)
+[05/748eab] process > host1 (16) [100%] 16 of 16 ✔
+[c1/0465c0] process > host2 (14) [  0%] 0 of 16
+
+executor >  slurm (32)
+[05/748eab] process > host1 (16) [100%] 16 of 16 ✔
+[87/d55c83] process > host2 (16) [  0%] 0 of 16
+
+executor >  slurm (32)
+[05/748eab] process > host1 (16) [100%] 16 of 16 ✔
+[2f/041549] process > host2 (11) [ 69%] 11 of 16
+
+executor >  slurm (32)
+[05/748eab] process > host1 (16) [100%] 16 of 16 ✔
+[87/d55c83] process > host2 (16) [100%] 16 of 16 ✔
+Hostname: compute-7-4
+compute-7-3
+
+
++ echo -e 'Done processing * 16 * tasks, on * 16 * cores'
++ for line in '{1..10}'
+++ sed -n 5p
+++ cat cores.txt
++ cores=32
++ tasks=32
++ tee -a nf.nf/logs/bioinfoScaling_processes-1_host.txt nf.nf/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 32,32,
+32,32,+ sed s/CORES/32/ nextflow.config.tmpl
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-1_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_process.nf -c nf.nf/logs/confs/nextflow.config.32 -profile cluster --ntasks=32 --log=nf.nf/hosts/host1_tasks32.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_process.nf` [lonely_borg] - revision: b2ae3954f9
+[-        ] process > host1 -
+
+executor >  slurm (4)
+[d3/8fede5] process > host1 (2) [  0%] 0 of 32
+
+executor >  slurm (8)
+[89/b4a766] process > host1 (9) [  0%] 0 of 32
+
+executor >  slurm (12)
+[d6/1be459] process > host1 (12) [  0%] 0 of 32
+
+executor >  slurm (16)
+[87/96ddfa] process > host1 (18) [  0%] 0 of 32
+
+executor >  slurm (21)
+[45/db948e] process > host1 (21) [  0%] 0 of 32
+
+executor >  slurm (26)
+[9f/2f25b4] process > host1 (26) [  0%] 0 of 32
+
+executor >  slurm (31)
+[90/93dbe5] process > host1 (31) [  0%] 0 of 32
+
+executor >  slurm (32)
+[14/f1718b] process > host1 (32) [  0%] 0 of 32
+
+executor >  slurm (32)
+[14/f1718b] process > host1 (32) [  0%] 0 of 32
+
+executor >  slurm (32)
+[d3/8fede5] process > host1 (2)  [ 13%] 4 of 32
+
+executor >  slurm (32)
+[be/36a0e0] process > host1 (14) [ 44%] 14 of 32
+
+executor >  slurm (32)
+[01/fa222c] process > host1 (22) [ 72%] 23 of 32
+
+executor >  slurm (32)
+[14/f1718b] process > host1 (32) [100%] 32 of 32 ✔
+Hostname: compute-7-4
+compute-7-3
+
+
+executor >  slurm (32)
+[14/f1718b] process > host1 (32) [100%] 32 of 32 ✔
+Hostname: compute-7-4
+compute-7-3
+
+
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-2_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_workflow.nf -c nf.nf/logs/confs/nextflow.config.32 -profile cluster --ntasks=32 --log=nf.nf/hosts/host2_tasks32.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_workflow.nf` [small_easley] - revision: 84abddf17c
+[-        ] process > host1 -
+[-        ] process > host2 -
+
+executor >  slurm (5)
+[82/ee8720] process > host1 (3) [  0%] 0 of 32
+[-        ] process > host2     -
+
+executor >  slurm (12)
+[7f/87e66c] process > host1 (13) [  0%] 0 of 32
+[-        ] process > host2      -
+
+executor >  slurm (17)
+[f3/bb217a] process > host1 (19) [  0%] 0 of 32
+[-        ] process > host2      -
+
+executor >  slurm (23)
+[11/8b2d87] process > host1 (23) [  0%] 0 of 32
+[-        ] process > host2      -
+
+executor >  slurm (31)
+[82/6ae2c5] process > host1 (31) [  0%] 0 of 32
+[-        ] process > host2      -
+
+executor >  slurm (32)
+[2d/c1e5b8] process > host1 (32) [  0%] 0 of 32
+[-        ] process > host2      -
+
+executor >  slurm (32)
+[87/df34f0] process > host1 (4)  [  3%] 1 of 32
+[-        ] process > host2      [  0%] 0 of 2
+
+executor >  slurm (34)
+[98/19cbb8] process > host1 (14) [ 41%] 13 of 32
+[55/d14337] process > host2 (2)  [  0%] 0 of 13
+
+executor >  slurm (37)
+[b5/859ced] process > host1 (27) [ 88%] 28 of 32
+[a8/4076e2] process > host2 (5)  [  0%] 0 of 27
+
+executor >  slurm (40)
+[2d/c1e5b8] process > host1 (32) [100%] 32 of 32 ✔
+[f8/c8f1f6] process > host2 (8)  [  0%] 0 of 32
+
+executor >  slurm (45)
+[2d/c1e5b8] process > host1 (32) [100%] 32 of 32 ✔
+[3a/d64d36] process > host2 (13) [  0%] 0 of 32
+
+executor >  slurm (50)
+[2d/c1e5b8] process > host1 (32) [100%] 32 of 32 ✔
+[4f/bb64a2] process > host2 (18) [  0%] 0 of 32
+
+executor >  slurm (55)
+[2d/c1e5b8] process > host1 (32) [100%] 32 of 32 ✔
+[f6/fe0126] process > host2 (23) [  0%] 0 of 32
+
+executor >  slurm (60)
+[2d/c1e5b8] process > host1 (32) [100%] 32 of 32 ✔
+[66/a6487d] process > host2 (28) [  0%] 0 of 32
+
+executor >  slurm (64)
+[2d/c1e5b8] process > host1 (32) [100%] 32 of 32 ✔
+[83/53d9aa] process > host2 (32) [  0%] 0 of 32
+
+executor >  slurm (64)
+[2d/c1e5b8] process > host1 (32) [100%] 32 of 32 ✔
+[a8/4076e2] process > host2 (5)  [ 16%] 5 of 32
+
+executor >  slurm (64)
+[2d/c1e5b8] process > host1 (32) [100%] 32 of 32 ✔
+[ce/d9a591] process > host2 (26) [ 81%] 26 of 32
+
+executor >  slurm (64)
+[2d/c1e5b8] process > host1 (32) [100%] 32 of 32 ✔
+[83/53d9aa] process > host2 (32) [100%] 32 of 32 ✔
+Hostname: compute-7-0
+compute-7-1
+compute-7-4
+compute-7-3
+
+
+executor >  slurm (64)
+[2d/c1e5b8] process > host1 (32) [100%] 32 of 32 ✔
+[83/53d9aa] process > host2 (32) [100%] 32 of 32 ✔
+Hostname: compute-7-0
+compute-7-1
+compute-7-4
+compute-7-3
+
+
++ echo -e 'Done processing * 32 * tasks, on * 32 * cores'
++ for line in '{1..10}'
+++ sed -n 6p
+++ cat cores.txt
++ cores=64
++ tasks=64
++ tee -a nf.nf/logs/bioinfoScaling_processes-1_host.txt nf.nf/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 64,64,
+64,64,+ sed s/CORES/64/ nextflow.config.tmpl
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-1_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_process.nf -c nf.nf/logs/confs/nextflow.config.64 -profile cluster --ntasks=64 --log=nf.nf/hosts/host1_tasks64.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_process.nf` [marvelous_wiles] - revision: b2ae3954f9
+[-        ] process > host1 -
+
+executor >  slurm (3)
+[e3/f14d33] process > host1 (12) [  0%] 0 of 64
+
+executor >  slurm (7)
+[7e/d89c62] process > host1 (15) [  0%] 0 of 64
+
+executor >  slurm (13)
+[e6/e91aa3] process > host1 (18) [  0%] 0 of 64
+
+executor >  slurm (17)
+[82/0b9261] process > host1 (17) [  0%] 0 of 64
+
+executor >  slurm (24)
+[c5/ace6a8] process > host1 (39) [  0%] 0 of 64
+
+executor >  slurm (28)
+[7e/ba532c] process > host1 (34) [  0%] 0 of 64
+
+executor >  slurm (35)
+[96/1e3d54] process > host1 (36) [  0%] 0 of 64
+
+executor >  slurm (43)
+[ab/605492] process > host1 (45) [  0%] 0 of 64
+
+executor >  slurm (50)
+[db/b61045] process > host1 (49) [  0%] 0 of 64
+
+executor >  slurm (61)
+[fe/526e9d] process > host1 (60) [  0%] 0 of 64
+
+executor >  slurm (64)
+[68/ce3645] process > host1 (64) [  0%] 0 of 64
+
+executor >  slurm (64)
+[68/ce3645] process > host1 (64) [  0%] 0 of 64
+
+executor >  slurm (64)
+[c0/57a65d] process > host1 (5)  [ 22%] 14 of 64
+
+executor >  slurm (64)
+[7e/f9359f] process > host1 (27) [ 41%] 26 of 64
+
+executor >  slurm (64)
+[71/f7be64] process > host1 (26) [ 53%] 34 of 64
+
+executor >  slurm (64)
+[7d/a81eab] process > host1 (44) [ 66%] 42 of 64
+
+executor >  slurm (64)
+[59/068d36] process > host1 (55) [ 84%] 54 of 64
+
+executor >  slurm (64)
+[68/ce3645] process > host1 (64) [100%] 64 of 64 ✔
+Hostname: compute-7-1
+compute-7-4
+compute-7-3
+
+
+executor >  slurm (64)
+[68/ce3645] process > host1 (64) [100%] 64 of 64 ✔
+Hostname: compute-7-1
+compute-7-4
+compute-7-3
+
+
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-2_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_workflow.nf -c nf.nf/logs/confs/nextflow.config.64 -profile cluster --ntasks=64 --log=nf.nf/hosts/host2_tasks64.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_workflow.nf` [sad_murdock] - revision: 84abddf17c
+[-        ] process > host1 -
+
+[-        ] process > host1 [  0%] 0 of 58
+[-        ] process > host2 -
+
+executor >  slurm (3)
+[bb/dd1f5b] process > host1 (1) [  0%] 0 of 64
+[-        ] process > host2     -
+
+executor >  slurm (8)
+[1e/01c435] process > host1 (9) [  0%] 0 of 64
+[-        ] process > host2     -
+
+executor >  slurm (14)
+[0c/c9d0a1] process > host1 (14) [  0%] 0 of 64
+[-        ] process > host2      -
+
+executor >  slurm (19)
+[9e/b6f5f9] process > host1 (21) [  0%] 0 of 64
+[-        ] process > host2      -
+
+executor >  slurm (26)
+[9f/b4dcbf] process > host1 (27) [  0%] 0 of 64
+[-        ] process > host2      -
+
+executor >  slurm (35)
+[e6/ea4d4c] process > host1 (35) [  0%] 0 of 64
+[-        ] process > host2      -
+
+executor >  slurm (44)
+[32/d0c1f5] process > host1 (44) [  0%] 0 of 64
+[-        ] process > host2      -
+
+executor >  slurm (50)
+[52/fd81ed] process > host1 (50) [  0%] 0 of 64
+[-        ] process > host2      -
+
+executor >  slurm (57)
+[6a/59902e] process > host1 (47) [  0%] 0 of 64
+[-        ] process > host2      -
+
+executor >  slurm (64)
+[4c/f2a033] process > host1 (64) [  0%] 0 of 64
+[-        ] process > host2      -
+
+executor >  slurm (64)
+[bb/dd1f5b] process > host1 (1)  [  5%] 3 of 64
+[-        ] process > host2      [  0%] 0 of 3
+
+executor >  slurm (66)
+[9e/b6f5f9] process > host1 (21) [ 30%] 19 of 64
+[b2/fd9c8f] process > host2 (2)  [  0%] 0 of 19
+
+executor >  slurm (68)
+[42/80c8a2] process > host1 (36) [ 58%] 37 of 64
+[49/233d43] process > host2 (4)  [  0%] 0 of 37
+
+executor >  slurm (71)
+[55/70d282] process > host1 (52) [ 80%] 51 of 64
+[06/881450] process > host2 (7)  [  0%] 0 of 51
+
+executor >  slurm (74)
+[4c/f2a033] process > host1 (64) [100%] 64 of 64 ✔
+[a8/9c0140] process > host2 (10) [  0%] 0 of 64
+
+executor >  slurm (79)
+[4c/f2a033] process > host1 (64) [100%] 64 of 64 ✔
+[2b/e9fe6d] process > host2 (15) [  0%] 0 of 64
+
+executor >  slurm (85)
+[4c/f2a033] process > host1 (64) [100%] 64 of 64 ✔
+[5b/6c78c0] process > host2 (21) [  0%] 0 of 64
+
+executor >  slurm (90)
+[4c/f2a033] process > host1 (64) [100%] 64 of 64 ✔
+[a4/3131b2] process > host2 (26) [  0%] 0 of 64
+
+executor >  slurm (95)
+[4c/f2a033] process > host1 (64) [100%] 64 of 64 ✔
+[9a/4b38f3] process > host2 (31) [  0%] 0 of 64
+
+executor >  slurm (99)
+[4c/f2a033] process > host1 (64) [100%] 64 of 64 ✔
+[db/49411b] process > host2 (35) [  0%] 0 of 64
+
+executor >  slurm (104)
+[4c/f2a033] process > host1 (64) [100%] 64 of 64 ✔
+[f1/12db0a] process > host2 (40) [  0%] 0 of 64
+
+executor >  slurm (111)
+[4c/f2a033] process > host1 (64) [100%] 64 of 64 ✔
+[2e/648501] process > host2 (47) [  0%] 0 of 64
+
+executor >  slurm (116)
+[4c/f2a033] process > host1 (64) [100%] 64 of 64 ✔
+[30/332b24] process > host2 (52) [  0%] 0 of 64
+
+executor >  slurm (120)
+[4c/f2a033] process > host1 (64) [100%] 64 of 64 ✔
+[07/44088a] process > host2 (56) [  0%] 0 of 64
+
+executor >  slurm (127)
+[4c/f2a033] process > host1 (64) [100%] 64 of 64 ✔
+[14/12e8de] process > host2 (63) [  0%] 0 of 64
+
+executor >  slurm (128)
+[4c/f2a033] process > host1 (64) [100%] 64 of 64 ✔
+[57/39ec5a] process > host2 (64) [  0%] 0 of 64
+
+executor >  slurm (128)
+[4c/f2a033] process > host1 (64) [100%] 64 of 64 ✔
+[fd/eb5673] process > host2 (22) [ 34%] 22 of 64
+
+executor >  slurm (128)
+[4c/f2a033] process > host1 (64) [100%] 64 of 64 ✔
+[17/6fabe0] process > host2 (38) [ 59%] 38 of 64
+
+executor >  slurm (128)
+[4c/f2a033] process > host1 (64) [100%] 64 of 64 ✔
+[c5/bd15b3] process > host2 (53) [ 83%] 53 of 64
+
+executor >  slurm (128)
+[4c/f2a033] process > host1 (64) [100%] 64 of 64 ✔
+[57/39ec5a] process > host2 (64) [100%] 64 of 64 ✔
+
+executor >  slurm (128)
+[4c/f2a033] process > host1 (64) [100%] 64 of 64 ✔
+[57/39ec5a] process > host2 (64) [100%] 64 of 64 ✔
+Hostname: compute-7-0
+compute-7-1
+compute-7-4
+compute-7-3
+
+
++ echo -e 'Done processing * 64 * tasks, on * 64 * cores'
++ for line in '{1..10}'
+++ sed -n 7p
+++ cat cores.txt
++ cores=128
++ tasks=128
++ tee -a nf.nf/logs/bioinfoScaling_processes-1_host.txt nf.nf/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 128,128,
+128,128,+ sed s/CORES/128/ nextflow.config.tmpl
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-1_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_process.nf -c nf.nf/logs/confs/nextflow.config.128 -profile cluster --ntasks=128 --log=nf.nf/hosts/host1_tasks128.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_process.nf` [extravagant_avogadro] - revision: b2ae3954f9
+[-        ] process > host1 -
+
+executor >  slurm (1)
+[b7/61540c] process > host1 (1) [  0%] 0 of 118
+
+executor >  slurm (4)
+[28/5a6d51] process > host1 (5) [  0%] 0 of 128
+
+executor >  slurm (9)
+[41/6240bd] process > host1 (10) [  0%] 0 of 128
+
+executor >  slurm (14)
+[8c/a802a3] process > host1 (13) [  0%] 0 of 128
+
+executor >  slurm (20)
+[78/a3a958] process > host1 (17) [  0%] 0 of 128
+
+executor >  slurm (24)
+[cf/97f561] process > host1 (26) [  0%] 0 of 128
+
+executor >  slurm (31)
+[54/5c5855] process > host1 (31) [  0%] 0 of 128
+
+executor >  slurm (40)
+[68/b5f919] process > host1 (41) [  0%] 0 of 128
+
+executor >  slurm (41)
+[b3/9e23fa] process > host1 (40) [  0%] 0 of 128
+
+executor >  slurm (48)
+[ce/17e70a] process > host1 (44) [  0%] 0 of 128
+
+executor >  slurm (59)
+[79/0d011f] process > host1 (57) [  0%] 0 of 128
+
+executor >  slurm (69)
+[ce/1f42aa] process > host1 (74) [  0%] 0 of 128
+
+executor >  slurm (79)
+[72/cfb3bf] process > host1 (82) [  0%] 0 of 128
+
+executor >  slurm (86)
+[d9/472502] process > host1 (86) [  0%] 0 of 128
+
+executor >  slurm (91)
+[49/046a92] process > host1 (93) [  0%] 0 of 128
+
+executor >  slurm (96)
+[a7/20a6f5] process > host1 (100) [  0%] 0 of 128
+
+executor >  slurm (102)
+[04/35d15e] process > host1 (102) [  0%] 0 of 128
+
+executor >  slurm (113)
+[04/badb56] process > host1 (114) [  0%] 0 of 128
+
+executor >  slurm (122)
+[75/1b5d91] process > host1 (122) [  0%] 0 of 128
+
+executor >  slurm (128)
+[fa/7bb091] process > host1 (128) [  0%] 0 of 128
+
+executor >  slurm (128)
+[b7/61540c] process > host1 (1)   [  1%] 1 of 128
+
+executor >  slurm (128)
+[32/76144d] process > host1 (11)  [  9%] 11 of 128
+
+executor >  slurm (128)
+[24/2b763c] process > host1 (32)  [ 25%] 32 of 128
+
+executor >  slurm (128)
+[a4/2b1e59] process > host1 (50)  [ 38%] 49 of 128
+
+executor >  slurm (128)
+[f8/14de63] process > host1 (64)  [ 48%] 62 of 128
+
+executor >  slurm (128)
+[50/0b1d16] process > host1 (76)  [ 60%] 77 of 128
+
+executor >  slurm (128)
+[49/d3d183] process > host1 (99)  [ 73%] 94 of 128
+
+executor >  slurm (128)
+[26/40b01b] process > host1 (113) [ 89%] 114 of 128
+
+executor >  slurm (128)
+[fa/7bb091] process > host1 (128) [100%] 128 of 128 ✔
+Hostname: compute-7-0
+compute-7-1
+compute-7-4
+compute-7-3
+
+
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-2_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_workflow.nf -c nf.nf/logs/confs/nextflow.config.128 -profile cluster --ntasks=128 --log=nf.nf/hosts/host2_tasks128.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_workflow.nf` [golden_cajal] - revision: 84abddf17c
+[-        ] process > host1 -
+[-        ] process > host2 -
+
+executor >  slurm (1)
+[8f/313fb7] process > host1 (4) [  0%] 0 of 128
+[-        ] process > host2     -
+
+executor >  slurm (5)
+[ab/97c844] process > host1 (1) [  0%] 0 of 128
+[-        ] process > host2     -
+
+executor >  slurm (10)
+[e4/3283ed] process > host1 (9) [  0%] 0 of 128
+[-        ] process > host2     -
+
+executor >  slurm (14)
+[08/4c4d6a] process > host1 (15) [  0%] 0 of 128
+[-        ] process > host2      -
+
+executor >  slurm (19)
+[b5/1f2979] process > host1 (17) [  0%] 0 of 128
+[-        ] process > host2      -
+
+executor >  slurm (23)
+[62/58f1f0] process > host1 (24) [  0%] 0 of 128
+[-        ] process > host2      -
+
+executor >  slurm (28)
+[5a/e32e7f] process > host1 (28) [  0%] 0 of 128
+[-        ] process > host2      -
+
+executor >  slurm (35)
+[04/18c0fa] process > host1 (16) [  0%] 0 of 128
+[-        ] process > host2      -
+
+executor >  slurm (41)
+[15/7bff85] process > host1 (41) [  0%] 0 of 128
+[-        ] process > host2      -
+
+executor >  slurm (52)
+[63/0d47d0] process > host1 (56) [  0%] 0 of 128
+[-        ] process > host2      -
+
+executor >  slurm (65)
+[06/d28005] process > host1 (70) [  0%] 0 of 128
+[-        ] process > host2      -
+
+executor >  slurm (76)
+[e1/2e4a84] process > host1 (76) [  0%] 0 of 128
+[-        ] process > host2      -
+
+executor >  slurm (84)
+[00/13feb3] process > host1 (86) [  0%] 0 of 128
+[-        ] process > host2      -
+
+executor >  slurm (89)
+[8e/c18f9a] process > host1 (87) [  0%] 0 of 128
+[-        ] process > host2      -
+
+executor >  slurm (96)
+[af/45cbeb] process > host1 (99) [  0%] 0 of 128
+[-        ] process > host2      -
+
+executor >  slurm (102)
+[59/7fae55] process > host1 (102) [  0%] 0 of 128
+[-        ] process > host2       -
+
+executor >  slurm (114)
+[22/020965] process > host1 (125) [  0%] 0 of 128
+[-        ] process > host2       -
+
+executor >  slurm (127)
+[78/9eed84] process > host1 (112) [  0%] 0 of 128
+[-        ] process > host2       -
+
+executor >  slurm (128)
+[e8/797491] process > host1 (128) [  0%] 0 of 128
+[-        ] process > host2       -
+
+executor >  slurm (128)
+[e8/797491] process > host1 (128) [  0%] 0 of 128
+[-        ] process > host2       [  0%] 0 of 1
+
+executor >  slurm (129)
+[08/4c4d6a] process > host1 (15)  [ 11%] 14 of 128
+[f1/5f64e6] process > host2 (1)   [  0%] 0 of 15
+
+executor >  slurm (131)
+[63/d48396] process > host1 (29)  [ 21%] 27 of 128
+[79/573e70] process > host2 (3)   [  0%] 0 of 26
+
+executor >  slurm (134)
+[04/18c0fa] process > host1 (16)  [ 27%] 35 of 128
+[b8/a18a8d] process > host2 (5)   [  0%] 0 of 34
+
+executor >  slurm (137)
+[b7/6a94a2] process > host1 (46)  [ 33%] 42 of 128
+[4b/3c6a58] process > host2 (9)   [  0%] 0 of 42
+
+executor >  slurm (140)
+[d9/b01e93] process > host1 (73)  [ 45%] 58 of 128
+[05/28de1b] process > host2 (12)  [  0%] 0 of 58
+
+executor >  slurm (144)
+[c3/e2f7c6] process > host1 (85)  [ 55%] 71 of 128
+[cd/0ca485] process > host2 (16)  [  0%] 0 of 71
+
+executor >  slurm (147)
+[64/ae19f1] process > host1 (96)  [ 74%] 95 of 128
+[11/cc2bcc] process > host2 (19)  [  0%] 0 of 95
+
+executor >  slurm (151)
+[e8/797491] process > host1 (128) [ 92%] 118 of 128
+[48/25fa86] process > host2 (23)  [  0%] 0 of 118
+
+executor >  slurm (156)
+[e8/797491] process > host1 (128) [ 92%] 118 of 128
+[9c/f40e9c] process > host2 (28)  [  0%] 0 of 118
+
+executor >  slurm (161)
+[e8/797491] process > host1 (128) [ 92%] 118 of 128
+[d6/7cf8f7] process > host2 (33)  [  0%] 0 of 118
+
+executor >  slurm (166)
+[e8/797491] process > host1 (128) [ 92%] 118 of 128
+[6b/54f643] process > host2 (38)  [  0%] 0 of 118
+
+executor >  slurm (171)
+[e8/797491] process > host1 (128) [ 92%] 118 of 128
+[d4/42feb2] process > host2 (43)  [  0%] 0 of 118
+
+executor >  slurm (177)
+[e8/797491] process > host1 (128) [ 92%] 118 of 128
+[97/8f8b32] process > host2 (49)  [  0%] 0 of 118
+
+executor >  slurm (182)
+[e8/797491] process > host1 (128) [ 92%] 118 of 128
+[d2/804eba] process > host2 (54)  [  0%] 0 of 118
+
+executor >  slurm (187)
+[e8/797491] process > host1 (128) [ 92%] 118 of 128
+[52/ca4f2f] process > host2 (59)  [  0%] 0 of 118
+
+executor >  slurm (192)
+[e8/797491] process > host1 (128) [ 92%] 118 of 128
+[8b/9bb850] process > host2 (64)  [  0%] 0 of 118
+
+executor >  slurm (199)
+[e8/797491] process > host1 (128) [ 92%] 118 of 128
+[4e/8c3c4c] process > host2 (71)  [  0%] 0 of 118
+
+executor >  slurm (210)
+[e8/797491] process > host1 (128) [ 92%] 118 of 128
+[be/f15dac] process > host2 (82)  [  0%] 0 of 118
+
+executor >  slurm (221)
+[e8/797491] process > host1 (128) [ 92%] 118 of 128
+[8e/387e22] process > host2 (93)  [  0%] 0 of 118
+
+executor >  slurm (229)
+[e8/797491] process > host1 (128) [ 92%] 118 of 128
+[79/d79db4] process > host2 (101) [  0%] 0 of 118
+
+executor >  slurm (234)
+[e8/797491] process > host1 (128) [ 92%] 118 of 128
+[5f/9c51eb] process > host2 (106) [  0%] 0 of 118
+
+executor >  slurm (239)
+[e8/797491] process > host1 (128) [ 92%] 118 of 128
+[66/368de2] process > host2 (112) [  0%] 0 of 118
+
+executor >  slurm (245)
+[e8/797491] process > host1 (128) [ 92%] 118 of 128
+[11/3aa911] process > host2 (117) [  0%] 0 of 118
+
+executor >  slurm (246)
+[2f/d0c652] process > host1 (57)  [ 97%] 124 of 128
+[62/db8aa6] process > host2 (118) [  0%] 0 of 123
+
+executor >  slurm (252)
+[c0/2be9f0] process > host1 (68)  [100%] 128 of 128 ✔
+[4b/3c6a58] process > host2 (9)   [  7%] 9 of 128
+
+executor >  slurm (256)
+[c0/2be9f0] process > host1 (68)  [100%] 128 of 128 ✔
+[49/0e3822] process > host2 (35)  [ 27%] 35 of 128
+
+executor >  slurm (256)
+[c0/2be9f0] process > host1 (68)  [100%] 128 of 128 ✔
+[82/9a0e12] process > host2 (48)  [ 38%] 48 of 128
+
+executor >  slurm (256)
+[c0/2be9f0] process > host1 (68)  [100%] 128 of 128 ✔
+[5a/9be0f5] process > host2 (78)  [ 61%] 78 of 128
+
+executor >  slurm (256)
+[c0/2be9f0] process > host1 (68)  [100%] 128 of 128 ✔
+[31/4dc7fa] process > host2 (99)  [ 73%] 94 of 128
+
+executor >  slurm (256)
+[c0/2be9f0] process > host1 (68)  [100%] 128 of 128 ✔
+[62/db8aa6] process > host2 (118) [ 83%] 106 of 128
+
+executor >  slurm (256)
+[c0/2be9f0] process > host1 (68)  [100%] 128 of 128 ✔
+[89/494adf] process > host2 (109) [ 91%] 117 of 128
+
+executor >  slurm (256)
+[c0/2be9f0] process > host1 (68)  [100%] 128 of 128 ✔
+[9c/63b530] process > host2 (128) [100%] 128 of 128 ✔
+Hostname: compute-7-0
+compute-7-1
+compute-7-4
+compute-7-3
+
+
++ echo -e 'Done processing * 128 * tasks, on * 128 * cores'
++ for line in '{1..10}'
+++ sed -n 8p
+++ cat cores.txt
++ cores=256
++ tasks=256
++ tee -a nf.nf/logs/bioinfoScaling_processes-1_host.txt nf.nf/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 256,256,
+256,256,+ sed s/CORES/256/ nextflow.config.tmpl
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-1_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_process.nf -c nf.nf/logs/confs/nextflow.config.256 -profile cluster --ntasks=256 --log=nf.nf/hosts/host1_tasks256.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_process.nf` [tender_jones] - revision: b2ae3954f9
+[-        ] process > host1 -
+
+[-        ] process > host1 [  0%] 0 of 95
+
+executor >  slurm (1)
+[80/2a6163] process > host1 (4) [  0%] 0 of 188
+
+executor >  slurm (3)
+[d4/2b119a] process > host1 (5) [  0%] 0 of 256
+
+executor >  slurm (7)
+[ae/9d235a] process > host1 (7) [  0%] 0 of 256
+
+executor >  slurm (11)
+[41/9e32a0] process > host1 (10) [  0%] 0 of 256
+
+executor >  slurm (16)
+[a5/7f1ec7] process > host1 (22) [  0%] 0 of 256
+
+executor >  slurm (22)
+[4b/7a7ddc] process > host1 (26) [  0%] 0 of 256
+
+executor >  slurm (26)
+[89/142db5] process > host1 (16) [  0%] 0 of 256
+
+executor >  slurm (30)
+[7b/2c9c3c] process > host1 (30) [  0%] 0 of 256
+
+executor >  slurm (38)
+[83/75c72e] process > host1 (37) [  0%] 0 of 256
+
+executor >  slurm (46)
+[b7/449324] process > host1 (46) [  0%] 0 of 256
+
+executor >  slurm (52)
+[14/b24eb1] process > host1 (52) [  0%] 0 of 256
+
+executor >  slurm (63)
+[b2/4c7ff1] process > host1 (62) [  0%] 0 of 256
+
+executor >  slurm (73)
+[45/8e2355] process > host1 (73) [  0%] 0 of 256
+
+executor >  slurm (84)
+[25/de352e] process > host1 (81) [  0%] 0 of 256
+
+executor >  slurm (94)
+[31/d8aca4] process > host1 (95) [  0%] 0 of 256
+
+executor >  slurm (99)
+[76/17e448] process > host1 (101) [  0%] 0 of 256
+
+executor >  slurm (104)
+[63/7072c5] process > host1 (105) [  0%] 0 of 256
+
+executor >  slurm (110)
+[db/6b9c23] process > host1 (110) [  0%] 0 of 256
+
+executor >  slurm (122)
+[8f/3ddd15] process > host1 (114) [  0%] 0 of 256
+
+executor >  slurm (133)
+[8e/987604] process > host1 (133) [  0%] 0 of 256
+
+executor >  slurm (141)
+[3c/9efa18] process > host1 (141) [  0%] 0 of 256
+
+executor >  slurm (145)
+[d4/2b119a] process > host1 (5)   [  1%] 3 of 256
+
+executor >  slurm (146)
+[1b/f456b8] process > host1 (9)   [  5%] 14 of 256
+
+executor >  slurm (150)
+[17/d207fc] process > host1 (20)  [  7%] 19 of 256
+
+executor >  slurm (155)
+[6b/e75e1e] process > host1 (150) [ 12%] 31 of 256
+
+executor >  slurm (159)
+[cd/a48eee] process > host1 (44)  [ 16%] 42 of 256
+
+executor >  slurm (162)
+[5c/68ffc7] process > host1 (162) [ 25%] 63 of 256
+
+executor >  slurm (165)
+[3e/9549fd] process > host1 (82)  [ 32%] 81 of 256
+
+executor >  slurm (170)
+[cc/9c2779] process > host1 (103) [ 38%] 96 of 256
+
+executor >  slurm (174)
+[13/82677f] process > host1 (127) [ 44%] 113 of 256
+
+executor >  slurm (178)
+[b8/4f612e] process > host1 (131) [ 51%] 130 of 256
+
+executor >  slurm (184)
+[93/d0e343] process > host1 (184) [ 52%] 134 of 256
+
+executor >  slurm (192)
+[a2/7582eb] process > host1 (191) [ 52%] 134 of 256
+
+executor >  slurm (196)
+[b4/adb968] process > host1 (197) [ 52%] 134 of 256
+
+executor >  slurm (202)
+[aa/7cd3e7] process > host1 (192) [ 52%] 134 of 256
+
+executor >  slurm (207)
+[3e/509a1a] process > host1 (208) [ 52%] 134 of 256
+
+executor >  slurm (214)
+[fe/ba32a5] process > host1 (228) [ 52%] 134 of 256
+
+executor >  slurm (224)
+[28/f70305] process > host1 (231) [ 52%] 134 of 256
+
+executor >  slurm (237)
+[49/4372e4] process > host1 (242) [ 52%] 134 of 256
+
+executor >  slurm (244)
+[f5/41b879] process > host1 (252) [ 52%] 134 of 256
+
+executor >  slurm (256)
+[96/e1f9ba] process > host1 (256) [ 52%] 134 of 256
+
+executor >  slurm (256)
+[27/efed44] process > host1 (119) [ 54%] 139 of 256
+
+executor >  slurm (256)
+[f9/192bf4] process > host1 (166) [ 65%] 166 of 256
+
+executor >  slurm (256)
+[a0/2c3c18] process > host1 (179) [ 69%] 177 of 256
+
+executor >  slurm (256)
+[c1/464976] process > host1 (199) [ 77%] 198 of 256
+
+executor >  slurm (256)
+[35/62f6b4] process > host1 (210) [ 82%] 210 of 256
+
+executor >  slurm (256)
+[79/a634e9] process > host1 (241) [ 94%] 241 of 256
+
+executor >  slurm (256)
+[96/e1f9ba] process > host1 (256) [100%] 256 of 256 ✔
+Hostname: compute-7-0
+compute-7-1
+compute-7-4
+compute-7-3
+
+
+executor >  slurm (256)
+[96/e1f9ba] process > host1 (256) [100%] 256 of 256 ✔
+Hostname: compute-7-0
+compute-7-1
+compute-7-4
+compute-7-3
+
+
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-2_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_workflow.nf -c nf.nf/logs/confs/nextflow.config.256 -profile cluster --ntasks=256 --log=nf.nf/hosts/host2_tasks256.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_workflow.nf` [agitated_volhard] - revision: 84abddf17c
+[-        ] process > host1 -
+[-        ] process > host2 -
+
+executor >  slurm (1)
+[2c/0ac7f4] process > host1 (2) [  0%] 0 of 110
+[-        ] process > host2     -
+
+executor >  slurm (2)
+[e9/812775] process > host1 (5) [  0%] 0 of 256
+[-        ] process > host2     -
+
+executor >  slurm (6)
+[5b/facc0e] process > host1 (6) [  0%] 0 of 256
+[-        ] process > host2     -
+
+executor >  slurm (10)
+[d3/9593f9] process > host1 (10) [  0%] 0 of 256
+[-        ] process > host2      -
+
+executor >  slurm (15)
+[6f/e2b510] process > host1 (15) [  0%] 0 of 256
+[-        ] process > host2      -
+
+executor >  slurm (20)
+[dd/dcf654] process > host1 (20) [  0%] 0 of 256
+[-        ] process > host2      -
+
+executor >  slurm (25)
+[c6/d55e0b] process > host1 (26) [  0%] 0 of 256
+[-        ] process > host2      -
+
+executor >  slurm (30)
+[c6/e2306c] process > host1 (29) [  0%] 0 of 256
+[-        ] process > host2      -
+
+executor >  slurm (38)
+[9e/e529b6] process > host1 (48) [  0%] 0 of 256
+[-        ] process > host2      -
+
+executor >  slurm (47)
+[43/e7dd78] process > host1 (38) [  0%] 0 of 256
+[-        ] process > host2      -
+
+executor >  slurm (56)
+[65/8fac2d] process > host1 (56) [  0%] 0 of 256
+[-        ] process > host2      -
+
+executor >  slurm (67)
+[ae/108ce9] process > host1 (69) [  0%] 0 of 256
+[-        ] process > host2      -
+
+executor >  slurm (76)
+[72/61eee0] process > host1 (76) [  0%] 0 of 256
+[-        ] process > host2      -
+
+executor >  slurm (80)
+[66/fa84e9] process > host1 (82) [  0%] 0 of 256
+[-        ] process > host2      -
+
+executor >  slurm (91)
+[a9/949953] process > host1 (91) [  0%] 0 of 256
+[-        ] process > host2      -
+
+executor >  slurm (102)
+[8b/e97b9e] process > host1 (100) [  0%] 0 of 256
+[-        ] process > host2       -
+
+executor >  slurm (114)
+[ba/2d790e] process > host1 (124) [  0%] 0 of 256
+[-        ] process > host2       -
+
+executor >  slurm (122)
+[da/81b569] process > host1 (115) [  0%] 0 of 256
+[-        ] process > host2       -
+
+executor >  slurm (133)
+[bf/ab299e] process > host1 (142) [  0%] 0 of 256
+[-        ] process > host2       -
+
+executor >  slurm (141)
+[3d/a76dd3] process > host1 (139) [  0%] 0 of 256
+[-        ] process > host2       -
+
+executor >  slurm (154)
+[1f/e8c5c8] process > host1 (155) [  0%] 0 of 256
+[-        ] process > host2       -
+
+executor >  slurm (159)
+[56/b70ea9] process > host1 (156) [  0%] 0 of 256
+[-        ] process > host2       [  0%] 0 of 1
+
+executor >  slurm (161)
+[1c/cc2e61] process > host1 (150) [  3%] 8 of 256
+[-        ] process > host2       [  0%] 0 of 8
+
+executor >  slurm (164)
+[f7/abc56e] process > host1 (19)  [  8%] 21 of 256
+[-        ] process > host2       [  0%] 0 of 21
+
+executor >  slurm (167)
+[30/2d445d] process > host1 (47)  [ 19%] 48 of 256
+[-        ] process > host2       [  0%] 0 of 48
+
+executor >  slurm (171)
+[c1/af648b] process > host1 (179) [ 21%] 55 of 256
+[-        ] process > host2       [  0%] 0 of 55
+
+executor >  slurm (174)
+[36/8a60c6] process > host1 (84)  [ 27%] 68 of 256
+[-        ] process > host2       [  0%] 0 of 68
+
+executor >  slurm (178)
+[91/602169] process > host1 (99)  [ 32%] 81 of 256
+[-        ] process > host2       [  0%] 0 of 81
+
+executor >  slurm (182)
+[83/ba4199] process > host1 (110) [ 36%] 92 of 256
+[-        ] process > host2       [  0%] 0 of 92
+
+executor >  slurm (186)
+[57/1bef06] process > host1 (138) [ 42%] 108 of 256
+[-        ] process > host2       [  0%] 0 of 108
+
+executor >  slurm (190)
+[e4/375552] process > host1 (206) [ 46%] 119 of 256
+[-        ] process > host2       [  0%] 0 of 119
+
+executor >  slurm (195)
+[a5/5367e4] process > host1 (203) [ 46%] 119 of 256
+[-        ] process > host2       [  0%] 0 of 119
+
+executor >  slurm (200)
+[99/d23e54] process > host1 (198) [ 46%] 119 of 256
+[-        ] process > host2       [  0%] 0 of 119
+
+executor >  slurm (205)
+[14/2df5a9] process > host1 (190) [ 46%] 119 of 256
+[-        ] process > host2       [  0%] 0 of 119
+
+executor >  slurm (211)
+[3b/28075a] process > host1 (224) [ 46%] 119 of 256
+[-        ] process > host2       [  0%] 0 of 119
+
+executor >  slurm (222)
+[d7/456b41] process > host1 (228) [ 46%] 119 of 256
+[-        ] process > host2       [  0%] 0 of 119
+
+executor >  slurm (227)
+[ab/97a4c0] process > host1 (226) [ 46%] 119 of 256
+[-        ] process > host2       [  0%] 0 of 119
+
+executor >  slurm (232)
+[e2/10cd86] process > host1 (232) [ 46%] 119 of 256
+[-        ] process > host2       [  0%] 0 of 119
+
+executor >  slurm (239)
+[91/482054] process > host1 (244) [ 46%] 119 of 256
+[-        ] process > host2       [  0%] 0 of 119
+
+executor >  slurm (244)
+[c1/103df5] process > host1 (242) [ 46%] 119 of 256
+[-        ] process > host2       [  0%] 0 of 119
+
+executor >  slurm (249)
+[98/17084b] process > host1 (236) [ 46%] 119 of 256
+[-        ] process > host2       [  0%] 0 of 119
+
+executor >  slurm (255)
+[84/47b044] process > host1 (251) [ 46%] 119 of 256
+[-        ] process > host2       [  0%] 0 of 119
+
+executor >  slurm (261)
+[48/996207] process > host1 (256) [ 46%] 119 of 256
+[1f/e145f6] process > host2 (6)   [  0%] 0 of 119
+
+executor >  slurm (271)
+[48/996207] process > host1 (256) [ 46%] 119 of 256
+[f5/db7ced] process > host2 (15)  [  0%] 0 of 119
+
+executor >  slurm (280)
+[48/996207] process > host1 (256) [ 46%] 119 of 256
+[f0/11dfff] process > host2 (24)  [  0%] 0 of 119
+
+executor >  slurm (284)
+[c5/7f3cf0] process > host1 (58)  [ 48%] 122 of 256
+[e3/1e21b2] process > host2 (28)  [  0%] 0 of 122
+
+executor >  slurm (287)
+[ca/d461bf] process > host1 (127) [ 56%] 144 of 256
+[c9/6bd09a] process > host2 (31)  [  0%] 0 of 144
+
+executor >  slurm (291)
+[57/5f7ee5] process > host1 (149) [ 64%] 163 of 256
+[a2/e062d1] process > host2 (35)  [  0%] 0 of 161
+
+executor >  slurm (294)
+[09/90f7ac] process > host1 (201) [ 77%] 198 of 256
+[64/fda7f5] process > host2 (38)  [  0%] 0 of 198
+
+executor >  slurm (299)
+[02/6bae5f] process > host1 (214) [ 84%] 214 of 256
+[3d/a37a66] process > host2 (43)  [  0%] 0 of 214
+
+executor >  slurm (303)
+[e2/10cd86] process > host1 (232) [ 91%] 232 of 256
+[b5/bb14ee] process > host2 (47)  [  0%] 0 of 231
+
+executor >  slurm (307)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[1c/bab943] process > host2 (2)   [  1%] 2 of 256
+
+executor >  slurm (312)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[a6/ec885d] process > host2 (21)  [  8%] 20 of 256
+
+executor >  slurm (317)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[02/0a7885] process > host2 (61)  [ 11%] 27 of 256
+
+executor >  slurm (328)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[ec/c70d85] process > host2 (72)  [ 11%] 27 of 256
+
+executor >  slurm (340)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[9c/24b5a2] process > host2 (84)  [ 11%] 27 of 256
+
+executor >  slurm (354)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[15/2df11d] process > host2 (97)  [ 11%] 27 of 256
+
+executor >  slurm (368)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[3b/cbe4ee] process > host2 (111) [ 11%] 27 of 256
+
+executor >  slurm (379)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[4a/e8ff68] process > host2 (123) [ 11%] 27 of 256
+
+executor >  slurm (395)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[25/dc452f] process > host2 (139) [ 11%] 27 of 256
+
+executor >  slurm (403)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[54/0a5163] process > host2 (147) [ 11%] 27 of 256
+
+executor >  slurm (417)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[4e/9866c1] process > host2 (161) [ 11%] 27 of 256
+
+executor >  slurm (430)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[3b/99a17d] process > host2 (174) [ 11%] 27 of 256
+
+executor >  slurm (442)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[a5/0685a1] process > host2 (186) [ 11%] 27 of 256
+
+executor >  slurm (455)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[4f/0d4ab1] process > host2 (199) [ 11%] 27 of 256
+
+executor >  slurm (466)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[54/0846a9] process > host2 (210) [ 11%] 27 of 256
+
+executor >  slurm (481)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[52/aa4afc] process > host2 (225) [ 11%] 27 of 256
+
+executor >  slurm (496)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[4e/070610] process > host2 (240) [ 11%] 27 of 256
+
+executor >  slurm (507)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[d0/28c87c] process > host2 (251) [ 11%] 27 of 256
+
+executor >  slurm (512)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[78/42cf12] process > host2 (29)  [ 11%] 29 of 256
+
+executor >  slurm (512)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[75/b320ac] process > host2 (48)  [ 19%] 48 of 256
+
+executor >  slurm (512)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[7b/a7e68d] process > host2 (67)  [ 26%] 67 of 256
+
+executor >  slurm (512)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[15/2df11d] process > host2 (97)  [ 34%] 86 of 256
+
+executor >  slurm (512)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[13/0c9882] process > host2 (148) [ 48%] 124 of 256
+
+executor >  slurm (512)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[2f/014c6b] process > host2 (200) [ 55%] 141 of 256
+
+executor >  slurm (512)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[99/622037] process > host2 (256) [ 59%] 150 of 256
+
+executor >  slurm (512)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[0c/8ff056] process > host2 (75)  [ 59%] 152 of 256
+
+executor >  slurm (512)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[c0/c9d025] process > host2 (142) [ 66%] 170 of 256
+
+executor >  slurm (512)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[6e/fcdf84] process > host2 (176) [ 73%] 187 of 256
+
+executor >  slurm (512)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[1c/5c3f30] process > host2 (192) [ 78%] 200 of 256
+
+executor >  slurm (512)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[61/39ec0d] process > host2 (207) [ 83%] 213 of 256
+
+executor >  slurm (512)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[4d/45026c] process > host2 (222) [ 89%] 227 of 256
+
+executor >  slurm (512)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[b5/1dc94e] process > host2 (241) [ 95%] 242 of 256
+
+executor >  slurm (512)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[39/a226c1] process > host2 (253) [ 98%] 251 of 256
+
+executor >  slurm (512)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[bc/31689b] process > host2 (218) [100%] 255 of 256
+
+executor >  slurm (512)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[74/ead67d] process > host2 (226) [100%] 256 of 256 ✔
+
+executor >  slurm (512)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[74/ead67d] process > host2 (226) [100%] 256 of 256 ✔
+Hostname: compute-7-0
+compute-7-1
+compute-7-4
+compute-7-3
+
+
+executor >  slurm (512)
+[48/996207] process > host1 (256) [100%] 256 of 256 ✔
+[74/ead67d] process > host2 (226) [100%] 256 of 256 ✔
+Hostname: compute-7-0
+compute-7-1
+compute-7-4
+compute-7-3
+
+
++ echo -e 'Done processing * 256 * tasks, on * 256 * cores'
++ for line in '{1..10}'
+++ sed -n 9p
+++ cat cores.txt
++ cores=512
++ tasks=512
++ tee -a nf.nf/logs/bioinfoScaling_processes-1_host.txt nf.nf/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 512,512,
+512,512,+ sed s/CORES/512/ nextflow.config.tmpl
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-1_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_process.nf -c nf.nf/logs/confs/nextflow.config.512 -profile cluster --ntasks=512 --log=nf.nf/hosts/host1_tasks512.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_process.nf` [mighty_panini] - revision: b2ae3954f9
+[-        ] process > host1 -
+
+[-        ] process > host1 [  0%] 0 of 48
+
+executor >  slurm (1)
+[e4/9bcc9b] process > host1 (3) [  0%] 0 of 138
+
+executor >  slurm (2)
+[94/be8840] process > host1 (4) [  0%] 0 of 243
+
+executor >  slurm (3)
+[55/d7c076] process > host1 (1) [  0%] 0 of 370
+
+executor >  slurm (4)
+[52/229834] process > host1 (5) [  0%] 0 of 460
+
+executor >  slurm (9)
+[c0/1e14ea] process > host1 (11) [  0%] 0 of 512
+
+executor >  slurm (13)
+[72/07d259] process > host1 (14) [  0%] 0 of 512
+
+executor >  slurm (20)
+[41/bc459b] process > host1 (21) [  0%] 0 of 512
+
+executor >  slurm (25)
+[7f/e8b579] process > host1 (16) [  0%] 0 of 512
+
+executor >  slurm (31)
+[cd/916892] process > host1 (31) [  0%] 0 of 512
+
+executor >  slurm (40)
+[e7/8eb6d6] process > host1 (41) [  0%] 0 of 512
+
+executor >  slurm (50)
+[7b/65ba33] process > host1 (51) [  0%] 0 of 512
+
+executor >  slurm (60)
+[8e/cf6a17] process > host1 (60) [  0%] 0 of 512
+
+executor >  slurm (72)
+[f6/69f3e1] process > host1 (72) [  0%] 0 of 512
+
+executor >  slurm (78)
+[6c/603686] process > host1 (77) [  0%] 0 of 512
+
+executor >  slurm (83)
+[e2/1eb285] process > host1 (86) [  0%] 0 of 512
+
+executor >  slurm (89)
+[a1/a58983] process > host1 (92) [  0%] 0 of 512
+
+executor >  slurm (99)
+[5a/85aa9a] process > host1 (99) [  0%] 0 of 512
+
+executor >  slurm (106)
+[05/720255] process > host1 (108) [  0%] 0 of 512
+
+executor >  slurm (117)
+[52/6744b3] process > host1 (118) [  0%] 0 of 512
+
+executor >  slurm (127)
+[ea/692507] process > host1 (129) [  0%] 0 of 512
+
+executor >  slurm (132)
+[70/e00a11] process > host1 (132) [  0%] 0 of 512
+
+executor >  slurm (134)
+[c0/1e14ea] process > host1 (11)  [  2%] 9 of 512
+
+executor >  slurm (137)
+[ce/94327e] process > host1 (40)  [  7%] 37 of 512
+
+executor >  slurm (141)
+[de/d6a5ab] process > host1 (53)  [ 10%] 53 of 512
+
+executor >  slurm (145)
+[1f/0d0398] process > host1 (67)  [ 12%] 61 of 512
+
+executor >  slurm (149)
+[5e/e09c77] process > host1 (97)  [ 15%] 77 of 512
+
+executor >  slurm (153)
+[74/527478] process > host1 (153) [ 17%] 86 of 512
+
+executor >  slurm (157)
+[2d/cdadd4] process > host1 (157) [ 17%] 86 of 512
+
+executor >  slurm (163)
+[b2/d8d4f0] process > host1 (160) [ 17%] 86 of 512
+
+executor >  slurm (170)
+[69/3b88ca] process > host1 (158) [ 17%] 86 of 512
+
+executor >  slurm (177)
+[e2/d8f265] process > host1 (177) [ 17%] 86 of 512
+
+executor >  slurm (187)
+[e5/790a1c] process > host1 (179) [ 17%] 86 of 512
+
+executor >  slurm (199)
+[43/90bcba] process > host1 (205) [ 17%] 86 of 512
+
+executor >  slurm (208)
+[08/f095a4] process > host1 (210) [ 17%] 86 of 512
+
+executor >  slurm (222)
+[e4/1f7694] process > host1 (226) [ 17%] 86 of 512
+
+executor >  slurm (235)
+[fc/d443f3] process > host1 (224) [ 17%] 86 of 512
+
+executor >  slurm (245)
+[7f/fb339b] process > host1 (253) [ 17%] 86 of 512
+
+executor >  slurm (255)
+[34/3f0a59] process > host1 (246) [ 17%] 86 of 512
+
+executor >  slurm (267)
+[e4/04644c] process > host1 (283) [ 17%] 86 of 512
+
+executor >  slurm (281)
+[d4/3f774b] process > host1 (268) [ 17%] 86 of 512
+
+executor >  slurm (293)
+[9a/ac4ae3] process > host1 (307) [ 17%] 86 of 512
+
+executor >  slurm (308)
+[fc/00687f] process > host1 (292) [ 17%] 86 of 512
+
+executor >  slurm (320)
+[a2/71dc96] process > host1 (331) [ 17%] 86 of 512
+
+executor >  slurm (334)
+[34/ae8d77] process > host1 (320) [ 17%] 86 of 512
+
+executor >  slurm (346)
+[ab/54bc5d] process > host1 (349) [ 17%] 86 of 512
+
+executor >  slurm (355)
+[ba/7be0e4] process > host1 (88)  [ 20%] 101 of 512
+
+executor >  slurm (363)
+[92/fa28a6] process > host1 (123) [ 25%] 127 of 512
+
+executor >  slurm (369)
+[7c/39ed8e] process > host1 (369) [ 30%] 155 of 512
+
+executor >  slurm (373)
+[e5/790a1c] process > host1 (179) [ 37%] 187 of 512
+
+executor >  slurm (378)
+[2c/a26b41] process > host1 (211) [ 41%] 209 of 512
+
+executor >  slurm (382)
+[48/eacb0d] process > host1 (229) [ 45%] 228 of 512
+
+executor >  slurm (387)
+[8a/97ce82] process > host1 (310) [ 50%] 255 of 512
+
+executor >  slurm (396)
+[84/02cef5] process > host1 (392) [ 53%] 270 of 512
+
+executor >  slurm (411)
+[c4/d928e7] process > host1 (413) [ 53%] 270 of 512
+
+executor >  slurm (422)
+[35/37079e] process > host1 (422) [ 53%] 270 of 512
+
+executor >  slurm (436)
+[fd/02e394] process > host1 (436) [ 53%] 270 of 512
+
+executor >  slurm (451)
+[5b/e8eec1] process > host1 (448) [ 53%] 270 of 512
+
+executor >  slurm (465)
+[52/72621b] process > host1 (489) [ 53%] 270 of 512
+
+executor >  slurm (476)
+[ad/b36b2a] process > host1 (472) [ 53%] 270 of 512
+
+executor >  slurm (490)
+[c1/13c130] process > host1 (461) [ 53%] 270 of 512
+
+executor >  slurm (504)
+[e9/2cbeac] process > host1 (497) [ 53%] 270 of 512
+
+executor >  slurm (512)
+[19/a6f345] process > host1 (512) [ 53%] 270 of 512
+
+executor >  slurm (512)
+[06/f4cc73] process > host1 (250) [ 55%] 284 of 512
+
+executor >  slurm (512)
+[43/d64d38] process > host1 (270) [ 59%] 301 of 512
+
+executor >  slurm (512)
+[11/82d7ae] process > host1 (284) [ 62%] 317 of 512
+
+executor >  slurm (512)
+[39/078c5d] process > host1 (319) [ 65%] 333 of 512
+
+executor >  slurm (512)
+[9b/dd958c] process > host1 (346) [ 68%] 346 of 512
+
+executor >  slurm (512)
+[49/706f29] process > host1 (353) [ 70%] 359 of 512
+
+executor >  slurm (512)
+[6f/60296a] process > host1 (397) [ 72%] 370 of 512
+
+executor >  slurm (512)
+[76/7ca637] process > host1 (381) [ 75%] 382 of 512
+
+executor >  slurm (512)
+[7d/d77ed4] process > host1 (384) [ 77%] 393 of 512
+
+executor >  slurm (512)
+[ae/1327f7] process > host1 (426) [ 79%] 405 of 512
+
+executor >  slurm (512)
+[f6/d8c303] process > host1 (420) [ 81%] 417 of 512
+
+executor >  slurm (512)
+[6d/7bcfcb] process > host1 (455) [ 86%] 441 of 512
+
+executor >  slurm (512)
+[17/a4df05] process > host1 (482) [ 93%] 478 of 512
+
+executor >  slurm (512)
+[e1/4ca8d7] process > host1 (511) [ 96%] 491 of 512
+
+executor >  slurm (512)
+[19/a6f345] process > host1 (512) [ 96%] 492 of 512
+
+executor >  slurm (512)
+[ba/3205d0] process > host1 (239) [ 96%] 494 of 512
+
+executor >  slurm (512)
+[ca/37f8cc] process > host1 (507) [100%] 512 of 512 ✔
+
+executor >  slurm (512)
+[ca/37f8cc] process > host1 (507) [100%] 512 of 512 ✔
+Hostname: compute-7-0
+compute-7-1
+compute-7-4
+compute-7-3
+
+
+executor >  slurm (512)
+[ca/37f8cc] process > host1 (507) [100%] 512 of 512 ✔
+Hostname: compute-7-0
+compute-7-1
+compute-7-4
+compute-7-3
+
+
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-2_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_workflow.nf -c nf.nf/logs/confs/nextflow.config.512 -profile cluster --ntasks=512 --log=nf.nf/hosts/host2_tasks512.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_workflow.nf` [insane_knuth] - revision: 84abddf17c
+[-        ] process > host1 -
+[-        ] process > host2 -
+
+[-        ] process > host1 [  0%] 0 of 85
+[-        ] process > host2 -
+
+[-        ] process > host1 [  0%] 0 of 203
+[-        ] process > host2 -
+
+[-        ] process > host1 [  0%] 0 of 307
+[-        ] process > host2 -
+
+executor >  slurm (1)
+[77/423e1b] process > host1 (4) [  0%] 0 of 416
+[-        ] process > host2     -
+
+executor >  slurm (4)
+[e0/26193f] process > host1 (1) [  0%] 0 of 512
+[-        ] process > host2     -
+
+executor >  slurm (8)
+[f0/93a588] process > host1 (56) [  0%] 0 of 512
+[-        ] process > host2      -
+
+executor >  slurm (12)
+[db/00a147] process > host1 (60) [  0%] 0 of 512
+[-        ] process > host2      -
+
+executor >  slurm (16)
+[d4/5ee060] process > host1 (14) [  0%] 0 of 512
+[-        ] process > host2      -
+
+executor >  slurm (21)
+[04/e0fb66] process > host1 (64) [  0%] 0 of 512
+[-        ] process > host2      -
+
+executor >  slurm (26)
+[53/f01b94] process > host1 (18) [  0%] 0 of 512
+[-        ] process > host2      -
+
+executor >  slurm (30)
+[95/e187e6] process > host1 (21) [  0%] 0 of 512
+[-        ] process > host2      -
+
+executor >  slurm (35)
+[24/75ac1c] process > host1 (27) [  0%] 0 of 512
+[-        ] process > host2      -
+
+executor >  slurm (40)
+[3b/cd4233] process > host1 (32) [  0%] 0 of 512
+[-        ] process > host2      -
+
+executor >  slurm (44)
+[20/593a46] process > host1 (68) [  0%] 0 of 512
+[-        ] process > host2      -
+
+executor >  slurm (53)
+[09/c5137a] process > host1 (72) [  0%] 0 of 512
+[-        ] process > host2      -
+
+executor >  slurm (63)
+[2b/1483f1] process > host1 (42) [  0%] 0 of 512
+[-        ] process > host2      -
+
+executor >  slurm (68)
+[8c/c521b0] process > host1 (46) [  0%] 0 of 512
+[-        ] process > host2      -
+
+executor >  slurm (76)
+[c1/869dc0] process > host1 (55) [  0%] 0 of 512
+[-        ] process > host2      -
+
+executor >  slurm (87)
+[83/c0ae81] process > host1 (99) [  0%] 0 of 512
+[-        ] process > host2      -
+
+executor >  slurm (95)
+[3f/8ce285] process > host1 (108) [  0%] 0 of 512
+[-        ] process > host2       -
+
+executor >  slurm (96)
+[8c/3311e2] process > host1 (89)  [  0%] 0 of 512
+[-        ] process > host2       -
+
+executor >  slurm (97)
+[f0/e106e5] process > host1 (127) [  0%] 0 of 512
+[-        ] process > host2       [  0%] 0 of 1
+
+executor >  slurm (99)
+[43/fcf33d] process > host1 (57)  [  1%] 7 of 512
+[-        ] process > host2       [  0%] 0 of 8
+
+executor >  slurm (102)
+[28/d23e30] process > host1 (63)  [  4%] 20 of 512
+[-        ] process > host2       [  0%] 0 of 20
+
+executor >  slurm (105)
+[9d/4c029c] process > host1 (67)  [  9%] 45 of 512
+[-        ] process > host2       [  0%] 0 of 45
+
+executor >  slurm (108)
+[6b/f80376] process > host1 (97)  [ 11%] 55 of 512
+[-        ] process > host2       [  0%] 0 of 55
+
+executor >  slurm (111)
+[8c/c521b0] process > host1 (46)  [ 13%] 67 of 512
+[-        ] process > host2       [  0%] 0 of 67
+
+executor >  slurm (115)
+[c2/0829ae] process > host1 (85)  [ 16%] 83 of 512
+[-        ] process > host2       [  0%] 0 of 83
+
+executor >  slurm (119)
+[b0/e29df6] process > host1 (112) [ 18%] 94 of 512
+[-        ] process > host2       [  0%] 0 of 94
+
+executor >  slurm (125)
+[ee/47eaa8] process > host1 (122) [ 18%] 94 of 512
+[-        ] process > host2       [  0%] 0 of 94
+
+executor >  slurm (130)
+[1e/2ac956] process > host1 (141) [ 18%] 94 of 512
+[-        ] process > host2       [  0%] 0 of 94
+
+executor >  slurm (137)
+[56/c52667] process > host1 (144) [ 18%] 94 of 512
+[-        ] process > host2       [  0%] 0 of 94
+
+executor >  slurm (140)
+[35/03a309] process > host1 (130) [ 18%] 94 of 512
+[-        ] process > host2       [  0%] 0 of 94
+
+executor >  slurm (145)
+[e3/3e39b6] process > host1 (142) [ 18%] 94 of 512
+[-        ] process > host2       [  0%] 0 of 94
+
+executor >  slurm (152)
+[ce/1e784f] process > host1 (154) [ 18%] 94 of 512
+[-        ] process > host2       [  0%] 0 of 94
+
+executor >  slurm (159)
+[8e/3723ae] process > host1 (156) [ 18%] 94 of 512
+[-        ] process > host2       [  0%] 0 of 94
+
+executor >  slurm (169)
+[c9/84a518] process > host1 (166) [ 18%] 94 of 512
+[-        ] process > host2       [  0%] 0 of 94
+
+executor >  slurm (178)
+[c5/40046c] process > host1 (176) [ 18%] 94 of 512
+[-        ] process > host2       [  0%] 0 of 94
+
+executor >  slurm (190)
+[20/b05e18] process > host1 (190) [ 18%] 94 of 512
+[-        ] process > host2       [  0%] 0 of 94
+
+executor >  slurm (204)
+[0f/f14d18] process > host1 (203) [ 18%] 94 of 512
+[-        ] process > host2       [  0%] 0 of 94
+
+executor >  slurm (218)
+[14/379d2f] process > host1 (219) [ 18%] 94 of 512
+[-        ] process > host2       [  0%] 0 of 94
+
+executor >  slurm (229)
+[00/84ca01] process > host1 (238) [ 18%] 94 of 512
+[-        ] process > host2       [  0%] 0 of 94
+
+executor >  slurm (242)
+[0a/afe8e2] process > host1 (235) [ 18%] 94 of 512
+[-        ] process > host2       [  0%] 0 of 94
+
+executor >  slurm (255)
+[6c/e213a2] process > host1 (258) [ 18%] 94 of 512
+[-        ] process > host2       [  0%] 0 of 94
+
+executor >  slurm (268)
+[76/6e45a3] process > host1 (269) [ 18%] 94 of 512
+[-        ] process > host2       [  0%] 0 of 94
+
+executor >  slurm (281)
+[f0/e106e5] process > host1 (127) [ 19%] 97 of 512
+[-        ] process > host2       [  0%] 0 of 97
+
+executor >  slurm (285)
+[1b/d3a6d0] process > host1 (270) [ 23%] 117 of 512
+[-        ] process > host2       [  0%] 0 of 117
+
+executor >  slurm (288)
+[31/62317b] process > host1 (128) [ 25%] 128 of 512
+[-        ] process > host2       [  0%] 0 of 128
+
+executor >  slurm (292)
+[18/411092] process > host1 (140) [ 28%] 144 of 512
+[-        ] process > host2       [  0%] 0 of 144
+
+executor >  slurm (298)
+[fd/68c5e5] process > host1 (298) [ 31%] 159 of 512
+[-        ] process > host2       [  0%] 0 of 159
+
+executor >  slurm (306)
+[c8/759f8a] process > host1 (169) [ 34%] 174 of 512
+[-        ] process > host2       [  0%] 0 of 173
+
+executor >  slurm (310)
+[20/b05e18] process > host1 (190) [ 37%] 190 of 512
+[-        ] process > host2       [  0%] 0 of 190
+
+executor >  slurm (314)
+[00/84ca01] process > host1 (238) [ 40%] 206 of 512
+[-        ] process > host2       [  0%] 0 of 206
+
+executor >  slurm (321)
+[b8/b8a358] process > host1 (321) [ 43%] 221 of 512
+[-        ] process > host2       [  0%] 0 of 221
+
+executor >  slurm (326)
+[6c/9c8b5b] process > host1 (328) [ 44%] 226 of 512
+[-        ] process > host2       [  0%] 0 of 226
+
+executor >  slurm (340)
+[56/410d37] process > host1 (341) [ 44%] 226 of 512
+[-        ] process > host2       [  0%] 0 of 226
+
+executor >  slurm (355)
+[4a/3d6034] process > host1 (326) [ 44%] 226 of 512
+[-        ] process > host2       [  0%] 0 of 226
+
+executor >  slurm (369)
+[1e/5a112b] process > host1 (369) [ 44%] 226 of 512
+[-        ] process > host2       [  0%] 0 of 226
+
+executor >  slurm (381)
+[62/0d4517] process > host1 (381) [ 44%] 226 of 512
+[-        ] process > host2       [  0%] 0 of 226
+
+executor >  slurm (395)
+[c4/c09695] process > host1 (396) [ 44%] 226 of 512
+[-        ] process > host2       [  0%] 0 of 226
+
+executor >  slurm (410)
+[22/e5d472] process > host1 (412) [ 44%] 226 of 512
+[-        ] process > host2       [  0%] 0 of 226
+
+executor >  slurm (424)
+[69/3d24e2] process > host1 (440) [ 44%] 226 of 512
+[-        ] process > host2       [  0%] 0 of 226
+
+executor >  slurm (436)
+[d8/bdad21] process > host1 (426) [ 44%] 226 of 512
+[-        ] process > host2       [  0%] 0 of 226
+
+executor >  slurm (451)
+[09/550c9d] process > host1 (441) [ 44%] 226 of 512
+[-        ] process > host2       [  0%] 0 of 226
+
+executor >  slurm (463)
+[15/540dba] process > host1 (464) [ 44%] 226 of 512
+[-        ] process > host2       [  0%] 0 of 226
+
+executor >  slurm (471)
+[60/0ba915] process > host1 (471) [ 44%] 226 of 512
+[-        ] process > host2       [  0%] 0 of 226
+
+executor >  slurm (484)
+[9c/2a41ac] process > host1 (484) [ 44%] 226 of 512
+[-        ] process > host2       [  0%] 0 of 226
+
+executor >  slurm (498)
+[65/ce25f3] process > host1 (498) [ 44%] 226 of 512
+[-        ] process > host2       [  0%] 0 of 226
+
+executor >  slurm (509)
+[db/26a4f6] process > host1 (511) [ 44%] 226 of 512
+[-        ] process > host2       [  0%] 0 of 226
+
+executor >  slurm (512)
+[b2/deac9c] process > host1 (506) [ 44%] 226 of 512
+[-        ] process > host2       [  0%] 0 of 226
+
+executor >  slurm (522)
+[f0/50c240] process > host1 (210) [ 45%] 230 of 512
+[d0/ec639f] process > host2 (10)  [  0%] 0 of 230
+
+executor >  slurm (526)
+[b7/727205] process > host1 (221) [ 47%] 241 of 512
+[4a/c10c84] process > host2 (14)  [  0%] 0 of 241
+
+executor >  slurm (530)
+[2c/1592fe] process > host1 (234) [ 50%] 254 of 512
+[5a/655aa3] process > host2 (18)  [  0%] 0 of 254
+
+executor >  slurm (536)
+[59/caf8ad] process > host1 (274) [ 52%] 267 of 512
+[5b/aa0eea] process > host2 (24)  [  0%] 0 of 267
+
+executor >  slurm (545)
+[d2/7b9857] process > host1 (293) [ 56%] 286 of 512
+[51/c1bca1] process > host2 (33)  [  0%] 0 of 285
+
+executor >  slurm (553)
+[b6/061285] process > host1 (315) [ 60%] 305 of 512
+[a5/62c8d4] process > host2 (41)  [  0%] 0 of 305
+
+executor >  slurm (564)
+[35/bd6950] process > host1 (329) [ 62%] 317 of 512
+[df/43fd8e] process > host2 (52)  [  0%] 0 of 317
+
+executor >  slurm (575)
+[56/410d37] process > host1 (341) [ 65%] 332 of 512
+[2f/6d2df9] process > host2 (63)  [  0%] 0 of 332
+
+executor >  slurm (580)
+[2c/4decd7] process > host1 (368) [ 70%] 360 of 512
+[27/c8e0ff] process > host2 (68)  [  0%] 0 of 360
+
+executor >  slurm (591)
+[1a/74b58d] process > host1 (385) [ 73%] 375 of 512
+[c8/d306f1] process > host2 (79)  [  0%] 0 of 375
+
+executor >  slurm (601)
+[73/d88a44] process > host1 (405) [ 76%] 388 of 512
+[dd/b808be] process > host2 (88)  [  0%] 0 of 388
+
+executor >  slurm (611)
+[9e/8c82b9] process > host1 (433) [ 78%] 399 of 512
+[94/f3cedf] process > host2 (99)  [  0%] 0 of 399
+
+executor >  slurm (616)
+[fb/be349f] process > host1 (487) [ 83%] 425 of 512
+[33/cf42d4] process > host2 (104) [  0%] 0 of 425
+
+executor >  slurm (624)
+[64/8e0c0d] process > host1 (503) [ 85%] 436 of 512
+[9d/6254ae] process > host2 (112) [  0%] 0 of 436
+
+executor >  slurm (637)
+[db/26a4f6] process > host1 (511) [ 86%] 439 of 512
+[96/30a1bd] process > host2 (124) [  0%] 2 of 439
+
+executor >  slurm (648)
+[db/26a4f6] process > host1 (511) [ 86%] 439 of 512
+[04/d9f05b] process > host2 (136) [  0%] 2 of 439
+
+executor >  slurm (658)
+[db/26a4f6] process > host1 (511) [ 86%] 439 of 512
+[c8/13fe46] process > host2 (146) [  0%] 2 of 439
+
+executor >  slurm (669)
+[db/26a4f6] process > host1 (511) [ 86%] 439 of 512
+[b8/c6e1f1] process > host2 (157) [  0%] 2 of 439
+
+executor >  slurm (684)
+[db/26a4f6] process > host1 (511) [ 86%] 439 of 512
+[35/0cd510] process > host2 (172) [  0%] 2 of 439
+
+executor >  slurm (700)
+[db/26a4f6] process > host1 (511) [ 86%] 439 of 512
+[c5/fad341] process > host2 (188) [  0%] 2 of 439
+
+executor >  slurm (715)
+[db/26a4f6] process > host1 (511) [ 86%] 439 of 512
+[d9/fb8d8b] process > host2 (203) [  0%] 2 of 439
+
+executor >  slurm (729)
+[db/26a4f6] process > host1 (511) [ 86%] 439 of 512
+[38/f36466] process > host2 (217) [  0%] 2 of 439
+
+executor >  slurm (742)
+[db/26a4f6] process > host1 (511) [ 86%] 439 of 512
+[98/ef232c] process > host2 (230) [  0%] 2 of 439
+
+executor >  slurm (753)
+[db/26a4f6] process > host1 (511) [ 86%] 439 of 512
+[4a/e8277e] process > host2 (241) [  0%] 2 of 439
+
+executor >  slurm (765)
+[db/26a4f6] process > host1 (511) [ 86%] 439 of 512
+[47/ce5346] process > host2 (253) [  0%] 2 of 439
+
+executor >  slurm (776)
+[0a/afe8e2] process > host1 (235) [ 87%] 444 of 512
+[d7/791e94] process > host2 (264) [  0%] 2 of 444
+
+executor >  slurm (782)
+[f2/53f78d] process > host1 (410) [ 88%] 452 of 512
+[12/79131f] process > host2 (270) [  0%] 2 of 452
+
+executor >  slurm (791)
+[a3/9d2347] process > host1 (449) [ 90%] 461 of 512
+[92/d395f1] process > host2 (279) [  0%] 2 of 461
+
+executor >  slurm (798)
+[51/daa639] process > host1 (438) [ 93%] 474 of 512
+[97/29a363] process > host2 (286) [  0%] 2 of 474
+
+executor >  slurm (807)
+[d8/cb979c] process > host1 (492) [ 95%] 486 of 512
+[12/730c4f] process > host2 (295) [  0%] 2 of 486
+
+executor >  slurm (816)
+[cd/2bd2f3] process > host1 (505) [ 97%] 499 of 512
+[95/9d8bb8] process > host2 (304) [  0%] 2 of 499
+
+executor >  slurm (825)
+[b2/deac9c] process > host1 (506) [ 98%] 501 of 512
+[58/a2a7fb] process > host2 (16)  [  3%] 16 of 501
+
+executor >  slurm (835)
+[b2/deac9c] process > host1 (506) [ 98%] 501 of 512
+[0a/00f9b0] process > host2 (42)  [  8%] 39 of 501
+
+executor >  slurm (848)
+[b2/deac9c] process > host1 (506) [ 98%] 501 of 512
+[0a/69b250] process > host2 (336) [ 11%] 55 of 501
+
+executor >  slurm (859)
+[b2/deac9c] process > host1 (506) [ 98%] 501 of 512
+[f2/919260] process > host2 (78)  [ 13%] 65 of 501
+
+executor >  slurm (870)
+[b2/deac9c] process > host1 (506) [ 98%] 501 of 512
+[aa/6e0a29] process > host2 (358) [ 14%] 69 of 501
+
+executor >  slurm (880)
+[b2/deac9c] process > host1 (506) [ 98%] 501 of 512
+[19/e301f2] process > host2 (368) [ 19%] 95 of 501
+
+executor >  slurm (891)
+[b2/deac9c] process > host1 (506) [ 98%] 501 of 512
+[31/1fb2e0] process > host2 (379) [ 19%] 95 of 501
+
+executor >  slurm (897)
+[b2/deac9c] process > host1 (506) [ 98%] 501 of 512
+[b7/50cf5f] process > host2 (385) [ 19%] 95 of 501
+
+executor >  slurm (907)
+[b2/deac9c] process > host1 (506) [ 98%] 501 of 512
+[2f/fe1605] process > host2 (395) [ 19%] 95 of 501
+
+executor >  slurm (920)
+[b2/deac9c] process > host1 (506) [ 98%] 501 of 512
+[90/ad0d33] process > host2 (408) [ 19%] 95 of 501
+
+executor >  slurm (927)
+[b2/deac9c] process > host1 (506) [ 98%] 501 of 512
+[d6/0d4250] process > host2 (415) [ 19%] 95 of 501
+
+executor >  slurm (937)
+[b2/deac9c] process > host1 (506) [ 98%] 501 of 512
+[86/9dd9b4] process > host2 (425) [ 19%] 95 of 501
+
+executor >  slurm (950)
+[b2/deac9c] process > host1 (506) [ 98%] 501 of 512
+[a2/e89fa0] process > host2 (438) [ 19%] 95 of 501
+
+executor >  slurm (963)
+[b2/deac9c] process > host1 (506) [ 98%] 501 of 512
+[d8/62a94b] process > host2 (451) [ 19%] 95 of 501
+
+executor >  slurm (976)
+[b2/deac9c] process > host1 (506) [ 98%] 501 of 512
+[8c/356231] process > host2 (464) [ 19%] 95 of 501
+
+executor >  slurm (992)
+[b2/deac9c] process > host1 (506) [ 98%] 501 of 512
+[0c/1d3702] process > host2 (480) [ 19%] 95 of 501
+
+executor >  slurm (1006)
+[b2/deac9c] process > host1 (506) [ 98%] 501 of 512
+[61/d667e3] process > host2 (494) [ 19%] 95 of 501
+
+executor >  slurm (1013)
+[b2/deac9c] process > host1 (506) [ 98%] 501 of 512
+[e6/1d14d9] process > host2 (501) [ 19%] 95 of 501
+
+executor >  slurm (1013)
+[7d/0d9e96] process > host1 (399) [ 98%] 503 of 512
+[e6/1d14d9] process > host2 (501) [ 19%] 95 of 503
+
+executor >  slurm (1022)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[e0/e24b2d] process > host2 (510) [ 19%] 99 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[c8/d306f1] process > host2 (79)  [ 21%] 109 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[94/f3cedf] process > host2 (99)  [ 24%] 123 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[b8/fba535] process > host2 (106) [ 25%] 130 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[8f/2dc98f] process > host2 (113) [ 27%] 137 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[03/70e189] process > host2 (154) [ 30%] 152 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[35/307060] process > host2 (166) [ 32%] 164 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[e9/c84c59] process > host2 (182) [ 35%] 179 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[93/3ae5dc] process > host2 (204) [ 39%] 201 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[4f/ae3546] process > host2 (244) [ 44%] 227 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[e6/6c2b77] process > host2 (246) [ 45%] 229 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[ad/999d1f] process > host2 (262) [ 46%] 238 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[9a/fa015b] process > host2 (313) [ 52%] 266 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[c6/43b5e0] process > host2 (361) [ 55%] 283 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[cd/eeb2d5] process > host2 (225) [ 56%] 289 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[3a/2564dd] process > host2 (247) [ 58%] 299 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[6d/f57463] process > host2 (252) [ 59%] 301 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[0b/5875ee] process > host2 (271) [ 61%] 312 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[28/2cf091] process > host2 (292) [ 63%] 324 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[8e/cd395e] process > host2 (339) [ 66%] 337 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[20/0dccc6] process > host2 (356) [ 69%] 352 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[23/2a5b09] process > host2 (373) [ 71%] 366 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[6f/bbfe0e] process > host2 (388) [ 74%] 381 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[8b/766f6c] process > host2 (414) [ 78%] 397 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[a6/cdd120] process > host2 (442) [ 80%] 411 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[e8/391e50] process > host2 (495) [ 89%] 456 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[c6/f1c61e] process > host2 (497) [ 89%] 457 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[f3/3d423c] process > host2 (390) [ 91%] 465 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[05/675660] process > host2 (413) [ 92%] 473 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[a6/02ee48] process > host2 (431) [ 94%] 481 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[37/003e3a] process > host2 (499) [ 97%] 498 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[09/c4aef9] process > host2 (512) [100%] 511 of 512
+
+executor >  slurm (1024)
+[42/b6d1c6] process > host1 (431) [100%] 512 of 512 ✔
+[f1/61ebc5] process > host2 (404) [100%] 512 of 512 ✔
+Hostname: compute-7-0
+compute-7-1
+compute-7-4
+compute-7-3
+
+
++ echo -e 'Done processing * 512 * tasks, on * 512 * cores'
++ for line in '{1..10}'
+++ sed -n 10p
+++ cat cores.txt
++ cores=1024
++ tasks=1024
++ tee -a nf.nf/logs/bioinfoScaling_processes-1_host.txt nf.nf/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 1024,1024,
+1024,1024,+ sed s/CORES/1024/ nextflow.config.tmpl
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-1_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_process.nf -c nf.nf/logs/confs/nextflow.config.1024 -profile cluster --ntasks=1024 --log=nf.nf/hosts/host1_tasks1024.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_process.nf` [sad_minsky] - revision: b2ae3954f9
+[-        ] process > host1 -
+
+[-        ] process > host1 [  0%] 0 of 51
+
+executor >  slurm (1)
+[f9/fe2f93] process > host1 (2) [  0%] 0 of 121
+
+executor >  slurm (2)
+[f5/967cd1] process > host1 (5) [  0%] 0 of 224
+
+executor >  slurm (2)
+[f5/967cd1] process > host1 (5) [  0%] 0 of 328
+
+executor >  slurm (3)
+[fe/9d8262] process > host1 (4) [  0%] 0 of 439
+
+executor >  slurm (4)
+[a8/9afbe7] process > host1 (6) [  0%] 0 of 660
+
+executor >  slurm (5)
+[7c/88fdca] process > host1 (1) [  0%] 0 of 861
+
+executor >  slurm (5)
+[7c/88fdca] process > host1 (1) [  0%] 0 of 1021
+
+executor >  slurm (9)
+[c2/a5ac60] process > host1 (10) [  0%] 0 of 1024
+
+executor >  slurm (16)
+[9f/9bb088] process > host1 (16) [  0%] 0 of 1024
+
+executor >  slurm (17)
+[7a/26fca3] process > host1 (20) [  0%] 0 of 1024
+
+executor >  slurm (23)
+[19/304d71] process > host1 (23) [  0%] 0 of 1024
+
+executor >  slurm (28)
+[17/0af627] process > host1 (30) [  0%] 0 of 1024
+
+executor >  slurm (37)
+[76/e7de41] process > host1 (37) [  0%] 0 of 1024
+
+executor >  slurm (44)
+[33/0f4a5f] process > host1 (47) [  0%] 0 of 1024
+
+executor >  slurm (55)
+[ae/734a28] process > host1 (55) [  0%] 0 of 1024
+
+executor >  slurm (64)
+[5b/09fa31] process > host1 (64) [  0%] 0 of 1024
+
+executor >  slurm (70)
+[2f/a1535d] process > host1 (68) [  0%] 0 of 1024
+
+executor >  slurm (79)
+[84/56ee38] process > host1 (82) [  0%] 0 of 1024
+
+executor >  slurm (88)
+[b3/c53361] process > host1 (89) [  0%] 0 of 1024
+
+executor >  slurm (98)
+[2a/0c5018] process > host1 (95) [  0%] 0 of 1024
+
+executor >  slurm (105)
+[6d/e6afc5] process > host1 (108) [  0%] 0 of 1024
+
+executor >  slurm (107)
+[5a/6e28db] process > host1 (106) [  1%] 6 of 1024
+
+executor >  slurm (112)
+[d2/a0a252] process > host1 (11)  [  1%] 11 of 1024
+
+executor >  slurm (115)
+[47/bfbebd] process > host1 (13)  [  1%] 13 of 1024
+
+executor >  slurm (119)
+[c6/797fea] process > host1 (114) [  4%] 40 of 1024
+
+executor >  slurm (123)
+[0c/9b2dcd] process > host1 (57)  [  5%] 55 of 1024
+
+executor >  slurm (127)
+[b3/c53361] process > host1 (89)  [  7%] 67 of 1024
+
+executor >  slurm (131)
+[41/cf80bf] process > host1 (130) [  7%] 73 of 1024
+
+executor >  slurm (136)
+[00/03b2b6] process > host1 (137) [  7%] 73 of 1024
+
+executor >  slurm (145)
+[74/62e0d8] process > host1 (140) [  7%] 73 of 1024
+
+executor >  slurm (153)
+[5d/5d5d25] process > host1 (145) [  7%] 73 of 1024
+
+executor >  slurm (163)
+[97/712e7a] process > host1 (156) [  7%] 73 of 1024
+
+executor >  slurm (172)
+[2a/12331f] process > host1 (187) [  7%] 73 of 1024
+
+executor >  slurm (184)
+[80/9f1d34] process > host1 (186) [  7%] 73 of 1024
+
+executor >  slurm (196)
+[8e/084bbd] process > host1 (209) [  7%] 73 of 1024
+
+executor >  slurm (207)
+[69/a578e1] process > host1 (198) [  7%] 73 of 1024
+
+executor >  slurm (216)
+[74/4c841e] process > host1 (217) [  7%] 73 of 1024
+
+executor >  slurm (229)
+[5d/3681be] process > host1 (220) [  7%] 73 of 1024
+
+executor >  slurm (239)
+[5c/7116c2] process > host1 (240) [  7%] 73 of 1024
+
+executor >  slurm (251)
+[a9/8db27f] process > host1 (267) [  7%] 73 of 1024
+
+executor >  slurm (261)
+[8f/536f59] process > host1 (256) [  7%] 73 of 1024
+
+executor >  slurm (270)
+[ca/9993b0] process > host1 (291) [  7%] 73 of 1024
+
+executor >  slurm (280)
+[f1/d32397] process > host1 (295) [  7%] 73 of 1024
+
+executor >  slurm (291)
+[a7/e1dd56] process > host1 (271) [  7%] 73 of 1024
+
+executor >  slurm (304)
+[11/3252a9] process > host1 (19)  [  7%] 74 of 1024
+
+executor >  slurm (312)
+[dd/0c21aa] process > host1 (83)  [  9%] 91 of 1024
+
+executor >  slurm (321)
+[52/c0c3ef] process > host1 (107) [ 11%] 108 of 1024
+
+executor >  slurm (326)
+[68/c885dc] process > host1 (118) [ 12%] 123 of 1024
+
+executor >  slurm (332)
+[c1/b26445] process > host1 (146) [ 15%] 152 of 1024
+
+executor >  slurm (339)
+[53/86017e] process > host1 (185) [ 17%] 171 of 1024
+
+executor >  slurm (344)
+[39/8c6898] process > host1 (172) [ 18%] 185 of 1024
+
+executor >  slurm (351)
+[cd/434dc5] process > host1 (208) [ 20%] 200 of 1024
+
+executor >  slurm (355)
+[4d/fa86d4] process > host1 (232) [ 21%] 215 of 1024
+
+executor >  slurm (363)
+[d2/d3d9bf] process > host1 (367) [ 24%] 242 of 1024
+
+executor >  slurm (372)
+[51/c05cf5] process > host1 (376) [ 24%] 249 of 1024
+
+executor >  slurm (385)
+[37/dec215] process > host1 (369) [ 24%] 249 of 1024
+
+executor >  slurm (399)
+[71/a2fddb] process > host1 (408) [ 24%] 249 of 1024
+
+executor >  slurm (408)
+[c2/ed59fc] process > host1 (398) [ 24%] 249 of 1024
+
+executor >  slurm (420)
+[48/c4dfae] process > host1 (423) [ 24%] 249 of 1024
+
+executor >  slurm (434)
+[04/04a785] process > host1 (456) [ 24%] 249 of 1024
+
+executor >  slurm (447)
+[d8/dd7ecf] process > host1 (457) [ 24%] 249 of 1024
+
+executor >  slurm (460)
+[46/03390c] process > host1 (479) [ 24%] 249 of 1024
+
+executor >  slurm (472)
+[87/96d33f] process > host1 (474) [ 24%] 249 of 1024
+
+executor >  slurm (486)
+[4e/8f5696] process > host1 (469) [ 24%] 249 of 1024
+
+executor >  slurm (500)
+[7c/3b4300] process > host1 (531) [ 24%] 249 of 1024
+
+executor >  slurm (514)
+[a4/bac378] process > host1 (516) [ 24%] 249 of 1024
+
+executor >  slurm (529)
+[b4/2408a3] process > host1 (497) [ 24%] 249 of 1024
+
+executor >  slurm (542)
+[c1/756452] process > host1 (548) [ 24%] 249 of 1024
+
+executor >  slurm (556)
+[7d/12d84f] process > host1 (555) [ 24%] 249 of 1024
+
+executor >  slurm (569)
+[db/5f1cc0] process > host1 (538) [ 25%] 255 of 1024
+
+executor >  slurm (581)
+[56/f4db6f] process > host1 (223) [ 26%] 265 of 1024
+
+executor >  slurm (595)
+[5b/2fc87b] process > host1 (263) [ 27%] 279 of 1024
+
+executor >  slurm (608)
+[e5/3c1c9a] process > host1 (281) [ 29%] 296 of 1024
+
+executor >  slurm (618)
+[97/24e48e] process > host1 (315) [ 31%] 314 of 1024
+
+executor >  slurm (629)
+[dd/e20155] process > host1 (627) [ 33%] 337 of 1024
+
+executor >  slurm (638)
+[57/7fbe70] process > host1 (356) [ 34%] 352 of 1024
+
+executor >  slurm (648)
+[9b/246dd5] process > host1 (658) [ 36%] 368 of 1024
+
+executor >  slurm (658)
+[8f/a7b921] process > host1 (399) [ 39%] 399 of 1024
+
+executor >  slurm (670)
+[74/6ace66] process > host1 (462) [ 41%] 415 of 1024
+
+executor >  slurm (685)
+[6a/150d5f] process > host1 (668) [ 41%] 416 of 1024
+
+executor >  slurm (698)
+[75/bcb03c] process > host1 (663) [ 41%] 416 of 1024
+
+executor >  slurm (710)
+[e6/dbbdf7] process > host1 (737) [ 41%] 416 of 1024
+
+executor >  slurm (720)
+[91/61bf4f] process > host1 (731) [ 41%] 416 of 1024
+
+executor >  slurm (731)
+[7e/309192] process > host1 (727) [ 41%] 416 of 1024
+
+executor >  slurm (742)
+[12/ce4630] process > host1 (708) [ 41%] 416 of 1024
+
+executor >  slurm (758)
+[0d/582c86] process > host1 (762) [ 41%] 416 of 1024
+
+executor >  slurm (771)
+[c5/b322f5] process > host1 (800) [ 41%] 416 of 1024
+
+executor >  slurm (781)
+[ff/16ae3c] process > host1 (766) [ 41%] 416 of 1024
+
+executor >  slurm (787)
+[43/04b061] process > host1 (795) [ 41%] 416 of 1024
+
+executor >  slurm (798)
+[03/7f5586] process > host1 (779) [ 41%] 416 of 1024
+
+executor >  slurm (810)
+[bb/1542e6] process > host1 (802) [ 41%] 416 of 1024
+
+executor >  slurm (825)
+[01/4b52b6] process > host1 (845) [ 41%] 416 of 1024
+
+executor >  slurm (841)
+[32/f0c271] process > host1 (831) [ 41%] 416 of 1024
+
+executor >  slurm (853)
+[42/8f93bf] process > host1 (826) [ 41%] 416 of 1024
+
+executor >  slurm (864)
+[d8/ad6bad] process > host1 (418) [ 42%] 428 of 1024
+
+executor >  slurm (874)
+[6d/c847dc] process > host1 (429) [ 43%] 445 of 1024
+
+executor >  slurm (887)
+[3f/e8c295] process > host1 (485) [ 45%] 462 of 1024
+
+executor >  slurm (897)
+[4c/ab0f80] process > host1 (501) [ 48%] 489 of 1024
+
+executor >  slurm (911)
+[30/7aec1e] process > host1 (879) [ 49%] 500 of 1024
+
+executor >  slurm (921)
+[06/73fc8a] process > host1 (919) [ 50%] 513 of 1024
+
+executor >  slurm (932)
+[6d/3fe29f] process > host1 (920) [ 51%] 524 of 1024
+
+executor >  slurm (943)
+[72/5c04ad] process > host1 (608) [ 53%] 539 of 1024
+
+executor >  slurm (953)
+[8e/82d747] process > host1 (947) [ 54%] 557 of 1024
+
+executor >  slurm (967)
+[cc/008aa3] process > host1 (976) [ 56%] 575 of 1024
+
+executor >  slurm (978)
+[0a/700721] process > host1 (978) [ 59%] 604 of 1024
+
+executor >  slurm (990)
+[b1/1c082b] process > host1 (970) [ 59%] 604 of 1024
+
+executor >  slurm (1000)
+[fe/9b2d45] process > host1 (968) [ 59%] 604 of 1024
+
+executor >  slurm (1014)
+[94/845c98] process > host1 (1017) [ 59%] 604 of 1024
+
+executor >  slurm (1024)
+[c8/15a957] process > host1 (1024) [ 59%] 604 of 1024
+
+executor >  slurm (1024)
+[3e/fc5011] process > host1 (473)  [ 60%] 618 of 1024
+
+executor >  slurm (1024)
+[f0/119302] process > host1 (498)  [ 61%] 628 of 1024
+
+executor >  slurm (1024)
+[8b/3dacc1] process > host1 (571)  [ 62%] 639 of 1024
+
+executor >  slurm (1024)
+[8d/767228] process > host1 (587)  [ 63%] 650 of 1024
+
+executor >  slurm (1024)
+[19/143c9d] process > host1 (670)  [ 65%] 670 of 1024
+
+executor >  slurm (1024)
+[71/35076f] process > host1 (671)  [ 66%] 679 of 1024
+
+executor >  slurm (1024)
+[db/03c977] process > host1 (677)  [ 67%] 691 of 1024
+
+executor >  slurm (1024)
+[fa/41b779] process > host1 (747)  [ 69%] 704 of 1024
+
+executor >  slurm (1024)
+[f0/168cd0] process > host1 (736)  [ 70%] 718 of 1024
+
+executor >  slurm (1024)
+[aa/34852c] process > host1 (784)  [ 73%] 744 of 1024
+
+executor >  slurm (1024)
+[60/87fb91] process > host1 (843)  [ 74%] 760 of 1024
+
+executor >  slurm (1024)
+[49/584791] process > host1 (814)  [ 75%] 765 of 1024
+
+executor >  slurm (1024)
+[49/584791] process > host1 (814)  [ 75%] 765 of 1024
+
+executor >  slurm (1024)
+[5e/244884] process > host1 (752)  [ 76%] 781 of 1024
+
+executor >  slurm (1024)
+[ed/355690] process > host1 (767)  [ 78%] 795 of 1024
+
+executor >  slurm (1024)
+[3b/c55bf5] process > host1 (801)  [ 79%] 809 of 1024
+
+executor >  slurm (1024)
+[33/abab15] process > host1 (816)  [ 80%] 822 of 1024
+
+executor >  slurm (1024)
+[69/69e28a] process > host1 (850)  [ 81%] 833 of 1024
+
+executor >  slurm (1024)
+[c3/751604] process > host1 (903)  [ 83%] 847 of 1024
+
+executor >  slurm (1024)
+[87/15ed96] process > host1 (900)  [ 84%] 859 of 1024
+
+executor >  slurm (1024)
+[30/967be9] process > host1 (862)  [ 86%] 881 of 1024
+
+executor >  slurm (1024)
+[05/0ca2fa] process > host1 (914)  [ 89%] 907 of 1024
+
+executor >  slurm (1024)
+[25/4f8e17] process > host1 (940)  [ 90%] 922 of 1024
+
+executor >  slurm (1024)
+[d5/5fdf2a] process > host1 (969)  [ 93%] 956 of 1024
+
+executor >  slurm (1024)
+[ea/e3486f] process > host1 (789)  [ 94%] 958 of 1024
+
+executor >  slurm (1024)
+[a2/c4582a] process > host1 (853)  [ 95%] 972 of 1024
+
+executor >  slurm (1024)
+[c9/8ce67f] process > host1 (932)  [ 96%] 984 of 1024
+
+executor >  slurm (1024)
+[c8/761c6b] process > host1 (997)  [ 97%] 996 of 1024
+
+executor >  slurm (1024)
+[c8/15a957] process > host1 (1024) [100%] 1024 of 1024 ✔
+
+executor >  slurm (1024)
+[c8/15a957] process > host1 (1024) [100%] 1024 of 1024 ✔
+Hostname: compute-7-0
+compute-7-1
+compute-7-4
+compute-7-3
+
+
+executor >  slurm (1024)
+[c8/15a957] process > host1 (1024) [100%] 1024 of 1024 ✔
+Hostname: compute-7-0
+compute-7-1
+compute-7-4
+compute-7-3
+
+
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output nf.nf/logs/bioinfoScaling_processes-2_host.txt /home/a-m/azzaea/software/nextflow/21.04.1.5556 run host_workflow.nf -c nf.nf/logs/confs/nextflow.config.1024 -profile cluster --ntasks=1024 --log=nf.nf/hosts/host2_tasks1024.txt
+N E X T F L O W  ~  version 21.04.1
+Launching `host_workflow.nf` [festering_fourier] - revision: 84abddf17c
+[-        ] process > host1 -
+[-        ] process > host2 -
+
+executor >  slurm (2)
+[12/f2eeb1] process > host1 (2) [  0%] 0 of 121
+[-        ] process > host2     -
+
+executor >  slurm (3)
+[84/0b2e5b] process > host1 (4) [  0%] 0 of 282
+[-        ] process > host2     -
+
+executor >  slurm (4)
+[8b/a888e0] process > host1 (1) [  0%] 0 of 392
+[-        ] process > host2     -
+
+executor >  slurm (5)
+[49/f976b8] process > host1 (6) [  0%] 0 of 447
+[-        ] process > host2     -
+
+executor >  slurm (6)
+[70/f9fcfd] process > host1 (5) [  0%] 0 of 690
+[-        ] process > host2     -
+
+executor >  slurm (7)
+[d8/160a62] process > host1 (7) [  0%] 0 of 887
+[-        ] process > host2     -
+
+executor >  slurm (8)
+[30/9568ae] process > host1 (8) [  0%] 0 of 1024
+[-        ] process > host2     -
+
+executor >  slurm (13)
+[75/5181f1] process > host1 (13) [  0%] 0 of 1024
+[-        ] process > host2      -
+
+executor >  slurm (18)
+[b8/5e758d] process > host1 (19) [  0%] 0 of 1024
+[-        ] process > host2      -
+
+executor >  slurm (24)
+[9e/3d98db] process > host1 (24) [  0%] 0 of 1024
+[-        ] process > host2      -
+
+executor >  slurm (29)
+[1c/e637e7] process > host1 (29) [  0%] 0 of 1024
+[-        ] process > host2      -
+
+executor >  slurm (35)
+[7b/21eaf9] process > host1 (35) [  0%] 0 of 1024
+[-        ] process > host2      -
+
+executor >  slurm (43)
+[22/251e02] process > host1 (43) [  0%] 0 of 1024
+[-        ] process > host2      -
+
+executor >  slurm (53)
+[b2/3b3602] process > host1 (57) [  0%] 0 of 1024
+[-        ] process > host2      -
+
+executor >  slurm (59)
+[33/9711b7] process > host1 (56) [  0%] 0 of 1024
+[-        ] process > host2      -
+
+executor >  slurm (73)
+[33/542e25] process > host1 (79) [  0%] 0 of 1024
+[-        ] process > host2      -
+
+executor >  slurm (86)
+[c9/46a8d7] process > host1 (92) [  0%] 0 of 1024
+[-        ] process > host2      -
+
+executor >  slurm (95)
+[b1/08c9b4] process > host1 (95) [  0%] 0 of 1024
+[-        ] process > host2      -
+
+executor >  slurm (104)
+[1c/449efc] process > host1 (102) [  0%] 0 of 1024
+[-        ] process > host2       -
+
+executor >  slurm (116)
+[3f/9ee017] process > host1 (121) [  0%] 0 of 1024
+[-        ] process > host2       -
+
+executor >  slurm (128)
+[b4/d80b12] process > host1 (115) [  0%] 0 of 1024
+[-        ] process > host2       -
+
+executor >  slurm (133)
+[cb/77e914] process > host1 (3)   [  0%] 1 of 1024
+[-        ] process > host2       [  0%] 0 of 1
+
+executor >  slurm (136)
+[41/f396d9] process > host1 (15)  [  1%] 15 of 1024
+[-        ] process > host2       [  0%] 0 of 15
+
+executor >  slurm (138)
+[5f/8658cd] process > host1 (135) [  2%] 21 of 1024
+[-        ] process > host2       [  0%] 0 of 21
+
+executor >  slurm (143)
+[86/2bdac6] process > host1 (34)  [  3%] 34 of 1024
+[-        ] process > host2       [  0%] 0 of 34
+
+executor >  slurm (147)
+[cf/5b3bdb] process > host1 (48)  [  5%] 48 of 1024
+[-        ] process > host2       [  0%] 0 of 47
+
+executor >  slurm (151)
+[b0/34147f] process > host1 (94)  [  6%] 61 of 1024
+[-        ] process > host2       [  0%] 0 of 60
+
+executor >  slurm (154)
+[14/c1f0d0] process > host1 (131) [  8%] 86 of 1024
+[-        ] process > host2       [  0%] 0 of 85
+
+executor >  slurm (160)
+[84/254828] process > host1 (166) [  9%] 88 of 1024
+[-        ] process > host2       [  0%] 0 of 88
+
+executor >  slurm (166)
+[77/1594d6] process > host1 (162) [  9%] 88 of 1024
+[-        ] process > host2       [  0%] 0 of 88
+
+executor >  slurm (171)
+[5d/619c71] process > host1 (172) [  9%] 88 of 1024
+[-        ] process > host2       [  0%] 0 of 88
+
+executor >  slurm (176)
+[ca/7b8bf9] process > host1 (175) [  9%] 88 of 1024
+[-        ] process > host2       [  0%] 0 of 88
+
+executor >  slurm (182)
+[aa/a660f3] process > host1 (176) [  9%] 88 of 1024
+[-        ] process > host2       [  0%] 0 of 88
+
+executor >  slurm (187)
+[55/4b0795] process > host1 (187) [  9%] 88 of 1024
+[-        ] process > host2       [  0%] 0 of 88
+
+executor >  slurm (194)
+[86/09b4ed] process > host1 (196) [  9%] 88 of 1024
+[-        ] process > host2       [  0%] 0 of 88
+
+executor >  slurm (204)
+[bb/9c1980] process > host1 (190) [  9%] 88 of 1024
+[-        ] process > host2       [  0%] 0 of 88
+
+executor >  slurm (210)
+[b9/9c52c7] process > host1 (210) [  9%] 88 of 1024
+[-        ] process > host2       [  0%] 0 of 88
+
+executor >  slurm (216)
+[8e/c055e6] process > host1 (212) [  9%] 88 of 1024
+[-        ] process > host2       [  0%] 0 of 88
+
+executor >  slurm (221)
+[d4/0e1ff7] process > host1 (216) [  9%] 88 of 1024
+[-        ] process > host2       [  0%] 0 of 88
+
+executor >  slurm (229)
+[40/4fb806] process > host1 (226) [  9%] 88 of 1024
+[-        ] process > host2       [  0%] 0 of 88
+
+executor >  slurm (242)
+[a9/e62b3c] process > host1 (252) [  9%] 88 of 1024
+[-        ] process > host2       [  0%] 0 of 88
+
+executor >  slurm (255)
+[72/0cb243] process > host1 (255) [  9%] 88 of 1024
+[-        ] process > host2       [  0%] 0 of 88
+
+executor >  slurm (268)
+[77/c2362a] process > host1 (269) [  9%] 88 of 1024
+[-        ] process > host2       [  0%] 0 of 88
+
+executor >  slurm (280)
+[9d/960476] process > host1 (281) [  9%] 88 of 1024
+[-        ] process > host2       [  0%] 0 of 88
+
+executor >  slurm (293)
+[ab/f953b3] process > host1 (288) [  9%] 88 of 1024
+[-        ] process > host2       [  0%] 0 of 88
+
+executor >  slurm (302)
+[33/9711b7] process > host1 (56)  [  9%] 96 of 1024
+[-        ] process > host2       [  0%] 0 of 95
+
+executor >  slurm (307)
+[c0/3fe4b2] process > host1 (89)  [ 11%] 114 of 1024
+[-        ] process > host2       [  0%] 0 of 114
+
+executor >  slurm (311)
+[12/a35b20] process > host1 (141) [ 13%] 134 of 1024
+[-        ] process > host2       [  0%] 0 of 134
+
+executor >  slurm (317)
+[b9/619cfc] process > host1 (160) [ 15%] 150 of 1024
+[-        ] process > host2       [  0%] 0 of 150
+
+executor >  slurm (324)
+[b4/9cac36] process > host1 (183) [ 16%] 168 of 1024
+[-        ] process > host2       [  0%] 0 of 168
+
+executor >  slurm (329)
+[e0/e219f2] process > host1 (168) [ 18%] 186 of 1024
+[-        ] process > host2       [  0%] 0 of 186
+
+executor >  slurm (335)
+[f4/e64737] process > host1 (229) [ 21%] 216 of 1024
+[-        ] process > host2       [  0%] 0 of 216
+
+executor >  slurm (340)
+[53/9a5492] process > host1 (262) [ 23%] 234 of 1024
+[-        ] process > host2       [  0%] 0 of 234
+
+executor >  slurm (344)
+[be/917b93] process > host1 (359) [ 24%] 250 of 1024
+[-        ] process > host2       [  0%] 0 of 250
+
+executor >  slurm (352)
+[07/7c8c67] process > host1 (348) [ 24%] 250 of 1024
+[-        ] process > host2       [  0%] 0 of 250
+
+executor >  slurm (367)
+[a3/a79234] process > host1 (387) [ 24%] 250 of 1024
+[-        ] process > host2       [  0%] 0 of 250
+
+executor >  slurm (379)
+[8b/a9b246] process > host1 (377) [ 24%] 250 of 1024
+[-        ] process > host2       [  0%] 0 of 250
+
+executor >  slurm (393)
+[b9/3e4f6b] process > host1 (414) [ 24%] 250 of 1024
+[-        ] process > host2       [  0%] 0 of 250
+
+executor >  slurm (407)
+[6d/ff2752] process > host1 (404) [ 24%] 250 of 1024
+[-        ] process > host2       [  0%] 0 of 250
+
+executor >  slurm (422)
+[72/413856] process > host1 (423) [ 24%] 250 of 1024
+[-        ] process > host2       [  0%] 0 of 250
+
+executor >  slurm (437)
+[cf/57ee82] process > host1 (431) [ 24%] 250 of 1024
+[-        ] process > host2       [  0%] 0 of 250
+
+executor >  slurm (454)
+[6c/3a8a69] process > host1 (459) [ 24%] 250 of 1024
+[-        ] process > host2       [  0%] 0 of 250
+
+executor >  slurm (468)
+[9f/dda073] process > host1 (478) [ 24%] 250 of 1024
+[-        ] process > host2       [  0%] 0 of 250
+
+executor >  slurm (484)
+[34/70f21d] process > host1 (454) [ 24%] 250 of 1024
+[-        ] process > host2       [  0%] 0 of 250
+
+executor >  slurm (499)
+[16/22938d] process > host1 (506) [ 24%] 250 of 1024
+[-        ] process > host2       [  0%] 0 of 250
+
+executor >  slurm (510)
+[62/8a9b6d] process > host1 (495) [ 24%] 250 of 1024
+[-        ] process > host2       [  0%] 0 of 250
+
+executor >  slurm (524)
+[7f/bbe06e] process > host1 (524) [ 24%] 250 of 1024
+[-        ] process > host2       [  0%] 0 of 250
+
+executor >  slurm (538)
+[a9/4e0ce7] process > host1 (527) [ 24%] 250 of 1024
+[-        ] process > host2       [  0%] 0 of 250
+
+executor >  slurm (548)
+[b9/daabd3] process > host1 (554) [ 24%] 250 of 1024
+[-        ] process > host2       [  0%] 0 of 250
+
+executor >  slurm (563)
+[3a/cd1b15] process > host1 (548) [ 24%] 250 of 1024
+[-        ] process > host2       [  0%] 0 of 250
+
+executor >  slurm (571)
+[6c/c636ac] process > host1 (242) [ 26%] 264 of 1024
+[-        ] process > host2       [  0%] 0 of 263
+
+executor >  slurm (584)
+[72/0cb243] process > host1 (255) [ 27%] 279 of 1024
+[-        ] process > host2       [  0%] 0 of 279
+
+executor >  slurm (596)
+[40/92aa29] process > host1 (295) [ 29%] 296 of 1024
+[-        ] process > host2       [  0%] 0 of 296
+
+executor >  slurm (607)
+[42/45518f] process > host1 (623) [ 31%] 319 of 1024
+[-        ] process > host2       [  0%] 0 of 319
+
+executor >  slurm (621)
+[2b/85e5af] process > host1 (309) [ 32%] 331 of 1024
+[-        ] process > host2       [  0%] 0 of 331
+
+executor >  slurm (632)
+[44/744767] process > host1 (625) [ 33%] 340 of 1024
+[-        ] process > host2       [  0%] 0 of 340
+
+executor >  slurm (645)
+[04/e690c9] process > host1 (645) [ 34%] 351 of 1024
+[-        ] process > host2       [  0%] 0 of 351
+
+executor >  slurm (650)
+[2d/7148c2] process > host1 (370) [ 35%] 363 of 1024
+[-        ] process > host2       [  0%] 0 of 363
+
+executor >  slurm (656)
+[25/faaded] process > host1 (383) [ 37%] 376 of 1024
+[-        ] process > host2       [  0%] 0 of 376
+
+executor >  slurm (665)
+[7a/d8eb1d] process > host1 (660) [ 39%] 403 of 1024
+[-        ] process > host2       [  0%] 0 of 403
+
+executor >  slurm (677)
+[dd/d3b1fa] process > host1 (422) [ 41%] 416 of 1024
+[-        ] process > host2       [  0%] 0 of 416
+
+executor >  slurm (686)
+[35/6a6d69] process > host1 (648) [ 42%] 429 of 1024
+[-        ] process > host2       [  0%] 0 of 429
+
+executor >  slurm (697)
+[6b/d9d605] process > host1 (709) [ 43%] 438 of 1024
+[-        ] process > host2       [  0%] 0 of 438
+
+executor >  slurm (708)
+[2d/dbb36a] process > host1 (706) [ 44%] 450 of 1024
+[-        ] process > host2       [  0%] 0 of 450
+
+executor >  slurm (723)
+[de/3174f6] process > host1 (726) [ 44%] 451 of 1024
+[-        ] process > host2       [  0%] 0 of 451
+
+executor >  slurm (734)
+[c1/2e095b] process > host1 (733) [ 44%] 451 of 1024
+[-        ] process > host2       [  0%] 0 of 451
+
+executor >  slurm (744)
+[bd/bc1487] process > host1 (741) [ 44%] 451 of 1024
+[-        ] process > host2       [  0%] 0 of 451
+
+executor >  slurm (759)
+[2e/986053] process > host1 (759) [ 44%] 451 of 1024
+[-        ] process > host2       [  0%] 0 of 451
+
+executor >  slurm (770)
+[19/a90d99] process > host1 (747) [ 44%] 451 of 1024
+[-        ] process > host2       [  0%] 0 of 451
+
+executor >  slurm (785)
+[a1/ab7f9c] process > host1 (802) [ 44%] 451 of 1024
+[-        ] process > host2       [  0%] 0 of 451
+
+executor >  slurm (799)
+[e3/d469d3] process > host1 (796) [ 44%] 451 of 1024
+[-        ] process > host2       [  0%] 0 of 451
+
+executor >  slurm (815)
+[be/272e23] process > host1 (781) [ 44%] 451 of 1024
+[-        ] process > host2       [  0%] 0 of 451
+
+executor >  slurm (829)
+[a1/bd1d38] process > host1 (838) [ 44%] 451 of 1024
+[-        ] process > host2       [  0%] 0 of 451
+
+executor >  slurm (845)
+[1e/550870] process > host1 (859) [ 44%] 451 of 1024
+[-        ] process > host2       [  0%] 0 of 451
+
+executor >  slurm (857)
+[ce/d8b03c] process > host1 (430) [ 45%] 458 of 1024
+[-        ] process > host2       [  0%] 0 of 457
+
+executor >  slurm (870)
+[50/a892d5] process > host1 (868) [ 46%] 471 of 1024
+[-        ] process > host2       [  0%] 0 of 471
+
+executor >  slurm (881)
+[f3/b011b5] process > host1 (450) [ 47%] 483 of 1024
+[-        ] process > host2       [  0%] 0 of 483
+
+executor >  slurm (893)
+[7e/bce134] process > host1 (502) [ 49%] 499 of 1024
+[-        ] process > host2       [  0%] 0 of 498
+
+executor >  slurm (903)
+[5f/e0d53f] process > host1 (883) [ 50%] 511 of 1024
+[-        ] process > host2       [  0%] 0 of 511
+
+executor >  slurm (915)
+[1a/d4e85b] process > host1 (873) [ 51%] 525 of 1024
+[-        ] process > host2       [  0%] 0 of 525
+
+executor >  slurm (926)
+[2a/d47138] process > host1 (951) [ 53%] 538 of 1024
+[-        ] process > host2       [  0%] 0 of 538
+
+executor >  slurm (935)
+[3f/50d940] process > host1 (602) [ 56%] 572 of 1024
+[-        ] process > host2       [  0%] 0 of 571
+
+executor >  slurm (947)
+[a2/96c88c] process > host1 (609) [ 57%] 583 of 1024
+[-        ] process > host2       [  0%] 0 of 583
+
+executor >  slurm (959)
+[15/b799c6] process > host1 (921) [ 58%] 594 of 1024
+[-        ] process > host2       [  0%] 0 of 594
+
+executor >  slurm (969)
+[3a/9b2436] process > host1 (969) [ 59%] 606 of 1024
+[-        ] process > host2       [  0%] 0 of 606
+
+executor >  slurm (978)
+[dc/a5f3a9] process > host1 (998) [ 62%] 633 of 1024
+[-        ] process > host2       [  0%] 0 of 633
+
+executor >  slurm (991)
+[81/9e7f2e] process > host1 (988) [ 62%] 633 of 1024
+[-        ] process > host2       [  0%] 0 of 633
+
+executor >  slurm (1001)
+[96/619feb] process > host1 (985) [ 62%] 633 of 1024
+[-        ] process > host2       [  0%] 0 of 633
+
+executor >  slurm (1012)
+[f6/0c3bd4] process > host1 (1013) [ 62%] 633 of 1024
+[-        ] process > host2        [  0%] 0 of 633
+
+executor >  slurm (1025)
+[27/5e1ba4] process > host1 (1024) [ 62%] 633 of 1024
+[aa/2bdad9] process > host2 (1)    [  0%] 0 of 633
+
+executor >  slurm (1039)
+[27/5e1ba4] process > host1 (1024) [ 62%] 633 of 1024
+[e9/aef885] process > host2 (15)   [  0%] 0 of 633
+
+executor >  slurm (1053)
+[27/5e1ba4] process > host1 (1024) [ 62%] 633 of 1024
+[50/6feef6] process > host2 (29)   [  0%] 0 of 633
+
+executor >  slurm (1066)
+[27/5e1ba4] process > host1 (1024) [ 62%] 633 of 1024
+[1f/d38920] process > host2 (42)   [  0%] 0 of 633
+
+executor >  slurm (1080)
+[27/5e1ba4] process > host1 (1024) [ 62%] 633 of 1024
+[3c/24469e] process > host2 (56)   [  0%] 0 of 633
+
+executor >  slurm (1097)
+[27/5e1ba4] process > host1 (1024) [ 62%] 633 of 1024
+[5c/3bd429] process > host2 (73)   [  0%] 0 of 633
+
+executor >  slurm (1111)
+[27/5e1ba4] process > host1 (1024) [ 62%] 633 of 1024
+[b6/ececaf] process > host2 (87)   [  0%] 0 of 633
+
+executor >  slurm (1122)
+[27/5e1ba4] process > host1 (1024) [ 62%] 633 of 1024
+[97/33602f] process > host2 (98)   [  0%] 0 of 633
+
+executor >  slurm (1136)
+[27/5e1ba4] process > host1 (1024) [ 62%] 633 of 1024
+[58/aed7a2] process > host2 (112)  [  0%] 0 of 633
+
+executor >  slurm (1148)
+[27/5e1ba4] process > host1 (1024) [ 62%] 633 of 1024
+[af/b01c9e] process > host2 (124)  [  0%] 0 of 633
+
+executor >  slurm (1161)
+[62/8a9b6d] process > host1 (495)  [ 63%] 645 of 1024
+[a4/7544ba] process > host2 (137)  [  0%] 0 of 645
+
+executor >  slurm (1173)
+[cc/4ec701] process > host1 (553)  [ 64%] 657 of 1024
+[fd/aeb703] process > host2 (149)  [  0%] 0 of 657
+
+executor >  slurm (1185)
+[73/62fad2] process > host1 (627)  [ 65%] 670 of 1024
+[2e/378778] process > host2 (161)  [  0%] 0 of 669
+
+executor >  slurm (1191)
+[58/467ef6] process > host1 (715)  [ 69%] 704 of 1024
+[96/4ec691] process > host2 (167)  [  0%] 0 of 704
+
+executor >  slurm (1200)
+[bd/bc1487] process > host1 (741)  [ 70%] 715 of 1024
+[de/989e6c] process > host2 (176)  [  0%] 0 of 714
+
+executor >  slurm (1213)
+[9a/05c40d] process > host1 (842)  [ 71%] 730 of 1024
+[7b/51de06] process > host2 (189)  [  0%] 0 of 730
+
+executor >  slurm (1226)
+[c7/5367ae] process > host1 (919)  [ 72%] 737 of 1024
+[1c/587171] process > host2 (202)  [  0%] 0 of 737
+
+executor >  slurm (1241)
+[c7/5367ae] process > host1 (919)  [ 72%] 737 of 1024
+[f0/ebfef9] process > host2 (217)  [  0%] 0 of 737
+
+executor >  slurm (1255)
+[c7/5367ae] process > host1 (919)  [ 72%] 737 of 1024
+[f2/8ad7a0] process > host2 (231)  [  0%] 0 of 737
+
+executor >  slurm (1265)
+[c7/5367ae] process > host1 (919)  [ 72%] 737 of 1024
+[76/4eff3b] process > host2 (241)  [  0%] 0 of 737
+
+executor >  slurm (1280)
+[c7/5367ae] process > host1 (919)  [ 72%] 737 of 1024
+[c2/ac1d42] process > host2 (256)  [  0%] 0 of 737
+
+executor >  slurm (1291)
+[c7/5367ae] process > host1 (919)  [ 72%] 737 of 1024
+[0e/b9f2cc] process > host2 (267)  [  0%] 0 of 737
+
+executor >  slurm (1305)
+[c7/5367ae] process > host1 (919)  [ 72%] 737 of 1024
+[c4/285674] process > host2 (281)  [  0%] 0 of 737
+
+executor >  slurm (1321)
+[c7/5367ae] process > host1 (919)  [ 72%] 737 of 1024
+[40/123a56] process > host2 (297)  [  0%] 0 of 737
+
+executor >  slurm (1324)
+[c7/5367ae] process > host1 (919)  [ 72%] 737 of 1024
+[63/fba5e7] process > host2 (300)  [  0%] 0 of 737
+
+executor >  slurm (1337)
+[c7/5367ae] process > host1 (919)  [ 72%] 737 of 1024
+[e5/7c5fe9] process > host2 (312)  [  0%] 0 of 737
+
+executor >  slurm (1348)
+[c7/5367ae] process > host1 (919)  [ 72%] 737 of 1024
+[b2/f8f17b] process > host2 (324)  [  0%] 0 of 737
+
+executor >  slurm (1359)
+[c7/5367ae] process > host1 (919)  [ 72%] 737 of 1024
+[88/26c4e6] process > host2 (335)  [  0%] 0 of 737
+
+executor >  slurm (1371)
+[c7/5367ae] process > host1 (919)  [ 72%] 737 of 1024
+[6b/6444fd] process > host2 (347)  [  0%] 0 of 737
+
+executor >  slurm (1382)
+[c7/5367ae] process > host1 (919)  [ 72%] 737 of 1024
+[37/c1dd67] process > host2 (358)  [  0%] 0 of 737
+
+executor >  slurm (1397)
+[c7/5367ae] process > host1 (919)  [ 72%] 737 of 1024
+[0d/b82df7] process > host2 (373)  [  0%] 0 of 737
+
+executor >  slurm (1411)
+[c7/5367ae] process > host1 (919)  [ 72%] 737 of 1024
+[3d/52a64c] process > host2 (387)  [  0%] 0 of 737
+
+executor >  slurm (1426)
+[c7/5367ae] process > host1 (919)  [ 72%] 737 of 1024
+[07/dcdfdc] process > host2 (402)  [  0%] 0 of 737
+
+executor >  slurm (1438)
+[2d/dbb36a] process > host1 (706)  [ 72%] 741 of 1024
+[6e/fd0ec7] process > host2 (414)  [  0%] 0 of 740
+
+executor >  slurm (1448)
+[9b/27e5db] process > host1 (717)  [ 74%] 753 of 1024
+[93/1cdf29] process > host2 (424)  [  0%] 0 of 753
+
+executor >  slurm (1460)
+[4f/18d5ae] process > host1 (738)  [ 75%] 767 of 1024
+[23/8b7a5b] process > host2 (436)  [  0%] 0 of 767
+
+executor >  slurm (1461)
+[82/479e11] process > host1 (756)  [ 75%] 768 of 1024
+[e6/1d6ca4] process > host2 (437)  [  0%] 0 of 768
+
+executor >  slurm (1474)
+[2e/986053] process > host1 (759)  [ 76%] 781 of 1024
+[df/d35dc2] process > host2 (450)  [  0%] 0 of 781
+
+executor >  slurm (1486)
+[97/7cd56a] process > host1 (815)  [ 78%] 797 of 1024
+[6a/87a275] process > host2 (462)  [  0%] 0 of 796
+
+executor >  slurm (1497)
+[ec/5034cf] process > host1 (810)  [ 79%] 814 of 1024
+[a1/5b7e48] process > host2 (473)  [  0%] 0 of 814
+
+executor >  slurm (1507)
+[6b/bb96b9] process > host1 (821)  [ 81%] 832 of 1024
+[b8/917f10] process > host2 (483)  [  0%] 0 of 832
+
+executor >  slurm (1514)
+[4b/d35a0c] process > host1 (830)  [ 83%] 846 of 1024
+[f9/967777] process > host2 (490)  [  0%] 0 of 846
+
+executor >  slurm (1524)
+[eb/07b4b4] process > host1 (864)  [ 84%] 861 of 1024
+[6b/785b8a] process > host2 (500)  [  0%] 0 of 861
+
+executor >  slurm (1536)
+[50/a892d5] process > host1 (868)  [ 85%] 874 of 1024
+[e5/062cc1] process > host2 (512)  [  0%] 0 of 874
+
+executor >  slurm (1548)
+[0c/b0f3ed] process > host1 (911)  [ 87%] 889 of 1024
+[fe/955453] process > host2 (524)  [  0%] 0 of 889
+
+executor >  slurm (1561)
+[80/ba5e8c] process > host1 (897)  [ 88%] 903 of 1024
+[6d/c51d3f] process > host2 (537)  [  0%] 0 of 903
+
+executor >  slurm (1566)
+[b6/4e43fc] process > host1 (965)  [ 94%] 960 of 1024
+[cd/2f9dbf] process > host2 (542)  [  0%] 0 of 960
+
+executor >  slurm (1579)
+[b9/a8fa4c] process > host1 (992)  [ 95%] 976 of 1024
+[f0/ea6ec3] process > host2 (555)  [  0%] 0 of 976
+
+executor >  slurm (1590)
+[fd/f2b689] process > host1 (1017) [ 97%] 991 of 1024
+[4e/86e08c] process > host2 (566)  [  0%] 0 of 991
+
+executor >  slurm (1603)
+[89/e6690e] process > host1 (1020) [ 97%] 992 of 1024
+[8a/fe381f] process > host2 (579)  [  1%] 8 of 992
+
+executor >  slurm (1609)
+[89/e6690e] process > host1 (1020) [ 97%] 992 of 1024
+[ca/1ff3b0] process > host2 (585)  [  1%] 8 of 992
+
+executor >  slurm (1623)
+[89/e6690e] process > host1 (1020) [ 97%] 992 of 1024
+[85/6a74a4] process > host2 (599)  [  1%] 8 of 992
+
+executor >  slurm (1637)
+[89/e6690e] process > host1 (1020) [ 97%] 992 of 1024
+[82/e8d709] process > host2 (613)  [  1%] 8 of 992
+
+executor >  slurm (1648)
+[89/e6690e] process > host1 (1020) [ 97%] 992 of 1024
+[96/cb6269] process > host2 (624)  [  1%] 8 of 992
+
+executor >  slurm (1661)
+[89/e6690e] process > host1 (1020) [ 97%] 992 of 1024
+[0e/55db46] process > host2 (637)  [  1%] 8 of 992
+
+executor >  slurm (1677)
+[89/e6690e] process > host1 (1020) [ 97%] 992 of 1024
+[30/9b70d6] process > host2 (652)  [  1%] 8 of 992
+
+executor >  slurm (1694)
+[89/e6690e] process > host1 (1020) [ 97%] 992 of 1024
+[62/ce7b9f] process > host2 (670)  [  1%] 8 of 992
+
+executor >  slurm (1711)
+[89/e6690e] process > host1 (1020) [ 97%] 992 of 1024
+[67/3dc371] process > host2 (687)  [  1%] 8 of 992
+
+executor >  slurm (1718)
+[40/571943] process > host1 (976)  [ 98%] 999 of 1024
+[5d/c93878] process > host2 (694)  [  1%] 8 of 999
+
+executor >  slurm (1729)
+[ed/2ed65e] process > host1 (973)  [ 99%] 1011 of 1024
+[f0/aa4ab8] process > host2 (705)  [  1%] 8 of 1011
+
+executor >  slurm (1743)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[be/0991c9] process > host2 (6)    [  1%] 11 of 1022
+
+executor >  slurm (1752)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[53/170b92] process > host2 (27)   [  2%] 24 of 1022
+
+executor >  slurm (1767)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[8b/7a1184] process > host2 (70)   [  4%] 36 of 1022
+
+executor >  slurm (1780)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[58/aed7a2] process > host2 (112)  [  7%] 67 of 1022
+
+executor >  slurm (1795)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[d7/f2502c] process > host2 (771)  [  7%] 72 of 1022
+
+executor >  slurm (1812)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[42/5ac8ae] process > host2 (788)  [  7%] 72 of 1022
+
+executor >  slurm (1825)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[66/64d49e] process > host2 (801)  [  7%] 72 of 1022
+
+executor >  slurm (1842)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[62/c1b2a1] process > host2 (818)  [  7%] 72 of 1022
+
+executor >  slurm (1858)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[a9/c84692] process > host2 (834)  [  7%] 72 of 1022
+
+executor >  slurm (1871)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[cb/d75b1c] process > host2 (847)  [  7%] 72 of 1022
+
+executor >  slurm (1888)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[46/621ff9] process > host2 (864)  [  7%] 72 of 1022
+
+executor >  slurm (1902)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[c7/495d7b] process > host2 (878)  [  7%] 72 of 1022
+
+executor >  slurm (1916)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[31/8b0879] process > host2 (892)  [  7%] 72 of 1022
+
+executor >  slurm (1930)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[7c/bbc466] process > host2 (906)  [  7%] 72 of 1022
+
+executor >  slurm (1945)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[02/064ef2] process > host2 (922)  [  7%] 72 of 1022
+
+executor >  slurm (1958)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[fc/f802d3] process > host2 (934)  [  7%] 72 of 1022
+
+executor >  slurm (1975)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[3f/baefe7] process > host2 (951)  [  7%] 72 of 1022
+
+executor >  slurm (1991)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[af/f162de] process > host2 (967)  [  7%] 72 of 1022
+
+executor >  slurm (2009)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[53/02ee14] process > host2 (985)  [  7%] 72 of 1022
+
+executor >  slurm (2026)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[f8/29dc75] process > host2 (1002) [  7%] 72 of 1022
+
+executor >  slurm (2041)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[26/69dbcb] process > host2 (1017) [  7%] 72 of 1022
+
+executor >  slurm (2046)
+[27/5e1ba4] process > host1 (1024) [100%] 1022 of 1024
+[14/18f200] process > host2 (1022) [  7%] 72 of 1022
+
+executor >  slurm (2046)
+[15/606ede] process > host1 (1016) [100%] 1023 of 1024
+[14/18f200] process > host2 (1022) [  7%] 72 of 1023
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[52/812852] process > host2 (31)   [  8%] 83 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[3c/24469e] process > host2 (56)   [ 10%] 98 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[d1/c9a2d5] process > host2 (105)  [ 11%] 113 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[ff/84eb4a] process > host2 (121)  [ 12%] 123 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[64/2db539] process > host2 (133)  [ 13%] 133 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[c5/0df357] process > host2 (145)  [ 14%] 143 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[94/bc43e0] process > host2 (162)  [ 15%] 156 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[37/7ea8ff] process > host2 (194)  [ 18%] 187 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[d8/491928] process > host2 (212)  [ 20%] 205 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[c5/eb999f] process > host2 (230)  [ 22%] 223 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[a6/ce520f] process > host2 (250)  [ 24%] 243 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[3b/43619e] process > host2 (287)  [ 27%] 277 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[db/1fe3d5] process > host2 (357)  [ 28%] 286 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[ef/ba68d7] process > host2 (168)  [ 29%] 293 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[a0/f348e2] process > host2 (304)  [ 30%] 305 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[ad/4c68cb] process > host2 (323)  [ 31%] 315 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[85/cb62c5] process > host2 (355)  [ 32%] 331 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[ac/cf8cf2] process > host2 (377)  [ 34%] 346 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[07/dcdfdc] process > host2 (402)  [ 35%] 362 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[cf/81180a] process > host2 (445)  [ 39%] 398 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[f8/b2cfd0] process > host2 (529)  [ 42%] 426 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[fd/a77b81] process > host2 (316)  [ 42%] 434 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[9b/4ede53] process > host2 (343)  [ 44%] 447 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[7f/fff60e] process > host2 (385)  [ 45%] 460 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[d1/585a91] process > host2 (438)  [ 46%] 470 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[de/fea55a] process > host2 (461)  [ 47%] 482 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[25/fc4fd9] process > host2 (479)  [ 48%] 496 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[bd/f2d83f] process > host2 (496)  [ 50%] 511 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[4c/ea80ce] process > host2 (551)  [ 53%] 547 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[36/a06672] process > host2 (568)  [ 55%] 559 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[16/7edf2e] process > host2 (587)  [ 56%] 573 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[24/f4971a] process > host2 (611)  [ 58%] 590 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[30/385179] process > host2 (640)  [ 59%] 605 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[99/62d6ab] process > host2 (700)  [ 61%] 625 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[4e/86e08c] process > host2 (566)  [ 62%] 634 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[aa/5f7c51] process > host2 (626)  [ 64%] 652 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[b8/d0545f] process > host2 (651)  [ 65%] 667 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[18/e4d164] process > host2 (669)  [ 67%] 681 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[df/8fb907] process > host2 (704)  [ 68%] 695 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[fc/b60769] process > host2 (730)  [ 69%] 709 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[4a/6aec75] process > host2 (820)  [ 73%] 746 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[7e/fa83f9] process > host2 (863)  [ 74%] 757 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[78/e52164] process > host2 (658)  [ 75%] 763 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[13/23551a] process > host2 (725)  [ 76%] 777 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[96/d08070] process > host2 (750)  [ 77%] 793 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[2a/fb99eb] process > host2 (769)  [ 79%] 809 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[dc/bf7fe2] process > host2 (815)  [ 81%] 826 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[9f/48abe3] process > host2 (841)  [ 82%] 844 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[e4/dc368b] process > host2 (876)  [ 85%] 875 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[98/da95b8] process > host2 (890)  [ 86%] 882 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[4f/6e2266] process > host2 (903)  [ 87%] 888 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[40/dc6df9] process > host2 (939)  [ 88%] 897 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[7e/b1fedf] process > host2 (1024) [ 91%] 927 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[f8/b0fcb7] process > host2 (723)  [ 91%] 928 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[f9/b237f8] process > host2 (905)  [ 92%] 940 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[03/348e49] process > host2 (923)  [ 93%] 950 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[24/45a6fa] process > host2 (933)  [ 94%] 959 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[24/45a6fa] process > host2 (933)  [ 94%] 959 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[47/e0aecb] process > host2 (975)  [ 95%] 971 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[83/90db7a] process > host2 (997)  [ 97%] 989 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[74/ae2d63] process > host2 (1015) [ 98%] 1007 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[6e/1f8405] process > host2 (1023) [ 99%] 1015 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[a9/a6a5a8] process > host2 (881)  [ 99%] 1016 of 1024
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[6e/22fa21] process > host2 (935)  [100%] 1024 of 1024 ✔
+Hostname: compute-7-0
+compute-7-1
+compute-7-4
+compute-7-3
+
+
+executor >  slurm (2048)
+[69/cf6492] process > host1 (1019) [100%] 1024 of 1024 ✔
+[6e/22fa21] process > host2 (935)  [100%] 1024 of 1024 ✔
+Hostname: compute-7-0
+compute-7-1
+compute-7-4
+compute-7-3
+
+Completed at: 10-Jun-2021 10:36:13
+Duration    : 1m 16s
+CPU hours   : 0.1
+Succeeded   : 2'048
+
+
++ echo -e 'Done processing * 1024 * tasks, on * 1024 * cores'
++ echo '##############################################################################################'
++ cd nf.nf/hosts
++ echo 'nodes processes tasks'
+++ ls -1v
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host1_tasks1.txt
++ echo 1 host1_tasks1.txt
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host1_tasks4.txt
++ echo 1 host1_tasks4.txt
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host1_tasks8.txt
++ echo 1 host1_tasks8.txt
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host1_tasks16.txt
++ echo 2 host1_tasks16.txt
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host1_tasks32.txt
++ echo 2 host1_tasks32.txt
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host1_tasks64.txt
++ echo 3 host1_tasks64.txt
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host1_tasks128.txt
++ echo 4 host1_tasks128.txt
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host1_tasks256.txt
++ echo 4 host1_tasks256.txt
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host1_tasks512.txt
++ echo 4 host1_tasks512.txt
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host1_tasks1024.txt
++ echo 4 host1_tasks1024.txt
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host2_tasks1.txt
++ echo 1 host2_tasks1.txt
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host2_tasks4.txt
++ echo 1 host2_tasks4.txt
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host2_tasks8.txt
++ echo 2 host2_tasks8.txt
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host2_tasks16.txt
++ echo 2 host2_tasks16.txt
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host2_tasks32.txt
++ echo 4 host2_tasks32.txt
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host2_tasks64.txt
++ echo 4 host2_tasks64.txt
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host2_tasks128.txt
++ echo 4 host2_tasks128.txt
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host2_tasks256.txt
++ echo 4 host2_tasks256.txt
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host2_tasks512.txt
++ echo 4 host2_tasks512.txt
++ for file in '`ls -1v`'
++ sed 's/_/ /g'
+++ wc -l host2_tasks1024.txt
++ echo 4 host2_tasks1024.txt
++ mail -s 'WfMS- Bio-Scalability' azzaea@gmail.com
++ echo 'Bio-Scalability analysis completed for Nextflow!'
