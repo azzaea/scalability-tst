@@ -35,6 +35,7 @@ log1="${logsDir}/bioinfoScaling_processes-1_host.txt"
 log2="${logsDir}/bioinfoScaling_processes-2_host.txt"
 echo "cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,faults,inputs,outputs,socketsIn,socketsOut,exitStatus" | tee -a ${log1} ${log2}
 
+
 for line in {1..10}; do # Enough until 512 tasks in biocluster
 	cores=`cat cores.txt | sed -n ${line}p`  #goes to the forks param
 	tasks=${cores}

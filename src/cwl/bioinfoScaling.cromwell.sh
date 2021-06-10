@@ -20,20 +20,21 @@ set -x
 #crom="/usr/src/wdl/cromwell-42.jar"
 crom="/home/a-m/azzaea/software/wdl/cromwell-63.jar"
 resultsDir="cwl.cromwell"
-ymlsDir="${resultsDir}/logs/ymls"
+logsDir="${resultsDir}/logs"
+ymlsDir="${logsDir}/ymls"
 hostsDir=" ${resultsDir}/hosts"
-mkdir -p ${resultsDir} ${ymlsDir} ${hostsDir}
+mkdir -p ${resultsDir} ${logsDir} ${ymlsDir} ${hostsDir}
 
-progress="${resultsDir}/logs/progress_bioinfoScaling.txt"
+progress="${logsDir}/progress_bioinfoScaling.txt"
 echo "Starting BioInfo Scalability Analysis" >> ${progress}
 echo "##############################################################################################" >> ${progress} 
 java -jar ${crom} --version >> ${progress}
 echo "##############################################################################################" >> ${progress} 
 
-ifstat -t -T -n -w > ${resultsDir}/logs/network-report.txt
+ifstat -t -T -n -w > ${logsDir}/network-report.txt
 
-log1="${resultsDir}/logs/bioinfoScaling_processes-1_host.txt"
-log2="${resultsDir}/logs/bioinfoScaling_processes-2_host.txt"
+log1="${logsDir}/bioinfoScaling_processes-1_host.txt"
+log2="${logsDir}/bioinfoScaling_processes-2_host.txt"
 echo "cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,faults,inputs,outputs,socketsIn,socketsOut,exitStatus" | tee -a ${log1} ${log2}
 ymlinput="${ymlsDir}/host_process_workflow"
 cat host_process_workflow.yml.tmpl > ${ymlinput}
