@@ -24,7 +24,7 @@ resultsDir="cwl.toil"
 logsDir="${resultsDir}/logs"
 ymlsDir="${logsDir}/ymls"
 hostsDir=" ${resultsDir}/hosts"
-workDir="work"
+workDir="toil-executions"
 mkdir -p ${resultsDir} ${logsDir} ${ymlsDir} ${hostsDir} 
 mkdir ${workDir} # toil-cwl-runner can't automatically create the working directory of a run, 
            # but requires it be specified when working in cluster environments

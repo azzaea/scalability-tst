@@ -1,3 +1,0 @@
-compute-7-0
-compute-7-1
-compute-7-3
