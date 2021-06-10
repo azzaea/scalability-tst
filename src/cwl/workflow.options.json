@@ -1,4 +1,4 @@
 {
-    "final_workflow_outputs_dir": "results.cromwell",
+    "final_workflow_outputs_dir": "cwl.cromwell",
     "use_relative_output_paths": true
 }

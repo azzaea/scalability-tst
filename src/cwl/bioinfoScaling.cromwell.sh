@@ -1,6 +1,8 @@
 #!/bin/bash
+#SBATCH --mail-user azzaea@gmail.com
+#SBATCH --mail-type BEGIN,END,FAIL
 
-module load Java # For working on biocluster- change for AWS
+module load Java/15.0.1 # For working on biocluster- change for AWS
 echo "Analysis done on: "
 date
 

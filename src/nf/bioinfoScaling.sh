@@ -3,6 +3,7 @@
 #module load Java # For working on biocluster- change for AWS
 echo "Analysis done on: "
 date 
+
 set -x
 
 ##############################################################################################
@@ -14,9 +15,9 @@ set -x
 ##############################################################################################
 
 #nextflow="/home/ubuntu/software/nextflow"
-nextflow="/home/a-m/azzaea/software/nextflow/19.04.1" #biocluster path
-resultsDir="results.nf"
-logsDir="${resultsDir}/logs-nf" #######
+nextflow="/home/a-m/azzaea/software/nextflow/21.04.1.5556" #biocluster path
+resultsDir="nf.nf"
+logsDir="${resultsDir}/logs"
 hostsDir="${resultsDir}/hosts"
 mkdir -p ${resultsDir} ${logsDir} ${hostsDir}
 
@@ -32,7 +33,7 @@ log1="${logsDir}/bioinfoScaling_processes-1_host.txt"
 log2="${logsDir}/bioinfoScaling_processes-2_host.txt"
 echo "cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,faults,inputs,outputs,socketsIn,socketsOut,exitStatus" | tee -a ${log1} ${log2}
 
-for line in {1..10}; do
+for line in {1..10}; do # Enough until 512 tasks in biocluster
 	cores=`cat cores.txt | sed -n ${line}p`  #goes to the forks param
 	tasks=${cores}
 	echo -n "${cores},${tasks}," | tee -a ${log1} ${log2}
