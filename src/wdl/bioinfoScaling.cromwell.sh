@@ -1,4 +1,6 @@
 #!/bin/bash
+#SBATCH --mail-user azzaea@gmail.com
+#SBATCH --mail-type BEGIN,END,FAIL
 
 module load Java/15.0.1 # For working on biocluster- change for AWS
 echo "Analysis done on: "
@@ -30,8 +32,8 @@ echo "##########################################################################
 
 ifstat -t -T -n -w > ${resultsDir}/logs/network-report.txt
 
-log1="${resultsDir}/logs-wdl/bioinfoScaling_processes-1_host.txt"
-log2="${resultsDir}/logs-wdl/bioinfoScaling_processes-2_host.txt"
+log1="${resultsDir}/logs/bioinfoScaling_processes-1_host.txt"
+log2="${resultsDir}/logs/bioinfoScaling_processes-2_host.txt"
 echo "cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,faults,inputs,outputs,socketsIn,socketsOut,exitStatus" | tee -a ${log1} ${log2}
 jsoninput="${jsonsDir}/host_process_workflow"
 cat host_process_workflow.json.tmpl > ${jsoninput}
