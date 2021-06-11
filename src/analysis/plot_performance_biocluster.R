@@ -2,8 +2,7 @@
 if (! require(pacman))
   install.packages(pacman)
 
-pacman::p_load(tidyverse, scales, viridis, ggthemes, cowplot)
-library(stringr)
+pacman::p_load(tidyverse, scales, viridis, ggthemes, cowplot, rcartocolor)
 
 ## Utility functions -----------------------------------------------------------
 read.perf.results <- function(filename){
@@ -53,21 +52,25 @@ data.perf <- perf.files %>% map_df(read.perf.results) %>%
   filter(!is.na(exitStatus)) %>% 
   mutate(runStatus = case_when(exitStatus == 0 ~ "Success",
                                exitStatus != 0~ "Failure")) %>%
-  mutate(wf_size = as.numeric(as.factor(wf)))
+  mutate(wf_size = as.numeric(factor(wf, levels = sort(unique(wf), decreasing = T))),
+         processes = as.factor(processes))
 
-plot_time <- data.perf %>%
-  ggplot() + 
-  geom_line(aes(x = cores, y = elapsed, color = wf, linetype = as.factor(processes))) +
-  geom_point(aes(x = cores, y = elapsed, color = wf, shape = runStatus, size = wf_size))  +
+plot_time <-  data.perf %>% ggplot() + 
+  geom_line(aes(x = cores, y = elapsed, color = wf, linetype = processes)) +
+  geom_point(aes(x = cores, y = elapsed, color = wf, shape = runStatus, 
+                 size = wf_size))  +
   # geom_rect(data = failed_tasks, aes(xmin = xmin, xmax = xmax, 
   #                                    ymin = ymin, ymax = max(data.perf$elapsed)), alpha = .4) +
   scale_x_log10() + annotation_logticks(sides = 'b') +
   xlab("Number of tasks") +  ylab("Total runtime (s)") + theme_bw() +
   labs(color = str_wrap("Executor", 10), linetype = "Workflow steps") +
   guides(color = guide_legend(order = 2)) + 
-  scale_color_colorblind() + scale_shape_manual(values = c(1, 19, 8)) + 
-  scale_size(range = c(1.75, 2.5), guide = "none") +  #theme(legend.position = "none") +
-  ggsave(file.path(figs.dir, "Execution_time.png"))
+  scale_color_carto_d(palette = "ag_Sunset") + 
+  scale_shape_manual(values = c(1, 19, 8)) + 
+  scale_size(range = c(1.75, 2.5), guide = "none") + 
+  #theme(legend.position = "none") +
+  facet_grid(processes~.) + 
+  ggsave(file.path(figs.dir, "Execution_time_split.png"))
 
 plot_time
 
@@ -86,7 +89,7 @@ plot_time
 #     xlab("Number of tasks") +  ylab("Speed up") + theme_bw() +
 #     labs(color = str_wrap("Workflow management system", 10), linetype = "Workflow steps") +
 #     guides(color = guide_legend(order = 1)) + 
-#     scale_color_colorblind()
+#     scale_color_carto_d(palette = "ag_Sunset")
 # 
 # plot_speedup
 
@@ -97,22 +100,22 @@ plot_time
 #   ggsave("Execution_time.png")
 
 plot_cpu <- data.perf %>% 
-  mutate(cpu = as.double(str_remove(cpu,"%")),
-         processes = as.factor(processes)) %>%
-  ggplot() + geom_line(aes(x = cores, y = cpu, color = wf, linetype = processes)) +
+  mutate(cpu = as.double(str_remove(cpu,"%"))) %>%
+  ggplot() + geom_line(aes(x = cores, y = cpu, color = wf, 
+                           linetype = processes)) +
   geom_point(aes(x = cores, y = cpu, color = wf, shape = runStatus), size = 2.5) +
   scale_x_log10() + annotation_logticks(sides = 'b') +
   xlab("Number of tasks") +  ylab("CPU utilization") + theme_bw() +
   labs(color = str_wrap("Engine", 10), linetype = "Workflow steps") +
   guides(color = guide_legend(order = 1)) + 
-  theme(legend.position = "top", legend.box = "vertical") +
-  scale_color_colorblind() + scale_shape_manual(values = c(1, 19, 8)) +
-  ggsave(file.path(figs.dir, "CPU_utilization.png"))
+  theme(legend.position = "right", legend.box = "vertical") +
+  scale_color_carto_d(palette = "ag_Sunset") + scale_shape_manual(values = c(1, 19, 8)) +
+  facet_grid(processes~.) +
+  ggsave(file.path(figs.dir, "CPU_utilization_split.png"))
 
 plot_cpu
 
 plot_involuntaryContextSwitch <- data.perf %>% 
-  mutate(processes = as.factor(processes)) %>%
   ggplot() + geom_line(aes(x = cores, y = involuntaryContextSwitch, 
                            color = wf, linetype = processes)) +
   geom_point(aes(x = cores, y = involuntaryContextSwitch, color = wf, 
@@ -120,15 +123,15 @@ plot_involuntaryContextSwitch <- data.perf %>%
   scale_x_log10() + annotation_logticks(sides = 'b') + 
   xlab("Number of tasks") +  ylab("Involuntary Context Switches") + theme_bw() +
   labs(color = str_wrap("Engine", 10), linetype = "Workflow steps") +
-  guides(color = guide_legend(order = 1)) + scale_color_colorblind() + 
-  theme(legend.position = "top", legend.box = "vertical") +
+  guides(color = guide_legend(order = 1)) + scale_color_carto_d(palette = "ag_Sunset") + 
+  theme(legend.position = "right", legend.box = "vertical") +
   scale_shape_manual(values = c(1, 19, 8)) +
-  ggsave(file.path(figs.dir, "InvoluntaryContextSwitch.png"))
+  facet_grid(processes~.) +
+  ggsave(file.path(figs.dir, "InvoluntaryContextSwitch_split.png"))
 
 plot_involuntaryContextSwitch
 
-plot_voluntaryContextSwitch <- data.perf %>% 
-  mutate(processes = as.factor(processes)) %>%
+plot_voluntaryContextSwitch <- data.perf %>%
   ggplot() + geom_line(aes(x = cores, y = voluntaryContextSwitch,
                            color = wf, linetype = processes)) +
   geom_point(aes(x = cores, y = voluntaryContextSwitch, color = wf,
@@ -136,10 +139,11 @@ plot_voluntaryContextSwitch <- data.perf %>%
   scale_x_log10() + annotation_logticks(sides = 'b') +
   xlab("Number of tasks") +  ylab("Voluntary Context Switches") + theme_bw() +
   labs(color = str_wrap("Engine", 10), linetype = "Workflow steps") +
-  guides(color = guide_legend(order = 1)) +   scale_color_colorblind() +
-  theme(legend.position = "top", legend.box = "vertical") +
+  guides(color = guide_legend(order = 1)) +   scale_color_carto_d(palette = "ag_Sunset") +
+  theme(legend.position = "right", legend.box = "vertical") +
   scale_shape_manual(values = c(1, 19, 8)) +
-  ggsave(file.path(figs.dir, "VoluntaryContextSwitch.png"))
+  facet_grid(processes~.) +
+  ggsave(file.path(figs.dir, "VoluntaryContextSwitch_split.png"))
 
 plot_voluntaryContextSwitch
 
@@ -149,7 +153,7 @@ nodes.files <- list.files(pattern = "summarize_hosts_nodes.txt",
                           path = results.dir, recursive = T, full.names = T)
 
 nodes <- nodes.files %>% map_df(read.hosts.results) %>%
-  mutate(processes = as.numeric(str_replace(processes, "host", "")),
+  mutate(processes = as.factor(as.numeric(str_replace(processes, "host", ""))),
          tasks = as.numeric(str_replace_all(tasks, "[^0-9]", "")))
 
 
@@ -162,15 +166,15 @@ data.nodes <- left_join(data.perf, nodes,
                            is.na(nodes) ~ 0))
 
 plot_nodes <- data.nodes %>% ggplot() +
-  geom_line(aes(x=tasks, y = theory) , size = 1.5, color = "red") +
-  geom_line(aes(x=tasks, y = nodes, color =wf, linetype = factor(processes)), 
-            position=position_jitter(w=0.07, h=0)) + 
+  geom_line(aes(x=tasks, y = theory) , size = 1.5, color = carto_pal(5, "TealGrn")[3]) +
+  geom_line(aes(x=tasks, y = nodes, color =wf, linetype = processes))+#, 
+            #position=position_jitter(w=0.07, h=0)) + 
   geom_point(aes(x=tasks, y = nodes, color = wf, shape = runStatus, size = wf_size)) +
   # geom_rect(data = failed_tasks, aes(xmin = xmin, xmax = xmax, 
   #                                    = ymin, ymax = max(data.nodes$theory)), alpha = .4) +
   scale_x_log10(name = "Number of tasks", ) +
   scale_y_continuous(name = "Total occupied nodes", trans = "pseudo_log", limits = c(0,10)) +
-  scale_color_colorblind() +
+  scale_color_carto_d(palette = "ag_Sunset") +
   scale_size(range = c(1.75, 3.5), guide = "none") +
   annotation_logticks(sides = 'b') +
   theme_bw() + 
@@ -179,20 +183,19 @@ plot_nodes <- data.nodes %>% ggplot() +
   # annotate("Text", x = 1, y = 10, hjust = 0,
   #          label = "AWS Compute nodes:\n\tType: m5a.24xlarge \n\tCores: 96") +
   scale_shape_manual(values = c(1, 19, 8)) +
-  ggsave(file.path(figs.dir, "Execution_nodes.png"))
+  facet_grid(processes~.) +
+  ggsave(file.path(figs.dir, "Execution_nodes_split.png"))
 
 plot_nodes
 
 plot_times_nodes <- plot_grid(plot_time + theme(legend.position = "none"), 
-                                       plot_nodes + theme(legend.position = "none"), 
-                                       nrow = 1) 
+                              plot_nodes + theme(legend.position = "none"), 
+                              nrow = 1) 
 plot_times_nodes  
 
-legend <- get_legend(
-  plot_time + theme( legend.position = "top")
-)
+legend <- get_legend(plot_time + theme( legend.position = "top", legend.box = "horizontal"))
 
 plot_grid(legend,plot_times_nodes, nrow=2, rel_heights = c(.5,4)) +
-  ggsave(file.path(figs.dir, "times_nodes.png"), 
+  ggsave(file.path(figs.dir, "times_nodes_split.png"), 
          units = "in", width = 10, height = 4.16)
 
