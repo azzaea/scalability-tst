@@ -1,0 +1,12 @@
+nohup: ignoring input
++ iterations=4
++ srcDir=/home/a-m/azzaea/scalability-tst/src
++ resultsDir=/home/a-m/azzaea/scalability-tst/results/biocluster.2021
++ (( run=1 ))
++ (( run<=4 ))
++ echo '***************** This is run 1/4 *********************'
+***************** This is run 1/4 *********************
++ runResultsDir=/home/a-m/azzaea/scalability-tst/results/biocluster.2021/run1
++ cd /home/a-m/azzaea/scalability-tst/src/cwl
++ sbatch --wait bioinfoScaling.toil.sh
+Submitted batch job 7331892
