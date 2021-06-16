@@ -4,12 +4,13 @@ set -x
 
 iterations=4
 
-srcDir="/home/a-m/azzaea/scalability-tst/src"
-resultsDir="/home/a-m/azzaea/scalability-tst/results/biocluster.2021"
+srcDir="/home/a-m/azzaea/scalability-tst/src/"
+resultsDir="/home/a-m/azzaea/scalability-tst/results/biocluster.2021/"
 
 for (( run=1; run<=${iterations}; run++)); do
 	echo "***************** This is run ${run}/${iterations} *********************"
-	runResultsDir=${resultsDir}/run${run}
+	runResultsDir="${resultsDir}/run${run}/"
+	mkdir -p ${runResultsDir}
 
 	cd ${srcDir}/cwl
 	sbatch --wait bioinfoScaling.toil.sh
