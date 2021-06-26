@@ -1,0 +1,4 @@
+iter: 512 
+logfile1: host1_tasks512.txt
+logfile2: host2_tasks512.txt
+

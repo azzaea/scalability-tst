@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --mail-user azzaea@gmail.com
-#SBATCH --mail-type BEGIN,END,FAIL
+#SBATCH --mail-type END,FAIL
 
 module load toil # for biocluster
 module load nodejs # for biocluster
