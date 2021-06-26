@@ -1,6 +1,0 @@
-{
-  "hostwf.ntasks": 512,
-  "hostwf.logfile1": "host1_tasks512.txt",
-  "hostwf.logfile2": "host2_tasks512.txt"
-}
-

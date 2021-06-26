@@ -1,3 +1,4 @@
+rm(list=ls())
 ## Loading libraries -----------------------------------------------------------
 if (! require(pacman))
   install.packages(pacman)
@@ -71,9 +72,8 @@ plot.figs <- function(data, feature, ylabel, baseline = F){
 
 
 ## Basic preps for I/O ---------------------------------------------------------
-rm(list=ls())
 cores.per.node <- 72 # Biocluster results
-results.dir <- "../../results/biocluster.2019/"
+results.dir <- "../../results/biocluster.2021/homogenous.runs/"
 
 figs.dir <- file.path(results.dir, "figs")
 dir.create(figs.dir)
@@ -86,7 +86,7 @@ files.perf <- list.files(pattern = "^bioinfoScaling_processes",
 #                        path = "../../results/biocluster.2019/", 
 #            recursive = T, full.names = T)
 
-data.perf <- files.perf %>% map_df(read.perf.results, run = F) %>% 
+data.perf <- files.perf %>% map_df(read.perf.results, run = T) %>% 
   filter(!is.na(exitStatus)) %>% 
   mutate(runStatus = fct_recode(as.character(exitStatus), 
                                 Success = "0", Failure = "1" )) %>% 
@@ -96,17 +96,17 @@ data.perf <- files.perf %>% map_df(read.perf.results, run = F) %>%
          wf_order = as.numeric(factor(wf, levels = sort(unique(wf), 
                                                         decreasing = T) ))) %>% 
   select(-cores, -user, -system, -avMemory, -faults, -inputs, -outputs, 
-         -socketsIn, -socketsOut, -exitStatus) %>% filter(tasks < 1000)
+         -socketsIn, -socketsOut, -exitStatus) 
 
 
 
 
 plot_time <-  data.perf %>% #filter(!str_detect(run, '1')) %>% 
   plot.figs(feature = "elapsed", ylabel = "Total runtime (s)") +
-  theme(legend.position = "none") +
-  ggsave(file.path(figs.dir, "Execution_time.png"))
+  theme(legend.position = "none") 
+ggsave(file.path(figs.dir, "Execution_time.png"), plot = plot_time)
   
-plot_time
+
 
 speedup <- data.perf %>%
   select(run, wf, processes, tasks, elapsed, runStatus) %>%
@@ -146,8 +146,9 @@ speedup <- data.perf %>%
 
 plot_speedup <- speedup %>% #filter(runStatus == "Failure") %>% View()
   plot.figs(feature = "ratio", ylabel = "Speed up") +
-  scale_y_continuous(trans = "pseudo_log") + theme(legend.position = "none") +
-  ggsave(file.path(figs.dir, "Speedup.png"))
+  scale_y_continuous(trans = "pseudo_log") + theme(legend.position = "none") 
+
+ggsave(file.path(figs.dir, "Speedup.png"), plot = plot_speedup)
 
 plot_speedup
 
@@ -158,21 +159,22 @@ plot_speedup
 
 
 plot_cpu <- data.perf %>% 
-  plot.figs(feature = "cpu", ylabel = "CPU utilization") + 
-  ggsave(file.path(figs.dir, "CPU_utilization.png"))
+  plot.figs(feature = "cpu", ylabel = "CPU utilization") 
+
+ggsave(file.path(figs.dir, "CPU_utilization.png"), plot = plot_cpu)
 
 plot_cpu
 
 plot_involuntaryContextSwitch <- data.perf %>% #filter(!str_detect(run, '1')) %>%
   plot.figs(feature = "involuntaryContextSwitch", 
-            ylabel = "Involuntary Context Switches") + 
-  ggsave(file.path(figs.dir, "InvoluntaryContextSwitch.png"))
+            ylabel = "Involuntary Context Switches") 
+ggsave(file.path(figs.dir, "InvoluntaryContextSwitch.png"))
 
 plot_involuntaryContextSwitch
 
 plot_voluntaryContextSwitch <- data.perf %>% #filter(!str_detect(run, '1')) %>%
-  plot.figs(feature = "voluntaryContextSwitch", ylabel = "Voluntary Context Switches") + 
-  ggsave(file.path(figs.dir, "VoluntaryContextSwitch.png"))
+  plot.figs(feature = "voluntaryContextSwitch", ylabel = "Voluntary Context Switches") 
+ggsave(file.path(figs.dir, "VoluntaryContextSwitch.png"))
 
 plot_voluntaryContextSwitch
 
@@ -190,8 +192,8 @@ nodes.info <- files.nodes %>% map_df(read.hosts.results, run = T) %>%
 
 data.nodes <- left_join(data.perf, nodes.info, 
                         by = c("wf" = "wf", "tasks" = "tasks", 
-                               # "processes" = "processes", "run" = "run"))  %>%
-                               "processes" = "processes"))  %>% # 2019 compatible
+                               "processes" = "processes", "run" = "run"))  %>%
+                               #"processes" = "processes"))  %>% # 2019 compatible
   select(tasks, wf, processes, nodes, runStatus, wf_order) %>% 
   mutate(theory =ceiling(tasks/cores.per.node), 
          nodes = case_when(!is.na(nodes) ~ nodes,
@@ -199,10 +201,10 @@ data.nodes <- left_join(data.perf, nodes.info,
 
 plot_nodes <- data.nodes %>% 
   plot.figs(feature = "nodes", ylabel = "Total occupied nodes", baseline = T) +
-  scale_y_continuous(trans = "pseudo_log", limits = c(0,10)) +
+  scale_y_continuous(trans = "pseudo_log", limits = c(0,10)) 
   # annotate("Text", x = 1, y = 10, hjust = 0,
   #          label = "AWS Compute nodes:\n\tType: m5a.24xlarge \n\tCores: 96") +
-  ggsave(file.path(figs.dir, "Execution_nodes.png"))
+ggsave(file.path(figs.dir, "Execution_nodes.png"))
 
 plot_nodes
 
@@ -214,13 +216,13 @@ plot_times_nodes
 legend <- get_legend(plot_time + theme( legend.position = "top", 
                                         legend.box = "horizontal"))
 
-plot_grid(legend,plot_times_nodes, nrow=2, rel_heights = c(.5,4)) +
-  ggsave(file.path(figs.dir, "times_nodes.png"), 
+plot_grid(legend,plot_times_nodes, nrow=2, rel_heights = c(.5,4))
+ggsave(file.path(figs.dir, "times_nodes.png"), 
          units = "in", width = 10, height = 4.16)
 
 plot_time_speed_nodes <- plot_grid(plot_time, plot_speedup, 
                                    plot_nodes + theme(legend.position = "none"),
           nrow = 1)
-plot_grid(legend, plot_time_speed_nodes, nrow = 2, rel_heights = c(.5, 4)) +
-  ggsave(file.path(figs.dir, "times_speed_nodes.png"), 
-         units = "in", width = 10, height = 4.16)
+plot_grid(legend, plot_time_speed_nodes, nrow = 2, rel_heights = c(.5, 4)) 
+ggsave(file.path(figs.dir, "times_speed_nodes.png"), 
+       units = "in", width = 10, height = 4.16)
