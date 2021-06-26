@@ -2,7 +2,7 @@
 
 set -x
 
-iterations=4
+iterations=5
 
 srcDir="/home/a-m/azzaea/scalability-tst/src/"
 resultsDir="/home/a-m/azzaea/scalability-tst/results/biocluster.2021/"

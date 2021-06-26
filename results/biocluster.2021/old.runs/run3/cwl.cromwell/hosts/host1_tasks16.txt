@@ -1,0 +1,209 @@
+[2021-06-14 20:13:04,90] [info] Pre Processing Workflow...
+[2021-06-14 20:13:05,37] [info] Pre-Processing file:///home/a-m/azzaea/scalability-tst/src/cwl/host_process.cwl
+[2021-06-14 20:13:31,40] [info] Pre-Processing file:///home/a-m/azzaea/scalability-tst/src/cwl/host.sort.tool.cwl
+[2021-06-14 20:13:31,55] [info] Pre-Processing file:///home/a-m/azzaea/scalability-tst/src/cwl/host.hostname.tool.cwl
+[2021-06-14 20:13:31,61] [info] Pre-Processing file:///home/a-m/azzaea/scalability-tst/src/cwl/host.serialize.tool.cwl
+[2021-06-14 20:13:31,69] [info] Pre Processing Inputs...
+[2021-06-14 20:13:32,03] [info] Running with database db.url = jdbc:hsqldb:mem:33ec8cc1-4fdd-4eaf-8481-e8628a156844;shutdown=false;hsqldb.tx=mvcc
+[2021-06-14 20:13:44,81] [info] Running migration RenameWorkflowOptionsInMetadata with a read batch size of 100000 and a write batch size of 100000
+[2021-06-14 20:13:44,83] [info] [RenameWorkflowOptionsInMetadata] 100%
+[2021-06-14 20:13:45,04] [info] Running with database db.url = jdbc:hsqldb:mem:c8174750-55d7-45b9-839c-73b04b333940;shutdown=false;hsqldb.tx=mvcc
+[2021-06-14 20:13:45,78] [info] Slf4jLogger started
+[2021-06-14 20:13:46,02] [info] Workflow heartbeat configuration:
+{
+  "cromwellId" : "cromid-16df9af",
+  "heartbeatInterval" : "2 minutes",
+  "ttl" : "10 minutes",
+  "failureShutdownDuration" : "5 minutes",
+  "writeBatchSize" : 10000,
+  "writeThreshold" : 10000
+}
+[2021-06-14 20:13:46,25] [info] WriteMetadataActor configured to flush with batch size 200 and process rate 5 seconds.
+[2021-06-14 20:13:46,26] [info] Metadata summary refreshing every 1 second.
+[2021-06-14 20:13:46,26] [info] No metadata archiver defined in config
+[2021-06-14 20:13:46,26] [info] No metadata deleter defined in config
+[2021-06-14 20:13:46,27] [info] KvWriteActor configured to flush with batch size 200 and process rate 5 seconds.
+[2021-06-14 20:13:46,39] [info] CallCacheWriteActor configured to flush with batch size 100 and process rate 3 seconds.
+[2021-06-14 20:13:46,39] [[38;5;220mwarn[0m] 'docker.hash-lookup.gcr-api-queries-per-100-seconds' is being deprecated, use 'docker.hash-lookup.gcr.throttle' instead (see reference.conf)
+[2021-06-14 20:13:46,49] [info] JobExecutionTokenDispenser - Distribution rate: 16 per 1 seconds.
+[2021-06-14 20:13:46,67] [info] SingleWorkflowRunnerActor: Version 63
+[2021-06-14 20:13:46,69] [info] SingleWorkflowRunnerActor: Submitting workflow
+[2021-06-14 20:13:46,83] [info] cwl (Unspecified version) workflow 7ddcdb96-47fd-4da4-886c-149b9e473ebc submitted
+[2021-06-14 20:13:46,84] [info] SingleWorkflowRunnerActor: Workflow submitted [38;5;2m7ddcdb96-47fd-4da4-886c-149b9e473ebc[0m
+[2021-06-14 20:13:46,85] [info] 1 new workflows fetched by cromid-16df9af: 7ddcdb96-47fd-4da4-886c-149b9e473ebc
+[2021-06-14 20:13:46,86] [info] WorkflowManagerActor: Starting workflow [38;5;2m7ddcdb96-47fd-4da4-886c-149b9e473ebc[0m
+[2021-06-14 20:13:46,86] [info] WorkflowManagerActor: Successfully started WorkflowActor-7ddcdb96-47fd-4da4-886c-149b9e473ebc
+[2021-06-14 20:13:46,87] [info] Retrieved 1 workflows from the WorkflowStoreActor
+[2021-06-14 20:13:46,90] [info] WorkflowStoreHeartbeatWriteActor configured to flush with batch size 10000 and process rate 2 minutes.
+[2021-06-14 20:13:47,03] [info] MaterializeWorkflowDescriptorActor [[38;5;2m7ddcdb96[0m]: Parsing workflow as CWL v1.0
+[2021-06-14 20:13:48,51] [info] MaterializeWorkflowDescriptorActor [[38;5;2m7ddcdb96[0m]: Call-to-Backend assignments: hostStep1 -> slurm, rangeStep -> slurm, catsortStep -> slurm
+[2021-06-14 20:13:51,13] [info] WorkflowExecutionActor-7ddcdb96-47fd-4da4-886c-149b9e473ebc [[38;5;2m7ddcdb96[0m]: Starting rangeStep
+[2021-06-14 20:13:51,51] [info] Not triggering log of token queue status. Effective log interval = None
+[2021-06-14 20:13:51,51] [info] Assigned new job execution tokens to the following groups: 7ddcdb96: 1
+[2021-06-14 20:13:51,71] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mrangeStep:NA:1]: [38;5;5m'echo'[0m
+[2021-06-14 20:13:51,77] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mrangeStep:NA:1]: executing: sbatch -J cromwell_7ddcdb96_rangeStep -D /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-rangeStep -o /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-rangeStep/execution/stdout -e /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-rangeStep/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-rangeStep/execution/script"
+[2021-06-14 20:13:56,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mrangeStep:NA:1]: job id: 7363814
+[2021-06-14 20:13:56,34] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mrangeStep:NA:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2021-06-14 20:13:56,34] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mrangeStep:NA:1]: Status change from - to Running
+[2021-06-14 20:13:57,23] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mrangeStep:NA:1]: Status change from Running to Done
+[2021-06-14 20:14:00,37] [info] WorkflowExecutionActor-7ddcdb96-47fd-4da4-886c-149b9e473ebc [[38;5;2m7ddcdb96[0m]: Starting hostStep1 (16 shards)
+[2021-06-14 20:14:00,51] [info] Assigned new job execution tokens to the following groups: 7ddcdb96: 16
+[2021-06-14 20:14:00,57] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:14:1]: [38;5;5m'hostname'[0m
+[2021-06-14 20:14:00,59] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:14:1]: executing: sbatch -J cromwell_7ddcdb96_hostStep1 -D /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-14 -o /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-14/execution/result.host.txt -e /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-14/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-14/execution/script"
+[2021-06-14 20:14:00,62] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:15:1]: [38;5;5m'hostname'[0m
+[2021-06-14 20:14:00,65] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:13:1]: [38;5;5m'hostname'[0m
+[2021-06-14 20:14:00,65] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:15:1]: executing: sbatch -J cromwell_7ddcdb96_hostStep1 -D /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-15 -o /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-15/execution/result.host.txt -e /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-15/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-15/execution/script"
+[2021-06-14 20:14:00,66] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:13:1]: executing: sbatch -J cromwell_7ddcdb96_hostStep1 -D /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-13 -o /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-13/execution/result.host.txt -e /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-13/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-13/execution/script"
+[2021-06-14 20:14:00,69] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:3:1]: [38;5;5m'hostname'[0m
+[2021-06-14 20:14:00,70] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:3:1]: executing: sbatch -J cromwell_7ddcdb96_hostStep1 -D /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-3 -o /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-3/execution/result.host.txt -e /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-3/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-3/execution/script"
+[2021-06-14 20:14:00,76] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:9:1]: [38;5;5m'hostname'[0m
+[2021-06-14 20:14:00,78] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:9:1]: executing: sbatch -J cromwell_7ddcdb96_hostStep1 -D /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-9 -o /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-9/execution/result.host.txt -e /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-9/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-9/execution/script"
+[2021-06-14 20:14:00,83] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:1:1]: [38;5;5m'hostname'[0m
+[2021-06-14 20:14:00,84] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:1:1]: executing: sbatch -J cromwell_7ddcdb96_hostStep1 -D /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-1 -o /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-1/execution/result.host.txt -e /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-1/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-1/execution/script"
+[2021-06-14 20:14:00,87] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:8:1]: [38;5;5m'hostname'[0m
+[2021-06-14 20:14:00,87] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:8:1]: executing: sbatch -J cromwell_7ddcdb96_hostStep1 -D /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-8 -o /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-8/execution/result.host.txt -e /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-8/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-8/execution/script"
+[2021-06-14 20:14:00,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:5:1]: [38;5;5m'hostname'[0m
+[2021-06-14 20:14:00,92] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:5:1]: executing: sbatch -J cromwell_7ddcdb96_hostStep1 -D /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-5 -o /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-5/execution/result.host.txt -e /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-5/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-5/execution/script"
+[2021-06-14 20:14:00,95] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:11:1]: [38;5;5m'hostname'[0m
+[2021-06-14 20:14:00,96] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:11:1]: executing: sbatch -J cromwell_7ddcdb96_hostStep1 -D /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-11 -o /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-11/execution/result.host.txt -e /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-11/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-11/execution/script"
+[2021-06-14 20:14:01,00] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:12:1]: [38;5;5m'hostname'[0m
+[2021-06-14 20:14:01,01] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:12:1]: executing: sbatch -J cromwell_7ddcdb96_hostStep1 -D /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-12 -o /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-12/execution/result.host.txt -e /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-12/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-12/execution/script"
+[2021-06-14 20:14:01,03] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:2:1]: [38;5;5m'hostname'[0m
+[2021-06-14 20:14:01,03] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:2:1]: executing: sbatch -J cromwell_7ddcdb96_hostStep1 -D /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-2 -o /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-2/execution/result.host.txt -e /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-2/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-2/execution/script"
+[2021-06-14 20:14:01,06] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:0:1]: [38;5;5m'hostname'[0m
+[2021-06-14 20:14:01,07] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:0:1]: executing: sbatch -J cromwell_7ddcdb96_hostStep1 -D /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-0 -o /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-0/execution/result.host.txt -e /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-0/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-0/execution/script"
+[2021-06-14 20:14:01,11] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:7:1]: [38;5;5m'hostname'[0m
+[2021-06-14 20:14:01,11] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:7:1]: executing: sbatch -J cromwell_7ddcdb96_hostStep1 -D /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-7 -o /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-7/execution/result.host.txt -e /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-7/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-7/execution/script"
+[2021-06-14 20:14:01,13] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:4:1]: [38;5;5m'hostname'[0m
+[2021-06-14 20:14:01,13] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:4:1]: executing: sbatch -J cromwell_7ddcdb96_hostStep1 -D /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-4 -o /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-4/execution/result.host.txt -e /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-4/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-4/execution/script"
+[2021-06-14 20:14:01,19] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:6:1]: [38;5;5m'hostname'[0m
+[2021-06-14 20:14:01,19] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:6:1]: executing: sbatch -J cromwell_7ddcdb96_hostStep1 -D /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-6 -o /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-6/execution/result.host.txt -e /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-6/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-6/execution/script"
+[2021-06-14 20:14:01,21] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:10:1]: [38;5;5m'hostname'[0m
+[2021-06-14 20:14:01,21] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:10:1]: executing: sbatch -J cromwell_7ddcdb96_hostStep1 -D /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-10 -o /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-10/execution/result.host.txt -e /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-10/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-hostStep1/shard-10/execution/script"
+[2021-06-14 20:14:01,32] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:14:1]: job id: 7363815
+[2021-06-14 20:14:01,32] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:15:1]: job id: 7363816
+[2021-06-14 20:14:01,32] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:13:1]: job id: 7363817
+[2021-06-14 20:14:01,32] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:3:1]: job id: 7363818
+[2021-06-14 20:14:01,32] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:9:1]: job id: 7363819
+[2021-06-14 20:14:01,32] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:1:1]: job id: 7363820
+[2021-06-14 20:14:01,32] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:8:1]: job id: 7363821
+[2021-06-14 20:14:01,32] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:5:1]: job id: 7363822
+[2021-06-14 20:14:01,32] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:11:1]: job id: 7363823
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:2:1]: job id: 7363825
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:12:1]: job id: 7363824
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:0:1]: job id: 7363826
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:7:1]: job id: 7363827
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:4:1]: job id: 7363828
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:14:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:14:1]: Status change from - to Running
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:15:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:15:1]: Status change from - to Running
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:13:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:3:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:9:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:13:1]: Status change from - to Running
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:3:1]: Status change from - to Running
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:9:1]: Status change from - to Running
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:1:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:8:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:1:1]: Status change from - to Running
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:8:1]: Status change from - to Running
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:5:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:5:1]: Status change from - to Running
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:11:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:11:1]: Status change from - to Running
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:2:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:2:1]: Status change from - to Running
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:0:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2021-06-14 20:14:01,33] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:7:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2021-06-14 20:14:01,34] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:4:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2021-06-14 20:14:01,34] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:0:1]: Status change from - to Running
+[2021-06-14 20:14:01,34] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:7:1]: Status change from - to Running
+[2021-06-14 20:14:01,34] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:4:1]: Status change from - to Running
+[2021-06-14 20:14:01,34] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:12:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2021-06-14 20:14:01,34] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:12:1]: Status change from - to Running
+[2021-06-14 20:14:02,04] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:9:1]: Status change from Running to Done
+[2021-06-14 20:14:02,07] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:8:1]: Status change from Running to Done
+[2021-06-14 20:14:02,12] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:3:1]: Status change from Running to Done
+[2021-06-14 20:14:02,14] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:12:1]: Status change from Running to Done
+[2021-06-14 20:14:02,14] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:15:1]: Status change from Running to Done
+[2021-06-14 20:14:02,26] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:0:1]: Status change from Running to Done
+[2021-06-14 20:14:02,76] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:7:1]: Status change from Running to Done
+[2021-06-14 20:14:02,91] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:5:1]: Status change from Running to Done
+[2021-06-14 20:14:02,96] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:11:1]: Status change from Running to Done
+[2021-06-14 20:14:03,34] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:14:1]: Status change from Running to Done
+[2021-06-14 20:14:03,99] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:4:1]: Status change from Running to Done
+[2021-06-14 20:14:04,07] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:2:1]: Status change from Running to Done
+[2021-06-14 20:14:04,23] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:1:1]: Status change from Running to Done
+[2021-06-14 20:14:04,44] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:13:1]: Status change from Running to Done
+[2021-06-14 20:14:06,31] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:6:1]: job id: 7363829
+[2021-06-14 20:14:06,31] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:10:1]: job id: 7363830
+[2021-06-14 20:14:06,31] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:6:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2021-06-14 20:14:06,31] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:6:1]: Status change from - to Running
+[2021-06-14 20:14:06,31] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:10:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2021-06-14 20:14:06,31] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:10:1]: Status change from - to Running
+[2021-06-14 20:14:06,91] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:10:1]: Status change from Running to Done
+[2021-06-14 20:14:07,42] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mhostStep1:6:1]: Status change from Running to Done
+[2021-06-14 20:14:09,57] [info] WorkflowExecutionActor-7ddcdb96-47fd-4da4-886c-149b9e473ebc [[38;5;2m7ddcdb96[0m]: Starting catsortStep
+[2021-06-14 20:14:10,51] [info] Assigned new job execution tokens to the following groups: 7ddcdb96: 1
+[2021-06-14 20:14:10,63] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mcatsortStep:NA:1]: [38;5;5m'sort' '-u' '/home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/inputs/1808147617/result.host.txt' '/home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/inputs/11196258/result.host.txt' '/home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/inputs/-1785755101/result.host.txt' '/home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/inputs/712260836/result.host.txt' '/home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/inputs/-1084690523/result.host.txt' '/home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/inputs/1413325414/result.host.txt' '/home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/inputs/-383625945/result.host.txt' '/home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/inputs/2114389992/result.host.txt' '/home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/inputs/317438633/result.host.txt' '/home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/inputs/-1479512726/result.host.txt' '/home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/inputs/568409984/result.host.txt' '/home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/inputs/-1228541375/result.host.txt' '/home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/inputs/1269474562/result.host.txt' '/home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/inputs/-527476797/result.host.txt' '/home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/inputs/1970539140/result.host.txt' '/home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/inputs/173587781/result.host.txt'[0m
+[2021-06-14 20:14:10,68] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mcatsortStep:NA:1]: executing: sbatch -J cromwell_7ddcdb96_catsortStep -D /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep -o /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/execution/host1_tasks16.txt -e /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/execution/stderr -p normal -c 1 --wrap "/bin/bash /home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/execution/script"
+[2021-06-14 20:14:11,29] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mcatsortStep:NA:1]: job id: 7363831
+[2021-06-14 20:14:11,32] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mcatsortStep:NA:1]: Cromwell will watch for an rc file but will *not* double-check whether this job is actually alive (unless Cromwell restarts)
+[2021-06-14 20:14:11,32] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mcatsortStep:NA:1]: Status change from - to Running
+[2021-06-14 20:14:12,89] [info] DispatchedConfigAsyncJobExecutionActor [[38;5;2m7ddcdb96[0mcatsortStep:NA:1]: Status change from Running to Done
+[2021-06-14 20:14:13,65] [info] WorkflowExecutionActor-7ddcdb96-47fd-4da4-886c-149b9e473ebc [[38;5;2m7ddcdb96[0m]: Workflow host_process.cwl complete. Final Outputs:
+{
+  "host_process.cwl.result": "\"/home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/execution/host1_tasks16.txt\""
+}
+[2021-06-14 20:14:16,28] [info] WorkflowManagerActor: Workflow actor for 7ddcdb96-47fd-4da4-886c-149b9e473ebc completed with status 'Succeeded'. The workflow will be removed from the workflow store.
+[2021-06-14 20:14:22,27] [info] SingleWorkflowRunnerActor workflow finished with status 'Succeeded'.
+{
+  "outputs": {
+    "host_process.cwl.result": {
+      "format": null,
+      "location": "/home/a-m/azzaea/scalability-tst/src/cwl/cromwell-executions/host_process.cwl/7ddcdb96-47fd-4da4-886c-149b9e473ebc/call-catsortStep/execution/host1_tasks16.txt",
+      "size": 12,
+      "secondaryFiles": [],
+      "contents": null,
+      "checksum": null,
+      "class": "File"
+    }
+  },
+  "id": "7ddcdb96-47fd-4da4-886c-149b9e473ebc"
+}
+[2021-06-14 20:14:26,31] [info] Workflow polling stopped
+[2021-06-14 20:14:26,32] [info] Shutting down WorkflowStoreActor - Timeout = 5 seconds
+[2021-06-14 20:14:26,33] [info] Aborting all running workflows.
+[2021-06-14 20:14:26,33] [info] Shutting down WorkflowLogCopyRouter - Timeout = 5 seconds
+[2021-06-14 20:14:26,34] [info] Shutting down JobExecutionTokenDispenser - Timeout = 5 seconds
+[2021-06-14 20:14:26,34] [info] 0 workflows released by cromid-16df9af
+[2021-06-14 20:14:26,34] [info] WorkflowStoreActor stopped
+[2021-06-14 20:14:26,34] [info] WorkflowLogCopyRouter stopped
+[2021-06-14 20:14:26,34] [info] JobExecutionTokenDispenser stopped
+[2021-06-14 20:14:26,34] [info] Shutting down WorkflowManagerActor - Timeout = 3600 seconds
+[2021-06-14 20:14:26,34] [info] WorkflowManagerActor: All workflows finished
+[2021-06-14 20:14:26,34] [info] WorkflowManagerActor stopped
+[2021-06-14 20:14:26,66] [info] Connection pools shut down
+[2021-06-14 20:14:26,66] [info] Shutting down SubWorkflowStoreActor - Timeout = 1800 seconds
+[2021-06-14 20:14:26,66] [info] Shutting down JobStoreActor - Timeout = 1800 seconds
+[2021-06-14 20:14:26,66] [info] Shutting down CallCacheWriteActor - Timeout = 1800 seconds
+[2021-06-14 20:14:26,66] [info] CallCacheWriteActor Shutting down: 0 queued messages to process
+[2021-06-14 20:14:26,67] [info] Shutting down ServiceRegistryActor - Timeout = 1800 seconds
+[2021-06-14 20:14:26,67] [info] Shutting down DockerHashActor - Timeout = 1800 seconds
+[2021-06-14 20:14:26,71] [info] Shutting down connection pool: curAllocated=0 idleQueues.size=0 waitQueue.size=0 maxWaitQueueLimit=256 closed=false
+[2021-06-14 20:14:26,71] [info] Shutting down connection pool: curAllocated=0 idleQueues.size=0 waitQueue.size=0 maxWaitQueueLimit=256 closed=false
+[2021-06-14 20:14:26,71] [info] Shutting down connection pool: curAllocated=0 idleQueues.size=0 waitQueue.size=0 maxWaitQueueLimit=256 closed=false
+[2021-06-14 20:14:26,72] [info] Shutting down IoProxy - Timeout = 1800 seconds
+[2021-06-14 20:14:26,73] [info] SubWorkflowStoreActor stopped
+[2021-06-14 20:14:26,73] [info] JobStoreActor stopped
+[2021-06-14 20:14:26,73] [info] CallCacheWriteActor stopped
+[2021-06-14 20:14:26,73] [info] IoProxy stopped
+[2021-06-14 20:14:26,73] [info] WriteMetadataActor Shutting down: 0 queued messages to process
+[2021-06-14 20:14:26,73] [info] KvWriteActor Shutting down: 0 queued messages to process
+[2021-06-14 20:14:26,74] [info] ServiceRegistryActor stopped
+[2021-06-14 20:14:26,74] [info] Shutting down connection pool: curAllocated=0 idleQueues.size=0 waitQueue.size=0 maxWaitQueueLimit=256 closed=false
+[2021-06-14 20:14:26,74] [info] DockerHashActor stopped
+[2021-06-14 20:14:26,76] [info] Database closed
+[2021-06-14 20:14:26,76] [info] Stream materializer shut down
+[2021-06-14 20:14:26,76] [info] WDL HTTP import resolver closed

@@ -5,7 +5,7 @@ nodes processes tasks
 1 host1 tasks8.txt
 1 host1 tasks16.txt
 2 host1 tasks32.txt
-3 host1 tasks64.txt
+2 host1 tasks64.txt
 3 host1 tasks128.txt
 5 host1 tasks256.txt
 5 host1 tasks512.txt
@@ -13,8 +13,8 @@ nodes processes tasks
 1 host2 tasks2.txt
 1 host2 tasks4.txt
 1 host2 tasks8.txt
-1 host2 tasks16.txt
-2 host2 tasks32.txt
+2 host2 tasks16.txt
+1 host2 tasks32.txt
 2 host2 tasks64.txt
 3 host2 tasks128.txt
 5 host2 tasks256.txt
