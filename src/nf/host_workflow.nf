@@ -10,7 +10,7 @@ process host1 {
 
     output:
     	val n into ntasks2
-        stdout result1
+        stdout names1
 
     """ 
     hostname 
@@ -22,7 +22,7 @@ process host2 {
         val n from ntasks2
 
     output:
-    	stdout result2
+    	stdout names2
 
     """
     hostname 
@@ -33,8 +33,8 @@ process host2 {
 
 
 
-result1
-     .mix(result2)
+names1
+     .mix(names2)
      .unique()
      .collectFile(name: "$logfile", storeDir: "$workflow.launchDir/nf.nf/hosts")
      .subscribe {println "Hostname: ${it.text}" }

@@ -15,7 +15,7 @@ We used a 1- and 2- process workflow scattered across n tasks, where n is increa
 The DAG of nextflow scripts can be obtained after an actual run of the pipeline with the `-with-dag` option added as below:
 
 ```
-$ nextflow run <nexflow script>  -with-dag <dag.png> <other options and flags>
+$ nextflow run host_workflow.nf -with-dag dag_nf_hosts_workflow.html #or, dag_nf_hosts_workflow.png to get the png directly 
 ``` 
 
 ## Running Nextflow code:
@@ -28,5 +28,4 @@ $ nextflow run host_workflow.nf -profile cluster --ntasks=<tasks> --forks=<forks
 $ 
 ```
 
-Notice that I still need to remove the `maxForks` directive from these scripts and replace it with `queueSize` as appropriate
 
