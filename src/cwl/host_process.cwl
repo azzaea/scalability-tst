@@ -7,7 +7,7 @@ requirements:
   ScatterFeatureRequirement: {}
 
 inputs:
-  iter: int 
+  ntasks: int 
   logfile1: string
 
 outputs:  
@@ -19,7 +19,7 @@ steps:
   rangeStep:
     run: host.serialize.tool.cwl
     in:
-      ntimes: iter
+      ntimes: ntasks
     out: [range]
   hostStep1:
     run: host.hostname.tool.cwl 
