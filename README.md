@@ -11,8 +11,8 @@ This repo contains the source code, raw results and figures accompanying our man
 .
 ├── cluster.setup.md # Instruction for setting up an AWS slurm cluster 
 ├── pcluster.config  # AWS Cluster configurations 
-├── results.<biocluster/AWS> # Scalability testing results on Biocluster/AWS. Files are organized per Engine+language as:
-│   └── <cromwell.wdl/cromwell.cwl/nf> 
+├── results/<biocluster/AWS>.20<19/21> # Scalability testing results on Biocluster/AWS. Files are organized per Engine+language as:
+│   └── <cromwell.wdl/cromwell.cwl/toil.cwl/nf> 
 │       ├── hosts 
 │       │   ├── host1_tasks<1024>.txt # hostnames of running the 1 step workflow of <1024> tasks
 │       │   └── host2_tasks<96>.txt   # hostnames of running the 2 step workflow of <96>   tasks
@@ -41,32 +41,35 @@ This repo contains the source code, raw results and figures accompanying our man
 
 ## HPC comparison
 
-The figures shown here are from running those scalability tests on [biocluster](https://biocluster2.igb.illinois.edu/), the HPC cluster of the Carl R. Woese Institute for Genomic Biology at the University of Illinois at Urbana-Champaign. All are from runs (1- or 2- step workflow) with a single CPU core per process, scattered across `n` processes.
+The figures shown here are from running those scalability tests on [biocluster](https://biocluster2.igb.illinois.edu/), the HPC cluster of the Carl R. Woese Institute for Genomic Biology at the University of Illinois at Urbana-Champaigni, with the most recent version of each runner in July 2021 (Toil: , Nextflow:, Cromwell:). All are from runs (1- or 2- step workflow) with a single CPU core per process, scattered across `n` processes. These figures are aggregations from 5 repeated experiments on biocluster.
 
-Please find the corresponding raw data in the folder [results.biocluster](results.biocluster). Similarly, the data for Figure [xxx]() of the manuscript corresponding to tests done on AWS is available in [results.aws](results.aws). The analysis code to produce these figures is in [src/analysis](src/analysis). 
+Please find the corresponding raw data in the folder [results/biocluster.2021](results/biocluster.2021). Similarly, the data for Figure [4](https://www.biorxiv.org/content/biorxiv/early/2021/04/05/2021.04.03.437906/F4.large.jpg) of the pre-print[1] corresponds to tests done on AWS, and is available in [results.aws](results.aws). The analysis code to produce these figures is in [src/analysis](src/analysis). 
 
+## References
+
+[1] Ahmed, Azza E., et al. ["Design considerations for workflow management systems use in production genomics research and the clinic."](https://doi.org/10.1101/2021.04.03.437906) bioRxiv (2021).
 
 <p align="center">
-  <img src="/src/analysis/Execution_time.png" width =450>
+  <img src="results/biocluster.2021/figs/Execution_time.png" width =450>
 </p>
 <p align="center">Execution time</p>
     
 <p align="center">
-    <img src="src/analysis/Execution_nodes.png" width=450 >
+    <img src="results/biocluster.2021/figs/Execution_nodes.png" width=450 >
 </p>
 <p align="center">Used nodes</p>
 
 <p align="center">
-    <img src="src/analysis/CPU_utilization.png" width=450 >
+    <img src="results/biocluster.2021/figs/CPU_utilization.png" width=450 >
 </p>
 <p align="center">CPU utilization</p>
 
 <p align="center">
-    <img src="src/analysis/InvoluntaryContextSwitch.png" width=450>
+    <img src="results/biocluster.2021/figs/InvoluntaryContextSwitch.png" width=450>
 </p>
 <p align="center">Involuntary Context Switches</p>
 
 <p align="center">
-    <img src="src/analysis/VoluntaryContextSwitch.png" width=450>
+    <img src="results/biocluster.2021/figs/VoluntaryContextSwitch.png" width=450>
 </p>
-<p align="center">Voluntary Context Sswitches</p>
+<p align="center">Voluntary Context Switches</p>
