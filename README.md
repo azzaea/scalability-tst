@@ -1,8 +1,3 @@
-# Status: 
-
-* tests on biocluster have finished, and new figs generated in the `results/biocluster2021/figs` directory
-* Clean up remains: of the tree architecture of the contents of this repo
-
 # wfms-scalability
 
 This repo contains the source code, raw results and figures accompanying our manuscript "Requirements-driven design considerations for workflow management systems used in production genomics research and the clinic". Key files in this repo are organized as follows:
