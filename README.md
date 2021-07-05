@@ -38,7 +38,7 @@ This repo contains the source code, raw results and figures accompanying our man
 
 The figures shown here are from running those scalability tests on [biocluster](https://biocluster2.igb.illinois.edu/), the HPC cluster of the Carl R. Woese Institute for Genomic Biology at the University of Illinois at Urbana-Champaigni, with the most recent version of each runner in July 2021 (Toil: , Nextflow:, Cromwell:). All are from runs (1- or 2- step workflow) with a single CPU core per process, scattered across `n` processes. These figures are aggregations from 5 repeated experiments on biocluster.
 
-Please find the corresponding raw data in the folder [results/biocluster.2021](results/biocluster.2021). Similarly, the data for Figure [4](https://www.biorxiv.org/content/biorxiv/early/2021/04/05/2021.04.03.437906/F4.large.jpg) of the pre-print[1] corresponds to tests done on AWS, and is available in [results.aws](results.aws). The analysis code to produce these figures is in [src/analysis](src/analysis). 
+Please find the corresponding raw data in the folder [results/biocluster.2021](results/biocluster.2021). Similarly, the data for Figure [4](https://www.biorxiv.org/content/biorxiv/early/2021/04/05/2021.04.03.437906/F4.large.jpg) of the pre-print[1] corresponds to tests done on AWS, and is available in [results/aws.2019](results/aws.2019). The analysis code to produce these figures is in [src/analysis](src/analysis). 
 
 ## References
 
