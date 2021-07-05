@@ -3,13 +3,12 @@ digraph hostwf {
   compound=true;
 
   # Links
-  CALL_host1 -> CALL_catHostsTask
-  CALL_host2 -> CALL_catHostsTask
   SCATTER_0_VARIABLE_n -> CALL_host1
   CALL_host1 -> CALL_host2
+  CALL_host1 -> CALL_catHostsTask
+  CALL_host2 -> CALL_catHostsTask
 
   # Nodes
-  CALL_catHostsTask [label="call catHostsTask"]
   subgraph cluster_0 {
     style="filled,solid";
     fillcolor=white;
@@ -17,4 +16,5 @@ digraph hostwf {
     CALL_host2 [label="call host2"]
     SCATTER_0_VARIABLE_n [shape="hexagon" label="scatter over Int as n"]
   }
+  CALL_catHostsTask [label="call catHostsTask"]
 }

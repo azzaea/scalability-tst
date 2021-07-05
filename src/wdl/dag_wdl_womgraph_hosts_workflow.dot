@@ -1,0 +1,223 @@
+digraph "workflow"
+{
+  compound=true;
+  "PORT1815592231" -> "PORT808653065"
+  "PORT666312528" -> "PORT634638280"
+  "PORT1146484093" -> "PORT1277678493" [style=dashed arrowhead=none]
+  "PORT361903111" -> "PORT98801744"
+  "PORT628164202" -> "PORT1089341986" [style=dashed arrowhead=none]
+  "PORT978035840" -> "PORT1635358020"
+  "PORT1962826086" -> "PORT361903111" [style=dashed arrowhead=none]
+  "PORT939391749" -> "PORT1198442960"
+  "PORT320850799" -> "PORT1962826086"
+  "PORT964981922" -> "PORT487764004"
+  "PORT142103421" -> "PORT214768579"
+  "PORT808653065" -> "PORT2078154554" [style=dashed arrowhead=none]
+  "PORT128077491" -> "PORT1559817679"
+  "PORT128077491" -> "PORT1292570580" [style=dashed arrowhead=none]
+  "PORT1399398408" -> "PORT369351727"
+  "PORT1292570580" -> "PORT1340634558"
+  "PORT704387627" -> "PORT1146484093"
+  "PORT1956060889" -> "PORT628164202"
+  "PORT1779479139" -> "PORT1890318768"
+  "PORT1956060889" -> "PORT943165647"
+  "PORT1472759652" -> "PORT844872102"
+  "PORT2078154554" -> "PORT2029709919"
+
+  
+  subgraph cluster_19 {
+    style="filled,solid";
+    fillcolor=white;
+    "NODE1882348832" [shape=plaintext label="call hostwf.catHostsTask (catHostsTask)"]
+    "PORT1779479139" [shape=hexagon label="File catHostsTask.result"];
+    "PORT1198442960" [shape=oval label="Array[String] result1"];
+    "PORT844872102" [shape=oval label="Array[String] result2"];
+    "PORT487764004" [shape=oval label="String logfile"];
+  
+  
+  }
+  
+  subgraph cluster_0 {
+    style="filled,solid";
+    fillcolor=lightskyblue1;
+    "NODE168870325" [shape=plaintext label="Int ntasks"]
+    "PORT1399398408" [shape=hexagon label="Int ntasks"];
+  
+  
+  }
+  
+  subgraph cluster_18 {
+    style="filled,solid";
+    fillcolor=palegreen;
+    "NODE13643661" [shape=plaintext label="File log"]
+    "PORT2025955363" [shape=hexagon label="File log"];
+    "PORT1890318768" [shape=oval label="File catHostsTask.result"];
+  
+  
+  }
+  
+  subgraph cluster_15 {
+    style="filled,dashed";
+    fillcolor=white;
+    "NODE2082678778" [shape=plaintext label="Array[String] catHostsTask.result1 = f(host1.result)"]
+    "PORT939391749" [shape=hexagon label="Array[String] catHostsTask.result1"];
+    "PORT98801744" [shape=oval label="Array[String] host1.result"];
+  
+  
+  }
+  
+  subgraph cluster_16 {
+    style="filled,dashed";
+    fillcolor=white;
+    "NODE1773336805" [shape=plaintext label="Array[Int] n = f(ntasks)"]
+    "PORT128077491" [shape=hexagon label="Array[Int] n"];
+    "PORT369351727" [shape=oval label="Int ntasks"];
+  
+  
+  }
+  
+  subgraph cluster_17 {
+    style="filled,dashed";
+    fillcolor=white;
+    "NODE1598434875" [shape=plaintext label="String catHostsTask.logfile = f(logfile2)"]
+    "PORT964981922" [shape=hexagon label="String catHostsTask.logfile"];
+    "PORT1635358020" [shape=oval label="String logfile2"];
+  
+  
+  }
+  
+  subgraph cluster_12 {
+    style="filled,solid";
+    fillcolor=lightgray;
+    "NODE440472115" [shape=plaintext label="scatter n in"]
+    
+    "PORT1559817679" [shape=oval label="Array[Int] n"];
+    
+    subgraph cluster_13 {
+      style="filled,solid";
+      fillcolor=lightgray
+      "2d2b61b5-693b-4666-9969-0337af3a759a" [shape=plaintext label="gather ports"]
+      "PORT2078154554" [shape=hexagon label="Array[String] host2.result"];
+      "PORT1277678493" [shape=hexagon label="Array[Int] host2.taskID"];
+      "PORT361903111" [shape=hexagon label="Array[String] host1.result"];
+      "PORT1089341986" [shape=hexagon label="Array[Int] host1.taskID"];
+    
+    }
+          
+    
+    subgraph cluster_11 {
+      style="filled,solid";
+      fillcolor=white;
+      
+      subgraph cluster_3 {
+        style="filled,solid";
+        fillcolor=white;
+        "NODE56510351" [shape=plaintext label="call hostwf.host1 (host1)"]
+        "PORT1956060889" [shape=hexagon label="Int host1.taskID"];
+        "PORT320850799" [shape=hexagon label="String host1.result"];
+        "PORT214768579" [shape=oval label="Int i"];
+      
+      
+      }
+      
+      subgraph cluster_5 {
+        style="dashed";
+        fillcolor=blueviolet;
+        "NODE1835841364" [shape=plaintext label="Int n"]
+        "PORT1292570580" [shape=hexagon label="Int n"];
+      
+      
+      }
+      
+      subgraph cluster_9 {
+        style="filled,solid";
+        fillcolor=yellowgreen;
+        "NODE698498109" [shape=plaintext label="String host1.result"]
+        "PORT1962826086" [shape=oval label="String host1.result"];
+      
+      
+      }
+      
+      subgraph cluster_8 {
+        style="filled,solid";
+        fillcolor=yellowgreen;
+        "NODE1397530667" [shape=plaintext label="Int host1.taskID"]
+        "PORT628164202" [shape=oval label="Int host1.taskID"];
+      
+      
+      }
+      
+      subgraph cluster_4 {
+        style="filled,solid";
+        fillcolor=yellowgreen;
+        "NODE1265287441" [shape=plaintext label="Int host2.taskID"]
+        "PORT1146484093" [shape=oval label="Int host2.taskID"];
+      
+      
+      }
+      
+      subgraph cluster_6 {
+        style="filled,solid";
+        fillcolor=white;
+        "NODE809822663" [shape=plaintext label="call hostwf.host2 (host2)"]
+        "PORT704387627" [shape=hexagon label="Int host2.taskID"];
+        "PORT1815592231" [shape=hexagon label="String host2.result"];
+        "PORT634638280" [shape=oval label="Int i"];
+      
+      
+      }
+      
+      subgraph cluster_2 {
+        style="filled,dashed";
+        fillcolor=white;
+        "NODE1104654975" [shape=plaintext label="Int host2.i = f(host1.taskID)"]
+        "PORT666312528" [shape=hexagon label="Int host2.i"];
+        "PORT943165647" [shape=oval label="Int host1.taskID"];
+      
+      
+      }
+      
+      subgraph cluster_10 {
+        style="filled,dashed";
+        fillcolor=white;
+        "NODE1803361784" [shape=plaintext label="Int host1.i = f(n)"]
+        "PORT142103421" [shape=hexagon label="Int host1.i"];
+        "PORT1340634558" [shape=oval label="Int n"];
+      
+      
+      }
+      
+      subgraph cluster_7 {
+        style="filled,solid";
+        fillcolor=yellowgreen;
+        "NODE1877240674" [shape=plaintext label="String host2.result"]
+        "PORT808653065" [shape=oval label="String host2.result"];
+      
+      
+      }
+    
+    }
+  
+  }
+  
+  subgraph cluster_1 {
+    style="filled,solid";
+    fillcolor=lightskyblue1;
+    "NODE1682619279" [shape=plaintext label="String logfile2"]
+    "PORT978035840" [shape=hexagon label="String logfile2"];
+  
+  
+  }
+  
+  subgraph cluster_14 {
+    style="filled,dashed";
+    fillcolor=white;
+    "NODE1300528434" [shape=plaintext label="Array[String] catHostsTask.result2 = f(host2.result)"]
+    "PORT1472759652" [shape=hexagon label="Array[String] catHostsTask.result2"];
+    "PORT2029709919" [shape=oval label="Array[String] host2.result"];
+  
+  
+  }
+
+}
+
