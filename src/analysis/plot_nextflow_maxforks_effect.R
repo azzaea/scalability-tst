@@ -6,7 +6,7 @@ if (! require(pacman))
 pacman::p_load(tidyverse, scales, viridis, ggthemes, cowplot, rcartocolor)
 
 ## Utility functions -----------------------------------------------------------
-read.perf.results <- function(filename, run = F){
+read.perf.results <- function(filename, run = F, maxForks = T){
   #filename = files.perf[1]
   data <- readr::read_csv(filename, 
                           col_types = cols(cores = col_double(), 
@@ -35,10 +35,15 @@ read.perf.results <- function(filename, run = F){
     data <- data %>% 
       mutate(run = filename %>% str_extract("run\\d") %>% str_remove("run"))
   
+  if (maxForks == T)
+    data <- data %>%
+      mutate(maxForks = filename %>% str_extract(".*maxForks"),
+             maxForks = basename(maxForks))
+  
   return(data)
 }
 
-read.hosts.results <- function(filename, run = F){
+read.hosts.results <- function(filename, run = F, maxForks = T){
   # filename = files.nodes[1]
   data <- readr::read_delim(filename, delim = " ", 
                             col_types = list(col_double(), col_character(),
@@ -49,11 +54,16 @@ read.hosts.results <- function(filename, run = F){
     data <- data %>% 
       mutate(run = filename %>% str_extract("run\\d") %>% str_remove("run"))
   
+  if (maxForks == T)
+    data <- data %>%
+      mutate(maxForks = filename %>% str_extract(".*maxForks"),
+             maxForks = basename(maxForks))
+  
   return(data)
 }
 
 plot.figs <- function(data, feature, ylabel, baseline = F){
-  # data = data.perf; feature = "elapsed"; ylabel = "Total runtime (s)"
+  # data = speedup; feature = "ratio"; ylabel = "Total runtime (s)"
   frame <- data %>% 
     ggplot() + facet_grid(processes ~ .) + theme_bw() 
   
@@ -61,32 +71,30 @@ plot.figs <- function(data, feature, ylabel, baseline = F){
     frame <- frame + geom_line(aes(x=tasks, y = theory) , size = 1.5,
                                color = carto_pal(5, "TealGrn")[3]) 
   
-  frame +  geom_smooth(aes(x = tasks, y = get(feature), color = wf)) +
-    geom_point(aes(x = tasks, y = get(feature), color = wf, shape = runStatus, 
-                   size = wf_order))  +
+  frame +  geom_smooth(aes(x = tasks, y = get(feature), color = maxForks)) +
+    geom_point(aes(x = tasks, y = get(feature), color = maxForks, shape = maxForks),
+               size = 4)  +
     scale_shape_manual(values = c(19, 8)) +
-    scale_size(range = c(1.75, 2.5), guide = "none") + 
+    #scale_size(range = c(1.75, 2.5), guide = "none") + 
     scale_color_carto_d(palette = "ag_Sunset") + 
-    guides(color = guide_legend(order = 2)) +   
+    #guides(color = guide_legend(order = 2)) +   
     scale_x_log10() + annotation_logticks(sides = 'b') +
-    labs(x = "Number of tasks", y = ylabel, color = str_wrap("Executor", 10)) 
+    labs(x = "Number of tasks", y = ylabel) 
 }
 
 
 ## Basic preps for I/O ---------------------------------------------------------
 cores.per.node <- 72 # Biocluster results
-results.dir <- "../../results/biocluster.2021/nomaxForks/"
+results.dir <- "../../results/biocluster.2021/"
 
-figs.dir <- file.path(results.dir, "figs")
+figs.dir <- file.path(results.dir, "nf.maxForks.figs")
 dir.create(figs.dir)
 
 ## Timing and performance ------------------------------------------------------
 files.perf <- list.files(pattern = "^bioinfoScaling_processes", 
-                         path = results.dir, recursive = T, full.names = T)
+                         path = results.dir, recursive = T, full.names = T) %>%
+  str_subset("nf.nf")
 
-# files.perf <- list.files(pattern = "^bioinfoScaling_processes", 
-#                        path = "../../results/biocluster.2019/", 
-#            recursive = T, full.names = T)
 
 data.perf <- files.perf %>% map_df(read.perf.results, run = T) %>% 
   filter(!is.na(exitStatus)) %>% 
@@ -107,43 +115,24 @@ plot_time <-  data.perf %>% #filter(!str_detect(run, '1')) %>%
   plot.figs(feature = "elapsed", ylabel = "Total runtime (s)") +
   theme(legend.position = "none") 
 ggsave(file.path(figs.dir, "Execution_time.png"), plot = plot_time)
-  
+
 
 
 speedup <- data.perf %>%
-  select(run, wf, processes, tasks, elapsed, runStatus) %>%
+  select(run, wf, processes, tasks, elapsed, runStatus, maxForks) %>%
   mutate(elapsed = ifelse(runStatus == "Success", elapsed, NA)) %>% 
   # filter(!(wf == "nf.nf" & tasks == 2)) %>% 
   select(-runStatus) %>%
-  pivot_wider(names_from = wf, values_from = elapsed) %>% drop_na(nf.nf) %>% 
-  mutate(across(matches("\\."), .fns = ~ . / nf.nf)) %>% 
-  pivot_longer(matches("\\."), names_to = "wf", values_to = "ratio") %>% 
+  pivot_wider(names_from = maxForks, values_from = elapsed) %>% #drop_na(nf.nf) %>% 
+  mutate(across(matches("maxForks"), .fns = ~ . / nomaxForks)) %>% 
+  pivot_longer(matches("maxForks"), names_to = "maxForks", values_to = "ratio") %>%
   mutate(wf_order = as.numeric(factor(wf, levels = sort(unique(wf), 
-                                                        decreasing = T))),
+                                                       decreasing = T))),
          runStatus = fct_recode(as.character(!is.na(ratio)),
                                 Success = "TRUE", Failure = "FALSE" ) %>%
            fct_inorder(),
          ratio = case_when(is.na(ratio) ~ 0, TRUE ~ ratio)) 
 
-## 2019 compatible dataframe
-# speedup <- 
-#   data.perf %>%
-#     select(wf, processes, tasks, elapsed, runStatus) %>% 
-#     mutate(elapsed = ifelse(runStatus == "Success", elapsed, NA)) %>% 
-#     filter(!(wf == "nf" & tasks == 2) ) %>% 
-#     filter(!(wf == "nf" & elapsed == 12.85)) %>%
-#     filter(  !(wf == "nf" & elapsed == 12.97)) %>%  
-#     select(-runStatus) %>%
-#   pivot_wider(names_from = wf, values_from = elapsed) %>% 
-#   drop_na(nf) %>% 
-#   mutate(across(matches("\\."), .fns = ~ . / nf)) %>% 
-#   pivot_longer(matches("\\."), names_to = "wf", values_to = "ratio") %>% 
-#   mutate(wf_order = as.numeric(factor(wf, levels = sort(unique(wf), 
-#                                                         decreasing = T))),
-#          runStatus = fct_recode(as.character(!is.na(ratio)),
-#                                 Success = "TRUE" ) %>%
-#            fct_inorder(),
-#          ratio = case_when(is.na(ratio) ~ 0, TRUE ~ ratio)) 
 
 
 plot_speedup <- speedup %>% #filter(runStatus == "Failure") %>% View()
@@ -183,7 +172,8 @@ plot_voluntaryContextSwitch
 ## Nodes' allocation -----------------------------------------------------------
 
 files.nodes <- list.files(pattern = "summarize_hosts_nodes.txt", 
-                          path = results.dir, recursive = T, full.names = T)
+                          path = results.dir, recursive = T, full.names = T) %>%
+  str_subset("nf.nf")
 
 nodes.info <- files.nodes %>% map_df(read.hosts.results, run = T) %>%
   mutate(tasks = as.numeric(str_replace_all(tasks, "[^0-9]", ""))) %>%
@@ -193,10 +183,11 @@ nodes.info <- files.nodes %>% map_df(read.hosts.results, run = T) %>%
 
 
 data.nodes <- left_join(data.perf, nodes.info, 
-                        by = c("wf" = "wf", "tasks" = "tasks", 
-                               "processes" = "processes", "run" = "run"))  %>%
-                               #"processes" = "processes"))  %>% # 2019 compatible
-  select(tasks, wf, processes, nodes, runStatus, wf_order) %>% 
+                        by = c( "tasks" = "tasks", "wf" = "wf",
+                               "processes" = "processes", "run" = "run",
+                               "maxForks" = "maxForks"))  %>%
+  #"processes" = "processes"))  %>% # 2019 compatible
+  select(tasks, wf, processes, nodes, runStatus, wf_order, maxForks) %>% 
   mutate(theory =ceiling(tasks/cores.per.node), 
          nodes = case_when(!is.na(nodes) ~ nodes,
                            is.na(nodes) ~ 0))
@@ -204,8 +195,8 @@ data.nodes <- left_join(data.perf, nodes.info,
 plot_nodes <- data.nodes %>% 
   plot.figs(feature = "nodes", ylabel = "Total occupied nodes", baseline = T) +
   scale_y_continuous(trans = "pseudo_log", limits = c(0,10)) 
-  # annotate("Text", x = 1, y = 10, hjust = 0,
-  #          label = "AWS Compute nodes:\n\tType: m5a.24xlarge \n\tCores: 96") +
+# annotate("Text", x = 1, y = 10, hjust = 0,
+#          label = "AWS Compute nodes:\n\tType: m5a.24xlarge \n\tCores: 96") +
 ggsave(file.path(figs.dir, "Execution_nodes.png"))
 
 plot_nodes
@@ -220,11 +211,11 @@ legend <- get_legend(plot_time + theme( legend.position = "top",
 
 plot_grid(legend,plot_times_nodes, nrow=2, rel_heights = c(.5,4))
 ggsave(file.path(figs.dir, "times_nodes.png"), 
-         units = "in", width = 10, height = 4.16)
+       units = "in", width = 10, height = 4.16)
 
 plot_time_speed_nodes <- plot_grid(plot_time, plot_speedup, 
                                    plot_nodes + theme(legend.position = "none"),
-          nrow = 1)
+                                   nrow = 1)
 plot_grid(legend, plot_time_speed_nodes, nrow = 2, rel_heights = c(.5, 4)) 
 ggsave(file.path(figs.dir, "times_speed_nodes.png"), 
        units = "in", width = 10, height = 4.16)
