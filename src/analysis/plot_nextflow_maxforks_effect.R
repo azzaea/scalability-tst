@@ -72,8 +72,8 @@ plot.figs <- function(data, feature, ylabel, baseline = F){
                                color = carto_pal(5, "TealGrn")[3]) 
   
   frame +  geom_smooth(aes(x = tasks, y = get(feature), color = maxForks)) +
-    geom_point(aes(x = tasks, y = get(feature), color = maxForks, shape = maxForks),
-               size = 4)  +
+    geom_jitter(aes(x = tasks, y = get(feature), color = maxForks, shape = maxForks),
+               size = 4, width = 0)  +
     scale_shape_manual(values = c(19, 8)) +
     #scale_size(range = c(1.75, 2.5), guide = "none") + 
     scale_color_carto_d(palette = "ag_Sunset") + 
