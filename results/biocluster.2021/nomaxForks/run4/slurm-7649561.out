@@ -1,0 +1,468 @@
+Analysis done on: 
+Wed Jul 21 07:06:35 CDT 2021
++ crom=/home/a-m/azzaea/software/wdl/cromwell-63.jar
++ resultsDir=cwl.cromwell
++ logsDir=cwl.cromwell/logs
++ ymlsDir=cwl.cromwell/logs/ymls
++ hostsDir=' cwl.cromwell/hosts'
++ mkdir -p cwl.cromwell cwl.cromwell/logs cwl.cromwell/logs/ymls cwl.cromwell/hosts
++ progress=cwl.cromwell/logs/progress_bioinfoScaling.txt
++ echo 'Starting BioInfo Scalability Analysis'
++ echo '##############################################################################################'
++ java -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar --version
++ echo '##############################################################################################'
++ ifstat -t -T -n -w
+ifstat: invalid time constant divisor
++ log1=cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt
++ log2=cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt
++ tee -a cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt
++ echo cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,faults,inputs,outputs,socketsIn,socketsOut,exitStatus
+cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,faults,inputs,outputs,socketsIn,socketsOut,exitStatus
++ ymlinput=cwl.cromwell/logs/ymls/host_process_workflow
++ cat host_process_workflow.yml.tmpl
++ for line in '{1..10}'
+++ sed -n 1p
+++ cat cores.txt
++ cores=1
++ tasks=1
++ tee -a cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 1,1,
+1,1,+ sed s/NTASKS/1/ cwl.cromwell/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks1.txt/ cwl.cromwell/logs/ymls/host_process_workflow.1.yml
++ sed -i s/LOG2/host2_tasks1.txt/ cwl.cromwell/logs/ymls/host_process_workflow.1.yml
++ sed s/CORES/1/ backend.conf
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.1 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_process.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.1.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow 84733c41-83b6-4698-bfde-ae6c587ea496 transitioned to state Failed
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.1 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_workflow.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.1.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow 531e6218-0d1b-40db-aa4d-c5fd945a39b1 transitioned to state Failed
++ echo -e 'Done processing * 1 * tasks, on * 1 * cores'
++ for line in '{1..10}'
+++ sed -n 2p
+++ cat cores.txt
++ cores=2
++ tasks=2
++ tee -a cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 2,2,
+2,2,+ sed s/NTASKS/2/ cwl.cromwell/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks2.txt/ cwl.cromwell/logs/ymls/host_process_workflow.2.yml
++ sed -i s/LOG2/host2_tasks2.txt/ cwl.cromwell/logs/ymls/host_process_workflow.2.yml
++ sed s/CORES/2/ backend.conf
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.2 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_process.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.2.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow 004254ce-6a79-4161-840c-be8c3275d915 transitioned to state Failed
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.2 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_workflow.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.2.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow 552e5830-7b82-4328-b17c-629f759062cd transitioned to state Failed
++ echo -e 'Done processing * 2 * tasks, on * 2 * cores'
++ for line in '{1..10}'
+++ sed -n 3p
+++ cat cores.txt
++ cores=4
++ tasks=4
++ tee -a cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 4,4,
+4,4,+ sed s/NTASKS/4/ cwl.cromwell/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks4.txt/ cwl.cromwell/logs/ymls/host_process_workflow.4.yml
++ sed -i s/LOG2/host2_tasks4.txt/ cwl.cromwell/logs/ymls/host_process_workflow.4.yml
++ sed s/CORES/4/ backend.conf
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.4 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_process.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.4.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow 7fdc75c9-9c20-4900-8830-3960b101acbc transitioned to state Failed
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.4 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_workflow.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.4.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow 9dc91f07-7c20-4120-a3f1-ad3e4c8afbff transitioned to state Failed
++ echo -e 'Done processing * 4 * tasks, on * 4 * cores'
++ for line in '{1..10}'
+++ sed -n 4p
+++ cat cores.txt
++ cores=8
++ tasks=8
++ tee -a cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 8,8,
+8,8,+ sed s/NTASKS/8/ cwl.cromwell/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks8.txt/ cwl.cromwell/logs/ymls/host_process_workflow.8.yml
++ sed -i s/LOG2/host2_tasks8.txt/ cwl.cromwell/logs/ymls/host_process_workflow.8.yml
++ sed s/CORES/8/ backend.conf
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.8 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_process.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.8.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow 94a7e38a-386a-4207-9d69-4e0202f1b1fd transitioned to state Failed
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.8 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_workflow.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.8.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow 8514e926-1276-4c8e-a124-5ed6f1c93a3b transitioned to state Failed
++ echo -e 'Done processing * 8 * tasks, on * 8 * cores'
++ for line in '{1..10}'
+++ sed -n 5p
+++ cat cores.txt
++ cores=16
++ tasks=16
++ tee -a cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 16,16,
+16,16,+ sed s/NTASKS/16/ cwl.cromwell/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks16.txt/ cwl.cromwell/logs/ymls/host_process_workflow.16.yml
++ sed -i s/LOG2/host2_tasks16.txt/ cwl.cromwell/logs/ymls/host_process_workflow.16.yml
++ sed s/CORES/16/ backend.conf
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.16 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_process.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.16.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow 230cdc2f-a256-485f-91ed-066e6c31f582 transitioned to state Failed
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.16 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_workflow.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.16.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow 56f459d1-a054-4a42-9334-c6d8b42e81cc transitioned to state Failed
++ echo -e 'Done processing * 16 * tasks, on * 16 * cores'
++ for line in '{1..10}'
+++ sed -n 6p
+++ cat cores.txt
++ cores=32
++ tasks=32
++ tee -a cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 32,32,
+32,32,+ sed s/NTASKS/32/ cwl.cromwell/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks32.txt/ cwl.cromwell/logs/ymls/host_process_workflow.32.yml
++ sed -i s/LOG2/host2_tasks32.txt/ cwl.cromwell/logs/ymls/host_process_workflow.32.yml
++ sed s/CORES/32/ backend.conf
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.32 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_process.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.32.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow 45d6e9ec-6703-4a21-b0af-69b64f6357c9 transitioned to state Failed
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.32 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_workflow.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.32.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow 3a00f9b3-48ec-492b-b79b-7202c3116520 transitioned to state Failed
++ echo -e 'Done processing * 32 * tasks, on * 32 * cores'
++ for line in '{1..10}'
+++ sed -n 7p
+++ cat cores.txt
++ cores=64
++ tasks=64
++ tee -a cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 64,64,
+64,64,+ sed s/NTASKS/64/ cwl.cromwell/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks64.txt/ cwl.cromwell/logs/ymls/host_process_workflow.64.yml
++ sed -i s/LOG2/host2_tasks64.txt/ cwl.cromwell/logs/ymls/host_process_workflow.64.yml
++ sed s/CORES/64/ backend.conf
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.64 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_process.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.64.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow 8e2a1d9f-9011-4c82-99cc-cc48cbd4b1dd transitioned to state Failed
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.64 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_workflow.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.64.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow 3461dcc1-6ca2-47f8-9194-fcd83f331cd2 transitioned to state Failed
++ echo -e 'Done processing * 64 * tasks, on * 64 * cores'
++ for line in '{1..10}'
+++ sed -n 8p
+++ cat cores.txt
++ cores=128
++ tasks=128
++ tee -a cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 128,128,
+128,128,+ sed s/NTASKS/128/ cwl.cromwell/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks128.txt/ cwl.cromwell/logs/ymls/host_process_workflow.128.yml
++ sed -i s/LOG2/host2_tasks128.txt/ cwl.cromwell/logs/ymls/host_process_workflow.128.yml
++ sed s/CORES/128/ backend.conf
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.128 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_process.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.128.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow db11caba-f731-4571-8853-a8605e2eba0a transitioned to state Failed
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.128 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_workflow.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.128.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow 6bb87609-6410-4a9b-b597-7aa8b177e0fe transitioned to state Failed
++ echo -e 'Done processing * 128 * tasks, on * 128 * cores'
++ for line in '{1..10}'
+++ sed -n 9p
+++ cat cores.txt
++ cores=256
++ tasks=256
++ tee -a cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 256,256,
+256,256,+ sed s/NTASKS/256/ cwl.cromwell/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks256.txt/ cwl.cromwell/logs/ymls/host_process_workflow.256.yml
++ sed -i s/LOG2/host2_tasks256.txt/ cwl.cromwell/logs/ymls/host_process_workflow.256.yml
++ sed s/CORES/256/ backend.conf
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.256 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_process.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.256.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow 7ca58236-1553-41ee-9d36-10593855a9e1 transitioned to state Failed
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.256 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_workflow.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.256.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow ec34a67e-84a6-4566-a868-28ed3a55f8bf transitioned to state Failed
++ echo -e 'Done processing * 256 * tasks, on * 256 * cores'
++ for line in '{1..10}'
+++ sed -n 10p
+++ cat cores.txt
++ cores=512
++ tasks=512
++ tee -a cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 512,512,
+512,512,+ sed s/NTASKS/512/ cwl.cromwell/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks512.txt/ cwl.cromwell/logs/ymls/host_process_workflow.512.yml
++ sed -i s/LOG2/host2_tasks512.txt/ cwl.cromwell/logs/ymls/host_process_workflow.512.yml
++ sed s/CORES/512/ backend.conf
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-1_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.512 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_process.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.512.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow 27f1f6a1-9042-4f89-91b2-0e734dbd8165 transitioned to state Failed
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.cromwell/logs/bioinfoScaling_processes-2_host.txt java -Dconfig.file=cwl.cromwell/logs/ymls/backend.conf.512 -jar /home/a-m/azzaea/software/wdl/cromwell-63.jar run host_workflow.cwl -i cwl.cromwell/logs/ymls/host_process_workflow.512.yml --type cwl -o workflow.options.json
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.python.core.PySystemState (file:/home/a-m/azzaea/software/wdl/cromwell-63.jar) to method java.io.Console.encoding()
+WARNING: Please consider reporting this to the maintainers of org.python.core.PySystemState
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Workflow 848f5523-3300-4ac3-a3ad-437e7168aa3a transitioned to state Failed
++ echo -e 'Done processing * 512 * tasks, on * 512 * cores'
++ echo '##############################################################################################'
++ cd cwl.cromwell/hosts
++ echo 'nodes processes tasks'
+++ ls -1v
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host1_tasks1.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host1_tasks1.txt
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host1_tasks2.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host1_tasks2.txt
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host1_tasks4.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host1_tasks4.txt
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host1_tasks8.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host1_tasks8.txt
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host1_tasks16.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host1_tasks16.txt
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host1_tasks32.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host1_tasks32.txt
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host1_tasks64.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host1_tasks64.txt
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host1_tasks128.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host1_tasks128.txt
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host1_tasks256.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host1_tasks256.txt
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host1_tasks512.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host1_tasks512.txt
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host2_tasks1.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host2_tasks1.txt
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host2_tasks2.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host2_tasks2.txt
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host2_tasks4.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host2_tasks4.txt
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host2_tasks8.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host2_tasks8.txt
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host2_tasks16.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host2_tasks16.txt
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host2_tasks32.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host2_tasks32.txt
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host2_tasks64.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host2_tasks64.txt
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host2_tasks128.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host2_tasks128.txt
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host2_tasks256.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host2_tasks256.txt
++ for file in '`ls -1v`'
+++ wc -l
+++ xargs cat
+++ cut -d: -f2
+++ cut -d, -f1
+++ grep location host2_tasks512.txt
++ nodes=0
++ sed 's/_/ /g'
++ echo 0 host2_tasks512.txt
++ mail -s 'WfMS- Bio-Scalability' azzaea@gmail.com
++ echo 'Bio-Scalability analysis completed for CWL!'

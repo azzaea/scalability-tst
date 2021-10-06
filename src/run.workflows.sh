@@ -5,7 +5,7 @@ set -x
 iterations=5
 
 srcDir="/home/a-m/azzaea/scalability-tst/src/"
-resultsDir="/home/a-m/azzaea/scalability-tst/results/biocluster.2021/"
+resultsDir="/home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks"
 
 for (( run=1; run<=${iterations}; run++)); do
 	echo "***************** This is run ${run}/${iterations} *********************"

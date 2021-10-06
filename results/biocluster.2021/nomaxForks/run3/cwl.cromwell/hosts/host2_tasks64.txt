@@ -1,0 +1,103 @@
+[2021-07-21 06:29:29,17] [info] Pre Processing Workflow...
+[2021-07-21 06:29:29,59] [info] Pre-Processing file:///home/a-m/azzaea/scalability-tst/src/cwl/host_workflow.cwl
+[2021-07-21 06:29:53,95] [info] Pre-Processing file:///home/a-m/azzaea/scalability-tst/src/cwl/host.sort.tool.cwl
+[2021-07-21 06:29:54,08] [info] Pre-Processing file:///home/a-m/azzaea/scalability-tst/src/cwl/host.hostname.tool.cwl
+[2021-07-21 06:29:54,13] [info] Pre-Processing file:///home/a-m/azzaea/scalability-tst/src/cwl/host.serialize.tool.cwl
+[2021-07-21 06:29:54,21] [info] Pre Processing Inputs...
+[2021-07-21 06:29:54,54] [info] Running with database db.url = jdbc:hsqldb:mem:2e90dc25-ffc2-49bc-8250-bb897b5e2b83;shutdown=false;hsqldb.tx=mvcc
+[2021-07-21 06:30:05,96] [info] Running migration RenameWorkflowOptionsInMetadata with a read batch size of 100000 and a write batch size of 100000
+[2021-07-21 06:30:05,98] [info] [RenameWorkflowOptionsInMetadata] 100%
+[2021-07-21 06:30:06,17] [info] Running with database db.url = jdbc:hsqldb:mem:25c964d2-f213-4bee-af97-75291f634be6;shutdown=false;hsqldb.tx=mvcc
+[2021-07-21 06:30:06,87] [info] Slf4jLogger started
+[2021-07-21 06:30:07,07] [info] Workflow heartbeat configuration:
+{
+  "cromwellId" : "cromid-28b7e8a",
+  "heartbeatInterval" : "2 minutes",
+  "ttl" : "10 minutes",
+  "failureShutdownDuration" : "5 minutes",
+  "writeBatchSize" : 10000,
+  "writeThreshold" : 10000
+}
+[2021-07-21 06:30:07,23] [info] KvWriteActor configured to flush with batch size 200 and process rate 5 seconds.
+[2021-07-21 06:30:07,24] [info] WriteMetadataActor configured to flush with batch size 200 and process rate 5 seconds.
+[2021-07-21 06:30:07,25] [info] Metadata summary refreshing every 1 second.
+[2021-07-21 06:30:07,25] [info] No metadata archiver defined in config
+[2021-07-21 06:30:07,25] [info] No metadata deleter defined in config
+[2021-07-21 06:30:07,29] [[38;5;220mwarn[0m] 'docker.hash-lookup.gcr-api-queries-per-100-seconds' is being deprecated, use 'docker.hash-lookup.gcr.throttle' instead (see reference.conf)
+[2021-07-21 06:30:07,30] [info] CallCacheWriteActor configured to flush with batch size 100 and process rate 3 seconds.
+[2021-07-21 06:30:07,43] [info] JobExecutionTokenDispenser - Distribution rate: 64 per 1 seconds.
+[2021-07-21 06:30:07,58] [info] SingleWorkflowRunnerActor: Version 63
+[2021-07-21 06:30:07,58] [info] SingleWorkflowRunnerActor: Submitting workflow
+[2021-07-21 06:30:07,79] [info] cwl (Unspecified version) workflow a5378786-c139-47cc-a49f-40e2b0316678 submitted
+[2021-07-21 06:30:07,79] [info] SingleWorkflowRunnerActor: Workflow submitted [38;5;2ma5378786-c139-47cc-a49f-40e2b0316678[0m
+[2021-07-21 06:30:07,81] [info] 1 new workflows fetched by cromid-28b7e8a: a5378786-c139-47cc-a49f-40e2b0316678
+[2021-07-21 06:30:07,81] [info] WorkflowManagerActor: Starting workflow [38;5;2ma5378786-c139-47cc-a49f-40e2b0316678[0m
+[2021-07-21 06:30:07,82] [info] WorkflowManagerActor: Successfully started WorkflowActor-a5378786-c139-47cc-a49f-40e2b0316678
+[2021-07-21 06:30:07,82] [info] Retrieved 1 workflows from the WorkflowStoreActor
+[2021-07-21 06:30:07,85] [info] WorkflowStoreHeartbeatWriteActor configured to flush with batch size 10000 and process rate 2 minutes.
+[2021-07-21 06:30:07,95] [info] MaterializeWorkflowDescriptorActor [[38;5;2ma5378786[0m]: Parsing workflow as CWL v1.0
+[2021-07-21 06:30:09,30] [info] WorkflowManagerActor: Workflow a5378786-c139-47cc-a49f-40e2b0316678 failed (during MaterializingWorkflowDescriptorState): cromwell.engine.workflow.lifecycle.materialization.MaterializeWorkflowDescriptorActor$$anon$1: Workflow input processing failed:
+Required workflow input 'ntasks' not specified
+	at cromwell.engine.workflow.lifecycle.materialization.MaterializeWorkflowDescriptorActor.cromwell$engine$workflow$lifecycle$materialization$MaterializeWorkflowDescriptorActor$$workflowInitializationFailed(MaterializeWorkflowDescriptorActor.scala:257)
+	at cromwell.engine.workflow.lifecycle.materialization.MaterializeWorkflowDescriptorActor$$anonfun$2.applyOrElse(MaterializeWorkflowDescriptorActor.scala:227)
+	at cromwell.engine.workflow.lifecycle.materialization.MaterializeWorkflowDescriptorActor$$anonfun$2.applyOrElse(MaterializeWorkflowDescriptorActor.scala:222)
+	at scala.runtime.AbstractPartialFunction.apply(AbstractPartialFunction.scala:38)
+	at akka.actor.FSM.processEvent(FSM.scala:707)
+	at akka.actor.FSM.processEvent$(FSM.scala:704)
+	at cromwell.engine.workflow.lifecycle.materialization.MaterializeWorkflowDescriptorActor.akka$actor$LoggingFSM$$super$processEvent(MaterializeWorkflowDescriptorActor.scala:169)
+	at akka.actor.LoggingFSM.processEvent(FSM.scala:847)
+	at akka.actor.LoggingFSM.processEvent$(FSM.scala:829)
+	at cromwell.engine.workflow.lifecycle.materialization.MaterializeWorkflowDescriptorActor.processEvent(MaterializeWorkflowDescriptorActor.scala:169)
+	at akka.actor.FSM.akka$actor$FSM$$processMsg(FSM.scala:701)
+	at akka.actor.FSM$$anonfun$receive$1.applyOrElse(FSM.scala:695)
+	at akka.actor.Actor.aroundReceive(Actor.scala:539)
+	at akka.actor.Actor.aroundReceive$(Actor.scala:537)
+	at cromwell.engine.workflow.lifecycle.materialization.MaterializeWorkflowDescriptorActor.aroundReceive(MaterializeWorkflowDescriptorActor.scala:169)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:614)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:583)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:268)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:229)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:241)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+
+[2021-07-21 06:30:12,43] [info] WorkflowManagerActor: Workflow actor for a5378786-c139-47cc-a49f-40e2b0316678 completed with status 'Failed'. The workflow will be removed from the workflow store.
+[2021-07-21 06:30:12,45] [info] Not triggering log of token queue status. Effective log interval = None
+[2021-07-21 06:30:13,30] [info] SingleWorkflowRunnerActor workflow finished with status 'Failed'.
+[2021-07-21 06:30:17,26] [info] Workflow polling stopped
+[2021-07-21 06:30:17,29] [info] Shutting down WorkflowStoreActor - Timeout = 5 seconds
+[2021-07-21 06:30:17,29] [info] Shutting down WorkflowLogCopyRouter - Timeout = 5 seconds
+[2021-07-21 06:30:17,30] [info] Aborting all running workflows.
+[2021-07-21 06:30:17,31] [info] WorkflowStoreActor stopped
+[2021-07-21 06:30:17,35] [info] 0 workflows released by cromid-28b7e8a
+[2021-07-21 06:30:17,37] [info] Shutting down JobExecutionTokenDispenser - Timeout = 5 seconds
+[2021-07-21 06:30:17,37] [info] JobExecutionTokenDispenser stopped
+[2021-07-21 06:30:17,39] [info] Shutting down WorkflowManagerActor - Timeout = 3600 seconds
+[2021-07-21 06:30:17,39] [info] WorkflowLogCopyRouter stopped
+[2021-07-21 06:30:17,39] [info] WorkflowManagerActor: All workflows finished
+[2021-07-21 06:30:17,39] [info] WorkflowManagerActor stopped
+[2021-07-21 06:30:17,78] [info] Connection pools shut down
+[2021-07-21 06:30:17,78] [info] Shutting down SubWorkflowStoreActor - Timeout = 1800 seconds
+[2021-07-21 06:30:17,78] [info] Shutting down JobStoreActor - Timeout = 1800 seconds
+[2021-07-21 06:30:17,78] [info] Shutting down CallCacheWriteActor - Timeout = 1800 seconds
+[2021-07-21 06:30:17,78] [info] CallCacheWriteActor Shutting down: 0 queued messages to process
+[2021-07-21 06:30:17,78] [info] Shutting down ServiceRegistryActor - Timeout = 1800 seconds
+[2021-07-21 06:30:17,79] [info] Shutting down DockerHashActor - Timeout = 1800 seconds
+[2021-07-21 06:30:17,83] [info] Shutting down connection pool: curAllocated=0 idleQueues.size=0 waitQueue.size=0 maxWaitQueueLimit=256 closed=false
+[2021-07-21 06:30:17,83] [info] Shutting down connection pool: curAllocated=0 idleQueues.size=0 waitQueue.size=0 maxWaitQueueLimit=256 closed=false
+[2021-07-21 06:30:17,83] [info] Shutting down connection pool: curAllocated=0 idleQueues.size=0 waitQueue.size=0 maxWaitQueueLimit=256 closed=false
+[2021-07-21 06:30:17,83] [info] Shutting down connection pool: curAllocated=0 idleQueues.size=0 waitQueue.size=0 maxWaitQueueLimit=256 closed=false
+[2021-07-21 06:30:17,84] [info] Shutting down IoProxy - Timeout = 1800 seconds
+[2021-07-21 06:30:17,85] [info] SubWorkflowStoreActor stopped
+[2021-07-21 06:30:17,85] [info] JobStoreActor stopped
+[2021-07-21 06:30:17,85] [info] CallCacheWriteActor stopped
+[2021-07-21 06:30:17,85] [info] DockerHashActor stopped
+[2021-07-21 06:30:17,85] [info] IoProxy stopped
+[2021-07-21 06:30:17,85] [info] WriteMetadataActor Shutting down: 0 queued messages to process
+[2021-07-21 06:30:17,85] [info] KvWriteActor Shutting down: 0 queued messages to process
+[2021-07-21 06:30:17,86] [info] ServiceRegistryActor stopped
+[2021-07-21 06:30:17,88] [info] Database closed
+[2021-07-21 06:30:17,88] [info] Stream materializer shut down
+[2021-07-21 06:30:17,88] [info] WDL HTTP import resolver closed

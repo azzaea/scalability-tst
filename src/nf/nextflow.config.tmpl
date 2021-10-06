@@ -9,7 +9,7 @@ profiles {
 
     cluster {
         executor.queueSize = CORES
-	process.maxForks = CORES
+	//process.maxForks = CORES
 	process.executor = 'slurm'
         process.queue = 'normal' //'compute' on pcluster, 'normal' on biocluster
     	docker.enabled = false

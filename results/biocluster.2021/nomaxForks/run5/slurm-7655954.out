@@ -1,0 +1,560 @@
+Analysis done on: 
+Wed Jul 21 08:15:59 CDT 2021
++ resultsDir=cwl.toil
++ logsDir=cwl.toil/logs
++ ymlsDir=cwl.toil/logs/ymls
++ hostsDir=' cwl.toil/hosts'
++ workDir=toil-executions
++ mkdir -p cwl.toil cwl.toil/logs cwl.toil/logs/ymls cwl.toil/hosts
++ mkdir toil-executions
+mkdir: cannot create directory ‘toil-executions’: File exists
++ progress=cwl.toil/logs/progress_bioinfoScaling.txt
++ echo 'Starting BioInfo Scalability Analysis'
++ echo '#############################################################################'
++ toil --version
++ echo '##############################################################################'
++ ifstat -t -T -n -w
+ifstat: invalid time constant divisor
++ log1=cwl.toil/logs/bioinfoScaling_processes-1_host.txt
++ log2=cwl.toil/logs/bioinfoScaling_processes-2_host.txt
++ tee -a cwl.toil/logs/bioinfoScaling_processes-1_host.txt cwl.toil/logs/bioinfoScaling_processes-2_host.txt
++ echo cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,faults,inputs,outputs,socketsIn,socketsOut,exitStatus
+cores,tasks,user,system,elapsed,cpu,avMemory,involuntaryContextSwitch,voluntaryContextSwitch,faults,inputs,outputs,socketsIn,socketsOut,exitStatus
++ ymlinput=cwl.toil/logs/ymls/host_process_workflow
++ cat host_process_workflow.yml.tmpl
++ for line in '{1..10}'
+++ sed -n 1p
+++ cat cores.txt
++ cores=1
++ tasks=1
++ tee -a cwl.toil/logs/bioinfoScaling_processes-1_host.txt cwl.toil/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 1,1,
+1,1,+ sed s/NTASKS/1/ cwl.toil/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks1.txt/ cwl.toil/logs/ymls/host_process_workflow.1.yml
++ sed -i s/LOG2/host2_tasks1.txt/ cwl.toil/logs/ymls/host_process_workflow.1.yml
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-1_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 1 --disableCaching true host_process.cwl cwl.toil/logs/ymls/host_process_workflow.1.yml
+[2021-07-21T08:16:18-0500] [MainThread] [I] [cwltool] Resolved 'host_process.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_process.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_process.cwl:10:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:16:23-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-2_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 1 --disableCaching true host_workflow.cwl cwl.toil/logs/ymls/host_process_workflow.1.yml
+[2021-07-21T08:16:24-0500] [MainThread] [I] [cwltool] Resolved 'host_workflow.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_workflow.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_workflow.cwl:11:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:16:28-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ echo -e 'Done processing * 1 * tasks, on * 1 * cores'
++ for line in '{1..10}'
+++ sed -n 2p
+++ cat cores.txt
++ cores=2
++ tasks=2
++ tee -a cwl.toil/logs/bioinfoScaling_processes-1_host.txt cwl.toil/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 2,2,
+2,2,+ sed s/NTASKS/2/ cwl.toil/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks2.txt/ cwl.toil/logs/ymls/host_process_workflow.2.yml
++ sed -i s/LOG2/host2_tasks2.txt/ cwl.toil/logs/ymls/host_process_workflow.2.yml
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-1_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 2 --disableCaching true host_process.cwl cwl.toil/logs/ymls/host_process_workflow.2.yml
+[2021-07-21T08:16:29-0500] [MainThread] [I] [cwltool] Resolved 'host_process.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_process.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_process.cwl:10:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:16:31-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-2_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 2 --disableCaching true host_workflow.cwl cwl.toil/logs/ymls/host_process_workflow.2.yml
+[2021-07-21T08:16:32-0500] [MainThread] [I] [cwltool] Resolved 'host_workflow.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_workflow.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_workflow.cwl:11:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:16:35-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ echo -e 'Done processing * 2 * tasks, on * 2 * cores'
++ for line in '{1..10}'
+++ sed -n 3p
+++ cat cores.txt
++ cores=4
++ tasks=4
++ tee -a cwl.toil/logs/bioinfoScaling_processes-1_host.txt cwl.toil/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 4,4,
+4,4,+ sed s/NTASKS/4/ cwl.toil/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks4.txt/ cwl.toil/logs/ymls/host_process_workflow.4.yml
++ sed -i s/LOG2/host2_tasks4.txt/ cwl.toil/logs/ymls/host_process_workflow.4.yml
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-1_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 4 --disableCaching true host_process.cwl cwl.toil/logs/ymls/host_process_workflow.4.yml
+[2021-07-21T08:16:36-0500] [MainThread] [I] [cwltool] Resolved 'host_process.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_process.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_process.cwl:10:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:16:38-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-2_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 4 --disableCaching true host_workflow.cwl cwl.toil/logs/ymls/host_process_workflow.4.yml
+[2021-07-21T08:16:38-0500] [MainThread] [I] [cwltool] Resolved 'host_workflow.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_workflow.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_workflow.cwl:11:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:16:41-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ echo -e 'Done processing * 4 * tasks, on * 4 * cores'
++ for line in '{1..10}'
+++ sed -n 4p
+++ cat cores.txt
++ cores=8
++ tasks=8
++ tee -a cwl.toil/logs/bioinfoScaling_processes-1_host.txt cwl.toil/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 8,8,
+8,8,+ sed s/NTASKS/8/ cwl.toil/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks8.txt/ cwl.toil/logs/ymls/host_process_workflow.8.yml
++ sed -i s/LOG2/host2_tasks8.txt/ cwl.toil/logs/ymls/host_process_workflow.8.yml
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-1_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 8 --disableCaching true host_process.cwl cwl.toil/logs/ymls/host_process_workflow.8.yml
+[2021-07-21T08:16:42-0500] [MainThread] [I] [cwltool] Resolved 'host_process.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_process.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_process.cwl:10:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:16:44-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-2_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 8 --disableCaching true host_workflow.cwl cwl.toil/logs/ymls/host_process_workflow.8.yml
+[2021-07-21T08:16:45-0500] [MainThread] [I] [cwltool] Resolved 'host_workflow.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_workflow.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_workflow.cwl:11:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:16:48-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ echo -e 'Done processing * 8 * tasks, on * 8 * cores'
++ for line in '{1..10}'
+++ sed -n 5p
+++ cat cores.txt
++ cores=16
++ tasks=16
++ tee -a cwl.toil/logs/bioinfoScaling_processes-1_host.txt cwl.toil/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 16,16,
+16,16,+ sed s/NTASKS/16/ cwl.toil/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks16.txt/ cwl.toil/logs/ymls/host_process_workflow.16.yml
++ sed -i s/LOG2/host2_tasks16.txt/ cwl.toil/logs/ymls/host_process_workflow.16.yml
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-1_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 16 --disableCaching true host_process.cwl cwl.toil/logs/ymls/host_process_workflow.16.yml
+[2021-07-21T08:16:48-0500] [MainThread] [I] [cwltool] Resolved 'host_process.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_process.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_process.cwl:10:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:16:50-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-2_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 16 --disableCaching true host_workflow.cwl cwl.toil/logs/ymls/host_process_workflow.16.yml
+[2021-07-21T08:16:51-0500] [MainThread] [I] [cwltool] Resolved 'host_workflow.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_workflow.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_workflow.cwl:11:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:16:54-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ echo -e 'Done processing * 16 * tasks, on * 16 * cores'
++ for line in '{1..10}'
+++ sed -n 6p
+++ cat cores.txt
++ cores=32
++ tasks=32
++ tee -a cwl.toil/logs/bioinfoScaling_processes-1_host.txt cwl.toil/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 32,32,
+32,32,+ sed s/NTASKS/32/ cwl.toil/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks32.txt/ cwl.toil/logs/ymls/host_process_workflow.32.yml
++ sed -i s/LOG2/host2_tasks32.txt/ cwl.toil/logs/ymls/host_process_workflow.32.yml
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-1_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 32 --disableCaching true host_process.cwl cwl.toil/logs/ymls/host_process_workflow.32.yml
+[2021-07-21T08:16:55-0500] [MainThread] [I] [cwltool] Resolved 'host_process.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_process.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_process.cwl:10:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:16:57-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-2_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 32 --disableCaching true host_workflow.cwl cwl.toil/logs/ymls/host_process_workflow.32.yml
+[2021-07-21T08:16:58-0500] [MainThread] [I] [cwltool] Resolved 'host_workflow.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_workflow.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_workflow.cwl:11:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:17:01-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ echo -e 'Done processing * 32 * tasks, on * 32 * cores'
++ for line in '{1..10}'
+++ sed -n 7p
+++ cat cores.txt
++ cores=64
++ tasks=64
++ tee -a cwl.toil/logs/bioinfoScaling_processes-1_host.txt cwl.toil/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 64,64,
+64,64,+ sed s/NTASKS/64/ cwl.toil/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks64.txt/ cwl.toil/logs/ymls/host_process_workflow.64.yml
++ sed -i s/LOG2/host2_tasks64.txt/ cwl.toil/logs/ymls/host_process_workflow.64.yml
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-1_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 64 --disableCaching true host_process.cwl cwl.toil/logs/ymls/host_process_workflow.64.yml
+[2021-07-21T08:17:01-0500] [MainThread] [I] [cwltool] Resolved 'host_process.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_process.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_process.cwl:10:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:17:03-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-2_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 64 --disableCaching true host_workflow.cwl cwl.toil/logs/ymls/host_process_workflow.64.yml
+[2021-07-21T08:17:04-0500] [MainThread] [I] [cwltool] Resolved 'host_workflow.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_workflow.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_workflow.cwl:11:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:17:07-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ echo -e 'Done processing * 64 * tasks, on * 64 * cores'
++ for line in '{1..10}'
+++ sed -n 8p
+++ cat cores.txt
++ cores=128
++ tasks=128
++ tee -a cwl.toil/logs/bioinfoScaling_processes-1_host.txt cwl.toil/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 128,128,
+128,128,+ sed s/NTASKS/128/ cwl.toil/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks128.txt/ cwl.toil/logs/ymls/host_process_workflow.128.yml
++ sed -i s/LOG2/host2_tasks128.txt/ cwl.toil/logs/ymls/host_process_workflow.128.yml
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-1_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 128 --disableCaching true host_process.cwl cwl.toil/logs/ymls/host_process_workflow.128.yml
+[2021-07-21T08:17:08-0500] [MainThread] [I] [cwltool] Resolved 'host_process.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_process.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_process.cwl:10:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:17:10-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-2_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 128 --disableCaching true host_workflow.cwl cwl.toil/logs/ymls/host_process_workflow.128.yml
+[2021-07-21T08:17:11-0500] [MainThread] [I] [cwltool] Resolved 'host_workflow.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_workflow.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_workflow.cwl:11:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:17:13-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ echo -e 'Done processing * 128 * tasks, on * 128 * cores'
++ for line in '{1..10}'
+++ sed -n 9p
+++ cat cores.txt
++ cores=256
++ tasks=256
++ tee -a cwl.toil/logs/bioinfoScaling_processes-1_host.txt cwl.toil/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 256,256,
+256,256,+ sed s/NTASKS/256/ cwl.toil/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks256.txt/ cwl.toil/logs/ymls/host_process_workflow.256.yml
++ sed -i s/LOG2/host2_tasks256.txt/ cwl.toil/logs/ymls/host_process_workflow.256.yml
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-1_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 256 --disableCaching true host_process.cwl cwl.toil/logs/ymls/host_process_workflow.256.yml
+[2021-07-21T08:17:14-0500] [MainThread] [I] [cwltool] Resolved 'host_process.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_process.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_process.cwl:10:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:17:16-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-2_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 256 --disableCaching true host_workflow.cwl cwl.toil/logs/ymls/host_process_workflow.256.yml
+[2021-07-21T08:17:17-0500] [MainThread] [I] [cwltool] Resolved 'host_workflow.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_workflow.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_workflow.cwl:11:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:17:20-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ echo -e 'Done processing * 256 * tasks, on * 256 * cores'
++ for line in '{1..10}'
+++ sed -n 10p
+++ cat cores.txt
++ cores=512
++ tasks=512
++ tee -a cwl.toil/logs/bioinfoScaling_processes-1_host.txt cwl.toil/logs/bioinfoScaling_processes-2_host.txt
++ echo -n 512,512,
+512,512,+ sed s/NTASKS/512/ cwl.toil/logs/ymls/host_process_workflow
++ sed -i s/LOG1/host1_tasks512.txt/ cwl.toil/logs/ymls/host_process_workflow.512.yml
++ sed -i s/LOG2/host2_tasks512.txt/ cwl.toil/logs/ymls/host_process_workflow.512.yml
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-1_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 512 --disableCaching true host_process.cwl cwl.toil/logs/ymls/host_process_workflow.512.yml
+[2021-07-21T08:17:21-0500] [MainThread] [I] [cwltool] Resolved 'host_process.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_process.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_process.cwl:10:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:17:22-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ /usr/bin/time --format %U,%S,%e,%P,%K,%c,%w,%F,%I,%O,%r,%s,%x --append --output cwl.toil/logs/bioinfoScaling_processes-2_host.txt toil-cwl-runner --jobStore myStore --batchSystem slurm --outdir cwl.toil/hosts --workDir toil-executions --maxCores 512 --disableCaching true host_workflow.cwl cwl.toil/logs/ymls/host_process_workflow.512.yml
+[2021-07-21T08:17:23-0500] [MainThread] [I] [cwltool] Resolved 'host_workflow.cwl' to 'file:///home/a-m/azzaea/scalability-tst/src/cwl/host_workflow.cwl'
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+cwltool.errors.WorkflowException: Missing required input parameter 'ntasks'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/bin/toil-cwl-runner", line 8, in <module>
+    sys.exit(main())
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/toil/cwl/cwltoil.py", line 2285, in main
+    fill_in_defaults(tool.tool["inputs"], initialized_job_order, fs_access)
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/cwltool/process.py", line 465, in fill_in_defaults
+    % shortname(cast(str, inp["id"]))
+  File "/home/apps/software/toil/5.3.0-IGB-gcc-8.2.0-Python-3.7.2/lib/python3.7/site-packages/schema_salad/sourceline.py", line 256, in __exit__
+    raise self.makeError(str(exc_value)) from exc_value
+cwltool.errors.WorkflowException: host_workflow.cwl:11:3: Missing required input parameter 'ntasks'
++ toil clean myStore
+[2021-07-21T08:17:26-0500] [MainThread] [I] [toil.utils.toilClean] Successfully deleted the job store: myStore
++ echo -e 'Done processing * 512 * tasks, on * 512 * cores'
++ echo '##############################################################################################'
++ cd cwl.toil/hosts
++ echo 'nodes processes tasks'
+++ ls -1v
++ mail -s 'WfMS- Bio-Scalability' azzaea@gmail.com
++ echo 'Bio-Scalability analysis completed for CWL!'

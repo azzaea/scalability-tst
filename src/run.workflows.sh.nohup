@@ -1,122 +1,122 @@
 nohup: ignoring input
 + iterations=5
 + srcDir=/home/a-m/azzaea/scalability-tst/src/
-+ resultsDir=/home/a-m/azzaea/scalability-tst/results/biocluster.2021/
++ resultsDir=/home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks
 + (( run=1 ))
 + (( run<=5 ))
 + echo '***************** This is run 1/5 *********************'
 ***************** This is run 1/5 *********************
-+ runResultsDir=/home/a-m/azzaea/scalability-tst/results/biocluster.2021//run1/
-+ mkdir -p /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run1/
++ runResultsDir=/home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run1/
++ mkdir -p /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run1/
 + cd /home/a-m/azzaea/scalability-tst/src//cwl
 + sbatch --wait bioinfoScaling.toil.sh
-Submitted batch job 7412015
+Submitted batch job 7630869
 + sbatch --wait bioinfoScaling.cromwell.sh
-Submitted batch job 7415171
-+ mv cwl.cromwell cwl.toil /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run1/
-+ mv slurm-7412015.out slurm-7415171.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run1/
+Submitted batch job 7630870
++ mv cwl.cromwell cwl.toil /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run1/
++ mv slurm-7630869.out slurm-7630870.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run1/
 + cd /home/a-m/azzaea/scalability-tst/src//wdl
 + sbatch --wait bioinfoScaling.cromwell.sh
-Submitted batch job 7418430
-+ mv wdl.cromwell /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run1/
-+ mv slurm-7418430.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run1/
+Submitted batch job 7630998
++ mv wdl.cromwell /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run1/
++ mv slurm-7630998.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run1/
 + cd /home/a-m/azzaea/scalability-tst/src//nf
 + sbatch --wait bioinfoScaling.sh
-Submitted batch job 7421920
-+ mv nf.nf /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run1/
-+ mv slurm-7421920.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run1/
+Submitted batch job 7634089
++ mv nf.nf /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run1/
++ mv slurm-7634089.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run1/
 + (( run++ ))
 + (( run<=5 ))
 + echo '***************** This is run 2/5 *********************'
 ***************** This is run 2/5 *********************
-+ runResultsDir=/home/a-m/azzaea/scalability-tst/results/biocluster.2021//run2/
-+ mkdir -p /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run2/
++ runResultsDir=/home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run2/
++ mkdir -p /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run2/
 + cd /home/a-m/azzaea/scalability-tst/src//cwl
 + sbatch --wait bioinfoScaling.toil.sh
-Submitted batch job 7425108
+Submitted batch job 7637162
 + sbatch --wait bioinfoScaling.cromwell.sh
-Submitted batch job 7428317
-+ mv cwl.cromwell cwl.toil /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run2/
-+ mv slurm-7425108.out slurm-7428317.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run2/
+Submitted batch job 7637163
++ mv cwl.cromwell cwl.toil /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run2/
++ mv slurm-7637162.out slurm-7637163.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run2/
 + cd /home/a-m/azzaea/scalability-tst/src//wdl
 + sbatch --wait bioinfoScaling.cromwell.sh
-Submitted batch job 7431640
-+ mv wdl.cromwell /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run2/
-+ mv slurm-7431640.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run2/
+Submitted batch job 7637164
++ mv wdl.cromwell /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run2/
++ mv slurm-7637164.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run2/
 + cd /home/a-m/azzaea/scalability-tst/src//nf
 + sbatch --wait bioinfoScaling.sh
-Submitted batch job 7434732
-+ mv nf.nf /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run2/
-+ mv slurm-7434732.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run2/
+Submitted batch job 7640287
++ mv nf.nf /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run2/
++ mv slurm-7640287.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run2/
 + (( run++ ))
 + (( run<=5 ))
 + echo '***************** This is run 3/5 *********************'
 ***************** This is run 3/5 *********************
-+ runResultsDir=/home/a-m/azzaea/scalability-tst/results/biocluster.2021//run3/
-+ mkdir -p /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run3/
++ runResultsDir=/home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run3/
++ mkdir -p /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run3/
 + cd /home/a-m/azzaea/scalability-tst/src//cwl
 + sbatch --wait bioinfoScaling.toil.sh
-Submitted batch job 7437802
+Submitted batch job 7643369
 + sbatch --wait bioinfoScaling.cromwell.sh
-Submitted batch job 7440950
-+ mv cwl.cromwell cwl.toil /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run3/
-+ mv slurm-7437802.out slurm-7440950.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run3/
+Submitted batch job 7643370
++ mv cwl.cromwell cwl.toil /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run3/
++ mv slurm-7643369.out slurm-7643370.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run3/
 + cd /home/a-m/azzaea/scalability-tst/src//wdl
 + sbatch --wait bioinfoScaling.cromwell.sh
-Submitted batch job 7444247
-+ mv wdl.cromwell /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run3/
-+ mv slurm-7444247.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run3/
+Submitted batch job 7643384
++ mv wdl.cromwell /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run3/
++ mv slurm-7643384.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run3/
 + cd /home/a-m/azzaea/scalability-tst/src//nf
 + sbatch --wait bioinfoScaling.sh
-Submitted batch job 7447342
-+ mv nf.nf /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run3/
-+ mv slurm-7447342.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run3/
+Submitted batch job 7646489
++ mv nf.nf /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run3/
++ mv slurm-7646489.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run3/
 + (( run++ ))
 + (( run<=5 ))
 + echo '***************** This is run 4/5 *********************'
 ***************** This is run 4/5 *********************
-+ runResultsDir=/home/a-m/azzaea/scalability-tst/results/biocluster.2021//run4/
-+ mkdir -p /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run4/
++ runResultsDir=/home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run4/
++ mkdir -p /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run4/
 + cd /home/a-m/azzaea/scalability-tst/src//cwl
 + sbatch --wait bioinfoScaling.toil.sh
-Submitted batch job 7450412
+Submitted batch job 7649559
 + sbatch --wait bioinfoScaling.cromwell.sh
-Submitted batch job 7453560
-+ mv cwl.cromwell cwl.toil /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run4/
-+ mv slurm-7450412.out slurm-7453560.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run4/
+Submitted batch job 7649561
++ mv cwl.cromwell cwl.toil /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run4/
++ mv slurm-7649559.out slurm-7649561.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run4/
 + cd /home/a-m/azzaea/scalability-tst/src//wdl
 + sbatch --wait bioinfoScaling.cromwell.sh
-Submitted batch job 7457025
-+ mv wdl.cromwell /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run4/
-+ mv slurm-7457025.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run4/
+Submitted batch job 7649580
++ mv wdl.cromwell /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run4/
++ mv slurm-7649580.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run4/
 + cd /home/a-m/azzaea/scalability-tst/src//nf
 + sbatch --wait bioinfoScaling.sh
-Submitted batch job 7460376
-+ mv nf.nf /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run4/
-+ mv slurm-7460376.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run4/
+Submitted batch job 7652846
++ mv nf.nf /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run4/
++ mv slurm-7652846.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run4/
 + (( run++ ))
 + (( run<=5 ))
 + echo '***************** This is run 5/5 *********************'
 ***************** This is run 5/5 *********************
-+ runResultsDir=/home/a-m/azzaea/scalability-tst/results/biocluster.2021//run5/
-+ mkdir -p /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run5/
++ runResultsDir=/home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run5/
++ mkdir -p /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run5/
 + cd /home/a-m/azzaea/scalability-tst/src//cwl
 + sbatch --wait bioinfoScaling.toil.sh
-Submitted batch job 7463466
+Submitted batch job 7655954
 + sbatch --wait bioinfoScaling.cromwell.sh
-Submitted batch job 7466654
-+ mv cwl.cromwell cwl.toil /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run5/
-+ mv slurm-7463466.out slurm-7466654.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run5/
+Submitted batch job 7655955
++ mv cwl.cromwell cwl.toil /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run5/
++ mv slurm-7655954.out slurm-7655955.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run5/
 + cd /home/a-m/azzaea/scalability-tst/src//wdl
 + sbatch --wait bioinfoScaling.cromwell.sh
-Submitted batch job 7469938
-+ mv wdl.cromwell /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run5/
-+ mv slurm-7469938.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run5/
+Submitted batch job 7655976
++ mv wdl.cromwell /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run5/
++ mv slurm-7655976.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run5/
 + cd /home/a-m/azzaea/scalability-tst/src//nf
 + sbatch --wait bioinfoScaling.sh
-Submitted batch job 7473219
-+ mv nf.nf /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run5/
-+ mv slurm-7473219.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021//run5/
+Submitted batch job 7659085
++ mv nf.nf /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run5/
++ mv slurm-7659085.out /home/a-m/azzaea/scalability-tst/results/biocluster.2021/nomaxForks/run5/
 + (( run++ ))
 + (( run<=5 ))
 + echo 'Bio-Scalability analysis completed for 5 runs'

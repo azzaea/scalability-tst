@@ -1,0 +1,37 @@
+include required(classpath("application"))
+
+system { # limiting the rate of job submission because SLURM scheduler can get overloaded when hit with scattering jobs all at once
+  job-rate-control {
+    jobs = 32
+#    per = 1 second
+  }
+}
+
+backend {
+  default = slurm
+  providers {
+    slurm {
+     actor-factory = "cromwell.backend.impl.sfs.config.ConfigBackendLifecycleActorFactory"
+     config {
+      # concurrent-job-limit = 16 # Concurrent jobs a user may run. This to respect fair-sharing rules of a scheduler in an hpc, which is useful when cromwell is run on server mode.
+      # exit-code-timeout-seconds = 120 # To account for scenarios when a job is killed by the scheduler before it has written its exit code. This can be expensive if configured along with `check-alive`
+      runtime-attributes = """
+        Int cpu=1
+        String queue = "normal" # 'compute' on pcluster, 'normal' on biocluster
+      """
+
+      submit = """
+        sbatch -J ${job_name} -D ${cwd} -o ${out} -e ${err} -p ${queue} ${"-c " + cpu} --wrap "/bin/bash ${script}"
+      """
+
+      kill = "scancel ${job_id}"
+
+      check-alive = "squeue -j ${job_id}"
+
+      job-id-regex = "Submitted batch job (\\d+).*"
+     }
+
+    }
+  }
+}
+
